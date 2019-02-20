@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Lecture.Robotics: ———————————:First Lecture&amp;nbsp; lejos, EV3.&amp;nbsp; 组队&amp;nbsp; Artificial Intelligence chapter 1 :Robot&amp;nbsp; Lecure3.notes.md :Robot sensors&amp;nbsp;  :Bobot Motors&amp;nbsp; .pilot&amp;nbsp; .cha">
+    <meta name="description" content="Lecture.Robotics: ————————————–:First Lecture&amp;nbsp; lejos, EV3.&amp;nbsp; 组队&amp;nbsp; Artificial Intelligence chapter 1 :Robot&amp;nbsp; Lecure3.notes.md :Robot sensors&amp;nbsp;  :Bobot Motors&amp;nbsp; .pilot&amp;nbsp; .c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Log.AI">
 <meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Log-AI/index.html">
 <meta property="og:site_name" content="WY J">
-<meta property="og:description" content="Lecture.Robotics: ———————————:First Lecture&amp;nbsp; lejos, EV3.&amp;nbsp; 组队&amp;nbsp; Artificial Intelligence chapter 1 :Robot&amp;nbsp; Lecure3.notes.md :Robot sensors&amp;nbsp;  :Bobot Motors&amp;nbsp; .pilot&amp;nbsp; .cha">
+<meta property="og:description" content="Lecture.Robotics: ————————————–:First Lecture&amp;nbsp; lejos, EV3.&amp;nbsp; 组队&amp;nbsp; Artificial Intelligence chapter 1 :Robot&amp;nbsp; Lecure3.notes.md :Robot sensors&amp;nbsp;  :Bobot Motors&amp;nbsp; .pilot&amp;nbsp; .c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-20T00:26:12.457Z">
+<meta property="og:updated_time" content="2019-02-20T00:32:06.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.AI">
-<meta name="twitter:description" content="Lecture.Robotics: ———————————:First Lecture&amp;nbsp; lejos, EV3.&amp;nbsp; 组队&amp;nbsp; Artificial Intelligence chapter 1 :Robot&amp;nbsp; Lecure3.notes.md :Robot sensors&amp;nbsp;  :Bobot Motors&amp;nbsp; .pilot&amp;nbsp; .cha">
+<meta name="twitter:description" content="Lecture.Robotics: ————————————–:First Lecture&amp;nbsp; lejos, EV3.&amp;nbsp; 组队&amp;nbsp; Artificial Intelligence chapter 1 :Robot&amp;nbsp; Lecure3.notes.md :Robot sensors&amp;nbsp;  :Bobot Motors&amp;nbsp; .pilot&amp;nbsp; .c">
     
     
         
@@ -141,13 +141,13 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><strong>Lecture.Robotics:</strong> ———————————<br>:First Lecture<br>&nbsp; lejos, EV3.<br>&nbsp; 组队<br>&nbsp; Artificial Intelligence chapter 1</p>
+    <p><strong>Lecture.Robotics:</strong> ————————————–<br>:First Lecture<br>&nbsp; lejos, EV3.<br>&nbsp; 组队<br>&nbsp; Artificial Intelligence chapter 1</p>
 <p>:Robot<br>&nbsp; Lecure3.notes.md</p>
 <p>:Robot sensors<br>&nbsp; </p>
 <p>:Bobot Motors<br>&nbsp; .pilot<br>&nbsp; .chassis</p>
 <p>:Arbitrator<br>&nbsp; first assignment<br>&nbsp; .Behavior</p>
 <p>:Color Sensor<br>&nbsp; .ColorIDMode<br>&nbsp; .ColorRGBMode<br>&nbsp; .AmbientMode</p>
-<p><strong>Lecture.Theory:</strong> ———————————<br>:Swarm intelligence and firefly synchronization<br>&nbsp; 萤火虫</p>
+<p><strong>Lecture.Theory:</strong> ————————————–<br>:Swarm intelligence and firefly synchronization<br>&nbsp; 萤火虫</p>
 <p>:Breadth-first search and Depth-first search<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">B: Complete: guaranted to find a goal state if one exits and terminate  if failed.</span><br><span class="line">   Admissible(可采纳的): able to find the shortest path.</span><br><span class="line">   Space.Compx = O(b^d - 1) = O(b^d)</span><br><span class="line">   Time.Compx = O(b^d -1) = O(b^d)</span><br><span class="line">      b: branching factor </span><br><span class="line">      d: depth of the goal</span><br><span class="line">D: Complete: if the state space is finite,...(incomplete if infinite)</span><br><span class="line">   Not admissible: not guaranteed to find the shortest path to a goal</span><br><span class="line">   Space.compx = O(b^m)</span><br><span class="line">   Time.Compx = O(b^m)</span><br><span class="line">      b: branching factor</span><br><span class="line">      m: maximum depth of the search tree</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp; 广度优先: Stack 深度优先: Queue<br>&nbsp; <a href="https://blog.csdn.net/dyy_gusi/article/details/46414677" target="_blank" rel="noopener">https://blog.csdn.net/dyy_gusi/article/details/46414677</a></p>
 <p>:A star Search<br>&nbsp; Complete, admissible, optimally efficient(if heuristic is consistent.)<br>&nbsp; Space.Compx = usually exponential<br>&nbsp; Time.Compx = usually exponential<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Evaluation function:</span><br><span class="line">    f(node) = g(node) + h(node)</span><br><span class="line">      .g(node) = 从起点 A 移动到指定方格的移动代价，沿着到达该方格而生成的路径。</span><br><span class="line">      .h(node) = 从指定的方格移动到终点 B 的估算成本。这个通常被称为试探法</span><br></pre></td></tr></table></figure></p>
