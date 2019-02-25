@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Exercise sheet 1Qns1: Insert numbers{7,1,4,5} in an empty queue. Represent that process using standard constructors .push and .EmptyQueue.1234push(7,EmptyQueue)push(1,push(7,EmptyQueue))push(4,push(1,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-20T22:44:51.619Z">
+<meta property="og:updated_time" content="2019-02-25T13:13:49.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DSA_sol">
 <meta name="twitter:description" content="Exercise sheet 1Qns1: Insert numbers{7,1,4,5} in an empty queue. Represent that process using standard constructors .push and .EmptyQueue.1234push(7,EmptyQueue)push(1,push(7,EmptyQueue))push(4,push(1,">
@@ -154,8 +154,14 @@
     else if(i == 1) return getFirst(L);
     else return getItem(i-1, rest(L));
 }
-</code></pre><p><code>`</code></p>
-<p>Qns3:</p>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Qns3:</span><br><span class="line"> Write a recursive procedure .equalList(L1,L2) that returns true if the lists L1 and L2 are the same, and false if they are not.The only procedures it may call are the standard primitive list operators first, rest and isEmpty.</span><br></pre></td></tr></table></figure>
+<pre><code>equalList(L1, L2){
+  if(isEmpty(L1) &amp;&amp; isEmpty(L2)) return true;   //two empty lists are equal
+  else if(isEmpty(L1) || isEmpty(L2)) return false;
+  else if(first(L1) != first(L2)) return false;   //always check the first item in two lists
+  else return equalList(rest(L1), rest(L2));
+}
+</code></pre><p> <code>`</code></p>
 
   </div>
 </article>
