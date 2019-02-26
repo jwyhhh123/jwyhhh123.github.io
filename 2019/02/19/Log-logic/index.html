@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Lecture1: intro  :Propositional logic（命题逻辑）&amp;nbsp;  :Natural Deduction&amp;nbsp; no lecture on Tue 22nd&amp;nbsp; week 3 and 6:  assignments&amp;nbsp; Office hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 :Semantic">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T12:48:59.849Z">
+<meta property="og:updated_time" content="2019-02-26T13:49:37.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Lecture1: intro  :Propositional logic（命题逻辑）&amp;nbsp;  :Natural Deduction&amp;nbsp; no lecture on Tue 22nd&amp;nbsp; week 3 and 6:  assignments&amp;nbsp; Office hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 :Semantic">
@@ -163,8 +163,24 @@
 <ul>
 <li>sound(true then cannot be false)</li>
 <li>complete(true or false can be determined)</li>
-<li>computable(be computed by machine)<br>&nbsp;Λ演算: <a href="https://zh.wikipedia.org/wiki/Λ演算" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Λ演算</a><br>&nbsp;: <a href="https://blog.csdn.net/zdarks/article/details/46994939" target="_blank" rel="noopener">https://blog.csdn.net/zdarks/article/details/46994939</a><br>&nbsp; </li>
+<li>computable(be computed by machine)<br>&nbsp;Λ演算: <a href="https://zh.wikipedia.org/wiki/Λ演算" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Λ演算</a><br>&nbsp;: <a href="https://blog.csdn.net/zdarks/article/details/46994939" target="_blank" rel="noopener">https://blog.csdn.net/zdarks/article/details/46994939</a></li>
 </ul>
+<p>:Proof Checking<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p: P     p is a proof of P</span><br><span class="line">p: P -&gt; Q     1) p is a proof of P -&gt; Q  </span><br><span class="line">              2) p is a rule for converting P into Q</span><br><span class="line">¬ p = not P = P -&gt; Falsity = P -&gt; ⊥</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;and-elimination:</p>
+<ul>
+<li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
+<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q<br>&nbsp;and-introduction:</li>
+<li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
+</ul>
+<p>&nbsp;or-introduction</p>
+<ul>
+<li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
+<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q<br>&nbsp;or-elimination</li>
+<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R<br>&nbsp;</li>
+<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P<br>&nbsp;</li>
+<li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
+</ul>
+<p>&nbsp;Modus ponens<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line">   q: Q        //declearation</span><br><span class="line">   q = f p     //operation</span><br></pre></td></tr></table></figure></p>
 
   </div>
 </article>
