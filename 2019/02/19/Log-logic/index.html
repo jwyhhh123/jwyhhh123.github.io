@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Lecture1: intro  :Propositional logic（命题逻辑）&amp;nbsp;  :Natural Deduction&amp;nbsp; no lecture on Tue 22nd&amp;nbsp; week 3 and 6:  assignments&amp;nbsp; Office hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 :Semantic">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T13:49:37.443Z">
+<meta property="og:updated_time" content="2019-02-27T02:20:43.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Lecture1: intro  :Propositional logic（命题逻辑）&amp;nbsp;  :Natural Deduction&amp;nbsp; no lecture on Tue 22nd&amp;nbsp; week 3 and 6:  assignments&amp;nbsp; Office hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 :Semantic">
@@ -169,15 +169,27 @@
 <p>&nbsp;and-elimination:</p>
 <ul>
 <li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
-<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q<br>&nbsp;and-introduction:</li>
+<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
+</ul>
+<p>&nbsp;and-introduction:</p>
+<ul>
 <li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
 </ul>
 <p>&nbsp;or-introduction</p>
 <ul>
 <li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
-<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q<br>&nbsp;or-elimination</li>
-<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R<br>&nbsp;</li>
-<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P<br>&nbsp;</li>
+<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q</li>
+</ul>
+<p>&nbsp;or-elimination</p>
+<ul>
+<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
+</ul>
+<p>&nbsp;falsity-elimination (⊥：any P)</p>
+<ul>
+<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
+</ul>
+<p>&nbsp;double-negation-elimination</p>
+<ul>
 <li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
 </ul>
 <p>&nbsp;Modus ponens<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line">   q: Q        //declearation</span><br><span class="line">   q = f p     //operation</span><br></pre></td></tr></table></figure></p>
