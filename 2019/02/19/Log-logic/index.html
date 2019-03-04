@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Lecture1: intro  :Propositional logic（命题逻辑）&amp;nbsp;  :Natural Deduction&amp;nbsp; no lecture on Tue 22nd&amp;nbsp; week 3 and 6:  assignments&amp;nbsp; Office hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 :Semantic">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T02:20:43.424Z">
+<meta property="og:updated_time" content="2019-03-04T12:43:58.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Lecture1: intro  :Propositional logic（命题逻辑）&amp;nbsp;  :Natural Deduction&amp;nbsp; no lecture on Tue 22nd&amp;nbsp; week 3 and 6:  assignments&amp;nbsp; Office hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 :Semantic">
@@ -193,6 +193,35 @@
 <li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
 </ul>
 <p>&nbsp;Modus ponens<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line">   q: Q        //declearation</span><br><span class="line">   q = f p     //operation</span><br></pre></td></tr></table></figure></p>
+<p>:Types<br>&nbsp; .basic data types<br>&nbsp; using agda, we are <strong>defining data</strong> types by ourselves.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty: unit</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>data</code> : introduces the definition</li>
+<li><code>Void</code> : the name of the type (can be almost anything, including unicode)</li>
+<li><code>Set</code> : it confirms that <code>Void</code> is a type (Agda, confusingly, calls types “sets”)</li>
+<li><code>where</code> : introduces the <em>constructors</em>.</li>
+<li><code>empty</code> : constructor</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
+<p>&nbsp; .composite types: given some types, construct new types<br>&nbsp; .product (or tuples)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp; .sum or .union<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp; .algebraic types</p>
+<ul>
+<li>sum A B    A+B</li>
+<li>Pred A B   AxB</li>
+<li>void       null</li>
+</ul>
+<p>&nbsp;&nbsp; If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
+<ul>
+<li>How many elements has <code>Sum A B</code>?  m+n</li>
+<li>How many elements has <code>Prod A B</code>?  mxn</li>
+</ul>
+<blockquote>
+<ul>
+<li>can we define any element of <code>Prod A Void</code> for some <code>A</code>?       null</li>
+<li>can we define any element of <code>Sum A Void</code> for some <code>A</code>?     A</li>
+</ul>
+</blockquote>
 
   </div>
 </article>
