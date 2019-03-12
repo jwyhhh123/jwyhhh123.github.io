@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Part ILecture1: introPropositional logic（命题逻辑）Natural Deductionno lecture on Tue 22ndweek 3 and 6:  assignmentsOffice hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 Semantics, truth tableProof strategy">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-12T00:34:08.468Z">
+<meta property="og:updated_time" content="2019-03-12T00:44:16.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Part ILecture1: introPropositional logic（命题逻辑）Natural Deductionno lecture on Tue 22ndweek 3 and 6:  assignmentsOffice hours: Mon 3-4pm, Thu 2-3pm. I am in room 133 Semantics, truth tableProof strategy">
@@ -247,10 +247,22 @@
 <li>this is not isomophic</li>
 <li>it is not the case that <code>1 + 1 ~ 1</code>.</li>
 </ul>
-<h2 id="Lambda-calculus-λ演算"><a href="#Lambda-calculus-λ演算" class="headerlink" title="Lambda calculus(λ演算)"></a>Lambda calculus(λ演算)</h2><p><strong>def:</strong> formalise the concept of computability using a simple notion of <em>functions</em>.<br>&nbsp;-One of the ways we can understand functions is as a mapping from some inputs to some outputs.<br>|  Syntax  |     Name    |<br>|:——–:|:———–:|<br>|     x    |   Variable  |<br>|    λx.F  | Abstraction |<br>|    f x   | Application |</p>
-<p>In <strong>Agda</strong> we write <code>\x -&gt; F</code>.<br>&nbsp; <code>x</code>: variable binding<br>&nbsp; <code>F</code>: term, i.e. an expression formed of variables, function application, and function definition. </p>
-<p>&nbsp;<em>Example:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(\x -&gt; x + 1) 7 </span><br><span class="line">  = 7 + 1 </span><br><span class="line">  = 8</span><br><span class="line">                </span><br><span class="line">(\x y -&gt; x + y) 7 8 </span><br><span class="line">  = (\y -&gt; 7 + y) 8 </span><br><span class="line">  = 7 + 8 </span><br><span class="line">  = 15</span><br><span class="line">                    </span><br><span class="line">(\x -&gt; x + 1) ((\y -&gt; y + 1) 2) </span><br><span class="line">  = (\x -&gt; x + 1) (2 + 1)</span><br><span class="line">  = (\x -&gt; x + 1) 3</span><br><span class="line">  = 3 + 1</span><br><span class="line">  = 4</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&quot;higher-order&quot; functions:</span><br><span class="line">* takes one or more functions as arguments (i.e. procedural parameters),</span><br><span class="line">* returns a function as its result.</span><br></pre></td></tr></table></figure></p>
-<p>(\f x -&gt; f (f x)) (\y -&gt; y + 1)<br>  = \x -&gt; (\y -&gt; y + 1) ((\z -&gt; z + 1) x)<br>  = \x -&gt; (\y -&gt; y + 1) (x + 1)<br>  = \x -&gt; (x + 1) + 1<br>  = \x -&gt; x + 2<br><code>`</code></p>
+<h2 id="Lambda-calculus-λ演算"><a href="#Lambda-calculus-λ演算" class="headerlink" title="Lambda calculus(λ演算)"></a>Lambda calculus(λ演算)</h2><p><strong>def:</strong> formalise the concept of computability using a simple notion of <em>functions</em>.<br>&nbsp;-One of the ways we can understand functions is as a mapping from some inputs to some outputs.</p>
+<ul>
+<li>Variable:    <code>x</code>  </li>
+<li>Abstraction: <code>λx.F</code>  </li>
+<li>Application: <code>f x</code></li>
+</ul>
+<p>In <strong>Agda</strong> we write <code>\x -&gt; F</code>.<br><code>x</code>: variable binding<br><code>F</code>: term, <em>i.e.</em> an expression formed of variables, function application, and function definition. </p>
+<p>&nbsp;<em>Example:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(\x -&gt; x + 1) 7 </span><br><span class="line">  = 7 + 1 </span><br><span class="line">  = 8</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(\x y -&gt; x + y) 7 8 </span><br><span class="line">  = (\y -&gt; 7 + y) 8 </span><br><span class="line">  = 7 + 8 </span><br><span class="line">  = 15</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(\x -&gt; x + 1) ((\y -&gt; y + 1) 2) </span><br><span class="line">  = (\x -&gt; x + 1) (2 + 1)</span><br><span class="line">  = (\x -&gt; x + 1) 3</span><br><span class="line">  = 3 + 1</span><br><span class="line">  = 4</span><br></pre></td></tr></table></figure>
+<p>“higher-order” functions:</p>
+<ul>
+<li>takes one or more functions as arguments (i.e. procedural parameters),</li>
+<li>returns a function as its result.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(\f x -&gt; f (f x)) (\y -&gt; y + 1)</span><br><span class="line">  = \x -&gt; (\y -&gt; y + 1) ((\z -&gt; z + 1) x)</span><br><span class="line">  = \x -&gt; (\y -&gt; y + 1) (x + 1)</span><br><span class="line">  = \x -&gt; (x + 1) + 1</span><br><span class="line">  = \x -&gt; x + 2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
   </div>
 </article>
