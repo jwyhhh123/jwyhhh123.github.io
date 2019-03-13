@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Theory:Introduction, Arrays, IterationList, Recursion, Stack, Queues, Setslist 和 array之间的比较 Stacks, Queue, Doubly linked listsets四者之间区别 Binary Search, time &amp;amp; space complexity,C(n)Trees, quad tree,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-11T20:25:43.247Z">
+<meta property="og:updated_time" content="2019-03-13T11:36:50.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log-DataStructure">
 <meta name="twitter:description" content="Theory:Introduction, Arrays, IterationList, Recursion, Stack, Queues, Setslist 和 array之间的比较 Stacks, Queue, Doubly linked listsets四者之间区别 Binary Search, time &amp;amp; space complexity,C(n)Trees, quad tree,">
@@ -175,7 +175,10 @@
 </ul>
 <h2 id="Hash-Table"><a href="#Hash-Table" class="headerlink" title="Hash Table"></a>Hash Table</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">h(KEY) -&gt; position</span><br><span class="line">[K0][K1][K2][K3][K4][K5][K6][K7]</span><br></pre></td></tr></table></figure>
 <p>&nbsp; if two keys goes to the same position, it is called <code>collision</code></p>
-<p>Collision likelihoods and load factors for hash tables<br>prob(not colli 3) = (364*363)/365^2 = 1 - prob(colli)<br>q(n)= 364·363···(366 - n) / 365^(n-1) = 1 - p(n)</p>
+<p>Collision likelihoods and load factors for hash tables<br><code>q(n)= 364·363···(366 - n) / 365^(n-1) = 1 - p(n)</code><br>&nbsp; - prob(not colli 3) = (364*363)/365^2 = 1 - prob(colli)</p>
+<p>strategies to deal with collisions<br>&nbsp; Buckets: build a two dimension array<br>&nbsp; Direct chaining: build a linked list<br>&nbsp; open addressing: linear probing &amp; double hashing</p>
+<p><code>linear probing</code>:<br>&nbsp; if there is a collision, reduce index by 1 and insert.<br>&nbsp; time.Compx = O(1)</p>
+<p><code>double hashing</code>:<br>&nbsp; time.Compx = o(1)</p>
 <h1 id="Code-Part"><a href="#Code-Part" class="headerlink" title="Code Part:"></a>Code Part:</h1><h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
 <h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4:<br>ass5: </p>
 <p>##URL<br><a href="http://www.runoob.com/java/java-collections.html" target="_blank" rel="noopener">http://www.runoob.com/java/java-collections.html</a></p>
