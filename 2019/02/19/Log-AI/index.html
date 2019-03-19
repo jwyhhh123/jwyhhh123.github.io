@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Lecture.Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T13:50:56.618Z">
+<meta property="og:updated_time" content="2019-03-19T16:53:28.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.AI">
 <meta name="twitter:description" content="Lecture.Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode">
@@ -203,8 +203,6 @@
 </li>
 <li><p>.sigmoid function: g(z) = 1 / ( 1 + e^(-z) )</p>
 </li>
-<li>linear separable</li>
-<li>cost function is not convex(代价函数不是凸函数,凸函数，有极值)</li>
 <li>.cost function: <ul>
 <li>J(w) = -1/m . Σ[ y(i)log( hw(x(i))) +  (1-y(i))(log(1-hw(x(i)))]    // 1/m is to take the average of m sums</li>
 </ul>
@@ -214,7 +212,10 @@
 <li>w0 = w0 + α . ( yj - hw( x(j)0 ) ) . 1</li>
 </ul>
 </li>
+<li>decision boundary <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g(0) = 0.5</span><br><span class="line">z = 0, z = hypothesis h(x)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p><strong>linear separable</strong><br>cost function is <strong>not convex</strong>(代价函数不是凸函数; 凸函数，有全局最优解)</p>
 <p>&nbsp; <a href="https://blog.csdn.net/walilk/article/details/50978864" target="_blank" rel="noopener">https://blog.csdn.net/walilk/article/details/50978864</a><br>&nbsp; <a href="https://zhuanlan.zhihu.com/p/28408516" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28408516</a><br>&nbsp; <a href="https://blog.csdn.net/nwpuwyk/article/details/36065153" target="_blank" rel="noopener">https://blog.csdn.net/nwpuwyk/article/details/36065153</a><br>&nbsp; for all info: <a href="https://scruel.gitee.io/ml-andrewng-notes/" target="_blank" rel="noopener">https://scruel.gitee.io/ml-andrewng-notes/</a><br>&nbsp; Andrew ng online lec: <a href="https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN</a></p>
 <h2 id="Continued"><a href="#Continued" class="headerlink" title="Continued"></a>Continued</h2><p>basic element</p>
 <ul>
@@ -225,14 +226,11 @@
 <h2 id="Continued-1"><a href="#Continued-1" class="headerlink" title="Continued"></a>Continued</h2><p>Training data &amp; Test data</p>
 <ul>
 <li>provides a way to form a <code>model</code> for new data</li>
-<li><code>model</code> is based on previous data set</li>
+<li><code>model</code> is based on previous data set<br>(x,y) …<br>(x1,x2,x3,y) …</li>
 </ul>
 <p>Underfitting</p>
 <p>Model Complexity</p>
-<p>Overfitting</p>
-<ul>
-<li><code>overfitting</code>: result of a model that is more complex than is required.</li>
-</ul>
+<p>Overfitting<br><code>overfitting</code>: result of a model that is more complex than is required.<br>&nbsp; fit exactly to current data and will perform badly on other data</p>
 <p>Regularisation<br>Cost = Cost + ƛ Σ(wi)2 (L2 Regularisation)<br><code>ƛ</code>：how much to penalise complex terms.</p>
 <p>Limitations of Logistic Regression [1]</p>
 <p>Neural Networks: solutions to deal with [1]<br>using <strong>sigmoid function g()</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g() ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure></p>
@@ -240,15 +238,23 @@
 <h2 id="Continued-2"><a href="#Continued-2" class="headerlink" title="Continued"></a>Continued</h2><p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x3 ...</code><br><em>Your updates are:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x3</span><br></pre></td></tr></table></figure></p>
 <p><em>For some</em><br><code>hw(x) = w0 + w1x + w2x2</code><br><em>Your updates are:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x</span><br><span class="line">w2 += ... * x2</span><br></pre></td></tr></table></figure></p>
 <p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x1x2</code><br>Your updates are:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x1x2</span><br></pre></td></tr></table></figure></p>
-<h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><p>logit</p>
-<p>AND</p>
-<p>OR</p>
-<p>XNOR</p>
-<p>NOT(x1) AND NOT(x2)</p>
-<p>forward propagation<br>backward propagation: to find gradient</p>
-<p><strong>one-vs-all:</strong> logistic regression can be used on <em>multiple</em> classes<br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU</p>
-<p>cost of neural network: sum of costs for each of the output.</p>
-<p>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
+<h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><p>logit/Nodes/Neurons</p>
+<ul>
+<li>AND</li>
+<li>OR</li>
+<li>XNOR</li>
+<li>NOT(x1) AND NOT(x2)</li>
+</ul>
+<p><strong>forward propagation</strong></p>
+<p><strong>one-vs-all:</strong> logistic regression can be used on <em>multiple</em> classes</p>
+<p>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
+<p>Cost: sum of costs for each of the output.<br>&nbsp; cost function is not convex, there is a possibilty to get to local mimimum<br>&nbsp; <strong>backward propagation</strong>: to find gradient</p>
+<p>Regularisation<br>1.<br>2.Dropout<br>&nbsp; ignore certain nodes(typically half) when traing model</p>
+<ol start="3">
+<li>reduce network depth<br>&nbsp; reduce the complexity of hypothesis h(x)</li>
+</ol>
+<p>Actication Function:<br><strong>def:</strong> function used on the weighted function</p>
+<p>Hyperparameters<br><strong>Grid Search</strong></p>
 
   </div>
 </article>
