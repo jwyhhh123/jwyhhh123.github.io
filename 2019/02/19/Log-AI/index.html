@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Lecture.Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-27T22:14:46.750Z">
+<meta property="og:updated_time" content="2019-03-27T23:42:03.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.AI">
 <meta name="twitter:description" content="Lecture.Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode">
@@ -169,21 +169,22 @@
 <li>admissible</li>
 <li>optimally efficient(if heuristic is consistent)<br>Space.Compx = usually exponential<br>Time.Compx = usually exponential</li>
 </ul>
-<p>&nbsp; <em>Evaluation function:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(node) = g(node) + h(node)</span><br><span class="line">  .g(node) = 从起点 A 移动到指定方格的移动代价，沿着到达该方格而生成的路径。</span><br><span class="line">  .h(node) = 从指定的方格移动到终点 B 的估算成本。这个通常被称为试探法</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp; <em>Evaluation function:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(node) = g(node) + h(node)</span><br><span class="line">  .g(node) = 从起点 A 移动到指定方格的移动代价，沿着到达该方格而生成的路径。</span><br><span class="line">  .h(node) = 从指定的方格移动到终点 B 的估算成本。这个通常被称为试探法</span><br></pre></td></tr></table></figure>
 <p><a href="https://zhuanlan.zhihu.com/p/38595351" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595351</a></p>
 <h2 id="Hill-Climbing"><a href="#Hill-Climbing" class="headerlink" title="Hill Climbing"></a>Hill Climbing</h2><p>添加url</p>
 <h2 id="Simulated-annealing-模拟退火"><a href="#Simulated-annealing-模拟退火" class="headerlink" title="Simulated annealing(模拟退火)"></a>Simulated annealing(模拟退火)</h2><p>代码实现: <a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
 <h2 id="Introduction-to-machine-learning-and-k-NN"><a href="#Introduction-to-machine-learning-and-k-NN" class="headerlink" title="Introduction to machine learning and k-NN"></a>Introduction to machine learning and k-NN</h2><p>further reading<br>Knn Example:<br><a href="https://blog.csdn.net/saltriver/article/details/52502253" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/52502253</a></p>
-<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h2><p>predictive modules: frequency table<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P(c|f1,...,fn) = α P(c) Π P(fi|c)  </span><br><span class="line">α = 1 / β</span><br><span class="line">β = Σ(P(c) ΠP(fi|c))</span><br></pre></td></tr></table></figure></p>
+<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h2><p>predictive modules: frequency table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P(c|f1,...,fn) = α P(c) Π P(fi|c)  </span><br><span class="line">α = 1 / β</span><br><span class="line">β = Σ(P(c) ΠP(fi|c))</span><br></pre></td></tr></table></figure>
 <h2 id="Naive-Bayes-and-Applications"><a href="#Naive-Bayes-and-Applications" class="headerlink" title="Naive Bayes and Applications"></a>Naive Bayes and Applications</h2><p>machine learing processes<br>Application: spam filtering<br><a href="https://zh.wikipedia.org/wiki/朴素贝叶斯分类器" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/朴素贝叶斯分类器</a></p>
 <h2 id="Machine-learning"><a href="#Machine-learning" class="headerlink" title="Machine learning"></a>Machine learning</h2><p>Regression: y = f(x) </p>
 <ul>
 <li>Euclidean distance: d(p, q)</li>
-<li><p>Derivative(导数) of a function</p>
+<li>Derivative(导数) of a function</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def of classification: </span><br><span class="line">- classify observations into different classes</span><br><span class="line"></span><br><span class="line">y</span><br><span class="line"> |  .                       </span><br><span class="line"> |    .         </span><br><span class="line"> |      .   flue             </span><br><span class="line"> |        .</span><br><span class="line"> | no flue  .     </span><br><span class="line"> |            .</span><br><span class="line"> ----------------------&gt; x</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def of regression: </span><br><span class="line">- given some observations, find a &quot;trend&quot;</span><br><span class="line"></span><br><span class="line">y</span><br><span class="line"> |          * .              </span><br><span class="line"> |          .               </span><br><span class="line"> |    *   .  *               </span><br><span class="line"> |     .</span><br><span class="line"> |  *.  *   </span><br><span class="line"> | .            </span><br><span class="line"> ----------------------&gt; x</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 <p><strong>least square</strong> method(最小二乘法：<br>           <a href="https://zh.wikipedia.org/wiki/最小二乘法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/最小二乘法</a><br>           <a href="https://www.zhihu.com/question/37031188" target="_blank" rel="noopener">https://www.zhihu.com/question/37031188</a>)</p>
 <p><strong>gradient descent</strong> (<a href="https://www.cnblogs.com/pinard/p/5970503.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/5970503.html</a>)<br>&nbsp;(A) update w1 using loss on j:  w1 = w1 + α . ( yj - h( xj ) ) . xj<br>&nbsp;(B) update w0 using loss on j:  w0 = w0 + α . ( yj - h( xj ) )</p>
 <h2 id="Optimization2"><a href="#Optimization2" class="headerlink" title="Optimization2"></a>Optimization2</h2><p>linear regression: trying to find a trend. to find the best fit line</p>
@@ -198,11 +199,11 @@
 </ul>
 <p>&nbsp; logistic regression<br>&nbsp; - classification: trying to find a boundary to differentiate two classes.</p>
 <ul>
-<li><p>dependant variable {0,1} (someone has cancer or hasn’t)</p>
+<li>dependant variable {0,1} (someone has cancer or hasn’t)</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">y</span><br><span class="line"> |                     </span><br><span class="line"> |          . . . .                 </span><br><span class="line"> |                 </span><br><span class="line"> |          </span><br><span class="line"> |   </span><br><span class="line"> |  . . . .          </span><br><span class="line"> ----------------------&gt; x</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>.sigmoid function: g(z) = 1 / ( 1 + e^(-z) )</p>
-</li>
+<ul>
+<li>.sigmoid function: g(z) = 1 / ( 1 + e^(-z) )</li>
 <li>.cost function: <ul>
 <li>J(w) = -1/m . Σ[ y(i)log( hw(x(i))) +  (1-y(i))(log(1-hw(x(i)))]    // 1/m is to take the average of m sums</li>
 </ul>
@@ -212,9 +213,9 @@
 <li>w0 = w0 + α . ( yj - hw( x(j)0 ) ) . 1</li>
 </ul>
 </li>
-<li>decision boundary <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g(0) = 0.5</span><br><span class="line">z = 0, z = hypothesis h(x)</span><br></pre></td></tr></table></figure>
-</li>
+<li>decision boundary </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g(0) = 0.5</span><br><span class="line">z = 0, z = hypothesis h(x)</span><br></pre></td></tr></table></figure>
 <p><strong>linear separable</strong><br>cost function is <strong>not convex</strong>(代价函数不是凸函数; 凸函数，有全局最优解)</p>
 <p>&nbsp; <a href="https://blog.csdn.net/walilk/article/details/50978864" target="_blank" rel="noopener">https://blog.csdn.net/walilk/article/details/50978864</a><br>&nbsp; <a href="https://zhuanlan.zhihu.com/p/28408516" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28408516</a><br>&nbsp; <a href="https://blog.csdn.net/nwpuwyk/article/details/36065153" target="_blank" rel="noopener">https://blog.csdn.net/nwpuwyk/article/details/36065153</a><br>&nbsp; for all info: <a href="https://scruel.gitee.io/ml-andrewng-notes/" target="_blank" rel="noopener">https://scruel.gitee.io/ml-andrewng-notes/</a><br>&nbsp; Andrew ng online lec: <a href="https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN</a></p>
 <h2 id="Continued"><a href="#Continued" class="headerlink" title="Continued"></a>Continued</h2><p>basic element</p>
@@ -235,9 +236,15 @@
 <p>Limitations of Logistic Regression [1]</p>
 <p>Neural Networks: solutions to deal with [1]<br>using <strong>sigmoid function g()</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g() ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a></p>
-<h2 id="Continued-2"><a href="#Continued-2" class="headerlink" title="Continued"></a>Continued</h2><p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x3 ...</code><br><em>Your updates are:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x3</span><br></pre></td></tr></table></figure></p>
-<p><em>For some</em><br><code>hw(x) = w0 + w1x + w2x2</code><br><em>Your updates are:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x</span><br><span class="line">w2 += ... * x2</span><br></pre></td></tr></table></figure></p>
-<p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x1x2</code><br>Your updates are:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x1x2</span><br></pre></td></tr></table></figure></p>
+<h2 id="Continued-2"><a href="#Continued-2" class="headerlink" title="Continued"></a>Continued</h2><p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x3 ...</code></p>
+<p><em>Your updates are:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x3</span><br></pre></td></tr></table></figure>
+<p><em>For some</em><br><code>hw(x) = w0 + w1x + w2x2</code></p>
+<p><em>Your updates are:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x</span><br><span class="line">w2 += ... * x2</span><br></pre></td></tr></table></figure>
+<p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x1x2</code></p>
+<p>Your updates are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x1x2</span><br></pre></td></tr></table></figure>
 <h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><p>logit/Nodes/Neurons</p>
 <ul>
 <li>AND</li>
