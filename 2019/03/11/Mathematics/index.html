@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Content Natural Numbers and Integers The Rational Numbers and Floating Point Representation Systems of Linear Equations: Gaussian Elimination Analytic Geometry An Alternate Way of Describing Lines and">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-09T02:46:33.999Z">
+<meta property="og:updated_time" content="2019-04-09T03:16:53.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematics">
 <meta name="twitter:description" content="Content Natural Numbers and Integers The Rational Numbers and Floating Point Representation Systems of Linear Equations: Gaussian Elimination Analytic Geometry An Alternate Way of Describing Lines and">
@@ -168,76 +168,76 @@
 <li><code>s</code> : successor</li>
 <li><code>p</code> : predecessor</li>
 </ul>
-<p><strong>Operation</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n + 0 = n</span><br><span class="line">n + sm = s(n + m)</span><br><span class="line">n * 0 = 0</span><br><span class="line">n * sm = (n * m) + n</span><br><span class="line"></span><br><span class="line">n - 0 = n</span><br><span class="line">n - sm = p(n - m)</span><br><span class="line">n - pm = s(n - m)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Operation</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n + 0 = n</span><br><span class="line">n + sm = s(n + m)</span><br><span class="line">n * 0 = 0</span><br><span class="line">n * sm = (n * m) + n</span><br><span class="line"></span><br><span class="line">n - 0 = n</span><br><span class="line">n - sm = p(n - m)</span><br><span class="line">n - pm = s(n - m)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n^0 = 1</span><br><span class="line">n^sm = n * n^m</span><br><span class="line">0^m = 0</span><br><span class="line">n^m * n^q = n^(m + q)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n * psm = (n * pm) + n</span><br><span class="line">        = ((n * m) - n) + n</span><br><span class="line">        = (n * m) + (-n + n)  // associativity</span><br><span class="line">        = n * m</span><br></pre></td></tr></table></figure>
 <p>Therom 1 : given b != 0, every natural number can be presented in the form <em>m * b + r</em> where r &lt; b.<br><code>m</code> : quotient    n <strong>div</strong> b<br><code>r</code> : remainder   n <strong>mod</strong> b<br>&nbsp;<br><strong>Induction</strong></p>
 <ol>
 <li>P(0) is true</li>
 <li>Assume P(n) is true,</li>
-<li>P(sn) is true<br>&nbsp;<br><strong>Semi-ring</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a + 0 = a                  a * 1 = a                  // neutral elements</span><br><span class="line">a + b = b + a              a * b = b * a              // commutativity</span><br><span class="line">(a + b) + c = a + (b + c)  (a * b) * c = a * (b * c)  // associativity</span><br><span class="line">a + (-a) = 0                                          // cancellation</span><br><span class="line">a * (b + c) = a * b + a * c                           // distributivity</span><br></pre></td></tr></table></figure>
-</li>
+<li>P(sn) is true</li>
 </ol>
-<p>&nbsp;<br><strong>Place value systems</strong></p>
+<p><strong>Semi-ring</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a + 0 = a                  a * 1 = a                  // neutral elements</span><br><span class="line">a + b = b + a              a * b = b * a              // commutativity</span><br><span class="line">(a + b) + c = a + (b + c)  (a * b) * c = a * (b * c)  // associativity</span><br><span class="line">a + (-a) = 0                                          // cancellation</span><br><span class="line">a * (b + c) = a * b + a * c                           // distributivity</span><br></pre></td></tr></table></figure></p>
+<p><strong>Place value systems</strong></p>
 <p>dn d(n-1) … d0 = dn <em> b^n + d(n-1) </em> b^(n-1) + … + d1 <em> b    + d0<br>                 = (dn </em> b^(n-1) + d(n-1) <em> b^(n-1)… + d1) </em> b + d0<br>                 = …<br>                 <em>(recursively)</em><br>&nbsp;<br>example : Represent 57 in base 7</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">59 = m * b + r</span><br><span class="line">   = m * 7 + r                 // r &lt; 7</span><br><span class="line">   = 8 * 7 + 3</span><br><span class="line">   = (1 * 7 + 1) * 7 + 3</span><br><span class="line">   = ((0 * 7 + 1) * 7 + 1) * 7 + 3</span><br><span class="line"></span><br><span class="line">Collect the remainders : 113</span><br><span class="line"></span><br><span class="line">113 = 1 * 7^2 + 1 * 7^1 + 3 * 1 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
 <p>NOTE: This can ONLY be used in converting from decimal to other bases. In order to convert from others to decimal, use Place Value System itself.</p>
 <blockquote>
 <p>进制可以看作是一种容器，10个数进一位是十进制，7个数进一位是七进制，那么它的余数r就是当前数。</p>
 </blockquote>
-<p>&nbsp;<br><strong>Natural number representation in a computer</strong><br>[0][0][0][0][0] … [0][0][0][0][0] = 0<br>[0][0][0][0][0] … [0][0][0][0][1] = 1<br>[0][0][0][0][0] … [0][0][0][1][0] = 2<br>…<br>[0][0][0][0][0] … [0][1][0][1][1] = 11<br>&nbsp;<br>if a number exceeds 2^32:</p>
+<p><strong>Natural number representation in a computer</strong><br>[0][0][0][0][0] … [0][0][0][0][0] = 0<br>[0][0][0][0][0] … [0][0][0][0][1] = 1<br>[0][0][0][0][0] … [0][0][0][1][0] = 2<br>…<br>[0][0][0][0][0] … [0][1][0][1][1] = 11<br>&nbsp;<br>if a number exceeds 2^32:</p>
 <ol>
 <li>The excess digits are lost.</li>
 <li>CPU sends a signal.</li>
 <li>Java ignores these signals.</li>
 </ol>
-<p>&nbsp;<br><strong>Integers in computers</strong><br>1 = 1 or -(2^32 - 1)<br>2 = 2 or -(2^32 - 3)<br>3 = 3 or -(2^32 - 3)<br>…<br>2^32 - 1 = 2^32 - 1 or -1<br>&nbsp;<br>example :</p>
+<p><strong>Integers in computers</strong><br>1 = 1 or -(2^32 - 1)<br>2 = 2 or -(2^32 - 3)<br>3 = 3 or -(2^32 - 3)<br>…<br>2^32 - 1 = 2^32 - 1 or -1<br>&nbsp;<br>example :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-(2^32 - 3) - (-(2^32 - 3))</span><br><span class="line">= 3 - 2</span><br><span class="line">= 3 + 2^32 -2</span><br><span class="line">= 2^32 + (3 - 2)</span><br><span class="line">= 2^32 + 1</span><br><span class="line">= 1</span><br></pre></td></tr></table></figure>
-<p>&nbsp;<br><strong>Modulo arithmetic</strong><br><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring （整数模 环）<br>&nbsp;<br>example : modulo 7</p>
+<p><strong>Modulo arithmetic</strong><br><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring （整数模 环）<br>&nbsp;<br>example : modulo 7</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.. −14 ≡ −7 ≡ 0 ≡ 7  ≡ 14 ≡ ..</span><br><span class="line">.. −13 ≡ −6 ≡ 1 ≡ 8  ≡ 15 ≡ ..</span><br><span class="line">.. -12 ≡ -5 ≡ 2 ≡ 9  ≡ 16 ≡ ..</span><br><span class="line">.. -11 ≡ -4 ≡ 3 ≡ 10 ≡ 17 ≡ ..</span><br><span class="line">.. -10 ≡ -3 ≡ 4 ≡ 11 ≡ 18 ≡ ..</span><br><span class="line">..  -9 ≡ -2 ≡ 5 ≡ 12 ≡ 19 ≡ ..</span><br><span class="line">.. − 8 ≡ −1 ≡ 6 ≡ 13 ≡ 20 ≡ ..</span><br><span class="line"></span><br><span class="line">6^10 = (1)^10 = 1</span><br></pre></td></tr></table></figure>
 <h2 id="The-Rational-Numbers-and-Floating-Point-Representation"><a href="#The-Rational-Numbers-and-Floating-Point-Representation" class="headerlink" title="The Rational Numbers and Floating Point Representation"></a>The Rational Numbers and Floating Point Representation</h2><p><strong>A difference between Z and Zm</strong></p>
-<p>&nbsp;<br><strong>Fractions</strong></p>
-<p>&nbsp;<br><strong>The rational numbers</strong></p>
-<p>&nbsp;<br><strong>The Euclidean Algorithm</strong></p>
-<p>&nbsp;<br><strong>The extended Euclidean Algorithm and finite field</strong></p>
-<p>&nbsp;<br><strong>The reals and scientific notation</strong></p>
-<p>&nbsp;<br><strong>Floating point numbers</strong></p>
+<p><strong>Fractions</strong></p>
+<p><strong>The rational numbers</strong></p>
+<p><strong>The Euclidean Algorithm</strong></p>
+<p><strong>The extended Euclidean Algorithm and finite field</strong></p>
+<p><strong>The reals and scientific notation</strong></p>
+<p><strong>Floating point numbers</strong></p>
 <blockquote>
 <p>People are still dealing with multiplication on real numbers.</p>
 </blockquote>
 <h2 id="Systems-of-Linear-Equations-Gaussian-Elimination"><a href="#Systems-of-Linear-Equations-Gaussian-Elimination" class="headerlink" title="Systems of Linear Equations: Gaussian Elimination"></a>Systems of Linear Equations: Gaussian Elimination</h2><p><strong>Another example of a field</strong></p>
-<p>&nbsp;<br><strong>Linear equations</strong></p>
-<p>&nbsp;<br><strong>Systems of equations</strong></p>
-<p>&nbsp;<br><strong>Gaussian Elimination</strong></p>
-<p>&nbsp;<br><strong>A more compact notation</strong></p>
-<p>&nbsp;<br><strong>Special cases</strong></p>
-<p>&nbsp;<br><strong>Extended Guassian Elimination</strong></p>
-<p>&nbsp;<br><strong>Systems of linear equations over other fields</strong></p>
-<p>&nbsp;<br><strong>Practical advices</strong></p>
+<p><strong>Linear equations</strong></p>
+<p><strong>Systems of equations</strong></p>
+<p><strong>Gaussian Elimination</strong></p>
+<p><strong>A more compact notation</strong></p>
+<p><strong>Special cases</strong></p>
+<p><strong>Extended Guassian Elimination</strong></p>
+<p><strong>Systems of linear equations over other fields</strong></p>
+<p><strong>Practical advices</strong></p>
 <h2 id="Analytic-Geometry"><a href="#Analytic-Geometry" class="headerlink" title="Analytic Geometry"></a>Analytic Geometry</h2><p><strong>Distance between points</strong></p>
-<p>&nbsp;<br><strong>Vectors and straight line movement</strong></p>
-<p>&nbsp;<br><strong>The algebra of vectors</strong></p>
-<p>&nbsp;<br><strong>Laws of vetor algebra</strong></p>
-<p>&nbsp;<br><strong>Representing straight lines</strong></p>
-<p>&nbsp;<br><strong>Intersection</strong></p>
-<p>&nbsp;<br><strong>Cartesian coordinate systems and points in space</strong></p>
-<p>&nbsp;<br><strong>Vectors and lines</strong></p>
-<p>&nbsp;<br><strong>Planes</strong></p>
-<p>&nbsp;<br><strong>description of a line</strong><br>two points<br>three points</p>
-<p>&nbsp;<br><strong>Algebra of vectors</strong></p>
-<p>&nbsp;<br><strong>Subalgebras</strong></p>
-<p>&nbsp;<br><strong>Notes</strong></p>
+<p><strong>Vectors and straight line movement</strong></p>
+<p><strong>The algebra of vectors</strong></p>
+<p><strong>Laws of vetor algebra</strong></p>
+<p><strong>Representing straight lines</strong></p>
+<p><strong>Intersection</strong></p>
+<p><strong>Cartesian coordinate systems and points in space</strong></p>
+<p><strong>Vectors and lines</strong></p>
+<p><strong>Planes</strong></p>
+<p><strong>description of a line</strong><br>two points<br>three points</p>
+<p><strong>Algebra of vectors</strong></p>
+<p><strong>Subalgebras</strong></p>
+<p><strong>Notes</strong></p>
 <h2 id="An-Alternate-Way-of-Describing-Lines-and-Planes-The-Inner-Product"><a href="#An-Alternate-Way-of-Describing-Lines-and-Planes-The-Inner-Product" class="headerlink" title="An Alternate Way of Describing Lines and Planes: The Inner Product"></a>An Alternate Way of Describing Lines and Planes: The Inner Product</h2><p><strong>A line from a linear equation</strong></p>
-<p>&nbsp;<br><strong>A plane from a linear equation</strong></p>
-<p>&nbsp;<br><strong>Intersection tasks revisited</strong></p>
-<p>&nbsp;<br><strong>Translating between the parametric and equational representations</strong></p>
-<p>&nbsp;<br><strong>The geometric interpretation of equational presentations</strong></p>
-<p>&nbsp;<br><strong>A new notation</strong></p>
-<p>&nbsp;<br><strong>Geometric properties of the inner product</strong></p>
-<p>&nbsp;<br><strong>Graphics-related tasks</strong><br>task1 : compute the distance from a plane<br>task2 : nearest neighbour<br>task3 : reflecting a point at a plane<br>task4 : reflecting a line at a plane</p>
+<p><strong>A plane from a linear equation</strong></p>
+<p><strong>Intersection tasks revisited</strong></p>
+<p><strong>Translating between the parametric and equational representations</strong></p>
+<p><strong>The geometric interpretation of equational presentations</strong></p>
+<p><strong>A new notation</strong></p>
+<p><strong>Geometric properties of the inner product</strong></p>
+<p><strong>Graphics-related tasks</strong><br>task1 : compute the distance from a plane<br>task2 : nearest neighbour<br>task3 : reflecting a point at a plane<br>task4 : reflecting a line at a plane</p>
 <h2 id="Bases"><a href="#Bases" class="headerlink" title="Bases"></a>Bases</h2><p><strong>Digital images</strong></p>
-<p>&nbsp;<br><strong>Generating an algebra of vectors</strong></p>
-<p>&nbsp;</p>
+<p><strong>Generating an algebra of vectors</strong></p>
 <hr>
 <hr>
 <hr>
