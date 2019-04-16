@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact (true or false)argumentP1, …, Pn : CP1, …, Pn ⊢ C    an argument can have 0 and more premises and 1 conclusion. an argume">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-12T03:41:06.059Z">
+<meta property="og:updated_time" content="2019-04-15T10:39:23.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact (true or false)argumentP1, …, Pn : CP1, …, Pn ⊢ C    an argument can have 0 and more premises and 1 conclusion. an argume">
@@ -185,14 +185,13 @@
 <li>=-introduction</li>
 <li>=-elimination</li>
 </ul>
-<h1 id="Part-II"><a href="#Part-II" class="headerlink" title="Part II"></a>Part II</h1><h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>a formal system</p>
+<h1 id="Part-II"><a href="#Part-II" class="headerlink" title="Part II"></a>Part II</h1><h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>&nbsp;<br>a formal system:</p>
 <ul>
 <li>sound(true then cannot be false)</li>
 <li>complete(true or false can be determined)</li>
-<li>computable(be computed by machine)<br>Λ演算: <a href="https://zh.wikipedia.org/wiki/Λ演算" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Λ演算</a><br>: <a href="https://blog.csdn.net/zdarks/article/details/46994939" target="_blank" rel="noopener">https://blog.csdn.net/zdarks/article/details/46994939</a></li>
+<li>computable(be computed by machine)</li>
 </ul>
-<h2 id="Proof-Checking"><a href="#Proof-Checking" class="headerlink" title="Proof Checking"></a>Proof Checking</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p: P     p is a proof of P</span><br><span class="line">p: P -&gt; Q     1) p is a proof of P -&gt; Q  </span><br><span class="line">              2) p is a rule for converting P into Q</span><br><span class="line">¬ p = not P = P -&gt; Falsity = P -&gt; ⊥</span><br></pre></td></tr></table></figure>
-<p>and-elimination:</p>
+<h2 id="Proof-Checking"><a href="#Proof-Checking" class="headerlink" title="Proof Checking"></a>Proof Checking</h2><p><strong>Rules</strong><br>and-elimination:</p>
 <ul>
 <li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
 <li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
@@ -210,7 +209,7 @@
 <ul>
 <li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
 </ul>
-<p>falsity-elimination (⊥：any P)</p>
+<p>falsity-elimination</p>
 <ul>
 <li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
 </ul>
@@ -219,8 +218,18 @@
 <li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
 </ul>
 <p>Modus ponens</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line">   q: Q        //declearation</span><br><span class="line">   q = f p     //operation</span><br></pre></td></tr></table></figure>
-<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p>.basic data types<br>using agda, we are <strong>defining data</strong> types by ourselves.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line"> q: Q        //declearation</span><br><span class="line"> q = f p     //operation</span><br></pre></td></tr></table></figure>
+<p>Implication introduction<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comp : &#123;A B C : Prop&#125; -&gt; (f : A -&gt; B) -&gt; (g : B -&gt; C) -&gt; (A -&gt; C) </span><br><span class="line">comp &#123;A&#125; &#123;B&#125; &#123;C&#125; f g = h where</span><br><span class="line">  h : A -&gt; C</span><br><span class="line">  h a = c where</span><br><span class="line">    b : B</span><br><span class="line">    b = f a</span><br><span class="line">    c : C</span><br><span class="line">    c = g b</span><br></pre></td></tr></table></figure></p>
+<p>NOTE: The idea here is still to solve the last proposition.</p>
+<p><strong>Negation</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">Falsity</span><br><span class="line">---------</span><br><span class="line">A -&gt; Falsity = not A</span><br></pre></td></tr></table></figure>
+<p>Double negation introduction:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DNI : &#123;A : Prop&#125; : A -&gt; (A -&gt; Falsity) -&gt; Falsity</span><br><span class="line">DNI &#123;A&#125; a f = x where</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f a</span><br></pre></td></tr></table></figure>
+<p>Triple negation elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where   // auxiliary clause</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
+<p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
+<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p>Some examples written in Agda:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty: unit</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>data</code> : introduces the definition</li>
