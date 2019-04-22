@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact (true or false)argumentP1, …, Pn : CP1, …, Pn ⊢ C    an argument can have 0 and more premises and 1 conclusion. an argume">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-15T10:39:23.685Z">
+<meta property="og:updated_time" content="2019-04-18T09:03:07.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact (true or false)argumentP1, …, Pn : CP1, …, Pn ⊢ C    an argument can have 0 and more premises and 1 conclusion. an argume">
@@ -228,74 +228,78 @@
 <p>Triple negation elimination</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where   // auxiliary clause</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
 <p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
-<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p>Some examples written in Agda:</p>
+<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p><strong>Introduce functions</strong><br>Some examples written in Agda:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty: unit</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>data</code> : introduces the definition</li>
-<li><code>Void</code> : the name of the type (can be almost anything, including unicode)</li>
-<li><code>Set</code> : it confirms that <code>Void</code> is a type (Agda, confusingly, calls types “sets”)</li>
-<li><code>where</code> : introduces the <em>constructors</em>.</li>
-<li><code>empty</code> : constructor</li>
-</ul>
+<p>NOTE: by using a programming language, we read <code>p : A</code> as a program <code>p</code> has type A, and <code>f : A -&gt; B</code> as <code>f</code> is a function converting A to B.</p>
+<p><strong>Basic types or enums</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
-<p>composite types: given some types, construct new types<br>.product (or tuples)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
-<p>.sum or .union</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
-<p>.algebraic types</p>
 <ul>
-<li>void       0</li>
-<li>unit       1</li>
-<li>sum A B    A+B</li>
-<li>Pred A B   AxB</li>
-<li>void       null</li>
+<li><code>data</code>  : introduces the definition</li>
+<li><code>Void</code>  : the name of the type</li>
+<li><code>Set</code>   : it is a type</li>
+<li><code>where</code> : introduces the constructors</li>
 </ul>
-<p>&nbsp; If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
+<p>There is no constructor for type <code>Void</code> so this data type cannot be instantiated.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty: unit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
+<p><strong>Composite(复合的) types</strong><br>Product (tuple)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>data</code>        : we are defining a data type</li>
+<li><code>Prod</code>        : the name of the data type</li>
+<li><code>(A B : Set)</code> : A and B are other data types</li>
+<li><code>: Set</code>       : we are defining a type indeed</li>
+<li><code>where</code>       : definitions to follow</li>
+<li><code>pair</code>        : the name of the constructor</li>
+<li><code>X -&gt; Y -&gt; Prod X Y</code> : the type of the constructor. It requires an <code>X</code> and <code>Y</code> and will return their product <code>Prod X Y</code>. </li>
+</ul>
+<p>Sum (union)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
+<p>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x : Sum Boolean (Prod Unit Unit)</span><br><span class="line">x = left true</span><br><span class="line"></span><br><span class="line">y : Sum Boolean (Prod Unit Unit)</span><br><span class="line">y = right (pair empty empty)</span><br></pre></td></tr></table></figure>
+<p>NOTE: <code>Sum</code> and <code>Prod</code> are usually called algrebraic types.</p>
+<p><strong>The differences between Sum and Prod</strong><br>If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
 <ul>
 <li>How many elements has <code>Sum A B</code>?  m+n</li>
 <li>How many elements has <code>Prod A B</code>?  mxn</li>
-</ul>
-<blockquote>
-<ul>
 <li>can we define any element of <code>Prod A Void</code> for some <code>A</code>?       null</li>
 <li>can we define any element of <code>Sum A Void</code> for some <code>A</code>?     A</li>
 </ul>
-</blockquote>
-<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>Pattern matching enumerations </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false         //all cases are required to be covered.</span><br></pre></td></tr></table></figure>
-<p>Pattern matching <code>prod</code>: so-called “projections”</p>
+<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>def: To access the data inside a type in functional languages we have <em>destructors</em>. These destructors are built into function definitions via a mechanism known as <em>pattern-matching</em>. </p>
+<p><strong>Pattern matching enumerations</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false</span><br></pre></td></tr></table></figure>
+<p>NOTES: this machanism will check that all cases are covered.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and x y = false</span><br></pre></td></tr></table></figure>
+<p><strong>Pattern matching prod</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proj1 : &#123;A B : Set&#125; -&gt; Prod A B -&gt; A</span><br><span class="line">proj1 (pair a _) = a                    ... b is unused ...</span><br><span class="line"></span><br><span class="line">proj2 : &#123;A B : Set&#125; -&gt; Prod A B -&gt; B</span><br><span class="line">proj2 (pair _ b) = b                    ... a is unused ...</span><br></pre></td></tr></table></figure>
-<p>Pattern matching <code>sum</code></p>
+<p><strong>Pattern matching sum</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f : Sum Unit Unit -&gt; Boolean</span><br><span class="line">f (left x)  = true</span><br><span class="line">f (right y) = false</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g : Boolean -&gt; Sum Unit Unit</span><br><span class="line">g true  = left empty</span><br><span class="line">g false = right empty</span><br></pre></td></tr></table></figure>
-<p>A special case</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">impossible : &#123;A : Set&#125; -&gt; void -&gt; A</span><br><span class="line">  impossible ()</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>()</code> matches <code>void</code></li>
-</ul>
-<p><strong>Example:</strong> Convert between <code>Sum A Void</code> and <code>A</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">j : &#123;A : Set&#125; -&gt; Sum A Void -&gt; A</span><br><span class="line">j (left a)   = a</span><br><span class="line">j (right ())</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>Example:</strong> Since in general <code>A + A = 2 * A</code> let’s see how we can convert between <code>Sum A A</code> and <code>Prod Boolean A</code>:</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h : &#123;A : Set&#125; -&gt; Sum A A -&gt; Prod Boolean A</span><br><span class="line">h (left a)  = pair true a</span><br><span class="line">h (right a) = pair true a </span><br><span class="line"></span><br><span class="line">i : &#123;A : Set&#125; -&gt; Prod Boolean A -&gt; Sum A A</span><br><span class="line">i (pair true a)  = left a</span><br><span class="line">i (pair false a) = right a</span><br></pre></td></tr></table></figure>
-<h2 id="Type-Isomorphisms"><a href="#Type-Isomorphisms" class="headerlink" title="Type Isomorphisms"></a>Type Isomorphisms</h2><p><code>f : A -&gt; B</code> and <code>g : B -&gt; A</code> means that the two types are <strong><em>isomorphic</em></strong>, written <code>A ~ B</code>.</p>
-<p>If we write <code>Void</code> as <code>0</code>, <code>Unit</code> as <code>1</code>, <code>Prod A B</code> as <code>A x B</code>,  <code>Sum A B</code> as <code>A + B</code> we can see that many type isomorphisms are consistent with calling these data typs <em>algebraic</em>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">* Semi-ring</span><br><span class="line"></span><br><span class="line">A + (B + C) \sim (A + B) + C \\</span><br><span class="line">A + B \sim B + A\\</span><br><span class="line">A + B \sim A\\</span><br><span class="line">A \times (B \times C) \sim (A\times B) \times C\\</span><br><span class="line">A \times B \sim B \times A\\</span><br><span class="line">A \times 1 \sim A\\</span><br><span class="line">A \times (B + C) \sim A \times B + A \times C\\</span><br><span class="line">(A + B) \times C \sim A \times C + B \times C\\</span><br><span class="line">A \times 0 \sim 0</span><br></pre></td></tr></table></figure>
-<p>Curry-Howard Correspondence</p>
+<p>Example : since <code>A + A = A * A</code>, we can convert between <code>Sum A A</code> and <code>Prod Boolean A</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h : &#123;A : Set&#125; -&gt; Sum A A -&gt; Prod Boolean A</span><br><span class="line">h (left a)  = pair true a</span><br><span class="line">h (right a) = pair false a</span><br><span class="line"></span><br><span class="line">i : &#123;A : Set&#125; -&gt; Prod Boolean A -&gt; Sum A A</span><br><span class="line">i (pair true a) = left a</span><br><span class="line">i (pair false a) = right a</span><br></pre></td></tr></table></figure>
+<p><strong>A special case</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">impossible : &#123;A : Set&#125; -&gt; void -&gt; A</span><br><span class="line">impossible ()</span><br></pre></td></tr></table></figure>
+<p>Example: Convert between <code>Sum A Void</code> and <code>A</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">j : &#123;A : Set&#125; -&gt; Sum A Void -&gt; A</span><br><span class="line">j left a = a</span><br><span class="line">j (right ())</span><br><span class="line"></span><br><span class="line">k : &#123;A : Set&#125; -&gt; A -&gt; Sum A Void</span><br><span class="line">k a = left a</span><br><span class="line">k (right ())</span><br></pre></td></tr></table></figure>
+<h2 id="Type-Isomorphisms"><a href="#Type-Isomorphisms" class="headerlink" title="Type Isomorphisms"></a>Type Isomorphisms</h2><p>def : <code>f : A -&gt; B</code> and <code>g : B -&gt; A</code> means that the two types are <strong><em>isomorphic</em></strong>, written <code>A ~ B</code>.</p>
+<p>Example: Show that <code>A + (B + C) ~ (A + B) + C</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">q1-to : &#123;A B C : Set&#125; -&gt; Sum A (Sum B C) -&gt; Sum (Sum A B) C</span><br><span class="line">q1-to (left a) = left (left a)</span><br><span class="line">q1-to (right (left b)) = left (right b)</span><br><span class="line">q1-to (right (right c)) = right c</span><br><span class="line"></span><br><span class="line">q1-from : &#123;A B C : Set&#125; -&gt; Sum (Sum A B) C -&gt; Sum A (Sum B C)</span><br><span class="line">q1-from (left (left a)) = left a</span><br><span class="line">q1-from (left (right b)) = right (left b)</span><br><span class="line">q1-from (right c) = right (right c)</span><br></pre></td></tr></table></figure>
+<p>To check that these are inverse:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">q1-to (q1-from (left (left a))) = q1-to (left a) = left (left a)</span><br><span class="line">q1-to (q1-from (left (right b))) = q1-to (right (left b)) = left (right b)</span><br><span class="line">q1-to (q1-from (right c)) = q1-to (right (right c)) = right c</span><br><span class="line"></span><br><span class="line">q1-from (q1-to (left a)) = q1-from (left (left a)) = left a</span><br><span class="line">q1-from (q1-to (right (left b))) = q1-from (left (right b)) = right (lef b)</span><br><span class="line">q1-from (q1-to (right (right c))) = q1-from (right c) = right (right c)</span><br></pre></td></tr></table></figure>
+<p>Curry-Howard Correspondence<br><strong>Propositions correspond to types:</strong></p>
 <ul>
 <li><code>Falsity ~ Void</code></li>
 <li><code>Truth   ~ Unit</code></li>
 <li><code>A and B ~ Prod A B</code> </li>
 <li><code>A or B  ~ Sum A B</code></li>
 </ul>
-<p>&nbsp;<em>postulate</em></p>
+<p>Postulates</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">andEl  : &#123;P Q : Prop&#125;   -&gt; P and Q -&gt; P</span><br><span class="line">andEr  : &#123;P Q : Prop&#125;   -&gt; P and Q -&gt; Q</span><br><span class="line">andI   : &#123;P Q : Prop&#125;   -&gt; P -&gt; Q -&gt; P and Q</span><br><span class="line">orE    : &#123;P Q R : Prop&#125; -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</span><br><span class="line">orIl   : &#123;P Q : Prop&#125;   -&gt; P -&gt; P or Q</span><br><span class="line">orIr   : &#123;P Q : Prop&#125;   -&gt; Q -&gt; Q or P</span><br><span class="line">EFQ    : &#123;P : Prop&#125;     -&gt; Falsity -&gt; P</span><br><span class="line">DNE    : &#123;P : Prop&#125;     -&gt; (not (not P)) -&gt; P</span><br></pre></td></tr></table></figure>
-<p>&nbsp;<em>funtions</em></p>
+<p>Funtions</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">andEl&apos; : &#123;P Q : Set&#125; -&gt; Prod P Q -&gt; P</span><br><span class="line">andEl&apos; (pair p _) = p</span><br><span class="line"></span><br><span class="line">andEr&apos; : &#123;P Q : Set&#125; -&gt; Prod P Q -&gt; Q</span><br><span class="line">andEr&apos; (pair _ q) = q</span><br><span class="line"></span><br><span class="line">andI&apos; : &#123;P Q : Set&#125; -&gt; P -&gt; Q -&gt; Prod P Q</span><br><span class="line">andI&apos; p q = pair p q</span><br><span class="line"></span><br><span class="line">orE&apos; : &#123;P Q R : Set&#125; -&gt; Sum P Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</span><br><span class="line">orE&apos; (left p)  f g = f p</span><br><span class="line">orE&apos; (right q) f g = g q</span><br><span class="line"></span><br><span class="line">orIl&apos; : &#123;P Q : Set&#125; -&gt; P -&gt; Sum P Q</span><br><span class="line">orIl&apos; p = left p</span><br><span class="line"></span><br><span class="line">orIr&apos; : &#123;P Q : Set&#125; -&gt; Q -&gt; Sum P Q</span><br><span class="line">orIr&apos; q = right q</span><br><span class="line"></span><br><span class="line">EFQ&apos; : &#123;P : Set&#125; -&gt; Void -&gt; P</span><br><span class="line">EFQ&apos; ()</span><br></pre></td></tr></table></figure>
-<p>proof relevance</p>
+<p>DNE cannot be implemented. It falls outside of the CH correspondence.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DNE&apos; : &#123;P : Prop&#125; -&gt; ((P -&gt; Void) -&gt; Void) -&gt; P</span><br><span class="line">DNE&apos; x = ?</span><br></pre></td></tr></table></figure>
+<p><strong>Proof relevance</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">suu-u : Sum Unit Unit -&gt; Unit</span><br><span class="line">suu-u (left empty) = empty</span><br><span class="line">suu-u (right empty) = empty </span><br><span class="line"></span><br><span class="line">u-suu : Unit -&gt; Sum Unit Unit</span><br><span class="line">u-suu empty = left empty</span><br></pre></td></tr></table></figure>
 <ul>
 <li>this is not isomophic</li>

@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-17T02:03:15.362Z">
+<meta property="og:updated_time" content="2019-04-22T06:16:39.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematics">
 <meta name="twitter:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
@@ -304,21 +304,97 @@
 <li>The same is true for planes in 3D, only more so!</li>
 <li>When computing the intersection point between two lines (or a line and a plane, or two planes) with Gaussian elimination (as in Items 51 and 55) make sure you are not using the same parameter name twice! (Note how I used r and q in Item 55 for the second plane.)</li>
 </ul>
-<h2 id="An-Alternate-Way-of-Describing-Lines-and-Planes-The-Inner-Product"><a href="#An-Alternate-Way-of-Describing-Lines-and-Planes-The-Inner-Product" class="headerlink" title="An Alternate Way of Describing Lines and Planes: The Inner Product"></a>An Alternate Way of Describing Lines and Planes: The Inner Product</h2><p><strong>A line from a linear equation</strong></p>
-<p><strong>A plane from a linear equation</strong></p>
+<h2 id="An-Alternate-Way-of-Describing-Lines-and-Planes-The-Inner-Product"><a href="#An-Alternate-Way-of-Describing-Lines-and-Planes-The-Inner-Product" class="headerlink" title="An Alternate Way of Describing Lines and Planes: The Inner Product"></a>An Alternate Way of Describing Lines and Planes: The Inner Product</h2><p><strong>Translating to parametric representations</strong><br>Lines :<br>Given x1 - 2 * x2 = 3, we collect:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x1 = 3 + 2 * x2</span><br><span class="line">x2 : chosen freely</span><br></pre></td></tr></table></figure>
+<p>Write this in vector form:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X = (x1, x2)</span><br><span class="line">  = (3 + 2 * x2, x2)</span><br><span class="line">  = (3, 0) + x2 * (2, 1)</span><br></pre></td></tr></table></figure>
+<p>Therom : the solution sapce of a linear equation in two unknowns is a line in 2D.</p>
+<p>Planes :<br>Similarly, Given x1 - 2 <em> x2 + 3 </em> x3 = 5 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x1 = 5 + 2 * x2 - 3 * x3</span><br><span class="line">x2 : chosen freely</span><br><span class="line">x3 : chosen freely</span><br></pre></td></tr></table></figure>
+<p>Write this in vector form:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 5 + 2 * x2 - 3 * x3 \      /5\   /2\        /-3 \</span><br><span class="line">|         x2          |  =   |0| + |1| * x2 + | 0 | * x3</span><br><span class="line">\                  x3 /      \0/   \0/        \ 1 /</span><br></pre></td></tr></table></figure>
+<p>Therom : the solution space of a line equation in three unknowns is a plane in 3D.</p>
 <p><strong>Intersection tasks revisited</strong></p>
-<p><strong>Translating between the parametric and equational representations</strong></p>
-<p><strong>The geometric interpretation of equational presentations</strong></p>
-<p><strong>A new notation</strong></p>
-<p><strong>Geometric properties of the inner product</strong></p>
-<p><strong>Graphics-related tasks</strong><br>task1 : compute the distance from a plane<br>task2 : nearest neighbour<br>task3 : reflecting a point at a plane<br>task4 : reflecting a line at a plane</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">           /2\       / 1 \</span><br><span class="line">line : X = |1| + s * | 0 |        // parametric representation</span><br><span class="line">           \1/       \-3 /</span><br><span class="line"></span><br><span class="line">plane : x1 - 2 * x2 + 3 * x3 = 5  // equational representation</span><br><span class="line"></span><br><span class="line">           /x1\       / 2 +     s \</span><br><span class="line">       X = |x2| =     |     1     | </span><br><span class="line">           \x3/       \ 1 - 3 * s /</span><br><span class="line"></span><br><span class="line">We collect : </span><br><span class="line">        x1 = 2 + s</span><br><span class="line">        x2 = 1</span><br><span class="line">        x3 = 1 - 3 * s</span><br><span class="line"></span><br><span class="line">       2 + s - 2 * (1) + 3 * (1 - 3 * s) = 5</span><br><span class="line">                                  -8 * s = 2</span><br><span class="line">                                       s = - 1/4</span><br><span class="line">The intersection point :</span><br><span class="line">       A = (7/4, 1, 7/4)</span><br></pre></td></tr></table></figure>
+<p>NOTE: This calculation is much simpler than using 2 parametric representations and solving by GE.</p>
+<p><strong>Translating to equational representations</strong><br>Lines :<br>Given PR of a line    : X = P + s <em> v = (p1, p2) + s </em> (v1, v2)<br>and we look for an ER : a <em> x1 + b </em> x2 = d</p>
+<ol>
+<li><code>a</code> = -v2</li>
+<li><code>b</code> =  v1</li>
+<li><code>d</code> = a <em> p1 + b </em> p2</li>
+</ol>
+<p>proof :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                         a * x1 + b * x2 = d</span><br><span class="line">-v2 * (p1 + s * v1) + v1 * (p2 + s * v2) = (-v2) * p1 + (v1) * p2</span><br><span class="line">                                       0 = 0</span><br></pre></td></tr></table></figure></p>
+<p>Planes :<br>Given PR of a plane   : X = P + s <em> v + t </em> w = (p1, p2, p3) + s <em> (v1, v2, v3) + t </em> (w1, w2, w3)<br>and we look for an ER : a <em> x1 + b </em> x2 + c * x3 = d</p>
+<ol>
+<li>a = v2 <em> w3 − v3 </em> w2</li>
+<li>b = v3 <em> w1 − v1 </em> w3</li>
+<li>c = v1 <em> w2 − v2 </em> w1</li>
+<li>d = a <em> p1 + b </em> p2 + c * p3</li>
+</ol>
+<p><strong>The geometric interpretation of equational presentations</strong><br>Given a <em> x1 + b </em> x2 + c * x3 = d,<br>normal vector n = (a, b, c)        (orthogonal to the plane)<br>d: negative -&gt; the origin is on the same side of the plane as the normal.<br>d: positive -&gt; the origin is on the other side of the plane as the normal.</p>
+<p>distance of the plane or line from the origin:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">distance = d / |n|</span><br><span class="line">|n| = root ( a^2 + b^2 + c^2 )</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
+<ul>
+<li>if |n| = 1, then d is the distance.</li>
+<li>distance will also indicate which side of the plane the origin is located.</li>
+<li>equational form is also called the normal form.</li>
+</ul>
+<p><strong>Inner product</strong><br>The inner product of two tuples :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       /v1\         /w1\</span><br><span class="line">if v = |v2| and w = |w2|</span><br><span class="line">       \v3/         \w3/</span><br><span class="line">then,</span><br><span class="line">&lt;v, w&gt; = v1 * w1 + v2 * w2 + v3 * w3</span><br></pre></td></tr></table></figure>
+<p>if given the normal, the normal form :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;n, X&gt; = &lt;n, P&gt;</span><br></pre></td></tr></table></figure>
+<p>The laws of the inner product</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;0, v&gt; = 0</span><br><span class="line">    &lt;v, w&gt; = &lt;w, v&gt;</span><br><span class="line">&lt;v + w, x&gt; = &lt;v, x&gt; + &lt;w, x&gt;</span><br><span class="line">&lt;s * v, w&gt; = s * &lt;v, w&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>Geometric properties of the inner product</strong><br>Equation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v, w&gt; = |v| * |w| * cos(a)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Orthogonality test : two vectors are orthogonal if &lt;v, w&gt; = 0</li>
+<li>length of v        : |v| = root( &lt;v, v&gt; )</li>
+</ul>
+<p>Projection property:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;n, v&gt;</span><br><span class="line">------ * n</span><br><span class="line">&lt;n, n&gt;</span><br><span class="line"></span><br><span class="line">     v</span><br><span class="line">    /.</span><br><span class="line">   / .</span><br><span class="line">  /  .</span><br><span class="line"> /   .</span><br><span class="line"> ----&gt;--------&gt; n</span><br></pre></td></tr></table></figure>
+<p><strong>Graphics-related tasks</strong><br>Given a plane E in normal form &lt;n, X&gt; = &lt;n, P&gt; = d; and a point Q :<br>&nbsp;<br>task1 : distance of Q to E</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           d - &lt;n, Q&gt;    &lt;n, P&gt; - &lt;n, Q&gt;    &lt;n, QP&gt;</span><br><span class="line">distance = ----------- = ---------------- = -------</span><br><span class="line">               |n|             |n|            |n|</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if returns 0, then Q is on the plane E.</li>
+<li>if result is negative, then the normal n is pointing towards the side on which Q is located. This porperty is used in graphics to determine if a point is befor a plane or behind it.</li>
+</ul>
+<p>task2 : nearest neighbour</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">         d - &lt;n, Q&gt;    n        d - &lt;n, Q&gt;</span><br><span class="line">Q&apos; = Q + ---------- * --- = Q + ---------- * n</span><br><span class="line">            |n|       |n|         &lt;n, n&gt;</span><br></pre></td></tr></table></figure>
+<p>task3 : reflecting a point at a plane</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">             d - &lt;n, Q&gt;    n            d - &lt;n, Q&gt;</span><br><span class="line">Q&quot; = Q + 2 * ---------- * --- = Q + 2 * ---------- * n</span><br><span class="line">                |n|       |n|             &lt;n, n&gt;</span><br></pre></td></tr></table></figure>
+<p>task4 : reflecting a line at a plane<br>Example :<br>instead of a plane, we use a line : x1 -2 <em> x2 = 1<br>and the line L we want to reflect : X = (0, 1) + s </em> (1, -1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For the two points we can choose :</span><br><span class="line">   A = (0, 1) and B = (1, 0)</span><br><span class="line">We collect reflected points :</span><br><span class="line">   A&quot; = (1.2, -1,4) and B&quot; = (1, 0)</span><br><span class="line">Using two-point representation :</span><br><span class="line">   X = B&quot; + s * BA = (1, 0) + s * (1,2 - 1, -1.4 - 0)</span><br><span class="line">     = (1, 0) + s * (0,2, -1.4)</span><br></pre></td></tr></table></figure>
 <h2 id="Bases"><a href="#Bases" class="headerlink" title="Bases"></a>Bases</h2><p><strong>Digital images</strong></p>
 <p><strong>Generating an algebra of vectors</strong></p>
+<p><strong>Linear independence</strong></p>
+<p><strong>Coordinates</strong></p>
+<p><strong>Dimension of an algebra of vectors</strong></p>
+<p><strong>All bases are not equal</strong></p>
+<p><strong>Orthogonal and orthonormal bases</strong></p>
+<p><strong>Creating and orthogonal basis</strong></p>
+<h2 id="Matrices-and-Matrix-Algebra"><a href="#Matrices-and-Matrix-Algebra" class="headerlink" title="Matrices and Matrix Algebra"></a>Matrices and Matrix Algebra</h2><hr>
 <hr>
 <hr>
 <hr>
+<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><hr>
 <hr>
-<h2 id="Matrices-and-Matrix-Algebra"><a href="#Matrices-and-Matrix-Algebra" class="headerlink" title="Matrices and Matrix Algebra"></a>Matrices and Matrix Algebra</h2><h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><h2 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h2><h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><h2 id="Functions-end-of-Part-I"><a href="#Functions-end-of-Part-I" class="headerlink" title="Functions (end of Part I)"></a>Functions (<em>end of Part I</em>)</h2><h2 id="Regular-Languages-and-Automata"><a href="#Regular-Languages-and-Automata" class="headerlink" title="Regular Languages and Automata"></a>Regular Languages and Automata</h2><p><strong>Regular expressions</strong></p>
+<hr>
+<hr>
+<h2 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h2><hr>
+<hr>
+<hr>
+<hr>
+<h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><hr>
+<hr>
+<hr>
+<hr>
+<h2 id="Functions-end-of-Part-I"><a href="#Functions-end-of-Part-I" class="headerlink" title="Functions (end of Part I)"></a>Functions (<em>end of Part I</em>)</h2><hr>
+<hr>
+<hr>
+<hr>
+<h2 id="Regular-Languages-and-Automata"><a href="#Regular-Languages-and-Automata" class="headerlink" title="Regular Languages and Automata"></a>Regular Languages and Automata</h2><p><strong>Regular expressions</strong></p>
 <p>&nbsp;<br><strong>Precedence</strong></p>
 <p>&nbsp;<br><strong>Regular and Irregular language</strong></p>
 <p>&nbsp;<br><strong>Decidability</strong></p>
