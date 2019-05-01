@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode Navigato">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-24T16:12:21.415Z">
+<meta property="og:updated_time" content="2019-05-01T14:59:58.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.AI">
 <meta name="twitter:description" content="Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode Navigato">
@@ -164,7 +164,7 @@
 <h1 id="Theory-Part"><a href="#Theory-Part" class="headerlink" title="Theory Part:"></a>Theory Part:</h1><h2 id="Swarm-intelligence-and-firefly-synchronization"><a href="#Swarm-intelligence-and-firefly-synchronization" class="headerlink" title="Swarm intelligence and firefly synchronization"></a>Swarm intelligence and firefly synchronization</h2><p><strong>Swarm intelligence</strong>(群体智能)<br>decentrialized control:  分权控制<br>self-organization: 自我规划</p>
 <ul>
 <li>no central authority</li>
-<li><p>local interation pattern<br>&nbsp;<br><strong>firefly synchronization</strong>(萤火虫同步)</p>
+<li><p>local interaction pattern<br>&nbsp;<br><strong>firefly synchronization</strong>(萤火虫同步)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--^----^----||----^----^----      actual flash     </span><br><span class="line">                  ^             expected flash</span><br><span class="line">^----^----^-||----^----^----</span><br><span class="line">                ^</span><br><span class="line">---^----^---||----^----^----</span><br><span class="line">              ^</span><br><span class="line">-^----^-----||^----^----^---</span><br><span class="line">             ^</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>late reset</p>
@@ -194,40 +194,62 @@
 <li>possible actions and their effects on states</li>
 <li>cost function</li>
 </ol>
-<p><strong>BFS:</strong> Queue<br>Complete: guaranted to find a goal state if one exits and terminate  if failed.<br>Admissible(可采纳的): able to find the shortest path.<br>Space.Compx = O(b^d - 1) = O(b^d)<br>Time.Compx = O(b^d -1) = O(b^d)<br><code>b</code>: branching factor<br><code>d</code>: depth of the goal<br>&nbsp;<br><strong>DFS:</strong> Stack<br>Complete: if the state space is finite,…(incomplete if infinite)<br>Not admissible: not guaranteed to find the shortest path to a goal<br>Space.compx = O(b^m)<br>Time.Compx = O(b^m)<br><code>b</code>: branching factor<br><code>m</code>: maximum depth of the search tree</p>
+<p><strong>BFS:</strong> Queue<br>Complete: guaranted to find a goal state if one exits and terminate if failed.<br>Admissible(可采纳的): able to find the shortest path.<br>Space.Compx = O(b^d - 1) = O(b^d)<br>Time.Compx = O(b^d -1) = O(b^d)<br><code>b</code>: branching factor (二叉 : 2 ; 三叉 : 3)<br><code>d</code>: depth of the goal<br>&nbsp;<br><strong>DFS:</strong> Stack<br>Complete: if the state space is finite,…(incomplete if infinite)<br>Not admissible: not guaranteed to find the shortest path to a goal<br>Space.compx = O(b^m)<br>Time.Compx = O(b^m)<br><code>b</code>: branching factor<br><code>m</code>: maximum depth of the search tree</p>
 <p>NOTE: if a state can be reached by two nodes, we only consider the node with lower cost.</p>
 <blockquote>
 <p>in real practice, it is not the case we can simply find the shortest path, we need to explore the entire maze before.</p>
 </blockquote>
-<p><strong>Analysing Searching Algorithms</strong><br>Completeness : if it is guaranteed to find a solution when at least one solution exists.<br>Admissibility : if it is guaranteed to find the best solution when there are more than one solutions.<br>Time Complexity<br>Space Complexity</p>
+<p><strong>Analysing Searching Algorithms</strong><br>Completeness     : if it is guaranteed to find a solution when at least one solution exists.<br>Admissibility    : if it is guaranteed to find the best solution when there are more than one solutions.<br>Time Complexity  : the order of computation during the search process in the worst case<br>Space Complexity : storage space required in the worst case</p>
 <p><strong>Web Src</strong><br><a href="https://zhuanlan.zhihu.com/p/29425290" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29425290</a><br><a href="https://blog.csdn.net/dyy_gusi/article/details/46414677" target="_blank" rel="noopener">https://blog.csdn.net/dyy_gusi/article/details/46414677</a></p>
-<h2 id="A-star-Search"><a href="#A-star-Search" class="headerlink" title="A star Search"></a>A star Search</h2><p><strong>Best-First Search</strong><br><strong>Heuristic Search</strong><br><strong>A-star search</strong></p>
+<h2 id="A-star-Search"><a href="#A-star-Search" class="headerlink" title="A star Search"></a>A star Search</h2><p><strong>A-star search</strong><br>def : A best-first informed search algorithm<br>&nbsp;<br><strong>Evaluation function :</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(node) = g(node) + h(node)</span><br><span class="line">  .g(node) = cost of the actions (沿着到达该方格而生成的路径)</span><br><span class="line">  .h(node) = heuristic function (从指定的方格移动到终点 B 的估算成本。这个通常被称为试探法)</span><br></pre></td></tr></table></figure>
+<p><strong>Algorithm :</strong></p>
+<ol>
+<li>visit the node with the smallest f(node) first, placing its children in the frontier.</li>
+<li>do not place children in the frontier if their corresponding state is already in the frontier or in the list of visited nodes. （已经被估值的节点将不再计入, closedSet and openSet)</li>
+<li>stop when you visit a node which is a goal node.</li>
+</ol>
+<p>When heuristic is consistent, A-star is :</p>
 <ul>
 <li>Complete</li>
 <li>admissible</li>
-<li>optimally efficient(if heuristic is consistent)<br>Space.Compx = usually exponential<br>Time.Compx = usually exponential</li>
+<li>optimally efficient</li>
 </ul>
-<p>&nbsp; <em>Evaluation function:</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(node) = g(node) + h(node)</span><br><span class="line">  .g(node) = 从起点 A 移动到指定方格的移动代价，沿着到达该方格而生成的路径。</span><br><span class="line">  .h(node) = 从指定的方格移动到终点 B 的估算成本。这个通常被称为试探法</span><br></pre></td></tr></table></figure>
-<p><strong>Generating heuristics</strong></p>
+<p>Space.Compx = usually exponential<br>Time.Compx = usually exponential</p>
+<p><strong>Generating heuristics</strong><br>Heuristic are problem dependent.<br>&nbsp;<br>NOTE : in a 8-tile puzzle problem, heuristic would be the sum of the Manhattan distance between each tile and its goal position.</p>
 <p><strong>Web Rsc</strong><br><a href="https://zhuanlan.zhihu.com/p/38595351" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595351</a></p>
 <h2 id="Hill-Climbing"><a href="#Hill-Climbing" class="headerlink" title="Hill Climbing"></a>Hill Climbing</h2><p><strong>Examples of Optimisation Problems</strong></p>
 <ul>
 <li>Minimum distance route problem</li>
-<li>Travelling Salesman Problem</li>
+<li>Travelling Salesman Problem (TSP)</li>
 <li>Bin Packing problem</li>
 <li>Software Module Clustering</li>
 </ul>
 <p><strong>Formulating Optimisation Problems</strong></p>
 <ol>
 <li>Design variables represent a candidate solution</li>
-<li>Design variable define the search space of candidate solutions</li>
-<li>Solutions must satisfy certain constraints, which define solution deasibility</li>
+<li>Design variables define the search space of candidate solutions</li>
+<li>Solutions must satisfy certain constraints, which define solution feasibility</li>
 <li>Objective function defines the quality of a solution</li>
 <li>Function to be optimised (maximised or minimised)</li>
 </ol>
-<p>// 添加url</p>
-<h2 id="Simulated-annealing-模拟退火"><a href="#Simulated-annealing-模拟退火" class="headerlink" title="Simulated annealing(模拟退火)"></a>Simulated annealing(模拟退火)</h2><p>代码实现: <a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
+<p>example : TSP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; sequence x containing N cities to be visited.</span><br><span class="line">&gt; all possible sequences of cities.</span><br><span class="line">&gt; constraints : each city must appear once and only once in x;</span><br><span class="line">                salesman must return to the city of origin.</span><br><span class="line">&gt; total_distance(x) = sum of distances between consecutive cities + distance from last city to origin</span><br><span class="line">  to be minimised.</span><br></pre></td></tr></table></figure>
+<p>NOTE : Optimisation algorithm can be more efficient than tree-based search algorithms. And, it does not need problem-specific heuristics.</p>
+<p><strong>Hill-Climbing</strong><br>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">current_solution = generate initial candidate solution randomly.</span><br><span class="line"></span><br><span class="line">reapeat &#123;</span><br><span class="line">  <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">  best_neigbor </span>= <span class="function">get highest quality <span class="title">neigbor</span> <span class="params">(&gt;= <span class="number">0</span> 个候选解)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  <span class="title">if</span><span class="params">(quality(best_neighbor)</span> &lt;</span>= quality(current_solution))&#123;</span><br><span class="line">      <span class="keyword">return</span> current_solution;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> best_neighbor;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Disadvantage :</p>
+<ul>
+<li>greedy local search</li>
+<li>may not be able to find the global optimum.</li>
+</ul>
+<p>NOTE : 选取neighbor时，从临近解空间中选取最优临近解。</p>
+<p><strong>Dealing with constraints</strong><br>NOTE : Strategies to deal with constraints depends on questions themselves.<br>&nbsp;<br>Example : TSP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">constraints : each city must appear once and only once in x;</span><br><span class="line">              salesman must return to the city of origin.</span><br><span class="line">-----------------------------------------------------------------------</span><br><span class="line">Representation : </span><br><span class="line">* City[4] array [A][B][C][D][E] A</span><br><span class="line"></span><br><span class="line">Initialisation :</span><br><span class="line">* unvisited_Set = &#123;A,B,C,D,E&#125;</span><br><span class="line">* draw cities randomly without replacement</span><br><span class="line"></span><br><span class="line">Neighbourhood operator :</span><br><span class="line">* reverse the path between cities</span><br><span class="line">  A B C D E between B and E --&gt; A B D C E between D and E --&gt; B A D C E</span><br></pre></td></tr></table></figure>
+<h2 id="Simulated-annealing-模拟退火"><a href="#Simulated-annealing-模拟退火" class="headerlink" title="Simulated annealing(模拟退火)"></a>Simulated annealing(模拟退火)</h2><p><strong>Simulated annealing</strong><br>Algorithem :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    current_solution = generate initial candidate solution randomly.</span><br><span class="line">    T = Tmax;</span><br><span class="line"></span><br><span class="line">    reapeat(T &gt; Tf || current_solution stops changing)&#123;</span><br><span class="line">        <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">        rand_neighbor </span>= get random neighbor of current_solution</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(quality(best_neighbor) &lt;= quality(current_solution))&#123;</span><br><span class="line">            <span class="keyword">if</span>(within Probability e^(E)/T) &#123;</span><br><span class="line">            current_solution = best_neighbor;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> current_solution;</span><br><span class="line">      </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> best_neighbor;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        T = schedule(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">method <span class="title">E</span><span class="params">(rand_neighbor, current_solution)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> quality(rand_neighbor) - quality(current_solution);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Applications</strong><br>Very-Large-Scale-Integration (VLSI)</p>
+<p><strong>Code Src</strong><br><a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
 <h2 id="Introduction-to-machine-learning-and-k-NN-聚类算法"><a href="#Introduction-to-machine-learning-and-k-NN-聚类算法" class="headerlink" title="Introduction to machine learning and k-NN(聚类算法)"></a>Introduction to machine learning and k-NN(聚类算法)</h2><p>Classification<br><strong>Introduction to machine learning</strong><br>def : to study and develop computational models capable of improving their performance with experience and acquiring knowledge on their own.<br>&nbsp;<br>types of learning :</p>
 <ol>
 <li>supervised learning (监督学习)</li>
