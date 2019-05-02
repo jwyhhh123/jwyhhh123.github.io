@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-02T10:04:12.594Z">
+<meta property="og:updated_time" content="2019-05-02T15:38:57.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematics">
 <meta name="twitter:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
@@ -482,12 +482,37 @@
 <li>Real numbers can be represented as : <code>R = Z x D^w</code>, where D = {0, 1, …, 9}</li>
 </ul>
 <p>NOTE : a finite ring Zm = {0, 1, …, m-1} is viewed as the set of integers with alternate equality “congruent modulo m”.</p>
-<p><strong>Vectors</strong></p>
-<p><strong>Counting the elements of a set</strong></p>
-<p><strong>Cardinality of infinite sets</strong></p>
-<p><strong>An uncountable set</strong></p>
-<p><strong>Comparing uncountable sets</strong></p>
-<h2 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h2><p><strong>Defining a subset</strong><br><strong>Comparing subsets</strong><br><strong>Operations on subsets</strong><br><strong>Power sets</strong><br><strong>The power set as an algebra</strong><br><strong>Propositional logic</strong><br><strong>Boolean algebra</strong><br><strong>Boolean circuits</strong></p>
+<p><strong>Counting the elements of a set</strong><br>size of a set can be written as <code>card(k)</code> or <code>|k|</code><br><code>card(k)</code> : cardinality<br>&nbsp;<br>Instead of counting, we check two sets have the same cardinality by pairing one element by one element between the two sets.<br>&nbsp;<br>example : card(Seasons) = card(Compass)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Seasons = &#123;Spring, Summer, Autumn, Winter&#125;</span><br><span class="line">             |       |       |       |</span><br><span class="line">Compass = &#123;East,   South,  West,   North &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Cardinality of infinite sets</strong><br>A set is countably infinite if it has the same cardinality as N :</p>
+<ul>
+<li>A = N ∪ {−1} is countable infinite set</li>
+<li>Z countable infinite set</li>
+<li>N^2 is countable infinite set</li>
+<li>if A is finite set then A^* is countable</li>
+<li>Theorem 7 : The set of valid Java programs is countable</li>
+</ul>
+<p><strong>An uncountable set</strong><br>real number R is an uncountable set<br>&nbspl;<br>proof steps :</p>
+<ol>
+<li>assume R is countable</li>
+<li>given a real number : a = a0 a1 a2 …</li>
+<li>list some real numbers in a matrix</li>
+<li>for i(s), ai = 0 if r(i,i) != 0</li>
+<li>for i(s), ai = 1 if r(i,i) == 0</li>
+<li>we will introduce a real number have not appear in the matrix.</li>
+<li>the matrix is not complete.</li>
+<li>contradiction, hence the set of real numbers is uncountable.</li>
+</ol>
+<p>Theorem 8 : The set of real numbers is uncountable<br>Theorem 9 : There are non-computable real numbers (as set of java programs is countable and set of reals is uncountable)</p>
+<p><strong>Comparing uncountable sets</strong><br>The examples above illustrate how we can establish that two countably infinite sets have the same cardinality. To show that two uncountable sets have the same size requires a bit more ingenuity but the principle is the same: We establish a one-to-one relationship between the elements. For example, we can show that the elements of a circle (minus one point) can be lined up against the elements of the real line.</p>
+<h2 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h2><p><strong>Defining a subset</strong><br>If subset has only few elements, we can list them            : <code>{3, 5, 17, 257, 65537} ⊆ N</code><br>A set excluding some members is a subset of the original set : <code>F\{0} ⊆ F</code> where F is a field.<br>Empty set is a subset of any set                             : <code>{}</code> or <code>0/ (zero with a slash)</code><br>A set is a subset of itself                                  : <code>A ⊆ A</code><br>For more complex subsets we employ logical conditions        : <code>B = {x ∈ A | x satisfies condition c}</code></p>
+<p><strong>Comparing subsets</strong><br>We can state the condition for B ⊆ A precisely : B ⊆ A iff ∀x. x ∈ B –&gt; x ∈ A<br>then, equality of two sets can be expressed    : A = B iff A ⊆ B and B ⊆ A<br>&nbsp;<br>NOTE : there are two conditions to check equality: firstly A ⊆ B, secondly B ⊆ A</p>
+<p><strong>Operations on subsets</strong><br>Union          : B1 ∪ B2 = {x ∈ A | x ∈ B1 or x ∈ B2}<br>Intersection   : B1 ∩ B2 = {x ∈ A | x ∈ B1 and x ∈ B2}<br>Complement     :   -B    = {x ∈ A | x !∈ B}<br>Set difference : B1 \ B2 = B1 ∩ -B2 = {x ∈ A | x ∈ B1 and x !∈ B2}</p>
+<p><strong>Power sets</strong></p>
+<p><strong>The power set as an algebra</strong></p>
+<p><strong>Propositional logic</strong></p>
+<p><strong>Boolean algebra</strong></p>
+<p><strong>Boolean circuits</strong></p>
 <h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><p><strong>General relations</strong><br><strong>Reflexivity</strong><br><strong>Symmetry</strong><br><strong>Transitivity</strong><br><strong>Two packages of properties</strong><br><strong>Order relations</strong><br><strong>Equivalence relations</strong><br><strong>Equivalence relations lead to classifications</strong><br><strong>Working with classifications via representatives</strong></p>
 <h2 id="Functions-end-of-Part-I"><a href="#Functions-end-of-Part-I" class="headerlink" title="Functions (end of Part I)"></a>Functions (<em>end of Part I</em>)</h2><p><strong>Example</strong><br><strong>Set-theoretic definition of functions</strong><br><strong>The many faces of functions</strong><br><strong>Injectivity</strong><br><strong>Surjectivity</strong><br><strong>Bijectivity</strong><br><strong>Forward image and pre-image; inverse function</strong><br><strong>Composing functions</strong><br><strong>counting functions</strong></p>
 <h2 id="Regular-Languages-and-Automata"><a href="#Regular-Languages-and-Automata" class="headerlink" title="Regular Languages and Automata"></a>Regular Languages and Automata</h2><p><strong>Regular expressions</strong></p>
