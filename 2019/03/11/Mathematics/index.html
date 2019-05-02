@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-28T11:30:45.099Z">
+<meta property="og:updated_time" content="2019-05-02T10:04:12.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematics">
 <meta name="twitter:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
@@ -426,11 +426,67 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 1 0 0 \</span><br><span class="line">| 0 1 0 |</span><br><span class="line">\ 0 0 1 /</span><br></pre></td></tr></table></figure>
 <p>Laws of matrix multiplication :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(A * B) * C    =  A * (B * C)</span><br><span class="line"> A * (B + C)   =  A * B + A * C </span><br><span class="line">(A + B) * C    =  A * C + B * C</span><br><span class="line"> A * E = E * A =  A </span><br><span class="line"> A * 0 = 0 * A =  0</span><br><span class="line"> s * (A * B)   =  (s * A) * B = A * (s * B)</span><br></pre></td></tr></table></figure>
-<p><strong>Introduction by example: color perception andreproduction</strong></p>
-<p><strong>Inverting matrix multiplication</strong></p>
-<p><strong>Finding the inverse matrix</strong></p>
-<p><strong>Matrices are not always invertible</strong></p>
-<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><p><strong>The intuitive idea of a set</strong><br><strong>Notation</strong><br><strong>Sets in Computer Science</strong><br><strong>Sets of numbers</strong><br><strong>Vectors</strong><br><strong>Counting the elements of a set</strong><br><strong>Cardinality of infinite sets</strong><br><strong>An uncountable set</strong><br><strong>Comparing uncountable sets</strong></p>
+<p><strong>Inverting matrix multiplication</strong><br>Given a matrix A</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 4 2 1 \</span><br><span class="line">| 3 4 2 | </span><br><span class="line">\ 1 2 4 /</span><br></pre></td></tr></table></figure>
+<p>and a 3 * 1 vector c = (2, 3, 2), and an unknown p = (p1, p2, p3)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 * p1 + 2 * p2 + 1 * p3 = 2 </span><br><span class="line">3 * p1 + 4 * p2 + 2 * p3 = 3 </span><br><span class="line">1 * p1 + 2 * p2 + 4 * p3 = 2</span><br></pre></td></tr></table></figure>
+<p>if given the inverse of A :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;  A * p = c </span><br><span class="line">&gt;  A^(-1) * A * p = A^(-1) * c</span><br><span class="line">&gt;  E * p = A^(-1) * c</span><br><span class="line">&gt;  p = A^(-1) * c</span><br></pre></td></tr></table></figure>
+<p><strong>Finding the inverse matrix</strong><br>Theorem 6 : if A and B are n <em> n matrices and A </em> B = E, then B <em> A = E also holds.<br>&nbsp;<br>Formula : A </em> A^(-1) = E<br>example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           / 4 2 1 \</span><br><span class="line">A      =   | 3 4 2 | </span><br><span class="line">           \ 1 2 4 /</span><br><span class="line"></span><br><span class="line">           /a11 a12 a13\</span><br><span class="line">A^(-1) =   |a21 a22 a23|</span><br><span class="line">           \a31 a32 a33/</span><br></pre></td></tr></table></figure>
+<p>we solve the inverse :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   / 4 2 1 | 1 0 0 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 1 2 4 | 0 0 1 /</span><br><span class="line"></span><br><span class="line">   / 1 2 4 | 0 0 1 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 4 2 1 | 1 0 0 /</span><br><span class="line"></span><br><span class="line">   / 1 0 0 |   12/30 - 6/30      0 \</span><br><span class="line">=  | 0 1 0 | - 10/30  15/30 - 5/30 | </span><br><span class="line">   \ 0 0 1 |    2/30 - 6/30  10/30 /</span><br></pre></td></tr></table></figure>
+<p>NOTES : </p>
+<ul>
+<li>Matrices are not always invertible, for example zero matrix.</li>
+<li>We discover non-invertibility when we come to a special case in the Gaussian elimination procedure that we use to compute the inverse matrix.</li>
+</ul>
+<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><p><strong>The intuitive idea of a set</strong><br>def : a set is a collection of things. And, the things in the set are called elements/ members.</p>
+<ul>
+<li>The elements of a set are identifiable and can be distinguished.</li>
+<li>There is a clear criterion that identify members.</li>
+<li>A member must be counted ONLY once.</li>
+<li>there is no order of members.</li>
+<li>if two sets have the same elements, then they form the same set, independently of how the collections were defined.</li>
+</ul>
+<p>NOTE : Set in JAVA is supported as an interface and one possible implementation is <code>HashSet</code>.</p>
+<p><strong>Notation</strong></p>
+<ol>
+<li>To indicate x is an element in set A, we write : <code>x ∈ A</code></li>
+<li>A = B  iff ∀x. x∈A <-> x∈B</-></li>
+<li>Finite sets   : {Spring, Summer, Autumn, Winter}</li>
+<li>Infinite sets : {1, 4, 9, 16, 25, …}</li>
+</ol>
+<p><strong>Sets of numbers</strong><br>1) Union of two sets : <code>∪</code></p>
+<ul>
+<li>Integers can be represented : <code>Z = N ∪ {−1,−2,−3,...}</code></li>
+</ul>
+<p>2) Product of two sets :</p>
+<ul>
+<li>if A and B are different, A x B</li>
+<li>if A  =  B, A x B = A ^ 2</li>
+</ul>
+<p>3) set difference : <code>\</code></p>
+<ul>
+<li>The set of fractions could be written as : <code>Z x (Z \ {0})</code></li>
+</ul>
+<p>4) Subset : A ⊆ B</p>
+<ul>
+<li>Q (rational numbers) is a subset of the set of fractions.</li>
+</ul>
+<p>5) the tuples in products :</p>
+<ul>
+<li>B x B x…x B in 32-tuples : B^32 = {0, 1}^32</li>
+<li>assume A is an alphabet set of {a, …, z}, then A^* is the set of all words over A.</li>
+<li>in JAVA, Unicode is the set of alphabet.</li>
+<li>Real numbers can be represented as : <code>R = Z x D^w</code>, where D = {0, 1, …, 9}</li>
+</ul>
+<p>NOTE : a finite ring Zm = {0, 1, …, m-1} is viewed as the set of integers with alternate equality “congruent modulo m”.</p>
+<p><strong>Vectors</strong></p>
+<p><strong>Counting the elements of a set</strong></p>
+<p><strong>Cardinality of infinite sets</strong></p>
+<p><strong>An uncountable set</strong></p>
+<p><strong>Comparing uncountable sets</strong></p>
 <h2 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h2><p><strong>Defining a subset</strong><br><strong>Comparing subsets</strong><br><strong>Operations on subsets</strong><br><strong>Power sets</strong><br><strong>The power set as an algebra</strong><br><strong>Propositional logic</strong><br><strong>Boolean algebra</strong><br><strong>Boolean circuits</strong></p>
 <h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><p><strong>General relations</strong><br><strong>Reflexivity</strong><br><strong>Symmetry</strong><br><strong>Transitivity</strong><br><strong>Two packages of properties</strong><br><strong>Order relations</strong><br><strong>Equivalence relations</strong><br><strong>Equivalence relations lead to classifications</strong><br><strong>Working with classifications via representatives</strong></p>
 <h2 id="Functions-end-of-Part-I"><a href="#Functions-end-of-Part-I" class="headerlink" title="Functions (end of Part I)"></a>Functions (<em>end of Part I</em>)</h2><p><strong>Example</strong><br><strong>Set-theoretic definition of functions</strong><br><strong>The many faces of functions</strong><br><strong>Injectivity</strong><br><strong>Surjectivity</strong><br><strong>Bijectivity</strong><br><strong>Forward image and pre-image; inverse function</strong><br><strong>Composing functions</strong><br><strong>counting functions</strong></p>
