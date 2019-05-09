@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T20:56:49.399Z">
+<meta property="og:updated_time" content="2019-05-09T22:59:12.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mathematics">
 <meta name="twitter:description" content="Natural Numbers and IntegersThe natural numbers (N) Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation 12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn">
@@ -711,21 +711,173 @@
 <li>show each state is reachable, by giving a word that covers all states. (1. is satisfied)</li>
 <li>show that any two distinct states are not language equivalent, by giving a word that one accepts and the other rejects. (2. is satisfied)</li>
 </ol>
-<h2 id="Beyond-Regular-Languages"><a href="#Beyond-Regular-Languages" class="headerlink" title="Beyond Regular Languages"></a>Beyond Regular Languages</h2><p><strong>Non-regular languages</strong></p>
-<p><strong>Context-free languages</strong></p>
-<p><strong>The matching problem for a context-free language</strong></p>
-<p><strong>Ambiguity</strong></p>
-<p><strong>Beyond context-free languages</strong></p>
-<p><strong>Language equivalence</strong></p>
-<h2 id="Complexity-of-Programs"><a href="#Complexity-of-Programs" class="headerlink" title="Complexity of Programs"></a>Complexity of Programs</h2><p><strong>Preliminary: laws of probability</strong><br><strong>Preliminary: important summation</strong><br><strong>Running time of a program</strong><br><strong>Complexity</strong><br><strong>Big-O</strong><br><strong>Polynomial Time</strong><br><strong>Space Complexity</strong></p>
-<h2 id="Turing-Machine"><a href="#Turing-Machine" class="headerlink" title="Turing Machine"></a>Turing Machine</h2><hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<h2 id="N-and-NP"><a href="#N-and-NP" class="headerlink" title="N and NP"></a>N and NP</h2><p><strong>Polynomial time algorithms</strong><br><strong>Search problems</strong><br><strong>Examples</strong></p>
-<h2 id="Decidabilty-and-The-Halting-Problem"><a href="#Decidabilty-and-The-Halting-Problem" class="headerlink" title="Decidabilty and The Halting Problem"></a>Decidabilty and The Halting Problem</h2><p><strong>Church’s Thesis</strong><br><strong>Reduction of a problem to another problem</strong><br><strong>Undecidable problems</strong></p>
-<h2 id="Properties-of-code"><a href="#Properties-of-code" class="headerlink" title="Properties of code"></a>Properties of code</h2><p><strong>Undecidability by reduction</strong><br><strong>Semantic and non-semantic properties</strong><br><strong>The two exceptions</strong><br><strong>Proving Rice’s Theorem</strong><br><strong>Decidability in practice</strong></p>
+<h2 id="Beyond-Regular-Languages"><a href="#Beyond-Regular-Languages" class="headerlink" title="Beyond Regular Languages"></a>Beyond Regular Languages</h2><p><strong>Non-regular languages</strong><br>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+<ol>
+<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
+<li>suppose m, n ∈ L and m &lt; n.</li>
+<li>let Xm be the state reached when we start from p and read a^m.</li>
+<li>let Xn be the state reached when we start from p and read a^n. </li>
+<li>if starting from Xm and reading b^m then we reach a Acc.</li>
+<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
+<li>So Xn != Xm</li>
+<li>So there are infinitely many states.</li>
+<li>we raise a contradiction. Hence the language is not regular.</li>
+</ol>
+<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
+<p><strong>Context-free languages</strong><br>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
+<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
+<p>we can construct a derivation tree :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
+<p><strong>The matching problem for a context-free language</strong><br>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Ambiguity</strong><br>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
+<p>this grammar is ambiguous :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
+<p><strong>Language equivalence</strong><br>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
+<h2 id="Complexity-of-Programs"><a href="#Complexity-of-Programs" class="headerlink" title="Complexity of Programs"></a>Complexity of Programs</h2><p><strong>Preliminary: laws of probability</strong><br>basic laws of probability :</p>
+<ul>
+<li>an impossible event has P = 0</li>
+<li>some certain events have P = 1</li>
+<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
+<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
+</ul>
+<p><strong>Preliminary: important summation</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
+<p><strong>Runing time of a program</strong></p>
+<p><strong>Complexity</strong><br>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
+<ol>
+<li>small arguments</li>
+<li>constant factors</li>
+</ol>
+<p><strong>Big-Oh</strong><br>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<ul>
+<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
+</ul>
+<p>NOTE : exponential growth is faster than polunomial growth.<br><strong>Polynomial Time</strong><br>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
+<p><strong>Space Complexity</strong><br>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
+<h2 id="Turing-Machine"><a href="#Turing-Machine" class="headerlink" title="Turing Machine"></a>Turing Machine</h2><p><strong>Reasons to introduce turing machine</strong><br>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
+<p><strong>Turing machine</strong><br>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
+<ol>
+<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
+<li>the set V of return values.</li>
+</ol>
+<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
+<ul>
+<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
+<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
+<li>left</li>
+<li>right</li>
+<li>No-op (which does nothing)</li>
+<li>Return True</li>
+<li>Return False</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
+<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
+<p><strong>Representation of a turing machine</strong><br>A turing machine has :</p>
+<ol>
+<li>a finite state X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
+</ol>
+<p>example : convert a into b from a given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
+<p>example : return true if the number of as is even in the given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
+<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
+<p>example : reverse copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
+<p><strong>More complex TM</strong></p>
+<ul>
+<li>2-tape turing machine</li>
+<li>m x n turing machine</li>
+</ul>
+<h2 id="N-and-NP"><a href="#N-and-NP" class="headerlink" title="N and NP"></a>N and NP</h2><p><strong>Polynomial time algorithms</strong><br>P : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
+<ul>
+<li>A constant time algorithm has running time in O(1).</li>
+<li>A linear time algorithm has running time in O(n).</li>
+<li>A quadratic time algorithm has running time in O(n2). </li>
+<li>A cubic time algorithm has running time in O(n3).</li>
+</ul>
+<p><strong>NP Search problems</strong><br>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP : an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
+<ul>
+<li>solutions have size polynomial in n : for a problem instance of size n, all words that are solutions have size &lt;= p(n). (where p(n) is some O())</li>
+<li>solutions can be checked in a time polynomial in n : given a problem instance A and a solution B, there is an alogorithm that checks whether it is &lt;= q(n). (where q(n) is some O())</li>
+</ul>
+<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question : can every NP seach problem be solved in polynomial time?</p>
+<p>example : sudoku (NP)</p>
+<ol>
+<li>solutions have size polynomial in n…</li>
+<li>solutions can be checked in a time polynomial in n…</li>
+<li>we can find a solution in exponential time…</li>
+</ol>
+<p>example : factorization (NP)</p>
+<ol>
+<li>solutions have size polynomial in n…</li>
+<li>solutions can be checked in a time polynomial in n…</li>
+<li>we can find a solution in exponential time…</li>
+</ol>
+<p><strong>examples of NP</strong><br>problems in NP but are not known to be in P :</p>
+<ul>
+<li>The travelling salesman. A salesman has to plan a journey between n cities (and return to the<br>start) in a way that minimizes his total distance.</li>
+<li>Optimal scheduling.</li>
+<li>Path planning (used by robots).</li>
+<li>Many problems on graphs.</li>
+<li>Boolean satisfiability (SAT).</li>
+</ul>
+<h2 id="Decidabilty-and-The-Halting-Problem"><a href="#Decidabilty-and-The-Halting-Problem" class="headerlink" title="Decidabilty and The Halting Problem"></a>Decidabilty and The Halting Problem</h2><p><strong>Church’s Thesis</strong><br>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
+<ul>
+<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
+<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
+<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
+<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
+</ul>
+<p><strong>Reduction of a problem to another problem</strong><br>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
+<ul>
+<li>if P is decidable, Q is then decidable</li>
+<li>if Q is undecidable, P is then undecidable</li>
+</ul>
+<p><strong>Undecidable problems</strong><br>examples of undecidable problems :</p>
+<ul>
+<li>ambiguity of context free languages</li>
+<li>equivalence of context free languages</li>
+<li>the halting problem</li>
+</ul>
+<p><strong>The Halting Problem</strong><br>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
+<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
+<h2 id="Properties-of-code"><a href="#Properties-of-code" class="headerlink" title="Properties of code"></a>Properties of code</h2><p><strong>Undecidability by reduction</strong><br>def : to prove other undecidable problem we can reduce the halting problem to it.<br>Because if reducing Q to P we have</p>
+<ul>
+<li>if P is decidable then Q is decidable</li>
+<li>if Q is undecidable then P is undecidable</li>
+</ul>
+<p>example : X is a undecidable property when X halts and contains more occurances of a than b<br>proof :</p>
+<ol>
+<li>reduce the halting problem to X.</li>
+<li>for any program C of type void. let F(C) be the same code as C with an extra comment line which gives more occurances of a than b.</li>
+<li>if C halts, then F(C) is X</li>
+<li>if C does not halts, then F(C) is not X</li>
+<li>we cannot test whether C halts, so we cannot decide whether it is X.</li>
+<li>as C is undecidable, F(C) is undecidable</li>
+<li>so X is undecidable</li>
+</ol>
+<p><strong>Semantic and non-semantic properties</strong><br>semantic properties :</p>
+<ul>
+<li>Does this software print only polite words?</li>
+<li>Does this software provide good advice to all users, and excellent advice to premium users?</li>
+<li>Does this software, when supplied with two positive integers, always return the highest common factor?</li>
+</ul>
+<p><strong>Rice’s Theorem</strong><br>def : any semantic property of code that holds in some case and does not hold in some case is undecidable.</p>
+<p><strong>Decidability in practice</strong></p>
 
   </div>
 </article>

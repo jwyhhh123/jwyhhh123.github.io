@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode Navigato">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T21:18:55.304Z">
+<meta property="og:updated_time" content="2019-05-08T17:34:43.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.AI">
 <meta name="twitter:description" content="Robotics:Robot sensors Color sensor Ir_Sensor Ultra_sonic_Sensor Touch_Sensor  Bobot Motors.pilot.chassis Arbitratorfirst assignment.Behavior Color Sensor.ColorIDMode.ColorRGBMode.AmbientMode Navigato">
@@ -447,15 +447,15 @@
 </ul>
 <p>underfitting :</p>
 <p><strong>Model Complexity</strong><br>complexity of a model is determined by how many nonlinear terms there are in a training model.<br>&nbsp;<br>NOTE : if there are many x^n, then it causes overfitting.</p>
-<p><strong>Regularisation</strong><br>Cost = Cost + ƛ * Σ(for all w’s) (wi)^2 (L2 Regularisation)<br><code>ƛ</code>：how much to penalise complex terms.<br>&nbsp;<br>NOTE : increase ƛ leads to higher regularisation, less model complexity and less overfitting.(reduce the effect from higher order polynomials)</p>
+<p><strong>Regularisation</strong><br>Cost = Cost + ƛ <em> Σ(for all w’s) (wi)^2 (L2 Regularisation)<br>wi   = wi + α </em> (y(j) - hw(x(j))) <em> x(i) + ƛ </em> wi<br><code>ƛ</code>：how much to penalise complex terms.<br>&nbsp;<br>It can be shown that smaller values of w will result in the “disappearance” of higher polynomials.<br>&nbsp;<br>NOTE : increase ƛ leads to higher regularisation, less model complexity and less overfitting.(reduce the effect from higher order polynomials)</p>
 <p><strong>Limitations</strong><br>If the hypothesis function is non-linear AND multivariate, where the number of independent variables is large, the number of “weights” required will be extremely large (impractical).</p>
 <p><strong>Web Rsc</strong><br><a href="https://blog.csdn.net/walilk/article/details/50978864" target="_blank" rel="noopener">https://blog.csdn.net/walilk/article/details/50978864</a><br><a href="https://zhuanlan.zhihu.com/p/28408516" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28408516</a><br><a href="https://blog.csdn.net/nwpuwyk/article/details/36065153" target="_blank" rel="noopener">https://blog.csdn.net/nwpuwyk/article/details/36065153</a><br>&nbsp;<br>for all information  : <a href="https://scruel.gitee.io/ml-andrewng-notes/" target="_blank" rel="noopener">https://scruel.gitee.io/ml-andrewng-notes/</a><br>Andrew ng online lec : <a href="https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN</a></p>
 <h2 id="Revisit"><a href="#Revisit" class="headerlink" title="Revisit"></a>Revisit</h2><p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x3 ...</code></p>
 <p><em>Your updates are:</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x3</span><br></pre></td></tr></table></figure>
-<p><em>For some</em><br><code>hw(x) = w0 + w1x + w2x2</code></p>
+<p><em>For some</em><br><code>hw(x) = w0 + w1x + w2x^2</code></p>
 <p><em>Your updates are:</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x</span><br><span class="line">w2 += ... * x2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x</span><br><span class="line">w2 += ... * x^2</span><br></pre></td></tr></table></figure>
 <p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x1x2</code></p>
 <p>Your updates are:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x1 * x2</span><br></pre></td></tr></table></figure>
