@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Theory:Basic Data StructureArraysAn ordered collection of items : a[i]i : the index of item. Loops and invariantsGeneral for-loop structure : 123for(INITIALIZATION; CONDITION; UPDATE) &amp;#123;    REPEAT">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T22:08:07.886Z">
+<meta property="og:updated_time" content="2019-05-19T16:45:04.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log-DataStructure">
 <meta name="twitter:description" content="Theory:Basic Data StructureArraysAn ordered collection of items : a[i]i : the index of item. Loops and invariantsGeneral for-loop structure : 123for(INITIALIZATION; CONDITION; UPDATE) &amp;#123;    REPEAT">
@@ -373,38 +373,140 @@
 <li>the priority of the root is higher than or equal to that of its children</li>
 <li>the left and right subtrees of the root are heap trees themselves</li>
 </ol>
-<p><strong>Basic operations</strong></p>
-<p><strong>Inserting a new heap tree node</strong><br>bubble up</p>
-<p><strong>Deleting a heap tree node</strong><br>bubble down</p>
-<p><strong>Building a new heap tree</strong></p>
-<p><strong>Merging binary heap trees</strong></p>
-<p><strong>Binomial heaps</strong></p>
-<h2 id="Sorting-strategies-Sorting-algotithem-stability"><a href="#Sorting-strategies-Sorting-algotithem-stability" class="headerlink" title="Sorting strategies, Sorting algotithem stability"></a>Sorting strategies, Sorting algotithem stability</h2><ul>
+<p><strong>Basic operations</strong><br>to construct a heap tree we need :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> MAX = <span class="number">100</span>      <span class="comment">// Maximum number of nodes allowed</span></span><br><span class="line"><span class="keyword">int</span> heap[MAX + <span class="number">1</span>]  <span class="comment">// Store priority values of nodes + empty of heap tree;  </span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">0</span>          <span class="comment">// Largest position that has been filled so far</span></span><br></pre></td></tr></table></figure>
+<p>for heap trees to be a useful representation of priority queues, we need</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">insert(<span class="keyword">int</span> p, array heap, <span class="keyword">int</span> n)</span><br><span class="line">delete(<span class="keyword">int</span> i, array heap, <span class="keyword">int</span> n)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(array heap, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(heapEmpty(heap,n))</span><br><span class="line">      error(<span class="string">"heap is empty"</span>);</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">      <span class="keyword">return</span> heap[<span class="number">1</span>];  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">heapEmpty</span><span class="params">(array heap, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n == <span class="number">0</span>;  <span class="comment">// we use n = 0 to represent an empty heap</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lastLeaf</span><span class="params">(array heap, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(heapEmpty(heap,n))</span><br><span class="line">      <span class="keyword">return</span> error(<span class="string">"heap is empty"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> heap[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Inserting a new heap tree node</strong><br>Procedure :</p>
+<ol>
+<li>insert the new node into the last position n+1</li>
+<li>bubble up the node to the right position by comparing priority with parent node</li>
+</ol>
+<p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">insert(<span class="keyword">int</span> p, array heap, <span class="keyword">int</span> n)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == MAX)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"error: heap is full"</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      heap[++n] = p;           <span class="comment">// O(1)</span></span><br><span class="line">      bubbleUp(n, heap, n);    <span class="comment">// O(log2(n))</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bubbleUp(<span class="keyword">int</span> i, array p, <span class="keyword">int</span> n)&#123;</span><br><span class="line">  <span class="keyword">if</span>(isRoot(i)) <span class="comment">// i has the highest priority</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(heap[i] &gt; heap[parent(i)])&#123;</span><br><span class="line">    swap heap[i] and heap[parent(i)]</span><br><span class="line">    bubbleUp(parent(i),heap,n); </span><br><span class="line">    <span class="comment">// the parent of parent of i is now being the parent of i</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>worst case &amp; average case of time Complexity = O(log2(n))</p>
+<p><strong>Deleting a heap tree node</strong><br>Procedure :</p>
+<ol>
+<li>replace the node we want to delete by the last node</li>
+<li>bubble up or bubble down the node to achive the correct priority order</li>
+</ol>
+<p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">delete(<span class="keyword">int</span> i, array p, <span class="keyword">int</span> n)&#123;</span><br><span class="line">  <span class="keyword">if</span>(n &lt; i)</span><br><span class="line">    error(<span class="string">"empty tree, unable to delete"</span>);</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    heap[i] = heap[n];</span><br><span class="line">    bubbleUp(i,heap,n-<span class="number">1</span>);</span><br><span class="line">    bubbleDown(i,heap,n-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bubbleDown(<span class="keyword">int</span> i, array heap, <span class="keyword">int</span> n)&#123;</span><br><span class="line">  <span class="keyword">if</span>(left(i) &gt; n)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(right &gt; n)  <span class="comment">// left(i) &lt;= n; only one children</span></span><br><span class="line">    <span class="keyword">if</span>(heap[i] &lt; heap[left(i)])</span><br><span class="line">      swap heap[i] and heap[left(i)];</span><br><span class="line">  <span class="keyword">else</span>                <span class="comment">// two children</span></span><br><span class="line">    <span class="keyword">if</span>(heap[left(i)] &gt; heap[right(i)] &amp;&amp; heap[i] &lt; heap[left(i)])</span><br><span class="line">      swap heap[i] and heap[left(i)]</span><br><span class="line">      bubbleDown(left(i),heap,n);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(heap[i] &lt; heap[right])</span><br><span class="line">      swap heap[i] and heap[right(i)]</span><br><span class="line">      bubbleDown(right(i),heap,n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>worst case &amp; average case of time Complexity = O(log2(n))</p>
+<p><strong>Building a new heap tree</strong><br>Sometimes we have a set of items that we wish to heapify. One obvious possibility would be to insert the n items one by one into a heap tree, starting from an empty tree, using the O(log2 n) ‘bubble up’ based insert algorithm discussed earlier. That would clearly have overall time complexity of O(nlog2 n).<br>It turns out, however, that rearranging an array of items into heap tree form can be done more efficiently using “bubble down”. It potentially bubbles down [n/2] items. So the complexity at most is (n/2)log2(n) = nlog2(n).<br>&nbsp;<br>Precisely :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C(h) =  Σ(for each level i) 2^i * (h - i) = 2^h * Σ (h - i)/2^(h-i)</span><br><span class="line">C(h) = 2^h * Σ j/2^j = 2^h * 2 = 2^(h+1) = n</span><br></pre></td></tr></table></figure>
+<p>hence, the complexity of heapify is actually O(n), by using bubble down.</p>
+<p><strong>Merging binary heap trees</strong><br>Method 1 :<br>Move all the items from the smaller heap tree one at a time into the larger heap tree using the standard insert algorithm. This will involve moving O(n) items, and each of them will need to be bubbled up at cost O(log2 n), giving an overall time complexity of O(nlog2 n).<br>Method 2 :<br>Repeatedly move the last items from one heap tree to the other using the standard insert algorithm, until the new binary tree makeTree(0,t,s) is complete. Then move the last item of the new tree to replace the dummy root “0”, and bubble down that new root. How this is best done will depend on the sizes of the two trees, so this algorithm is not totally straightforward. On average, around half the items in the last level of one tree will need moving and bubbling, so that will be O(n) moves, each with a cost of O(log2 n), again giving an overall time complexity of O(nlog2 n). However, the actual number of operations required will, on average, be a lot less than the previous approach, by something like a factor of four, so this approach is more efficient.<br>Method 3 :<br>Simply concatenate the array forms of the heap trees s and t and use the standard heapify algorithm to convert that array into a new binary heap tree. The heapify algorithm has time complexity O(n), and the concatenation need be no more than that, so this approach has O(n) overall time complexity, making it in the best general approach of all three.<br>&nbsp;<br>NOTE : to decide which one we use, it depends on the sizes of two heap trees. </p>
+<p><strong>Binomial heaps</strong><br>def : a binomial heap is more efficient than BHT when inserting and merging.<br>&nbsp;<br>inductive def : a binomial tree is defined recursively as follows :</p>
+<ol>
+<li>a binomial tree of order 0 is a single node</li>
+<li>a binomial tree of order k has a root node with children that are roots of binomial trees of orders k-1, k-2, …, 2, 1, 0 (in that order)</li>
+</ol>
+<p>Representation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">k    0     1       2             3</span><br><span class="line">    [ ]   [ ]     [ ]         [     ]</span><br><span class="line">           |      / |        /  /   |</span><br><span class="line">          [ ]   [ ] [ ]    [ ] [ ] [ ]</span><br><span class="line">                           / |   |</span><br><span class="line">                        [ ] [ ] [ ]</span><br></pre></td></tr></table></figure>
+<p>height : k<br>size   : 2^k</p>
+<p>A binomial heap is constructed as a collection of binomial trees with a particular structure and node ordering properties :</p>
+<ol>
+<li>there can only be zero or one binomial tree of each order</li>
+<li>each constituent binomial tree must satisfy the priority ordering property i.e. each node must have priority less than or equal to its parent</li>
+</ol>
+<p>merging : time complexity = O(log2(n))<br>inserting : time complexity = O(1)<br>heapify : O(n)<br>deleting : time complexity = O(log2(n))</p>
+<h2 id="Sorting-strategies-Sorting-algotithem-stability"><a href="#Sorting-strategies-Sorting-algotithem-stability" class="headerlink" title="Sorting strategies, Sorting algotithem stability"></a>Sorting strategies, Sorting algotithem stability</h2><p><strong>General definitions and theoretical limits</strong><br>Comparison-based :</p>
+<ul>
 <li>enumeration sorting</li>
 <li>exchange sorting </li>
 <li>selection sorting </li>
 <li>insertion sorting</li>
 <li>divide and conquer</li>
 <li>comparison-based </li>
-<li>noncomparison-based</li>
 </ul>
-<p><strong>TreeSort, HeapSort, MergeSort</strong><br>mergeSort代码: <a href="https://blog.csdn.net/javyzheng/article/details/12377585" target="_blank" rel="noopener">https://blog.csdn.net/javyzheng/article/details/12377585</a></p>
-<p><strong>Quicksort</strong><br>given an array <code>[5,3,4,6,8,4,1,9,7,1,2]</code>.</p>
+<p>lower bound for comparison-based algorithms : O(nlog2(n))<br>&nbsp;<br>Noncomparison-based</p>
+<p><strong>BubbleSort, insertion sort, selection Sort</strong><br>BubbleSort : exchange sorting</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">1</span> ; i &lt; n ; i++ )</span><br><span class="line">  <span class="keyword">for</span> ( j = n-<span class="number">1</span> ; j &gt;= i ; j-- ) <span class="comment">// dif with insertion sort</span></span><br><span class="line">    <span class="keyword">if</span> ( a[j] &lt; a[j-<span class="number">1</span>] )</span><br><span class="line">       swap a[j] and a[j-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>time complexity :</p>
 <ul>
-<li><code>pivot = p</code>: one of the elements in it<br>&nbsp; - heuristic pivot choice strategies</li>
-<li>partition: <code>[ smaller ] p [ larger ]</code><br>&nbsp; - two different approaches<br>time.Compx : </li>
+<li>worst case : O(n^2)</li>
+<li>average case : O(n^2)</li>
 </ul>
+<p>InsertionSort : insertion sorting</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">1</span> ; i &lt; n ; i++ ) &#123;</span><br><span class="line">  <span class="keyword">for</span>( j = i ; j &gt; <span class="number">0</span> ; j-- )    <span class="comment">// dif with bubble sort</span></span><br><span class="line">    <span class="keyword">if</span> ( a[j] &lt; a[j-<span class="number">1</span>] )</span><br><span class="line">       swap a[j] and a[j-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">break</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>time complexity :</p>
+<ul>
+<li>worst case : O(n^2)</li>
+<li>average case : O(n^2)</li>
+</ul>
+<p>SelectionSort : selection sorting</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">0</span> ; i &lt; n-<span class="number">1</span> ; i++ ) &#123; </span><br><span class="line"></span><br><span class="line"> k = i</span><br><span class="line"> <span class="keyword">for</span> ( j = i+<span class="number">1</span> ; j &lt; n ; j++ )</span><br><span class="line">    <span class="keyword">if</span> ( a[j] &lt; a[k] )</span><br><span class="line">      k = j</span><br><span class="line">      swap a[i] and a[k]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>time complexity :</p>
+<ul>
+<li>worst case : O(n^2)</li>
+<li>average case : O(n^2)</li>
+</ul>
+<p>Comparison between bubble, insertion, selection sortings:</p>
+<ol>
+<li>bubble sorts does a lot of swaps</li>
+<li>if there is a few items are misplaced, insertionSort performs very quick</li>
+<li>in general selectionSort is better than insertionSort is better than bubbleSort</li>
+</ol>
+<p>Stability between bubble, insertion, selection sortings: (when considering identical keys [2,1] [2,2])</p>
+<ul>
+<li>bubbleSort is stable</li>
+<li>InsertionSort is stable</li>
+<li>SelectionSort is unstable</li>
+</ul>
+<p><strong>TreeSort, HeapSort</strong><br>TreeSort procedure :</p>
+<ol>
+<li>build an empty BST, insert each a[i] into it</li>
+<li>use a method to fill nodes into an array in order</li>
+</ol>
+<p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">treeSort(array a)&#123;</span><br><span class="line">  t = emptyTree;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; i++)&#123;</span><br><span class="line">    t = insert(a[i],t);    <span class="comment">// log2(n)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fillArray(t,a,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fillArray(tree t, array a, <span class="keyword">int</span> j)&#123;</span><br><span class="line">  <span class="keyword">if</span>(!isEmpty(t))&#123;</span><br><span class="line">    j = fillArray(left(t),a,j);</span><br><span class="line">    a[j++] = root(t);</span><br><span class="line">    j = fillArray(right(t),a,j);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>time complexity :</p>
+<ul>
+<li>worst case : O(n^2) when the array given is sorted</li>
+<li>average case : O(nlog2(n))</li>
+</ul>
+<p>HeapSort procedure :</p>
+<ol>
+<li>heapify the array into a BHT.</li>
+<li>swap the largest root node and the smallest leaf node for each iteration.(bubble down)</li>
+</ol>
+<p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">heapSort(array a, <span class="keyword">int</span> n) &#123;</span><br><span class="line">  heapify(a,n)</span><br><span class="line">    <span class="keyword">for</span>( j = n ; j &gt; <span class="number">1</span> ; j-- ) &#123;</span><br><span class="line">      swap a[<span class="number">1</span>] and a[j]</span><br><span class="line">      bubbleDown(<span class="number">1</span>,a,j-<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>time complexity :</p>
+<ul>
+<li>worst case : O(nlog2(n))</li>
+<li>average case : O(nlog2(n))</li>
+<li>best case : O(n)</li>
+</ul>
+<p>HeapSort is not stable as it can change the order of identical keys.</p>
+<p><strong>Devide and conquer sorting</strong><br>Quicksort procedure :</p>
+<ol>
+<li></li>
+<li></li>
+</ol>
+<p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>time Complexity : </p>
 <ul>
 <li>worst case O(n^2)</li>
 <li>average case O(nlog(n))</li>
-<li>best case O(n)<br>quickSort代码: <a href="https://blog.51cto.com/flyingcat2013/1281614" target="_blank" rel="noopener">https://blog.51cto.com/flyingcat2013/1281614</a></li>
+<li>best case O(n)</li>
 </ul>
-<p><strong>Non-comparision-based sorts</strong></p>
+<p>Mergesort procedure :</p>
+<ol>
+<li>2.</li>
+</ol>
+<p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>time Complexity : </p>
 <ul>
-<li>Bin</li>
-<li>Bucket</li>
-<li>Radix</li>
+<li>worst case O(nlog(n))</li>
+<li>average case O(nlog(n))</li>
 </ul>
+<p>quickSort代码: <a href="https://blog.51cto.com/flyingcat2013/1281614" target="_blank" rel="noopener">https://blog.51cto.com/flyingcat2013/1281614</a><br>mergeSort代码: <a href="https://blog.csdn.net/javyzheng/article/details/12377585" target="_blank" rel="noopener">https://blog.csdn.net/javyzheng/article/details/12377585</a></p>
+<p><strong>Non-comparision : Radix sort</strong></p>
+<p><strong>Comparisons</strong></p>
 <h2 id="Hash-Tables"><a href="#Hash-Tables" class="headerlink" title="Hash Tables"></a>Hash Tables</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">h(KEY) -&gt; position</span><br><span class="line">[K0][K1][K2][K3][K4][K5][K6][K7]</span><br></pre></td></tr></table></figure>
 <p>&nbsp; if two keys goes to the same position, it is called <code>collision</code>(散列冲突)</p>
 <p>Collision likelihoods and load factors for hash tables<br><code>q(n)= 364·363···(366 - n) / 365^(n-1) = 1 - p(n)</code><br>&nbsp; - prob(not colli 3) = (364*363)/365^2 = 1 - prob(colli)</p>
