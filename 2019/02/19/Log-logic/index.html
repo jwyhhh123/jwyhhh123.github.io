@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact which can be true or false.&amp;nbsp;Atomic propositions(atoms) :  propositions that cannot be broken into smaller parts they">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T17:45:05.284Z">
+<meta property="og:updated_time" content="2019-05-29T20:50:36.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log.logic">
 <meta name="twitter:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact which can be true or false.&amp;nbsp;Atomic propositions(atoms) :  propositions that cannot be broken into smaller parts they">
@@ -334,19 +334,20 @@
 </ul>
 <h2 id="Resolution-归结原理"><a href="#Resolution-归结原理" class="headerlink" title="Resolution(归结原理)"></a>Resolution(归结原理)</h2><p>def : Unlike natural deduction, resolution has only 1 inference rule :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;A&#125; ∨ X1     &#123;¬A&#125; ∨ X2   </span><br><span class="line">----------------------- Resolution</span><br><span class="line">       X1 ∨ X2</span><br></pre></td></tr></table></figure>
-<p>Special cases :</p>
+<p>NOTE : {A} ∨ X1 and {¬A} ∨ X2 are two clauses/ premises in CNF form<br>&nbsp;<br>Special cases :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A     ¬A ∨ B   </span><br><span class="line">--------------- Resolution  // -&gt; -elimination</span><br><span class="line">       B</span><br><span class="line"></span><br><span class="line"> A    ¬A   </span><br><span class="line">--------- Resolution  // contradiction introduction</span><br><span class="line">    ⊥</span><br></pre></td></tr></table></figure>
 <p>NOTE : </p>
 <ul>
 <li>premises and conclusion are all disjunctions. </li>
 <li>this works because A ∨ ¬A is always true.</li>
 </ul>
-<p><strong>Resolution refutation</strong><br>A formula φ is valid iff ¬φ is unsatisfiable. we can prove φ by proving ¬φ is a contradiction<br>&nbsp;<br>Procedure : check validity</p>
+<p><strong>Resolution refutation</strong><br>A formula φ is valid iff ¬φ is unsatisfiable. we can prove φ by proving ¬φ is a contradiction<br>&nbsp;<br>to prove validity of a formula :</p>
 <ol>
-<li>negate and convert to CNF/ clausal normal form</li>
-<li>resolve pairs of formulas until :<ul>
-<li>we find an empty clause 口(after we solve A and ¬A we got empty clause) : then φ is valid</li>
-<li>we find there are no more new pairs to resolve or find it true : then φ is invalid</li>
+<li>negate the formula φ</li>
+<li>convert to CNF/ clausal normal form</li>
+<li>resolve a pair of clauses repeatly until :<ul>
+<li>we find an empty clause 口 (after we solve A and ¬A we got empty clause) : then φ is valid</li>
+<li>we find there are no more new pairs to resolve or find it true (P ∨ ¬P): then φ is invalid</li>
 </ul>
 </li>
 </ol>
@@ -466,8 +467,9 @@
 <p>NOTE :</p>
 <ol>
 <li>everyone : ∀</li>
+<li>someone : ∃</li>
 <li>at least x : ∃</li>
-<li>no more : ∃</li>
+<li>at most : ∀</li>
 <li>no less : ∀</li>
 <li>‘all’ with implication</li>
 <li>‘exist’ with and</li>
