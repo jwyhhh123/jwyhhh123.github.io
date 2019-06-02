@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact which can be true or false.&amp;nbsp;Atomic propositions(atoms) :  propositions that cannot be broken into smaller parts they">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Classical Logic">
+<meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/index.html">
+<meta property="og:site_name" content="WY J">
+<meta property="og:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact which can be true or false.&amp;nbsp;Atomic propositions(atoms) :  propositions that cannot be broken into smaller parts they">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-02T19:53:12.570Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Classical Logic">
+<meta name="twitter:description" content="Part IPropositional logic（命题逻辑）propositiondef : a sentence which states a fact which can be true or false.&amp;nbsp;Atomic propositions(atoms) :  propositions that cannot be broken into smaller parts they">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Classical Logic</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/02/19/AI_part1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/02/19/Logic_part2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&text=Classical Logic"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&is_video=false&description=Classical Logic"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Classical Logic&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&name=Classical Logic&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-I"><span class="toc-number">1.</span> <span class="toc-text">Part I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Propositional-logic（命题逻辑）"><span class="toc-number">1.1.</span> <span class="toc-text">Propositional logic（命题逻辑）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Natural-Deduction"><span class="toc-number">1.2.</span> <span class="toc-text">Natural Deduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Semantics-truth-table"><span class="toc-number">1.3.</span> <span class="toc-text">Semantics, truth table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proof-strategies-I"><span class="toc-number">1.4.</span> <span class="toc-text">Proof strategies I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Equivalencies"><span class="toc-number">1.5.</span> <span class="toc-text">Equivalencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-form"><span class="toc-number">1.6.</span> <span class="toc-text">Normal form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resolution-归结原理"><span class="toc-number">1.7.</span> <span class="toc-text">Resolution(归结原理)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Predicate-calculus-一阶逻辑"><span class="toc-number">1.8.</span> <span class="toc-text">Predicate calculus(一阶逻辑)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proof-Strategies-II"><span class="toc-number">1.9.</span> <span class="toc-text">Proof Strategies II</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Classical Logic
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">WY J</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-02-19T00:05:02.000Z" itemprop="datePublished">2019-02-19</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Logic-and-Computation/">Logic and Computation</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Part-I"><a href="#Part-I" class="headerlink" title="Part I"></a>Part I</h1><h2 id="Propositional-logic（命题逻辑）"><a href="#Propositional-logic（命题逻辑）" class="headerlink" title="Propositional logic（命题逻辑）"></a>Propositional logic（命题逻辑）</h2><p><strong>proposition</strong><br>def : a sentence which states a fact which can be true or false.<br>&nbsp;<br>Atomic propositions(atoms) :</p>
+<ul>
+<li>propositions that cannot be broken into smaller parts</li>
+<li>they are usually represented by symbols(P, Q, R…)</li>
+</ul>
+<p><strong>argument</strong><br>def : argument is a collection of propositions<br>&nbsp;<br>an argument can have 0 and more premises and 1 conclusion.<br>&nbsp;<br>Validity : an argument is valid iff its premises are true and its conclusion is true.</p>
+<p><strong>Languages</strong><br>Semantics : the meaning of a formula in the language<br>Syntax : rules defining allowable formulas(sentences) in the language<br>&nbsp;<br>formula : </p>
+<ul>
+<li>Atomic formula   : if P is an atomic proposition, then P is a formula</li>
+<li>Compound formula : if P and Q are formulas then so are ¬P, P ∧ Q, P ∨ Q and P -&gt; Q</li>
+</ul>
+<p>these are all called well-formed formulas.</p>
+<p><strong>Connectives</strong><br>conjunction ∧ : and<br>disjunction ∨ : or<br>negation    ¬ : not<br>implication -&gt; : implies<br>&nbsp;<br>Avoid ambiguity using parentheses () : (P ∧ Q) ∨ R<br>&nbsp;<br>Precedence of connectives : (¬) &gt; (∧) &gt; (∨) &gt; (-&gt;)</p>
+<p><strong>Parse trees</strong><br>def : we can use a tree to represent the syntactic structure of a sentence. For propositional logic, leaf nodes are atomic propositions and no-leaf nodes are connectives.<br>&nbsp;<br>Terminology :</p>
+<ul>
+<li>scope of a connective : connective itself and what it connects i.e. P -&gt; Q</li>
+<li>main connective: the connective which connects the whole furmula</li>
+</ul>
+<p>scope = sub-tree<br>main connectice : root node</p>
+<p><strong>Formal language</strong><br>Given an argument :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if John is at home, then his TV is on.</span><br><span class="line">His TV is not on.</span><br><span class="line">Therefore John is not at home.</span><br></pre></td></tr></table></figure>
+<p>Collect atomic propositions :</p>
+<ol>
+<li>H = “John is at home”</li>
+<li>O = “John’s TV is on”</li>
+</ol>
+<p>Argument in propositional logic :</p>
+<ol>
+<li>premise 1 : H -&gt; O</li>
+<li>premise 2 : ¬O</li>
+<li>conclusion : ¬H</li>
+</ol>
+<p>Written in sequent : H -&gt; O, ¬O : ¬H<br>&nbsp;<br>If the argument is valid we write : H -&gt; O, ¬O ⊢ ¬H</p>
+<p>NOTE : When collecting atomic propositions, we only collect original symbol without any connectives. for example ‘his TV is not on’ we collect ‘his TV is on’. And for ‘Therefore John is not at home’ and ‘John is at home’ we only collect ‘John is at home’.</p>
+<h2 id="Natural-Deduction"><a href="#Natural-Deduction" class="headerlink" title="Natural Deduction"></a>Natural Deduction</h2><p>def : In natural deduction, we use syntactic (rather than semantic) proof method<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>start with premises (we can assume these are true)</li>
+<li>repeatedly apply inference rules (which preserve truth)</li>
+<li>until we have inferred(推理) the conclusion</li>
+</ol>
+<p><strong>∧-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A   B</span><br><span class="line">-----  ∧ -introduction</span><br><span class="line">A ∧ B</span><br></pre></td></tr></table></figure>
+<p><strong>∧-elimination</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A ∧ B </span><br><span class="line">-----  ∧ -elimination</span><br><span class="line">  A</span><br><span class="line"></span><br><span class="line">A ∧ B </span><br><span class="line">-----  ∧ -elimination</span><br><span class="line">  B</span><br></pre></td></tr></table></figure>
+<p><strong>→-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ⊢ B </span><br><span class="line">-----  → -introduction</span><br><span class="line">A → B</span><br></pre></td></tr></table></figure>
+<p><strong>→-elimination (modus ponens)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A → B  A </span><br><span class="line">--------  → -elimination</span><br><span class="line">    B</span><br></pre></td></tr></table></figure>
+<p><strong>¬-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ⊢ ⊥ </span><br><span class="line">-----  ¬ -introduction</span><br><span class="line"> ¬A</span><br></pre></td></tr></table></figure>
+<p><strong>¬¬-elimination</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">¬¬A </span><br><span class="line">---  ¬¬ -elimination</span><br><span class="line"> A</span><br></pre></td></tr></table></figure>
+<p><strong>∨-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A</span><br><span class="line">-----  ∨ -introduction</span><br><span class="line">A ∨ B</span><br><span class="line"></span><br><span class="line">  A</span><br><span class="line">-----  ∨ -introduction</span><br><span class="line">B ∨ A</span><br></pre></td></tr></table></figure>
+<p><strong>∨-elimination</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ∨ B  A ⊢ C  B ⊢ C </span><br><span class="line">--------------------  ∨ -elimination</span><br><span class="line">         C</span><br></pre></td></tr></table></figure>
+<h2 id="Semantics-truth-table"><a href="#Semantics-truth-table" class="headerlink" title="Semantics, truth table"></a>Semantics, truth table</h2><p><strong>Semantics of propositional logic</strong><br>An interpretation for a formula is a function I assigning a truth value to its atomic propositions.<br>&nbsp;<br>Semantics of a propositional logic formula φ is a truth value for each interpretation.<br>I ⊨ φ : I satisfies φ, where φ is true for interpretation I</p>
+<p><strong>Truth table : semantic proof method</strong><br>Semantics of conjunction :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P     Q    P ∧ Q</span><br><span class="line"></span><br><span class="line">T     T      T</span><br><span class="line">T     F      F</span><br><span class="line">F     T      F</span><br><span class="line">F     F      F</span><br></pre></td></tr></table></figure>
+<p>Semantics of disjunction :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P     Q    P ∨ Q</span><br><span class="line">T     T      T</span><br><span class="line">T     F      T</span><br><span class="line">F     T      T</span><br><span class="line">F     F      F</span><br></pre></td></tr></table></figure>
+<p>Semantics of negation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P    ¬P</span><br><span class="line">T     F</span><br><span class="line">F     T</span><br></pre></td></tr></table></figure>
+<p>Semantics of implication :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P     Q     P → Q</span><br><span class="line">T     T       T</span><br><span class="line">T     F       F</span><br><span class="line">F     T       T</span><br><span class="line">F     F       T</span><br></pre></td></tr></table></figure>
+<p>We can construct a truth table for any propostional formula.<br>example : given formula (P -&gt; Q) ∧ Q</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P   Q   |  P -&gt; Q    ¬Q     (P -&gt; Q) ∧ Q</span><br><span class="line">--------|-------------------------------</span><br><span class="line">T   T   |   T        F          F</span><br><span class="line">T   F   |   F        T          F</span><br><span class="line">F   T   |   T        F          F</span><br><span class="line">F   F   |   T        T          T</span><br></pre></td></tr></table></figure>
+<p><strong>Semantic Notations</strong><br>A formula φ is :</p>
+<ul>
+<li>Satisfiable   : iff there exists one interpretation I ⊨ φ</li>
+<li>Falsifiable   : iff there exists an interpretation that makes φ false</li>
+<li>Unsatisfiable : iff there is no interpretation that make I ⊨ φ</li>
+<li>Valid         : iff for all interpretation that I ⊨ φ</li>
+</ul>
+<p>NOTE: We are talking about formulas which can be both premises and conclusions<br>&nbsp;<br>Tautology (赘述) : iff it is valid i.e. P∨¬P, P→P, ¬(P∧¬P)<br>Contradiction : iff it unsatisfiable<br>Contingent (一组): iff it is both satisfiable and falsifiable i.e. P, P∧Q<br>&nbsp;<br>A formula is unsatisfiable if its negation is valid :<br>example : ¬(P ∧ ¬P)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">P   ¬P  |  (P ∧ ¬P)   ¬(P ∧ ¬P)</span><br><span class="line">--------|----------------------</span><br><span class="line">T   F   |     F          T         </span><br><span class="line">F   T   |     F          T</span><br></pre></td></tr></table></figure>
+<p><strong>Validity of argument</strong><br>Informally : whenever the premises are true, then so is the conclusion<br>Formally : the argument P1, .., Pn ⊨ C is valid iff every interpretation that satisfies all of the premises P1, .., Pn also satisfies the conclusion (I ⊨ Pn are true and I ⊨ C is true)</p>
+<p>Steps :</p>
+<ol>
+<li>construct a truth table for premise(s) and conclusion.</li>
+<li>when we found one that all premises are true and so is conclusion, it is valid.</li>
+<li>when we found one that all premises are true and conclusion is false, it is invalid.</li>
+</ol>
+<p><strong>Comparison between truth table &amp; natural deduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">true table                |   natural deduction</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">simple easy to automate   |   difficult to automate</span><br><span class="line">size is exponential       |   problem can be solved in a decent size</span><br><span class="line">invalidity can be checked |   no way to check validity</span><br><span class="line">                          |   can be adopted to predicate calculus</span><br></pre></td></tr></table></figure>
+<h2 id="Proof-strategies-I"><a href="#Proof-strategies-I" class="headerlink" title="Proof strategies I"></a>Proof strategies I</h2><p><strong>Proof bt contradiction</strong><br>we can build on ¬-introduction to prove non-negated propositions.<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>determine what we want to prove</li>
+<li>hypothesize the negation of the conclusion C</li>
+<li>until we infer to ¬¬ of C</li>
+<li>using ¬¬-elimination to prove C</li>
+</ol>
+<p><strong>Inference rules</strong><br>Strategies :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Inference rule         Premises          Concl.        Annotation numbers           Dependencies</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∧-intro x,y             A, B              A∧B        Premises are at lines x, y        Dx ∪ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∧-elim x                 A∧B               A         Premise is at line x              Dx</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∨-intro x                 A               A∨B        Premise is at line x              Dx</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∨-elim x,y1,z1,y2,z2    A∨B, A⊢C, B⊢C      C         Disjunction is at line x,       (Dx ∪ Dz1 ∪ Dz2)</span><br><span class="line">                                                     sub-proofs are lines             \ (Dy1 ∪ Dy2)</span><br><span class="line">                                                     y1-z1 and y2-z2             </span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">→-intro y,z             A⊢B               A→B        Sub-proof is lines y-z           Dz \ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">→-elim x,y              A→B, A             B         Premises are at lines x, y       Dx ∪ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">¬-intro y,z              A⊢⊥              ¬A         Sub-proof is lines y-z           Dz \ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">¬¬-elim x                ¬¬A               A          Premise is at line x             Dx</span><br></pre></td></tr></table></figure>
+<p>Hints :</p>
+<ol>
+<li>negation introduction can prove anything as we can hypothesize something negated, if there is a contradiction can be found, then we can prove the thing we want.</li>
+<li>if the conclusion is negated, try to use ¬-introduction.</li>
+</ol>
+<p><strong>Rules of thumb</strong></p>
+<ol>
+<li>If the main connective in the CONCLUSION is an implication, use implication introduction</li>
+<li>If the main connective in any of the PREMISES is a disjunction, try to use disjunction elimination</li>
+<li>Otherwise, try negation introduction / proof by contradiction</li>
+</ol>
+<p><strong>Semantic and syntactic validity</strong><br>We have seen two methods to show validity of an argument :</p>
+<ul>
+<li>truth table construction [semantic validity]</li>
+<li>natural deduction proofs [syntax validity]</li>
+</ul>
+<p>Semantic validity A1, …, An ⊨ B : an argument is valid iff whenever the premises are true, and so is the conclusion (As are true so is B)<br>&nbsp;<br>Syntactic validity A1, …, An ⊢ B : an argument is valid iff the conclusion can be derived from the premises by using inference rules (B can be proved by As)</p>
+<p>NOTE : if there is no premise for an argument, we automatically think the truth values are true for each interpretation of the empty premise. so to check validity of : C we only need to check truth values of C for each interpretation.</p>
+<p><strong>Disproving</strong><br>arguments disproving :</p>
+<ol>
+<li>give a counter-example</li>
+<li>this means I(premises) is true and so is I(conclusion)</li>
+<li>if all true then is valid </li>
+<li>if premises are true and conclusion is false then is invalid.</li>
+</ol>
+<p><strong>Derived rules and reiterate</strong><br>proof decomposed into parts</p>
+<ul>
+<li>auxiliary arguments/derived inference rules (“lemmas”)</li>
+<li>proved separately</li>
+<li>inserted with sequent introduction</li>
+</ul>
+<p>in some case we may need to use a premise again, we can apply Reiterate<br>&nbsp;<br>Useful derived rules :<br>1) Sequent introduction (LEM) : P ∨ ¬P</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--------</span><br><span class="line">| ¬(P∨¬P)     hypo            &#123;1&#125;</span><br><span class="line">|  ------</span><br><span class="line">|  |  P       hypo            &#123;2&#125;</span><br><span class="line">|  |  P∨¬P    ∨-intro 2       &#123;2&#125;</span><br><span class="line">|  |  ⊥       ∧-intro 3,1    &#123;1,2&#125;</span><br><span class="line">|  ------</span><br><span class="line">|  ¬P         ¬-intro 2,4     &#123;1&#125;</span><br><span class="line">|  P∨¬P       ∨-intro 5       &#123;1&#125;</span><br><span class="line">|  ⊥          ∧-intro 6,1     &#123;&#125;</span><br><span class="line">--------</span><br><span class="line"> ¬¬(P∨¬P)     ¬-intro 1,7     &#123;&#125;</span><br><span class="line"> P∨¬P         ¬¬-elim 8       &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Soundness and Completeness</strong><br>Soundness : any syntactically valid argument is semantically valid<br>A1, …,An ⊢B implies A1, …,An ⊨B<br>&nbsp;<br>NOTE : this means if we can prove an argument then it is valid<br>&nbsp;<br>Completeness : any semantically valid argument is syntactically valid<br>A1, …,An ⊨ B implies A1, …,An ⊢ B<br>&nbsp;<br>NOTE : this means we can construct a proof of any valid argument<br>&nbsp;<br>Natural deduction is sound and complete : we can prove any valid argument.</p>
+<h2 id="Equivalencies"><a href="#Equivalencies" class="headerlink" title="Equivalencies"></a>Equivalencies</h2><p>Some formulas are equivalent, written A ≡ B. The equivalence relationship is called semantically equivalent(or, provably equivalent).<br>&nbsp;<br>def : A ≡ B iff the truth values of A and B are the same for all interpretations<br>(A ≡ B iff A ⊨ B and B ⊨ A)</p>
+<p><strong>Useful equivalence</strong><br>Commutativity: ∧ and ∨ are commutative </p>
+<ul>
+<li>A∧B ≡ B∧A</li>
+<li>A∨B ≡ B∨A</li>
+</ul>
+<p>Associativity: ∧ and ∨ are associative </p>
+<ul>
+<li>A∧(B∧C) ≡ (A∧B)∧C</li>
+<li>A∨(B∨C) ≡ (A∨B)∨C</li>
+</ul>
+<p>Idempotency: ∧ and ∨ are idempotent </p>
+<ul>
+<li>A∧A ≡ A</li>
+<li>A∨A ≡ A</li>
+</ul>
+<p>Distributivity: ∧ distributes over ∨ (and vice versa) </p>
+<ul>
+<li>A∧(B∨C) ≡ (A∧B)∨(A∧C)</li>
+<li>A∨(B∧C) ≡ (A∨B)∧(A∨C)</li>
+</ul>
+<p>De Morgan’s laws</p>
+<ul>
+<li>¬(A∧B) ≡ ¬A∨¬B </li>
+<li>A∧B    ≡ ¬(¬A∨¬B) </li>
+<li>¬(A∨B) ≡ ¬A∧¬B </li>
+<li>A∨B    ≡ ¬(¬A∧¬B)</li>
+</ul>
+<p>Double negation </p>
+<ul>
+<li>¬¬A ≡ A</li>
+</ul>
+<p>Implication</p>
+<ul>
+<li>A→B ≡ ¬A∨B</li>
+</ul>
+<p>We can also define other new connectives</p>
+<ul>
+<li>A <-> B ≡ (A→B)∧(B→A) (bi-implication) </-></li>
+<li>A (+) B ≡ (A∧¬B)∨(¬A∧B) (exclusive or)</li>
+</ul>
+<p><strong>Proving equivalences</strong><br>As given some useful equivalence relations above, we can prove equivalences by working forwards/backwards with a single proof or replacing subformulas with equivalent ones.<br>&nbsp;<br>example : (P ∧ Q) -&gt; S ≡ P -&gt; (Q -&gt; S)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(P ∧ Q) → S ≡ P → (Q → S)</span><br><span class="line">            ≡ ¬ (P ∧ Q) ∨ S    // implication</span><br><span class="line">            ≡ (¬ p ∨ ¬ q)∨ s   // de morgan&apos;s</span><br><span class="line">            ≡ ¬ p ∨ (¬ q ∨ s)  // distributivity</span><br><span class="line">            ≡ ¬ p ∨ (q → s)    // implication</span><br><span class="line">            ≡ p → (q → s)      // implication</span><br></pre></td></tr></table></figure>
+<p>we can prove and disprove equivalences i.e. (P→Q)∧¬Q ≡ ¬P<br>&nbsp;<br>NOTE : equivalence is useful to check the (in)validity of argument.<br>&nbsp;<br>Redundancy : when applying equivalence equations, if we remove too many connectives it leads to lots of nesting and complex formulas. (so we introduce normal form)</p>
+<h2 id="Normal-form"><a href="#Normal-form" class="headerlink" title="Normal form"></a>Normal form</h2><p>literal : a literal is an atomic proposition or its negation i.e. P or ¬P<br>&nbsp;<br>DNF(disjunction normal form) : a form of A1 ∨ A2 ∨ …∨ An where each clause(分句) Ai is a conjunction of one or more literals<br>i.e. (¬P ∧ Q) ∨ (¬P ∧ R) ∨ (¬P ∧ ¬R ∧ ¬Q)<br>&nbsp;<br>CNF(conjunction normal form) : a form of A1 ∧ A2 ∧ …∧ An where each clause Ai is a disjunction of one or more literals<br>i.e. (R ∨ ¬Q ∨ ¬P) ∧ (Q ∨ ¬R)<br>&nbsp;<br>Often, we write CNF into clausal normal form as a set of sets of literals</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R, ¬Q, ¬P&#125;, &#123;Q, ¬R&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Conversion to normal form</strong><br>Procedure :</p>
+<ol>
+<li>eliminate -&gt; connectives</li>
+<li>move all negations so they only occur in literals</li>
+<li>use distributive laws until the formula is in normal form</li>
+</ol>
+<p><strong>Using CNF</strong><br>to make a CNF formula true, we need at least onw literal in each clause to be true. Often, we will check satisfiability of a CNF formula. i.e. (R ∨ ¬Q ∨ ¬P) ∧ (Q ∨ ¬R)<br>&nbsp;<br>Simplifications of Clausal normal form :<br>if a clause contains a literal and its negation, the clause can be removed from the CNF as truth always hold </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R,¬Q,¬R&#125;,&#123;Q,¬P,R&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>if a clause is a subset of another clause, then the other clause can be removed from the CNF as truth is determined by the sub-clause </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R,Q,¬P&#125;,&#123;Q,¬P&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>Special cases :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;P&#125;, &#123;&#125;&#125; is false as the empty disjunction is false</span><br><span class="line">&#123; &#125; this is true as the empty conjunction is true</span><br><span class="line">&#123;&#123;Q&#125;, &#123;¬Q&#125;, &#123;P&#125;&#125; is false as Q and ¬Q is contradiction</span><br></pre></td></tr></table></figure>
+<p>empty clauses are written as a square 口.<br>&nbsp;<br>NOTE :</p>
+<ul>
+<li>empty disjunction is false</li>
+<li>empty conjunction is true</li>
+</ul>
+<h2 id="Resolution-归结原理"><a href="#Resolution-归结原理" class="headerlink" title="Resolution(归结原理)"></a>Resolution(归结原理)</h2><p>def : Unlike natural deduction, resolution has only 1 inference rule :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;A&#125; ∨ X1     &#123;¬A&#125; ∨ X2   </span><br><span class="line">----------------------- Resolution</span><br><span class="line">       X1 ∨ X2</span><br></pre></td></tr></table></figure>
+<p>NOTE : {A} ∨ X1 and {¬A} ∨ X2 are two clauses/ premises in CNF form<br>&nbsp;<br>Special cases :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A     ¬A ∨ B   </span><br><span class="line">--------------- Resolution  // -&gt; -elimination</span><br><span class="line">       B</span><br><span class="line"></span><br><span class="line"> A    ¬A   </span><br><span class="line">--------- Resolution  // contradiction introduction</span><br><span class="line">    ⊥</span><br></pre></td></tr></table></figure>
+<p>NOTE : </p>
+<ul>
+<li>premises and conclusion are all disjunctions. </li>
+<li>this works because A ∨ ¬A is always true.</li>
+</ul>
+<p><strong>Resolution refutation</strong><br>A formula φ is valid iff ¬φ is unsatisfiable. we can prove φ by proving ¬φ is a contradiction<br>&nbsp;<br>to prove validity of a formula :</p>
+<ol>
+<li>negate the formula φ</li>
+<li>convert to CNF/ clausal normal form</li>
+<li>resolve a pair of clauses repeatly until :<ul>
+<li>we find an empty clause 口 (after we solve A and ¬A we got empty clause) : then φ is valid</li>
+<li>we find there are no more new pairs to resolve or find it true (P ∨ ¬P): then φ is invalid</li>
+</ul>
+</li>
+</ol>
+<p>NOTE : it is sound and complete</p>
+<p><strong>Satisfiability</strong><br>Checking validity via satisfiability</p>
+<ul>
+<li>formula φ is valid iff ¬φ is unsatisfiable </li>
+<li>formula φ is invalid iff ¬φ is satisfiable </li>
+</ul>
+<p>we can then, use these to show whether a argument is valid or not.</p>
+<p><strong>Proving arguments’ validity</strong><br>Procedure :</p>
+<ol>
+<li>A1, …, An ⊢ C is valid iff (A1 ∧ …∧ An) -&gt; C is valid</li>
+<li>¬((A1 ∧ …∧ An) -&gt; C) ≡ A1 ∧…∧ An ∧ ¬C</li>
+<li>convert to clausal normal form</li>
+<li>apply resolution inference rule repeatly</li>
+</ol>
+<p><strong>SAT solver</strong><br>“TheScienceofBruteForce”,MarijnJ.H.Heule,OliverKullmann  – <a href="https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext" target="_blank" rel="noopener">https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext</a> – state-of-the-artSATandautomatedmathematicalproofs  <br>Z3: a theorem prover, including both SAT/SMT solvers – <a href="https://rise4fun.com/z3/tutorial" target="_blank" rel="noopener">https://rise4fun.com/z3/tutorial</a> </p>
+<h2 id="Predicate-calculus-一阶逻辑"><a href="#Predicate-calculus-一阶逻辑" class="headerlink" title="Predicate calculus(一阶逻辑)"></a>Predicate calculus(一阶逻辑)</h2><p><strong>Key ingredients</strong><br>Domain(universe) : non-empty set of individuals to reason about<br>&nbsp;<br>Constant : specific instances of individual(elements in domain); denoted as a,b,c<br>&nbsp;<br>Variables : symbols to represent individuals, variables x,y,z<br>&nbsp;<br>Quantifiers : (x is variable)</p>
+<ul>
+<li>∀x[…] = “forallx…” (universal quantifier)</li>
+<li>∃x[…] = ”thereexistsxsuchthat…” (existential quantifier)</li>
+</ul>
+<p>Predicates : a proposition evaluates to true and false</p>
+<p><strong>Predicate calculus examples</strong><br>Predicate symbols :<br>F(x) = x is fast<br>R(x) = x is red<br>P(x) = x is purple<br>&nbsp;<br>All cars are fast </p>
+<ul>
+<li>∀x[F(x)]</li>
+</ul>
+<p>All red cars are fast </p>
+<ul>
+<li>∀x[R(x)→F(x)]</li>
+</ul>
+<p>Some red cars are fast </p>
+<ul>
+<li>∃x[R(x)∧F(x)]</li>
+<li>not:∃x[R(x)→F(x)]</li>
+</ul>
+<p>There are no red cars </p>
+<ul>
+<li>¬∃x[R(x)]</li>
+<li>or:∀x[¬R(x)]</li>
+</ul>
+<p>No fast cars are purple</p>
+<ul>
+<li>¬∃x[F(x)∧P(x)]</li>
+<li>or:∀x[F(x)→¬P(x)]</li>
+</ul>
+<p>NOTE : ∃x[R(x)→F(x)] cannot be applied as we can find a counterexample where R(x) -&gt; F(x) is true but R(x) is false. it means there is some red cars which are fast but it is not red.</p>
+<p><strong>Scope</strong><br>def : in predicate calculus, we focus on the scope of a variable which is the scope of the quantifier that it is bound to.<br>&nbsp;<br>example : ∀x[F(x) → ¬P(x)].<br>the scope of x is F(x) → ¬P(x)<br>&nbsp;<br>example : ∀y[F(y) → ¬P(y)].<br>the scope of y is F(y) → ¬P(y)</p>
+<p><strong>Natural deduction</strong><br>in predicate calculus, we prove validity by applying natural deduction<br>&nbsp;<br>Inference rules :<br>1) ∀-introduction </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   φ(a)</span><br><span class="line">----------- ∀-introduction</span><br><span class="line"> ∀x [φ(x)]</span><br></pre></td></tr></table></figure>
+<p>NOTE : a needs to be a typical example of x. it means we know nothing else about a. to be more precise, φ(a) cannot be a premise.<br>&nbsp;<br>2) ∀-elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ∀x [φ(x)]</span><br><span class="line">----------- ∀-elimination</span><br><span class="line">   φ(a)</span><br></pre></td></tr></table></figure>
+<p>3) ∃-introduction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   φ(a) </span><br><span class="line">----------- ∃-introduction</span><br><span class="line"> ∃x [φ(x)]</span><br></pre></td></tr></table></figure>
+<p>4) ∃-elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ∃x [φ(x)]   φ(a)⊢C</span><br><span class="line">-------------------- ∃-elimination</span><br><span class="line">          C</span><br></pre></td></tr></table></figure>
+<p>NOTE : a needs to be typical example of x. it means a cannot appear in the conclusion C and cannot occur in any dependencies of C. a cannot be a premise.</p>
+<p><strong>Syntax</strong><br>term : either a variable x or a constant a<br>&nbsp;<br>well-formed Formula :<br>if P is a predicate symbol and t1, .., tn are terms then P(t1, .., tn) is a formula<br>if φ and ψ are formulas then ¬φ, φ∧ψ, φ∨ψ and φ→ψ are all formulas<br>if x is a variable and φ is a formula then ∀x[φ] and ∃x[φ] are formulas</p>
+<p><strong>Semantics</strong><br>We need to consider the domain which can be any non-empty set.<br>&nbsp;<br>an interpretation is a pair (D, I) where :</p>
+<ul>
+<li>D : domain</li>
+<li>I : the meaning of all predicates in terms of D</li>
+<li>it defines whether P(a1, .., an) is true or false</li>
+</ul>
+<p><strong>Validity and Satisfiability</strong><br>argument validity : an argument  A1,…,An : C is valid in predicate logic iff we can find a case where every interpreration of premise is true and so is the conclusion<br>&nbsp;<br>a formula φ is valid in PL iff φ is true for every possible domain/interpretation<br>a formula φ is satisfiable iff φ is true for some domain/interpretation<br>&nbsp;<br>NOTE : we will use natural deduction to check validity as domain can be infinite which make the truth table unable to be set up.<br>&nbsp;<br>Validity check :</p>
+<ul>
+<li>formula φ is valid iff ¬φ is unsatisfiable </li>
+<li>formula φ is invalid iff ¬φ is satisfiable</li>
+</ul>
+<p>example : ∀x[∀y[P(x)∧¬P(y)]] show the formula’s satisfiability</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1) negate : ¬ ∀x[∀y[P(x)∧¬P(y)]]</span><br><span class="line">2) we found when x = a and y = b</span><br><span class="line">    P(a) = true</span><br><span class="line">    P(b) = true</span><br><span class="line">    ¬ ∀x[∀y[P(x)∧¬P(y)]] = true</span><br><span class="line">   it is valid</span><br><span class="line">3) hence ∀x[∀y[P(x)∧¬P(y)]] is unsatisfiable</span><br><span class="line"></span><br><span class="line">--------------------------------------------</span><br><span class="line">1) construct truth table</span><br><span class="line">2) see if there is an interpretation makes it true</span><br></pre></td></tr></table></figure>
+<p><strong>Disproving</strong><br>to disprove an argument we need to find a counter-example :</p>
+<ol>
+<li>give the domain</li>
+<li>assign truth values for each constant</li>
+<li>if there is a case when premises are all true but conclusion is false</li>
+<li>then it is invalid</li>
+</ol>
+<p>example : ∃x[F(x)∨G(x)], ∃x[¬F(x)] : ∃x[G(x)]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">give the domain &#123;a, b&#125;    //as we have 2 xs</span><br><span class="line">F(a) = true   G(a) = false</span><br><span class="line">F(b) = false  G(b) = false</span><br><span class="line"></span><br><span class="line">assign the values we got F(a) ∨ G(a) = true</span><br><span class="line">assign the values we got ¬F(b) = true</span><br><span class="line"></span><br><span class="line">but the conclusion we got is false (a and b both false)</span><br></pre></td></tr></table></figure>
+<p><strong>Equivalence</strong><br>some useful equivalence relations :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">¬∃x[B] ≡ ∀x[¬B] </span><br><span class="line">¬∀x[B] ≡ ∃x[¬B]</span><br><span class="line"> ∃x[B] ≡ ¬∀x[¬B]</span><br><span class="line"> ∀x[B] ≡ ¬∃x[¬B]</span><br></pre></td></tr></table></figure>
+<p>De Morgans law also holds :<br>example : no fast cars are purple</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">¬∃x[F(x) ∧ P(x)] ≡ ∀x[F(x) → ¬P(x)]</span><br><span class="line">                 ≡ ∀x[¬(F(x) ∧ P(x))]</span><br><span class="line">                 ≡ ∀x[¬F(x) ∨ ¬P(x))]</span><br><span class="line">                 ≡ ∀x[F(x) → ¬P(x))]</span><br></pre></td></tr></table></figure>
+<p><strong>Relations</strong><br>an equivalence relation is :</p>
+<ul>
+<li>reflexive L(a,a)</li>
+<li>summetric L(a,b) -&gt; L(b,a)</li>
+<li>transitive L(a,b) L(b,c) -&gt; L(a,c)</li>
+</ul>
+<p><strong>Identity</strong><br>identity equivalence : x = y<br>non-equivalence : ¬(x = y)<br>&nbsp;<br>example :<br>John is the tallest person<br>given predicate symbol : T(x,y) meaning x is taller than y<br>given constant j = John</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">∀x[¬(x = j) -&gt; T(j,x)]</span><br></pre></td></tr></table></figure>
+<p>NOTE : ∀x[T(j,x)] is wrong because the domain is people while John cannot be taller than himself when x = j.<br>&nbsp;<br>example : Everybody except John and Chris loves Mary<br>given predicate symbol L(x,y) meaning x loves y<br>given constant j = John, c = Chris and m = Mary</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">∀x[¬(x = j, x = c) -&gt; L(x,m)]</span><br></pre></td></tr></table></figure>
+<p>Inference rules :<br>1) identity -introduction :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">------- =-introduction</span><br><span class="line"> a = a</span><br></pre></td></tr></table></figure>
+<p>2)identity -elimination :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = b  φ(a)</span><br><span class="line">----------- =-elmination</span><br><span class="line">   φ(b)</span><br></pre></td></tr></table></figure>
+<p><strong>Qunantities</strong><br>quantifiers are able to state quantities :</p>
+<ul>
+<li>0 : ¬∃x(Q(x))</li>
+<li>at least 1 : ∃x[Q(x)]</li>
+<li>at most 1 : ∀x[∀y[(Q(x) ∧ Q(y)) -&gt; (x = y)]]</li>
+<li>at least 2 : ∃x[∃y[(Q(x) ∧ Q(y)) ∧ ¬(x = y)]] …</li>
+<li>exactly 1 : ∃x[Q(X)] ∧ ∀x[∀y[Q(x) ∧ Q(y) -&gt; (x = y)]]</li>
+<li>all : ∀x</li>
+</ul>
+<p><strong>Definite descriptions</strong><br>def: refering to a specific individual without constant symbol<br>&nbsp;<br>example : the person who loves Mary also loves Chris</p>
+<h2 id="Proof-Strategies-II"><a href="#Proof-Strategies-II" class="headerlink" title="Proof Strategies II"></a>Proof Strategies II</h2><p><strong>Translating to Formal language</strong><br>When given sentences we may need to convert to formal languages in order to process a proof.<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>identify domain</li>
+<li>collect predicates(atomic propositions) from the sentences i.e. A(x); B(x); C(x)</li>
+<li>collect constant symbols a,b,c..</li>
+<li>convert each into (well-formed) formula with quantifiers</li>
+</ol>
+<p>NOTE :</p>
+<ol>
+<li>everyone : ∀</li>
+<li>someone : ∃</li>
+<li>at least x : ∃</li>
+<li>at most : ∀</li>
+<li>no less : ∀</li>
+<li>‘all’ with implication</li>
+<li>‘exist’ with and</li>
+</ol>
+<p><strong>Arguments without premises</strong><br>Collection of some tricky arguments :<br>: ∀x[∀y[L(x, y)] → L(x, x)]</p>
+<p><strong>Rules of Thumb</strong><br>if there is a premise with an existential quantifier and the conclusion is with implication, try use existential elimination</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-I"><span class="toc-number">1.</span> <span class="toc-text">Part I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Propositional-logic（命题逻辑）"><span class="toc-number">1.1.</span> <span class="toc-text">Propositional logic（命题逻辑）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Natural-Deduction"><span class="toc-number">1.2.</span> <span class="toc-text">Natural Deduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Semantics-truth-table"><span class="toc-number">1.3.</span> <span class="toc-text">Semantics, truth table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proof-strategies-I"><span class="toc-number">1.4.</span> <span class="toc-text">Proof strategies I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Equivalencies"><span class="toc-number">1.5.</span> <span class="toc-text">Equivalencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-form"><span class="toc-number">1.6.</span> <span class="toc-text">Normal form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resolution-归结原理"><span class="toc-number">1.7.</span> <span class="toc-text">Resolution(归结原理)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Predicate-calculus-一阶逻辑"><span class="toc-number">1.8.</span> <span class="toc-text">Predicate calculus(一阶逻辑)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proof-Strategies-II"><span class="toc-number">1.9.</span> <span class="toc-text">Proof Strategies II</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&text=Classical Logic"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&is_video=false&description=Classical Logic"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Classical Logic&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&title=Classical Logic"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/02/19/Logic_part1/&name=Classical Logic&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Wenye Jin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'jwy';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
