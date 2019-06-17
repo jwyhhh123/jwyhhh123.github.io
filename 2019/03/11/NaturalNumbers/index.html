@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="The natural numbers (N)Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn - 0 = nn - sm = p(n - m)n - pm">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-02T19:01:12.175Z">
+<meta property="og:updated_time" content="2019-06-17T17:11:24.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Numbers and Integers">
 <meta name="twitter:description" content="The natural numbers (N)Peano Axiom : 12340snpnsn = sm iff n = m  s : successor p : predecessor  Operation12345678n + 0 = nn + sm = s(n + m)n * 0 = 0n * sm = (n * m) + nn - 0 = nn - sm = p(n - m)n - pm">
@@ -58,7 +58,7 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/index.md">Home</a></li>
          
           <li><a href="/about/">About</a></li>
          
@@ -75,7 +75,7 @@
         <li><a class="icon" href="/2019/03/11/N&NP/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/03/11/Regular Languages/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/11/PropertiesofCode/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -179,7 +179,7 @@
 </ol>
 <h2 id="Integers-in-computers"><a href="#Integers-in-computers" class="headerlink" title="Integers in computers"></a>Integers in computers</h2><p>1 = 1 or -(2^32 - 1)<br>2 = 2 or -(2^32 - 3)<br>3 = 3 or -(2^32 - 3)<br>…<br>2^32 - 1 = 2^32 - 1 or -1<br>&nbsp;<br>example :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-(2^32 - 3) - (-(2^32 - 3))</span><br><span class="line">= 3 - 2</span><br><span class="line">= 3 + 2^32 -2</span><br><span class="line">= 2^32 + (3 - 2)</span><br><span class="line">= 2^32 + 1</span><br><span class="line">= 1</span><br></pre></td></tr></table></figure>
-<h2 id="Modulo-arithmetic"><a href="#Modulo-arithmetic" class="headerlink" title="Modulo arithmetic"></a>Modulo arithmetic</h2><p><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring （整数模 环）<br>&nbsp;<br>example : modulo 7</p>
+<h2 id="Modulo-arithmetic"><a href="#Modulo-arithmetic" class="headerlink" title="Modulo arithmetic"></a>Modulo arithmetic</h2><p><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring over m（整数模 环）<br>&nbsp;<br>example : modulo 7</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.. −14 ≡ −7 ≡ 0 ≡ 7  ≡ 14 ≡ ..</span><br><span class="line">.. −13 ≡ −6 ≡ 1 ≡ 8  ≡ 15 ≡ ..</span><br><span class="line">.. -12 ≡ -5 ≡ 2 ≡ 9  ≡ 16 ≡ ..</span><br><span class="line">.. -11 ≡ -4 ≡ 3 ≡ 10 ≡ 17 ≡ ..</span><br><span class="line">.. -10 ≡ -3 ≡ 4 ≡ 11 ≡ 18 ≡ ..</span><br><span class="line">..  -9 ≡ -2 ≡ 5 ≡ 12 ≡ 19 ≡ ..</span><br><span class="line">.. − 8 ≡ −1 ≡ 6 ≡ 13 ≡ 20 ≡ ..</span><br><span class="line"></span><br><span class="line">6^10 = (1)^10 = 1</span><br></pre></td></tr></table></figure>
 
   </div>
@@ -200,7 +200,7 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/index.md">Home</a></li>
          
           <li><a href="/about/">About</a></li>
          
@@ -250,7 +250,7 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/index.md">Home</a></li>
          
           <li><a href="/about/">About</a></li>
          
