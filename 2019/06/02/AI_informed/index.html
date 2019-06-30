@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Informed Searchdef : unlike uninformed searching algorithm, informed search carefully choose which node should be visited first in order to minimise the cost.&amp;nbsp;Heuristic functions(启发函数) : h(x) est">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-30T18:15:17.405Z">
+<meta property="og:updated_time" content="2019-06-30T19:09:54.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Informed Search">
 <meta name="twitter:description" content="Informed Searchdef : unlike uninformed searching algorithm, informed search carefully choose which node should be visited first in order to minimise the cost.&amp;nbsp;Heuristic functions(启发函数) : h(x) est">
@@ -72,10 +72,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/06/17/Git_1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/02/AI_SimulatedAnnealing/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/06/02/AI_knn/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/02/AI_swarm/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -102,7 +102,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Informed-Search"><span class="toc-number">1.</span> <span class="toc-text">Informed Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-star-Search"><span class="toc-number">2.</span> <span class="toc-text">A star Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acknowledgement"><span class="toc-number">3.</span> <span class="toc-text">Acknowledgement</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Informed-Search"><span class="toc-number">1.</span> <span class="toc-text">Informed Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-star-Search"><span class="toc-number">2.</span> <span class="toc-text">A star Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consistency"><span class="toc-number">3.</span> <span class="toc-text">Consistency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acknowledgement"><span class="toc-number">4.</span> <span class="toc-text">Acknowledgement</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -128,7 +128,7 @@
       
         <time datetime="2019-06-02T18:58:17.000Z" itemprop="datePublished">2019-06-02</time>
         
-        (Updated: <time datetime="2019-06-30T18:15:17.405Z" itemprop="dateModified">2019-06-30</time>)
+        (Updated: <time datetime="2019-06-30T19:09:54.503Z" itemprop="dateModified">2019-06-30</time>)
         
       
     </div>
@@ -154,14 +154,9 @@
 <li>visit the node with the smallest f(node) first</li>
 <li>placing its children in the frontier</li>
 <li>do not place children in the frontier if they are already visited or are in the frontier.</li>
-<li>when found the goal node :<ul>
-<li>if the path to the goal node is the smallest, stop the algorihtm</li>
-<li>if the other path may lead to a smaller cost, continue 4.</li>
-</ul>
-</li>
+<li>when found the goal node, stop.</li>
 </ol>
-<p>When the heuristic function is consistent, A star is complete and admissible.</p>
-<p>Time.compx : usually exponential<br>Space.compx : usually exponential</p>
+<h2 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h2><p>Heuristic is said to be consistent if h(n) satisfies : h(n) ≤ cost(n, n’) + h(n’) for every edge (n, n’) of the graph. In such a case, A star is complete and admissible.<br>&nbsp;<br>Time.compx : usually exponential<br>Space.compx : usually exponential</p>
 <h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/38595351" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595351</a></p>
 
   </div>
@@ -194,7 +189,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Informed-Search"><span class="toc-number">1.</span> <span class="toc-text">Informed Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-star-Search"><span class="toc-number">2.</span> <span class="toc-text">A star Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acknowledgement"><span class="toc-number">3.</span> <span class="toc-text">Acknowledgement</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Informed-Search"><span class="toc-number">1.</span> <span class="toc-text">Informed Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-star-Search"><span class="toc-number">2.</span> <span class="toc-text">A star Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consistency"><span class="toc-number">3.</span> <span class="toc-text">Consistency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acknowledgement"><span class="toc-number">4.</span> <span class="toc-text">Acknowledgement</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

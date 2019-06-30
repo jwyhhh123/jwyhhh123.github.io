@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="AlgorithmAlgorithem : 12345678910111213141516171819202122232425262728public void main(String args[]) &amp;#123;    current_solution = generate initial candidate solution randomly.    T = Tmax;    Tmin = 0">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-17T19:03:17.133Z">
+<meta property="og:updated_time" content="2019-06-30T18:20:03.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simulated annealing">
 <meta name="twitter:description" content="AlgorithmAlgorithem : 12345678910111213141516171819202122232425262728public void main(String args[]) &amp;#123;    current_solution = generate initial candidate solution randomly.    T = Tmax;    Tmin = 0">
@@ -72,10 +72,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/06/02/AI_ReinforcementLearning/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/02/AI_NaiveBayes/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/06/02/AI_HillClimb/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/02/AI_informed/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -102,7 +102,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">1.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applications"><span class="toc-number">2.</span> <span class="toc-text">Applications</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advantages-amp-amp-Disadvantages"><span class="toc-number">3.</span> <span class="toc-text">Advantages &amp;&amp; Disadvantages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Src"><span class="toc-number">4.</span> <span class="toc-text">Code Src</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">1.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applications"><span class="toc-number">2.</span> <span class="toc-text">Applications</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advantages-amp-amp-Disadvantages"><span class="toc-number">3.</span> <span class="toc-text">Advantages &amp;&amp; Disadvantages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acknowledgement"><span class="toc-number">4.</span> <span class="toc-text">Acknowledgement</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -128,7 +128,7 @@
       
         <time datetime="2019-06-02T18:58:17.000Z" itemprop="datePublished">2019-06-02</time>
         
-        (Updated: <time datetime="2019-06-17T19:03:17.133Z" itemprop="dateModified">2019-06-17</time>)
+        (Updated: <time datetime="2019-06-30T18:20:03.513Z" itemprop="dateModified">2019-06-30</time>)
         
       
     </div>
@@ -163,7 +163,7 @@
 </ul>
 <h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Very-Large-Scale-Integration (VLSI)<br>&nbsp;<br>Design variables :<br>candidate solution z = {(x1, y1), (x2, y2) … (xN, YN)}<br>where N is the number of transistors in the set<br>&nbsp;<br>Search space : all coordinates on the chip<br>&nbsp;<br>Objective function :<br>f(z) = a <em> chip area + w </em> wiring length + c * congestion + penalty<br>where a + w + c = 1<br>penalty : related to x and y which should be in the coordinate system.<br>&nbsp;<br>Constraints :<br>for all x and y, x and y are in the coordinate system.<br>&nbsp;<br>To be minimised</p>
 <h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : this algorithm is able to jump out from a local optimum to a global optimum</p>
-<h2 id="Code-Src"><a href="#Code-Src" class="headerlink" title="Code Src"></a>Code Src</h2><p><a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
 
   </div>
 </article>
@@ -195,7 +195,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">1.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applications"><span class="toc-number">2.</span> <span class="toc-text">Applications</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advantages-amp-amp-Disadvantages"><span class="toc-number">3.</span> <span class="toc-text">Advantages &amp;&amp; Disadvantages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Src"><span class="toc-number">4.</span> <span class="toc-text">Code Src</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">1.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applications"><span class="toc-number">2.</span> <span class="toc-text">Applications</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advantages-amp-amp-Disadvantages"><span class="toc-number">3.</span> <span class="toc-text">Advantages &amp;&amp; Disadvantages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Acknowledgement"><span class="toc-number">4.</span> <span class="toc-text">Acknowledgement</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
