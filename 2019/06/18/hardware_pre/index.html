@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。 不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。 当下的计算机结构基于冯 诺伊曼结构(CPU和存储器分离)。但这种结构并不完美。本质上计算机是对Turing Machin">
+    <meta name="description" content="如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。 不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。 当下的计算机结构基于冯·诺伊曼结构(CPU和存储器分离)，但这种结构并不完美。本质上计算机是对Turing Machin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何理解计算机?">
 <meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/06/18/hardware_pre/index.html">
 <meta property="og:site_name" content="WY J">
-<meta property="og:description" content="如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。 不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。 当下的计算机结构基于冯 诺伊曼结构(CPU和存储器分离)。但这种结构并不完美。本质上计算机是对Turing Machin">
+<meta property="og:description" content="如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。 不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。 当下的计算机结构基于冯·诺伊曼结构(CPU和存储器分离)，但这种结构并不完美。本质上计算机是对Turing Machin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-22T00:32:55.400Z">
+<meta property="og:updated_time" content="2019-07-01T01:14:38.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解计算机?">
-<meta name="twitter:description" content="如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。 不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。 当下的计算机结构基于冯 诺伊曼结构(CPU和存储器分离)。但这种结构并不完美。本质上计算机是对Turing Machin">
+<meta name="twitter:description" content="如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。 不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。 当下的计算机结构基于冯·诺伊曼结构(CPU和存储器分离)，但这种结构并不完美。本质上计算机是对Turing Machin">
     
     
         
@@ -126,7 +126,7 @@
       
         <time datetime="2019-06-18T14:16:37.000Z" itemprop="datePublished">2019-06-18</time>
         
-        (Updated: <time datetime="2019-06-22T00:32:55.400Z" itemprop="dateModified">2019-06-22</time>)
+        (Updated: <time datetime="2019-07-01T01:14:38.306Z" itemprop="dateModified">2019-07-01</time>)
         
       
     </div>
@@ -148,12 +148,22 @@
   <div class="content" itemprop="articleBody">
     <p>如果直观地理解计算机，它是按照人类大脑模型重新设计出来的机器。它拥有内存(Memory)，图像显示(graphic)，逻辑门(logic gates),以及Input/Output设备。</p>
 <p>不要认为只有个人电脑，台式机属于计算机。计算机包括手机，ipad，ps4以及其他智能设备。</p>
-<p>当下的计算机结构基于冯 诺伊曼结构(CPU和存储器分离)。但这种结构并不完美。本质上计算机是对Turing Machine的简单实现，因为它只关心输入和输出。</p>
+<p>当下的计算机结构基于冯·诺伊曼结构(CPU和存储器分离)，但这种结构并不完美。本质上计算机是对Turing Machine的简单实现，因为它只关心输入和输出。</p>
 <p>Von Neumann architecture :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> ___________        ______________</span><br><span class="line">|           | ---&gt; |  Arithmetic  | &lt;----- input</span><br><span class="line">|  Storage  |      |     Logic    |</span><br><span class="line">|___________| &lt;--- |     Unit     | -----&gt; output</span><br><span class="line">  |     ∧          |______________|</span><br><span class="line">  |     |              |     ∧</span><br><span class="line">  ∨     |              ∨     |</span><br><span class="line"> _________________________________</span><br><span class="line">|                                 |</span><br><span class="line">|          Control Unit           |</span><br><span class="line">|_________________________________|</span><br></pre></td></tr></table></figure>
 <p>Turing Machine :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">          ___________</span><br><span class="line">Input -&gt; | Black Box | -&gt; Output</span><br><span class="line">          -----------</span><br></pre></td></tr></table></figure>
-<p>计算机中央处理器<br>芯片组<br>内存<br> RAM<br> ROM : BIOS (Basic Input Output System)<br> Cache<br>外存<br>网卡<br>I/O设备<br>Power Supply</p>
+<p>当下，计算机主要包括以下硬件 :</p>
+<ul>
+<li>计算机中央处理器</li>
+<li>芯片组</li>
+<li>内存 [comment] : RAM, ROM : BIOS (Basic Input Output System), Cache</li>
+<li>外存</li>
+<li>网卡</li>
+<li>Input/Output设备</li>
+<li>电源设备</li>
+</ul>
+<p>值得注意地是，我们需要将这些硬件连接到一起从而组成一个完整的计算机，这将需要大量的电路去实现它们之间的连接。所以，我们使用主板(motherboard)将这些元件接合。</p>
 <!--
 
  Acknowledgement :
