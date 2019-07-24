@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Regular expressionsWe use regular expression to solve :  Matching problem Searching problem  Σ   : set of charactersΣ^* : set of all wordsL   : natural languages(passwords, email addresses) NOTE : L ⊆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Languages and Automaton">
+<meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/index.html">
+<meta property="og:site_name" content="WY J">
+<meta property="og:description" content="Regular expressionsWe use regular expression to solve :  Matching problem Searching problem  Σ   : set of charactersΣ^* : set of all wordsL   : natural languages(passwords, email addresses) NOTE : L ⊆">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-17T19:00:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Regular Languages and Automaton">
+<meta name="twitter:description" content="Regular expressionsWe use regular expression to solve :  Matching problem Searching problem  Σ   : set of charactersΣ^* : set of all wordsL   : natural languages(passwords, email addresses) NOTE : L ⊆">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Regular Languages and Automaton</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/03/11/[MATH]09_Functions/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&text=Regular Languages and Automaton"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&is_video=false&description=Regular Languages and Automaton"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Regular Languages and Automaton&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&name=Regular Languages and Automaton&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Regular-expressions"><span class="toc-number">1.</span> <span class="toc-text">Regular expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Regular-and-Irregular-language"><span class="toc-number">2.</span> <span class="toc-text">Regular and Irregular language</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decidability"><span class="toc-number">3.</span> <span class="toc-text">Decidability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introducing-Automata"><span class="toc-number">4.</span> <span class="toc-text">Introducing Automata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-deterministic-Automata"><span class="toc-number">5.</span> <span class="toc-text">Non-deterministic Automata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ε-transitions"><span class="toc-number">6.</span> <span class="toc-text">ε-transitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-add-sets"><span class="toc-number">7.</span> <span class="toc-text">How to add sets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kleene’s-Theorem"><span class="toc-number">8.</span> <span class="toc-text">Kleene’s Theorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Kleene’s-Theorem"><span class="toc-number">9.</span> <span class="toc-text">Using Kleene’s Theorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Language-equivalence"><span class="toc-number">10.</span> <span class="toc-text">Language equivalence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Minimizing-a-DFA"><span class="toc-number">11.</span> <span class="toc-text">Minimizing a DFA</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Regular Languages and Automaton
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">WY J</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-03-11T00:55:52.000Z" itemprop="datePublished">2019-03-11</time>
+        
+        (Updated: <time datetime="2019-06-17T19:00:28.000Z" itemprop="dateModified">2019-06-17</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Regular-expressions"><a href="#Regular-expressions" class="headerlink" title="Regular expressions"></a>Regular expressions</h2><p>We use regular expression to solve :</p>
+<ol>
+<li>Matching problem</li>
+<li>Searching problem</li>
+</ol>
+<p>Σ   : set of characters<br>Σ^* : set of all words<br>L   : natural languages(passwords, email addresses)</p>
+<p>NOTE : L ⊆ Σ^*</p>
+<p>Notations :</p>
+<ul>
+<li>The regexp a accepts ONLY the word a.</li>
+<li>The regexp b accepts ONLY the word b.</li>
+<li>ε accepts ONLY the empty word ε.</li>
+<li>if E and F are regexps, then EF is a concatenation of words to be accepted.</li>
+<li>if E and F are regexps, then E|F accepts either E or F.</li>
+<li>E^* accepts words of E occuring zero or more times.</li>
+<li>The regexp Nothing does not accept any word.</li>
+</ul>
+<p>laws of precedence : <code>E|F</code> &lt; <code>EF</code> &lt; <code>()^*</code></p>
+<h2 id="Regular-and-Irregular-language"><a href="#Regular-and-Irregular-language" class="headerlink" title="Regular and Irregular language"></a>Regular and Irregular language</h2><p>Regular languages   :<br>any language L ⊆ Σ^* that can be represented in this way is said to be regular.<br>&nbsp;<br>Irregular languages :<br>we can ONLY show the existence as there are uncountablly many languages and countablly many regexps.</p>
+<p>NOTES :</p>
+<ul>
+<li>the complement of a regular language is still regular : a regexp that NOT accepts <code>c(bb|ca)^*</code></li>
+<li>the intersection of two regular languages is still regular : a regexp accepts both <code>cc(bb|ca)^*</code> and c<code>(bbbb|cca)^*</code></li>
+</ul>
+<h2 id="Decidability"><a href="#Decidability" class="headerlink" title="Decidability"></a>Decidability</h2><p>def              : problem is decidable when there is some program that can determine the answer of yes and no.<br>&nbsp;<br>to show a problem is decidable, introduce a program to do so.<br>to show a problem is undecidable : reduce to the halting problem or, use rice’s theorem.</p>
+<p>examples :</p>
+<ol>
+<li>there is a program <code>boolean equality(String E, String F){}</code> that can determine if two regexps are equal, so this problem is decidable.</li>
+<li>for every regexp E, matching problem for E is decidable.</li>
+</ol>
+<p>NOTE : After determining whether a qns can be solved, we can find Efficiency of the qns.</p>
+<h2 id="Introducing-Automata"><a href="#Introducing-Automata" class="headerlink" title="Introducing Automata"></a>Introducing Automata</h2><p>DFA(Deterministic Finite Automaton) : </p>
+<ul>
+<li>a finite set X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ: X × Σ → X</li>
+<li>a set of accepting states Acc ∈ X; Acc is indicated by a double ring.</li>
+</ul>
+<p>“Deterministic” because the initial state and the result of each transition are specified. “Finite” because the set of states is finite.</p>
+<p>partial DFA : δ is a partial function, meaning there are undefined transitions </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[]-----&gt; [error state] &lt;-----[]</span><br><span class="line">    a     |       ∧       b</span><br><span class="line">          |_______|</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
+<ul>
+<li>DFA includes all possible transitions</li>
+<li>partial DFA includes NOT all transitions.</li>
+<li>turn a partial DFA into DFA: add an error state which takes all undefined transitions and transitions to itself.</li>
+</ul>
+<h2 id="Non-deterministic-Automata"><a href="#Non-deterministic-Automata" class="headerlink" title="Non-deterministic Automata"></a>Non-deterministic Automata</h2><p>difference:</p>
+<ol>
+<li>NDFA can have 1 and more initial states</li>
+<li>from a given state, when a (or any other character) is the input, there can be several possible next states. Example : 1 -&gt; a -&gt; 2 and 1 -&gt; a -&gt; 3</li>
+</ol>
+<p>Determinization : </p>
+<ol>
+<li>The initial “state” is the set of all the initial states of the NDFA. </li>
+<li>A “state” is accepting when it contains an accepting state of the NDFA. </li>
+<li>From a given “state”, when we input a character, we collect all the possible next states.</li>
+</ol>
+<h2 id="ε-transitions"><a href="#ε-transitions" class="headerlink" title="ε-transitions"></a>ε-transitions</h2><p>def   : transition taking empty word ε<br>εNDFA : nondeterministic automaton with ε-transitions<br>&nbsp;<br>Convert from εNDFA to NDFA : </p>
+<ol>
+<li>remove ε-transitions </li>
+<li>add new transitions</li>
+<li>determine new Acc</li>
+<li>remove non reachable states</li>
+</ol>
+<p>NOTE : during converting, we do not remove any reachable state.</p>
+<h2 id="How-to-add-sets"><a href="#How-to-add-sets" class="headerlink" title="How to add sets"></a>How to add sets</h2><p>sum A + B : </p>
+<ul>
+<li>inl a = (0, a)</li>
+<li>inr b = (1, b)</li>
+</ul>
+<p>example : {3,5,6} + {3,6,9,28}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;3,5,6&#125; + &#123;3,6,9,28&#125; = &#123;inl 3,inl 5,inl 6,inr 3,inr 6,inr 9,inr 28&#125;</span><br><span class="line">                     = &#123;(0, 3), (0, 5), (0, 6), (1, 3), (1, 6), (1, 9), (1, 28)&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE : A + 1 where 1 represents a singleton set. We use this to convert a partial DFA into DFA by adding and error state.</p>
+<h2 id="Kleene’s-Theorem"><a href="#Kleene’s-Theorem" class="headerlink" title="Kleene’s Theorem"></a>Kleene’s Theorem</h2><p>theorem 1 : for a language L ⊆ Σ^* , the following are equivalent:</p>
+<ol>
+<li>L is regular</li>
+<li>The matching problem for L can be solved by a DFA.</li>
+</ol>
+<p>We ONLY study from 1. to 2. : if L is regular, then there is a DFA that can solve the matching problem for L.<br>&nbsp;<br>We are now, based on Kleene’s theorem, able to convert a regular language L into DFA by:</p>
+<ol>
+<li>transfer L into εNDFA</li>
+<li>transfer εNDFA into NDFA (remove ε-transition)</li>
+<li>transfer NDFA to DFA (determinize)</li>
+</ol>
+<h2 id="Using-Kleene’s-Theorem"><a href="#Using-Kleene’s-Theorem" class="headerlink" title="Using Kleene’s Theorem"></a>Using Kleene’s Theorem</h2><p>Although regexps and finite automata are equivalent, it’s often easier to operate on automata. For example, we asked: is the complement of a regular language regular? That’s not obvious for regexps, but using (total) DFAs, it is clear: just replace ac- cepting states by non-accepting ones and vice versa.<br>&nbsp;<br>This implies that the intersection of regular languages L and M is regular, because M ∩ L = L ∪ M . But we can also see this directly. Say L is recognized by automaton A, and M by B. If you’re given a word w and you want to know whether it’s in L ∩ M, passing through w just once, you can simultaneously keep track of where you are in A and where you are in B, as you read through w. So your state at any time is a pair (x, y), where x is a state in A, and y is a state in B. This immediately gives you a DFA.<br>&nbsp;<br>For example, say you want a DFA for the password question in the last handout. You can make a DFA that determines whether a word has at least 3 characters, and another that determines whether it has a letter, and another that determines whether it has a digit. Then we want a DFA for the intersection of these languages. Kleene’s theorem tells us that there must be some corresponding regexp.</p>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>def : According to Kleene’s Theorem, we can check if two regexps are language equivalent by checking their DFAs.<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>starting from the initial states of each automaton</li>
+<li>traverse from each word from Σ. This will give us a tree structure</li>
+<li>stop when given state is visited.</li>
+<li>if language inequivalent, then there is the case when one reaches an accepting state and the other reaches a rejecting state.</li>
+<li>if language equivalent, then all frontiers are stopped.</li>
+</ol>
+<h2 id="Minimizing-a-DFA"><a href="#Minimizing-a-DFA" class="headerlink" title="Minimizing a DFA"></a>Minimizing a DFA</h2><p>def : make a DFA as small as possible<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>remove unreachable states.</li>
+<li>identify states that are language equivalent.</li>
+</ol>
+<p>To prove a DFA is minimal :</p>
+<ol>
+<li>show each state is reachable, by giving a word that covers all states. (1. is satisfied)</li>
+<li>show that any two distinct states are not language equivalent, by giving a word that one accepts and the other rejects. (2. is satisfied)</li>
+</ol>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Regular-expressions"><span class="toc-number">1.</span> <span class="toc-text">Regular expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Regular-and-Irregular-language"><span class="toc-number">2.</span> <span class="toc-text">Regular and Irregular language</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decidability"><span class="toc-number">3.</span> <span class="toc-text">Decidability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introducing-Automata"><span class="toc-number">4.</span> <span class="toc-text">Introducing Automata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-deterministic-Automata"><span class="toc-number">5.</span> <span class="toc-text">Non-deterministic Automata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ε-transitions"><span class="toc-number">6.</span> <span class="toc-text">ε-transitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-add-sets"><span class="toc-number">7.</span> <span class="toc-text">How to add sets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kleene’s-Theorem"><span class="toc-number">8.</span> <span class="toc-text">Kleene’s Theorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Kleene’s-Theorem"><span class="toc-number">9.</span> <span class="toc-text">Using Kleene’s Theorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Language-equivalence"><span class="toc-number">10.</span> <span class="toc-text">Language equivalence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Minimizing-a-DFA"><span class="toc-number">11.</span> <span class="toc-text">Minimizing a DFA</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&text=Regular Languages and Automaton"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&is_video=false&description=Regular Languages and Automaton"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Regular Languages and Automaton&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&title=Regular Languages and Automaton"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/[MATH]10_Regular Languages/&name=Regular Languages and Automaton&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Wenye Jin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'jwy';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
