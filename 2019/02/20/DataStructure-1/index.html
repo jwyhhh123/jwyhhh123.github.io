@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="Basic Data StructureArraysAn ordered collection of items : a[i]i : the index of item. Loops and invariantsGeneral for-loop structure : 123for(INITIALIZATION; CONDITION; UPDATE) &amp;#123;    REPEATED PROC">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-17T19:04:03.000Z">
+<meta property="og:updated_time" content="2019-07-24T22:16:33.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Theory part">
 <meta name="twitter:description" content="Basic Data StructureArraysAn ordered collection of items : a[i]i : the index of item. Loops and invariantsGeneral for-loop structure : 123for(INITIALIZATION; CONDITION; UPDATE) &amp;#123;    REPEATED PROC">
@@ -72,10 +72,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/03/11/[MATH]15_TuringMachine/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/20/DataStructure-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/02/20/DataStructure-2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/19/[AI]12_lejos/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -128,7 +128,7 @@
       
         <time datetime="2019-02-20T00:40:49.000Z" itemprop="datePublished">2019-02-20</time>
         
-        (Updated: <time datetime="2019-06-17T19:04:03.000Z" itemprop="dateModified">2019-06-17</time>)
+        (Updated: <time datetime="2019-07-24T22:16:33.455Z" itemprop="dateModified">2019-07-24</time>)
         
       
     </div>
@@ -256,7 +256,7 @@
 <p>It is easier to see the growth of each class of complexity by doubling the size :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f(n)            | If the size of the problem doubles then f(n) will be </span><br><span class="line">----------------|-----------------------------------------------------------</span><br><span class="line">  1             |  the same,                                 f(2n) = f(n)</span><br><span class="line">log2(log2(n))   |  almost the same,                          log2(log2(2n)) = log2 (log2 (n) + 1)</span><br><span class="line">log2(n)         |  more by 1=log2(2),                        f(2n) = f(n)+1</span><br><span class="line">  n             |  twice as big as before,                   f(2n) = 2 * f(n)</span><br><span class="line">nlog2n          |  a bit more than twice as big as before,   2nlog2 (2n) = 2(nlog2 n) + 2n</span><br><span class="line"> n^2            |  four times as big as before,              f(2n) = 4 * f(n)</span><br><span class="line"> n^3            |  eight times as big as before,             f(2n) = 8 * f(n)</span><br><span class="line"> 2^n            |  the square of what it was before,         f(2n) = (f(n))^2</span><br></pre></td></tr></table></figure>
 <p>NOTE : computation - exact and approximate</p>
-<h2 id="Trees-general-binary-quad-trees"><a href="#Trees-general-binary-quad-trees" class="headerlink" title="Trees - general, binary, quad trees"></a>Trees - general, binary, quad trees</h2><p><strong>General definition of trees</strong><br>def : a tree contains nodes and edges. Nodes are usually labelled by a search keys(int, String…).<br>&nbsp;<br>Terminology :</p>
+<h2 id="Trees-general-binary-quad-trees"><a href="#Trees-general-binary-quad-trees" class="headerlink" title="Trees - general, binary, quad trees"></a>Trees - general, binary, quad trees</h2><p><strong>General definition of trees</strong><br>def : a tree contains nodes and edges. Nodes are usually labelled by a search keys(int, String…).<br>&nbsp;<br>Terminology: </p>
 <ol>
 <li>root</li>
 <li>parent (ancestor)</li>
@@ -267,42 +267,42 @@
 <li>height of the tree</li>
 <li>size of the tree</li>
 </ol>
-<p>Representation :</p>
+<p>Representation: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    [8]   ......... root (parent of 3 and 11)   - level 0</span><br><span class="line">  /     \</span><br><span class="line">[3]     [11]  ..... children (of 8)             - level 1</span><br><span class="line">   \    /   \</span><br><span class="line">  [6] [9]  [14] ... leaves                      - level 2</span><br><span class="line">        </span><br><span class="line">height = 2</span><br><span class="line">size = 6</span><br></pre></td></tr></table></figure>
-<p><strong>Quad-trees</strong><br>def : a quadtree is a tree in which each-leaf is labelled by a value and each non-leaf node has exactly four children.<br>&nbsp;<br>inductive definition :</p>
+<p><strong>Quad-trees</strong><br>def: a quadtree is a tree in which each-leaf is labelled by a value and each non-leaf node has exactly four children.<br>&nbsp;<br>inductive definition :</p>
 <ol>
 <li>a root node with a value, or</li>
 <li>a root node without a value but with four quad tree children : lu,ll,ru,rl</li>
 </ol>
-<p>NOTE : here we use “root node” because every sub-tree is itself a quadtree<br>&NBSP;<br>Presentation :</p>
+<p>NOTE: here we use “root node” because every sub-tree is itself a quadtree<br>&NBSP;<br>Presentation: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> __________________________</span><br><span class="line">|            |             |</span><br><span class="line">|            |             |</span><br><span class="line">|     0      |     10      |</span><br><span class="line">|            |             |</span><br><span class="line">|            |             |</span><br><span class="line">|------------|-------------|</span><br><span class="line">|     | 1| 3 |             |</span><br><span class="line">| 30  |--|---|             |</span><br><span class="line">|-----|------|     12      |</span><br><span class="line">| 40  |  2   |             |</span><br><span class="line">|_____|______|_____________|</span><br></pre></td></tr></table></figure>
-<p>Primitive operations :<br>1) Constructors</p>
+<p>Primitive operations:<br>1) Constructors</p>
 <ul>
-<li>baseQT(value) : return a single node with label value</li>
-<li>makeQT(luqt,ruqt,llqt,rlqt) : return a quadtree with four nodes</li>
+<li>baseQT(value): return a single node with label value</li>
+<li>makeQT(luqt,ruqt,llqt,rlqt): return a quadtree with four nodes</li>
 </ul>
 <p>2) Selectors</p>
 <ul>
-<li>lu(qt) : return the left-upper quadtree</li>
-<li>ll(qt) : return the left-lower quadtree</li>
-<li>ru(qt) : return the right-upper quadtree</li>
-<li>rl(qt) : return the right-lower quadtree</li>
+<li>lu(qt): return the left-upper quadtree</li>
+<li>ll(qt): return the left-lower quadtree</li>
+<li>ru(qt): return the right-upper quadtree</li>
+<li>rl(qt): return the right-lower quadtree</li>
 </ul>
 <p>3) Condition</p>
 <ul>
-<li>isValue(qt) : return true if quadtree qt is a single node</li>
+<li>isValue(qt): return true if quadtree qt is a single node</li>
 </ul>
-<p>Rotate a quadtree by 180 degrees:</p>
+<p>Rotate a quadtree by 180 degrees: </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rotate(qt)&#123;</span><br><span class="line">    <span class="keyword">if</span>(isValue(qt))</span><br><span class="line">        <span class="keyword">return</span> qt;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> makeQT(rotate(rl(qt)), rotate(ll(qt)),</span><br><span class="line">                      rotate(ru(qt)), rotate(lu(qt)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>NOTE : similar idea arises from averaging the values of qt.</p>
-<p><strong>Binary trees</strong><br>def : a binary tree is a tree in which each node has at most two children.<br>&nbsp;<br>inductive def :</p>
+<p>NOTE: similar idea arises from averaging the values of qt.</p>
+<p><strong>Binary trees</strong><br>def: a binary tree is a tree in which each node has at most two children.<br>&nbsp;<br>inductive def:</p>
 <ol>
 <li>the empty tree EmptyTree, or</li>
 <li>it consists of a node and two binary trees(left subtree and right subtree)</li>
 </ol>
-<p>Primitive operations :<br>1) Constructors</p>
+<p>Primitive operations:<br>1) Constructors</p>
 <ul>
-<li>EmptyTree : return an empty tree</li>
+<li>EmptyTree: return an empty tree</li>
 <li>makeTree(v,l,r) : return a binary tree with a root node and two sub-trees</li>
 </ul>
 <p>2) derived Constructor</p>
@@ -311,15 +311,15 @@
 </ul>
 <p>3) Selectors</p>
 <ul>
-<li>root(t) : return the value of the root node of t</li>
-<li>left(t) : return the left sub-tree</li>
-<li>right(t) : return the right sub-tree</li>
+<li>root(t): return the value of the root node of t</li>
+<li>left(t): return the left sub-tree</li>
+<li>right(t): return the right sub-tree</li>
 </ul>
 <p>4) Condition</p>
 <ul>
-<li>isEmpty(t) : return true if the binary tree t is the EmptyTree</li>
+<li>isEmpty(t): return true if the binary tree t is the EmptyTree</li>
 </ul>
-<p>NOTE : This primitive operators are what expected to be covered when we created a tree class.<br>&nbsp;<br>Abstract data types : without focusing on the details of the data or the implementation, it is a general principle of how to construct and destruct the data type.</p>
+<p>NOTE: This primitive operators are what expected to be covered when we created a tree class.<br>&nbsp;<br>Abstract data types : without focusing on the details of the data or the implementation, it is a general principle of how to construct and destruct the data type.</p>
 <p><strong>Height of a binary tree</strong><br>Many tree-based applications, for example searching, take as many steps as the height of the tree, so minimizing the height minimizes the time needed to perform those operations.<br>&nbsp;<br>size   : s(h) = 2^(h+1) - 1<br>height : h(s) = log2(s+1) - 1 = log2(s)<br>&nbsp;<br>NOTE : height is computed as log2(n) when the tree is balanced.</p>
 <p><strong>Size of a binary tree</strong><br>size of a tree :</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">size(t)&#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(t))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> + size(left(t)) + size(right(t)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
