@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="WY J">
 <meta property="og:description" content="This part of the module is fully based on LEGO EV3. To be more precise, we are using lejos API to acheive some functionalities on a robot. I have uploaded source code of some contents to my github. Ro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-17T19:02:53.000Z">
+<meta property="og:updated_time" content="2019-07-25T00:59:10.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lejos-based programming">
 <meta name="twitter:description" content="This part of the module is fully based on LEGO EV3. To be more precise, we are using lejos API to acheive some functionalities on a robot. I have uploaded source code of some contents to my github. Ro">
@@ -75,7 +75,7 @@
         <li><a class="icon" href="/2019/02/20/DataStructure-1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/02/19/[Logic]01_propositionalLogic/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/02/19/Logic_p1_predicateCalculus/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -102,7 +102,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-sensors"><span class="toc-number">1.</span> <span class="toc-text">Robot sensors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-Motors"><span class="toc-number">2.</span> <span class="toc-text">Robot Motors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arbitrator"><span class="toc-number">3.</span> <span class="toc-text">Arbitrator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navigator"><span class="toc-number">4.</span> <span class="toc-text">Navigator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapping"><span class="toc-number">5.</span> <span class="toc-text">Mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-wifi-connection-amp-assignment"><span class="toc-number">6.</span> <span class="toc-text">Robot wifi connection &amp; assignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication-between-Server-and-Client"><span class="toc-number">7.</span> <span class="toc-text">Communication between Server and Client</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-sensors"><span class="toc-number">1.</span> <span class="toc-text">Robot sensors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-Motors"><span class="toc-number">2.</span> <span class="toc-text">Robot Motors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arbitrator"><span class="toc-number">3.</span> <span class="toc-text">Arbitrator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navigator"><span class="toc-number">4.</span> <span class="toc-text">Navigator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapping"><span class="toc-number">5.</span> <span class="toc-text">Mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-wifi-connection"><span class="toc-number">6.</span> <span class="toc-text">Robot wifi connection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication-between-Server-and-Client"><span class="toc-number">7.</span> <span class="toc-text">Communication between Server and Client</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -128,7 +128,7 @@
       
         <time datetime="2019-02-19T00:06:14.000Z" itemprop="datePublished">2019-02-19</time>
         
-        (Updated: <time datetime="2019-06-17T19:02:53.000Z" itemprop="dateModified">2019-06-17</time>)
+        (Updated: <time datetime="2019-07-25T00:59:10.454Z" itemprop="dateModified">2019-07-25</time>)
         
       
     </div>
@@ -149,26 +149,26 @@
 
   <div class="content" itemprop="articleBody">
     <p>This part of the module is fully based on LEGO EV3. To be more precise, we are using lejos API to acheive some functionalities on a robot. I have uploaded source code of some contents to my github.</p>
-<h2 id="Robot-sensors"><a href="#Robot-sensors" class="headerlink" title="Robot sensors"></a>Robot sensors</h2><p><strong>Color sensor</strong><br>def :<br>.ColorIDMode<br>.ColorRGBMode<br>.AmbientMode</p>
-<p><strong>Ir_Sensor</strong><br>低精度测距</p>
-<p><strong>Ultra_sonic_Sensor</strong><br>高精度测距</p>
-<p><strong>Touch_Sensor</strong></p>
-<h2 id="Robot-Motors"><a href="#Robot-Motors" class="headerlink" title="Robot Motors"></a>Robot Motors</h2><p><strong>Large Motors</strong></p>
-<p><strong>pilot</strong></p>
-<h2 id="Arbitrator"><a href="#Arbitrator" class="headerlink" title="Arbitrator"></a>Arbitrator</h2><p>.Behavior</p>
-<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p>.Waypoint<br>.Heading</p>
+<h2 id="Robot-sensors"><a href="#Robot-sensors" class="headerlink" title="Robot sensors"></a>Robot sensors</h2><p><strong>Color sensor</strong><br>def: sensor used to determine color.<br>.ColorIDMode<br>.ColorRGBMode<br>.AmbientMode</p>
+<p><strong>Ir_Sensor</strong><br>Low precision</p>
+<p><strong>Ultra_sonic_Sensor</strong><br>High precision</p>
+<p><strong>Touch_Sensor</strong><br>def: sensor used to detect pressure. if pressed, return 1 else 0.</p>
+<h2 id="Robot-Motors"><a href="#Robot-Motors" class="headerlink" title="Robot Motors"></a>Robot Motors</h2><p><strong>Large Motors</strong><br>def: api used to control left and right wheels.</p>
+<p><strong>pilot</strong><br>def : api used to control robot to move. Compared to Motor api, this has great advantage when we control the robot turning.</p>
+<h2 id="Arbitrator"><a href="#Arbitrator" class="headerlink" title="Arbitrator"></a>Arbitrator</h2><p>Behavior</p>
+<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p><strong>Waypoint</strong><br>def: </p>
+<p><strong>Heading</strong><br>def: </p>
 <h2 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h2><ul>
 <li>Topology map</li>
 <li>metric map</li>
 <li>cell-based map</li>
 <li>occupancy grids: 0-empty; 1-occupied</li>
 </ul>
-<h2 id="Robot-wifi-connection-amp-assignment"><a href="#Robot-wifi-connection-amp-assignment" class="headerlink" title="Robot wifi connection &amp; assignment"></a>Robot wifi connection &amp; assignment</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> host A                 host B</span><br><span class="line">    |                     |</span><br><span class="line">server socket &lt;-------&gt; socket</span><br><span class="line">            |        </span><br><span class="line">          port1234</span><br><span class="line">  (server: robot)         (client: PC)</span><br></pre></td></tr></table></figure>
-<h2 id="Communication-between-Server-and-Client"><a href="#Communication-between-Server-and-Client" class="headerlink" title="Communication between Server and Client"></a>Communication between Server and Client</h2><p>Server :</p>
+<h2 id="Robot-wifi-connection"><a href="#Robot-wifi-connection" class="headerlink" title="Robot wifi connection"></a>Robot wifi connection</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> host A                 host B</span><br><span class="line">    |                     |</span><br><span class="line">server socket &lt;-------&gt; socket</span><br><span class="line">            |        </span><br><span class="line">          port1234</span><br><span class="line">  (server: robot)         (client: PC)</span><br></pre></td></tr></table></figure>
+<h2 id="Communication-between-Server-and-Client"><a href="#Communication-between-Server-and-Client" class="headerlink" title="Communication between Server and Client"></a>Communication between Server and Client</h2><p>Server: robot as the server sending infomation to Eclipse console.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.net.*;</span><br><span class="line">import lejos.hardware.Battery;</span><br><span class="line"></span><br><span class="line">public class EV3Server &#123;</span><br><span class="line">    public static final int port = 1234;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        ServerSocket server = new ServerSocket(port);</span><br><span class="line">        System.out.println(&quot;Awaiting client..&quot;);</span><br><span class="line">        Socket client = server.accept();</span><br><span class="line">        System.out.println(&quot;CONNECTED&quot;);</span><br><span class="line">        OutputStream out = client.getOutputStream();</span><br><span class="line">        DataOutputStream dOut = new DataOutputStream(out);</span><br><span class="line">        dOut.writeUTF(&quot;Battery: &quot; + Battery.getVoltage());</span><br><span class="line">        dOut.flush();</span><br><span class="line">        server.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Client :</p>
+<p>Client: PC as the client receiving infomation from EV3.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.net.*;</span><br><span class="line"></span><br><span class="line">public class PCClient &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        String ip = &quot;10.0.1.1&quot;; // BT</span><br><span class="line">        if(args.length &gt; 0)ip = args[0];</span><br><span class="line">        Socket sock = new Socket(ip, EV3Server.port);</span><br><span class="line">        System.out.println(&quot;Connected&quot;);</span><br><span class="line">        InputStream in = sock.getInputStream();</span><br><span class="line">        DataInputStream dIn = new DataInputStream(in);</span><br><span class="line">        String str = dIn.readUTF();</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        sock.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>boolean isGoal(State_goal)</p>
 
   </div>
 </article>
@@ -200,7 +200,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-sensors"><span class="toc-number">1.</span> <span class="toc-text">Robot sensors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-Motors"><span class="toc-number">2.</span> <span class="toc-text">Robot Motors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arbitrator"><span class="toc-number">3.</span> <span class="toc-text">Arbitrator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navigator"><span class="toc-number">4.</span> <span class="toc-text">Navigator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapping"><span class="toc-number">5.</span> <span class="toc-text">Mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-wifi-connection-amp-assignment"><span class="toc-number">6.</span> <span class="toc-text">Robot wifi connection &amp; assignment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication-between-Server-and-Client"><span class="toc-number">7.</span> <span class="toc-text">Communication between Server and Client</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-sensors"><span class="toc-number">1.</span> <span class="toc-text">Robot sensors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-Motors"><span class="toc-number">2.</span> <span class="toc-text">Robot Motors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arbitrator"><span class="toc-number">3.</span> <span class="toc-text">Arbitrator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navigator"><span class="toc-number">4.</span> <span class="toc-text">Navigator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapping"><span class="toc-number">5.</span> <span class="toc-text">Mapping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Robot-wifi-connection"><span class="toc-number">6.</span> <span class="toc-text">Robot wifi connection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication-between-Server-and-Client"><span class="toc-number">7.</span> <span class="toc-text">Communication between Server and Client</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
