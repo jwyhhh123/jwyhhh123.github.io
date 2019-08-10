@@ -95,7 +95,7 @@
 
 		<i class="fa fa-heart blink-slow"></i>
 
-		for(Terminated(), int x) end of coding
+		for(Terminated(), int x) end of coding;
 
 </div>    
 
@@ -103,72 +103,6 @@
 		<div class="mypage">
 		
 		<!-- title and entry -->
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]09_Functions/">Functions</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Set-theoretic-definition-of-functions"><a href="#Set-theoretic-definition-of-functions" class="headerlink" title="Set-theoretic definition of functions"></a>Set-theoretic definition of functions</h2><p>From a binary relation R ⊆ A × B, we define a function by satisfying two conditions:</p>
-<ol>
-<li>Definedness : ∀a ∈ A ∃b ∈ B. (a, b) ∈ R</li>
-<li>Single valueness : ∀a ∈ A ∀b,b’ ∈ B. (a,b) ∈ R ∧ (a,b’) ∈ R -&gt; b = b’</li>
-</ol>
-<p>Notations (given A x B) :</p>
-<ul>
-<li>domain    : A</li>
-<li>co-domain : B</li>
-<li>range : elements in B which are the results of F(A)</li>
-</ul>
-<p>Representation : f : A -&gt; B<br>&nbsp;<br>Partial function : a relation that is single valued but not defined for all inputs.</p>
-<h2 id="The-many-faces-of-functions"><a href="#The-many-faces-of-functions" class="headerlink" title="The many faces of functions"></a>The many faces of functions</h2><p>in computer science, we would represent a function like :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; B</span><br><span class="line">          |_________|</span><br></pre></td></tr></table></figure>
-<h2 id="Injectivity"><a href="#Injectivity" class="headerlink" title="Injectivity"></a>Injectivity</h2><p>def : a function that will give different output for different input is called injective (one-to-one).<br>&nbsp;<br>formula : ∀a,a’ ∈ A. f(a) = f(a’) -&gt; a = a’<br>&nbsp;<br>Error correcting codes : coding theory where input “data vectors” are mapped to much longer “code words” (which are again tuples of bits). If this is done cleverly, then small errors that change the code word (for example, during transmission over long distances) can be discovered and repaired.<br>&nbsp;<br>NOTES : non-injective examples are mps and jpeg.<br>&nbsp;<br>Pigeon hole principle : if domain A has more elements than co-domain B, then no function from A to B can be injective.<br>&nbsp;<br>Theorem 11 : </p>
-<ol>
-<li>if card(A) &lt;= card(B) and card(B) &lt;= card(A) then card(A) = card(B)</li>
-<li>for any two sets A and B, we have card(A) &lt;= card(B) or card(B) &lt;= card(A)</li>
-</ol>
-<p>NOTE : see the picture above, it is injective.</p>
-<h2 id="Surjectivity"><a href="#Surjectivity" class="headerlink" title="Surjectivity"></a>Surjectivity</h2><p>def : a function for which the range is all of the co-domain is called surjective (onto).<br>&nbsp;<br>formula : ∀b ∈ B ∃a ∈ A. f(a) = b<br>&nbsp;<br>Theorem 12 : assuming A != 0/, card(A) &lt;= card(B) iff there is surjective function from B to A.<br>&nbsp;<br>examples : project a 3-D object to 2-D picture.</p>
-<p>NOTE : 两个不同的input可以映射到同一个output上。每一个input和每一个output都需要被覆盖。</p>
-<h2 id="Bijectivity"><a href="#Bijectivity" class="headerlink" title="Bijectivity"></a>Bijectivity</h2><p>def : a combination of injectivity and surjectivity.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
-<p>example : cryptographic encodings</p>
-<h2 id="Forward-image-and-pre-image-inverse-function"><a href="#Forward-image-and-pre-image-inverse-function" class="headerlink" title="Forward image and pre-image; inverse function"></a>Forward image and pre-image; inverse function</h2><p>Given X is a subset of domain A, and Y a subset of co-domain B.</p>
-<ul>
-<li>forward image(像) : <code>f[X] = {b ∈ B | ∃a ∈ X. f(a) = b}</code><br>-pre-image(原像) : <code>f^-1[Y] = {a ∈ A | f(a) ∈ Y}</code></li>
-</ul>
-<p>NOTE : y = x^2 是某种程度上的双射。f(-2)的像是4，然而f^-1[4]的原像是{2,-2}。</p>
-<h2 id="Composing-functions"><a href="#Composing-functions" class="headerlink" title="Composing functions"></a>Composing functions</h2><p>Representation of composing function f : A -&gt; B with g : B -&gt; C</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; |    g    | ------&gt; C</span><br><span class="line">          |_________|         |_________|</span><br></pre></td></tr></table></figure>
-<p>in math and computer science we represent this from right to left : g◦f</p>
-<h2 id="Counting-functions"><a href="#Counting-functions" class="headerlink" title="Counting functions"></a>Counting functions</h2><p>if A is a finite set with n members, B is a finite set with m members.<br>number of injective functions from A to B : m &gt; n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                                               m!</span><br><span class="line">m x (m - 1) x (m - 2) x ... x (m - n + 1) = --------</span><br><span class="line">                                            (m - n)!</span><br></pre></td></tr></table></figure>
-<p>NOTE : if n &gt; m then result of this is 0 as there must have (m-k) = 0 (pigeon hole principle)<br>&nbsp;<br>number of bijective functions from A to B : m = n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m x (m - 1) x (m - 2) x ... x 1 = m!</span><br></pre></td></tr></table></figure>
-<p>NOTE : the number of functions N -&gt; N is uncountable.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]09_Functions/#more" class="btn btn-default more">Read More</a>
-</div>
-
 		
 			
 	
@@ -307,6 +241,59 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+<ol>
+<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
+<li>suppose a, b ∈ L and m &lt; n.</li>
+<li>let Xm be the state reached when we start from p and read a^m.</li>
+<li>let Xn be the state reached when we start from p and read a^n. </li>
+<li>if starting from Xm and reading b^m then we reach a Acc.</li>
+<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
+<li>So Xn != Xm</li>
+<li>So there are infinitely many states.</li>
+<li>we raise a contradiction. Hence the language is not regular.</li>
+</ol>
+<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
+<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
+<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
+<p>we can construct a derivation tree :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
+<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
+<p>this grammar is ambiguous :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
 		</h3>
 		</div>
@@ -351,73 +338,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]03_Guassian Elimination/">System of Linear Equations - Guassian Elimination</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Another-example-of-a-field"><a href="#Another-example-of-a-field" class="headerlink" title="Another example of a field"></a>Another example of a field</h2><p>Complex field C consists of pair(a, b) of real numbers.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b)+(c,d) = (a+c,b+d) </span><br><span class="line">(a,b)×(c,d) = (ac−bd,ad+bc)</span><br></pre></td></tr></table></figure>
-<p>NOTE: (a,b) can be writtern in a + ib where i · i = -1.</p>
-<p>// (a, b)(x, y) = (1, 0)</p>
-<blockquote>
-<p>complex numbers are used in Robot rotations.</p>
-</blockquote>
-<h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Base Case    : ax = b. This can be solved directly: x = b/a.<br>General Case : There are n equations and each contains n unknowns.</p>
-<ol>
-<li>use the first equation to eliminate the first unknown in the remaing (n-1) equations.</li>
-<li>apply step 1 recursively.</li>
-<li>determine the last unknown and bring it back recursively.</li>
-<li>reduce each question to base case.</li>
-</ol>
-<p>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line"> 3 * x1 − 2 * x2 + 7 * x3 =   5 </span><br><span class="line">−2 * x1 −     x2 −     x3 =   0</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">          9 * x2 − 5 * x3 = -22</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                  32 * x3 = -32</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                       x3 = - 1</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1    </span><br><span class="line"></span><br><span class="line">                       x1 =   2</span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1</span><br></pre></td></tr></table></figure>
-<h2 id="A-more-compact-notation"><a href="#A-more-compact-notation" class="headerlink" title="A more compact notation"></a>A more compact notation</h2><p>The unknowns themselves have no effect on GE, all computation happens on the numeric coefficients.<br>&nbsp;<br>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|  -3   1  -2  | -5  |    // (second equation) +- (first equation)</span><br><span class="line">\   3  -1   7  | 10  /</span><br><span class="line"> </span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the first unknown in the remaining 2.</span><br><span class="line">\   0  -2   2  |  7  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the second unknown in the remaining 1.</span><br><span class="line">\   0   0   5  |  5  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     </span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  | -2  \</span><br><span class="line">|   0   2   0  | -5  |     // bring it back to all equations</span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  |  -2 \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   6   0   0  |  1  \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   1   0   0  |  1/6\</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  /</span><br></pre></td></tr></table></figure>
-<p>NOTES: </p>
-<ul>
-<li>Do not miss minus signs.</li>
-<li>Avoid fractions until the very end.</li>
-<li>Only follow the rules of GE.</li>
-<li>After solving the answers, CHECK your answers.</li>
-<li>Echelon form(梯队形式) // as shown in the example</li>
-</ul>
-<h2 id="Special-cases"><a href="#Special-cases" class="headerlink" title="Special cases"></a>Special cases</h2><p>Case 1 : contradictory equation<br>result : no solution</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 7 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 1 /</span><br></pre></td></tr></table></figure>
-<p>Case 2 : irrelevant equation<br>result : can be chosen freely</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 6 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 0 /</span><br><span class="line"></span><br><span class="line">x1 = 3 + 2 * x2     // x1 can be chosen freely then x2 = (x1 - 3)/2</span><br><span class="line">x2 = chosen freely</span><br></pre></td></tr></table></figure>
-<p>Case 3   : cannot use the first equation to eliminate.<br>solution : swap</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  0  -2   3 |  3 \</span><br><span class="line">|  2  -1  -2 |  6 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br><span class="line"></span><br><span class="line">/  2  -1  -2 |  6 \</span><br><span class="line">|  0  -2   3 |  3 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br></pre></td></tr></table></figure>
-<p>Case 4   : cannot use any of the equations to solve the first unknown.<br>solution : General Gaussian Elimination<br>answer   : the first unkown can be chosen freely</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  1  -2   1 |  3 \</span><br><span class="line">|  2  -4  -2 |  7 |</span><br><span class="line">\ -5  -10 -1 | -9 /</span><br><span class="line"></span><br><span class="line">/  1  -2  -1 |  3 \</span><br><span class="line">|  0   0  -4 |  1 |</span><br><span class="line">\  0   0   4 |  6 /</span><br></pre></td></tr></table></figure>
-<h2 id="General-Gaussian-Elimination"><a href="#General-Gaussian-Elimination" class="headerlink" title="General Gaussian Elimination"></a>General Gaussian Elimination</h2><p>Base Case 1 : Only one unknown is left over but there may be more than one equation. In this case we solve each equation independently and compare the answers; if they agree, then that is what we return. If they disagree, then the system has no solution (which we can communicate back by raising an exception).<br>Base Case 2 : Only one equation is left over but more than one unknown appears in it (let’s say m many). In this case m − 1 unknowns can be chosen freely and the other one is computed from the equation. (It does not matter which m − 1 unknowns are chosen and which is computed.)</p>
-<h2 id="Systems-of-linear-equations-over-other-fields"><a href="#Systems-of-linear-equations-over-other-fields" class="headerlink" title="Systems of linear equations over other fields"></a>Systems of linear equations over other fields</h2><p>example in GF(2) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ | 0   1        * | 0   1    </span><br><span class="line">----------       ----------</span><br><span class="line">0 | 0   1        0 | 0   0</span><br><span class="line">  |                |</span><br><span class="line">1 | 1   0        1 | 0   1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Gaussian elimination can be employed for systems of equations over an arbitrary field</p>
-</blockquote>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]03_Guassian Elimination/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -662,7 +582,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]07_Bases/">Bases</a>
+			<a href="/2019/03/11/[MATH]03_Guassian Elimination/">System of Linear Equations - Guassian Elimination</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -676,46 +596,116 @@
   <div class="row">
 	
 	
-		<h2 id="Digital-images"><a href="#Digital-images" class="headerlink" title="Digital images"></a>Digital images</h2><p>Digital images are composed of pixels. For a grey-scale picture, every pixel is represented by a one-byte number, from 0 (for black) to 255 (for white). In a colour picture, every pixel is represented by three one-byte numbers, one each for red, green, and blue.<br>&nbsp;<br>NOTE : we are thinking of a grey-scale picture from now on.</p>
-<h2 id="Generating-an-algebra-of-vectors"><a href="#Generating-an-algebra-of-vectors" class="headerlink" title="Generating an algebra of vectors"></a>Generating an algebra of vectors</h2><p>Linear combination : ∑ a(i) <em> v(i) = a1 </em> v1 + … + a(n) * v(n)<br>&nbsp;<br>the collection of all linear combinations is itself an algebra of vectors :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">∑ a(i) * v(i) + ∑ b(i) * v(i) = ∑ (a(i) + b(i)) * v(i)</span><br><span class="line"></span><br><span class="line">k * ∑ a(i) * v(i) = ∑ (a * k)(i) * v(i)</span><br></pre></td></tr></table></figure>
-<h2 id="Linear-independence"><a href="#Linear-independence" class="headerlink" title="Linear independence"></a>Linear independence</h2><p>Theorem 3 : A collection v1, …, vn of vectors is linear independent if ∑ a(i) * v(i) = 0 happens only in case a1 = a2 = a3 = … = an = 0.</p>
+		<h2 id="Another-example-of-a-field"><a href="#Another-example-of-a-field" class="headerlink" title="Another example of a field"></a>Another example of a field</h2><p>Complex field C consists of pair(a, b) of real numbers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b)+(c,d) = (a+c,b+d) </span><br><span class="line">(a,b)×(c,d) = (ac−bd,ad+bc)</span><br></pre></td></tr></table></figure>
+<p>NOTE: (a,b) can be writtern in a + ib where i · i = -1.</p>
+<p>// (a, b)(x, y) = (1, 0)</p>
+<blockquote>
+<p>complex numbers are used in Robot rotations.</p>
+</blockquote>
+<h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Base Case    : ax = b. This can be solved directly: x = b/a.<br>General Case : There are n equations and each contains n unknowns.</p>
+<ol>
+<li>use the first equation to eliminate the first unknown in the remaing (n-1) equations.</li>
+<li>apply step 1 recursively.</li>
+<li>determine the last unknown and bring it back recursively.</li>
+<li>reduce each question to base case.</li>
+</ol>
+<p>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line"> 3 * x1 − 2 * x2 + 7 * x3 =   5 </span><br><span class="line">−2 * x1 −     x2 −     x3 =   0</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">          9 * x2 − 5 * x3 = -22</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                  32 * x3 = -32</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                       x3 = - 1</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1    </span><br><span class="line"></span><br><span class="line">                       x1 =   2</span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1</span><br></pre></td></tr></table></figure>
+<h2 id="A-more-compact-notation"><a href="#A-more-compact-notation" class="headerlink" title="A more compact notation"></a>A more compact notation</h2><p>The unknowns themselves have no effect on GE, all computation happens on the numeric coefficients.<br>&nbsp;<br>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|  -3   1  -2  | -5  |    // (second equation) +- (first equation)</span><br><span class="line">\   3  -1   7  | 10  /</span><br><span class="line"> </span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the first unknown in the remaining 2.</span><br><span class="line">\   0  -2   2  |  7  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the second unknown in the remaining 1.</span><br><span class="line">\   0   0   5  |  5  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     </span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  | -2  \</span><br><span class="line">|   0   2   0  | -5  |     // bring it back to all equations</span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  |  -2 \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   6   0   0  |  1  \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   1   0   0  |  1/6\</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  /</span><br></pre></td></tr></table></figure>
+<p>NOTES: </p>
 <ul>
-<li>the null vector 0 does not occur in the list v1, …, vn (because thi doesn’t generate anything)</li>
-<li>none of the v(i) is a linear combination of the rest. (because this would be aredundancy)</li>
+<li>Do not miss minus signs.</li>
+<li>Avoid fractions until the very end.</li>
+<li>Only follow the rules of GE.</li>
+<li>After solving the answers, CHECK your answers.</li>
+<li>Echelon form(梯队形式) // as shown in the example</li>
 </ul>
-<p>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1)  Suppose the collection is not linear independent</span><br><span class="line"> </span><br><span class="line">    case 1 : null vector occurs among v1...vn</span><br><span class="line">             &gt; assume v1 = 0, so we have 1 * v1 + ∑(i = 2) 0 * v(i) = 0.</span><br><span class="line">             &gt; But not all coefficients a(n) are zero.</span><br><span class="line">             &gt; we conclude a contradiction.</span><br><span class="line">    case 2 : there is a vector which can form a linear comnbination of the rest vectors.</span><br><span class="line">             &gt; assume v1 = ∑(i = 2) a(i) * v(i), so we have 1 * v2 - ∑(i = 2) a(i) * v(i) = 0</span><br><span class="line">             &gt; similarly this contradicts the given criterion.</span><br><span class="line"></span><br><span class="line">    ------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">2)  Suppose ∑ a(i) * v(i) = 0 and a1 != 0.</span><br><span class="line"></span><br><span class="line">    case 1 : n = 1</span><br><span class="line">             &gt; so we have a1 * v1 = 0</span><br><span class="line">             &gt; as a1 != 0, so v1 is a null vector.</span><br><span class="line">             &gt; the first condition is violated.</span><br><span class="line">    case 2 : n &gt; 1</span><br><span class="line">             &gt; we write v1 as : v1 = (-a1^(-1)) * ∑(i = 2) a(i) * v(i)</span><br><span class="line">             &gt; v1 is a linear combination of the rest vectors.</span><br><span class="line">             &gt; the second condition is violated.</span><br></pre></td></tr></table></figure>
-<p>if every element of an algebra V of vectors can be written as a linear combination of vector v1 … vn and if the v(i) of v1 … vn are linearly independent, then we call v1 … vn a basis of V.<br>&nbsp;<br>NOTE : for example, in an image, we convert every 8 * 8 pixels to jpeg-format.<br>&NBSP;<br>example: 4-tuples of rational numbers.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/ p1 \</span><br><span class="line">| p2 | = p1 * v1 + p2 * v2 + p3 * v3 + p4 * v4</span><br><span class="line">| p3 |</span><br><span class="line">\ p4 /</span><br><span class="line">             </span><br><span class="line">basis : v1 = (1, 0, 0, 0)</span><br><span class="line">        v2 = (0, 1, 0, 0)</span><br><span class="line">        v3 = (0, 0, 1, 0)</span><br><span class="line">        v4 = (0, 0, 0, 1)</span><br><span class="line">           </span><br><span class="line">they are linearly independent :</span><br><span class="line">        &gt; a1 * v1 + a2 * v2 + a3 * v3 + a4 * v4 = 0 = (0, 0, 0, 0)</span><br><span class="line">        &gt; as v(i) are not null vectors, and none of them is a LC of the rest</span><br><span class="line">        &gt; a1 = a2 = a3 = a4 = 0</span><br><span class="line">        &gt; they are linearly independent</span><br></pre></td></tr></table></figure>
-<h2 id="Coordinates"><a href="#Coordinates" class="headerlink" title="Coordinates"></a>Coordinates</h2><p>vector generator by using the basis: w = ∑ a(i) <em> v(i)<br><code>a1, ..., an</code>: the coordinates of w<br>&nbsp;<br>A question     : Are the coordinates for w are uniquely determined.<br>representation : ? w = ∑ a(i) </em> v(i) = ∑ b(i) * v(i)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Assume : w = ∑ (b(i) - a(i)) * v(i) = 0   // according to theorem 3</span><br><span class="line"></span><br><span class="line">so we have b(i) - a(i) = 0 for all i</span><br><span class="line"></span><br><span class="line">then,</span><br><span class="line">b(i) = a(i)</span><br></pre></td></tr></table></figure>
-<h2 id="Dimension-of-an-algebra-of-vectors"><a href="#Dimension-of-an-algebra-of-vectors" class="headerlink" title="Dimension of an algebra of vectors"></a>Dimension of an algebra of vectors</h2><p>Theorem 4 : Any two bases of an algebra of vectors have the same number of elements.</p>
-<h2 id="All-bases-are-not-equal"><a href="#All-bases-are-not-equal" class="headerlink" title="All bases are not equal"></a>All bases are not equal</h2><p>example: a 2 × 2 digital (grey-scale) image, written as a four-tuple. In the standard basis, we can read off the coordinates immediately:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10 \        /1\        /0\        /0\        /0\</span><br><span class="line">| 10 | = 10 * |0| + 10 * |1| + 11 * |0| + 12 * |0|</span><br><span class="line">| 11 |        |0|        |0|        |1|        |0|</span><br><span class="line">\ 12 /        \0/        \0/        \0/        \1/</span><br></pre></td></tr></table></figure>
-<p>the same image can be represented by a different basis.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10 \          /1\         / 1\         / 1\         / 1\</span><br><span class="line">| 10 | = 43/4 * |1| - 3/4 * | 1| + 1/4 * |-1| + 1/4 * |-1|</span><br><span class="line">| 11 |          |1|         |-1|         |-1|         | 1|</span><br><span class="line">\ 12 /          \1/         \-1/         \ 1/         \-1/</span><br></pre></td></tr></table></figure>
-<p>convert to a jpeg-compression where we ONLY leave the bigger coordinates.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10   \          /1\         / 1\</span><br><span class="line">| 10   | = 43/4 * |1| - 3/4 * | 1|</span><br><span class="line">| 11.5 |          |1|         |-1|</span><br><span class="line">\ 12.5 /          \1/         \-1/</span><br></pre></td></tr></table></figure>
-<h2 id="Orthogonal-and-orthonormal-bases"><a href="#Orthogonal-and-orthonormal-bases" class="headerlink" title="Orthogonal and orthonormal bases"></a>Orthogonal and orthonormal bases</h2><p>NOTE :The coordinates of an image in jpeg-format comes from orthogonality.<br>&nbsp;<br>Assume that we have a basis v1 .. vn where any two vectors are orthogonal to each other, that is :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v(i), v(j)&gt; = 0 whenever i != j</span><br></pre></td></tr></table></figure>
-<p>then coordinate of a(k) is computed :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        &lt;w, v(k)&gt;</span><br><span class="line">a(k) = ------------</span><br><span class="line">       &lt;v(k), v(k)&gt;</span><br></pre></td></tr></table></figure>
-<p>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;w, v(k)&gt; = &lt;∑ a(i) * v(i), v(k)&gt;</span><br><span class="line">          =  ∑ a(i) * &lt;v(i),v(k)&gt;   // law of inner product</span><br><span class="line">          = a(k) * &lt;v(k), v(k)&gt;</span><br></pre></td></tr></table></figure>
-<p>positive definiteness of the inner product:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;v, v&gt;  &gt;=  0</span><br><span class="line">&lt;v, v&gt;   =  0  -&gt;  v = 0</span><br></pre></td></tr></table></figure>
-<p>NOTES :</p>
-<ul>
-<li>If the computations are done on a computer, then we can make sure that each basis vector has length 1, so the division by &lt;v(k), v(k)&gt; is not necessary when computing the coordinates. In that case one speaks of an orthonormal basis. If computations are done on paper, then it’s better to avoid the surds and stay with the merely orthogonal basis. </li>
-<li>this formula can be checked by using above example (10, 10, 11, 12).</li>
-</ul>
-<h2 id="Creating-an-orthogonal-basis"><a href="#Creating-an-orthogonal-basis" class="headerlink" title="Creating an orthogonal basis"></a>Creating an orthogonal basis</h2><p>if we have a positive definte inner product then we can turn any basis into an orthogonal one<br>We define a new basis w1 … wn :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">w1 = v1</span><br><span class="line">          &lt;w1, v2&gt;</span><br><span class="line">w2 = v2 - -------- * w1</span><br><span class="line">          &lt;w1, w1&gt;</span><br><span class="line"></span><br><span class="line"> .</span><br><span class="line"> .</span><br><span class="line"> .</span><br><span class="line">                        &lt;wi, vn&gt;</span><br><span class="line">wn = vn - ∑(n-1; i = 1) -------- * wi</span><br><span class="line">                        &lt;wi, wi&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Special-cases"><a href="#Special-cases" class="headerlink" title="Special cases"></a>Special cases</h2><p>Case 1 : contradictory equation<br>result : no solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 7 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 1 /</span><br></pre></td></tr></table></figure>
+<p>Case 2 : irrelevant equation<br>result : can be chosen freely</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 6 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 0 /</span><br><span class="line"></span><br><span class="line">x1 = 3 + 2 * x2     // x1 can be chosen freely then x2 = (x1 - 3)/2</span><br><span class="line">x2 = chosen freely</span><br></pre></td></tr></table></figure>
+<p>Case 3   : cannot use the first equation to eliminate.<br>solution : swap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  0  -2   3 |  3 \</span><br><span class="line">|  2  -1  -2 |  6 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br><span class="line"></span><br><span class="line">/  2  -1  -2 |  6 \</span><br><span class="line">|  0  -2   3 |  3 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br></pre></td></tr></table></figure>
+<p>Case 4   : cannot use any of the equations to solve the first unknown.<br>solution : General Gaussian Elimination<br>answer   : the first unkown can be chosen freely</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  1  -2   1 |  3 \</span><br><span class="line">|  2  -4  -2 |  7 |</span><br><span class="line">\ -5  -10 -1 | -9 /</span><br><span class="line"></span><br><span class="line">/  1  -2  -1 |  3 \</span><br><span class="line">|  0   0  -4 |  1 |</span><br><span class="line">\  0   0   4 |  6 /</span><br></pre></td></tr></table></figure>
+<h2 id="General-Gaussian-Elimination"><a href="#General-Gaussian-Elimination" class="headerlink" title="General Gaussian Elimination"></a>General Gaussian Elimination</h2><p>Base Case 1 : Only one unknown is left over but there may be more than one equation. In this case we solve each equation independently and compare the answers; if they agree, then that is what we return. If they disagree, then the system has no solution (which we can communicate back by raising an exception).<br>Base Case 2 : Only one equation is left over but more than one unknown appears in it (let’s say m many). In this case m − 1 unknowns can be chosen freely and the other one is computed from the equation. (It does not matter which m − 1 unknowns are chosen and which is computed.)</p>
+<h2 id="Systems-of-linear-equations-over-other-fields"><a href="#Systems-of-linear-equations-over-other-fields" class="headerlink" title="Systems of linear equations over other fields"></a>Systems of linear equations over other fields</h2><p>example in GF(2) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ | 0   1        * | 0   1    </span><br><span class="line">----------       ----------</span><br><span class="line">0 | 0   1        0 | 0   0</span><br><span class="line">  |                |</span><br><span class="line">1 | 1   0        1 | 0   1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Gaussian elimination can be employed for systems of equations over an arbitrary field</p>
+</blockquote>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]07_Bases/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]03_Guassian Elimination/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]09_Functions/">Functions</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Set-theoretic-definition-of-functions"><a href="#Set-theoretic-definition-of-functions" class="headerlink" title="Set-theoretic definition of functions"></a>Set-theoretic definition of functions</h2><p>From a binary relation R ⊆ A × B, we define a function by satisfying two conditions:</p>
+<ol>
+<li>Definedness : ∀a ∈ A ∃b ∈ B. (a, b) ∈ R</li>
+<li>Single valueness : ∀a ∈ A ∀b,b’ ∈ B. (a,b) ∈ R ∧ (a,b’) ∈ R -&gt; b = b’</li>
+</ol>
+<p>Notations (given A x B) :</p>
+<ul>
+<li>domain    : A</li>
+<li>co-domain : B</li>
+<li>range : elements in B which are the results of F(A)</li>
+</ul>
+<p>Representation : f : A -&gt; B<br>&nbsp;<br>Partial function : a relation that is single valued but not defined for all inputs.</p>
+<h2 id="The-many-faces-of-functions"><a href="#The-many-faces-of-functions" class="headerlink" title="The many faces of functions"></a>The many faces of functions</h2><p>in computer science, we would represent a function like :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; B</span><br><span class="line">          |_________|</span><br></pre></td></tr></table></figure>
+<h2 id="Injectivity"><a href="#Injectivity" class="headerlink" title="Injectivity"></a>Injectivity</h2><p>def : a function that will give different output for different input is called injective (one-to-one).<br>&nbsp;<br>formula : ∀a,a’ ∈ A. f(a) = f(a’) -&gt; a = a’<br>&nbsp;<br>Error correcting codes : coding theory where input “data vectors” are mapped to much longer “code words” (which are again tuples of bits). If this is done cleverly, then small errors that change the code word (for example, during transmission over long distances) can be discovered and repaired.<br>&nbsp;<br>NOTES : non-injective examples are mps and jpeg.<br>&nbsp;<br>Pigeon hole principle : if domain A has more elements than co-domain B, then no function from A to B can be injective.<br>&nbsp;<br>Theorem 11 : </p>
+<ol>
+<li>if card(A) &lt;= card(B) and card(B) &lt;= card(A) then card(A) = card(B)</li>
+<li>for any two sets A and B, we have card(A) &lt;= card(B) or card(B) &lt;= card(A)</li>
+</ol>
+<p>NOTE : see the picture above, it is injective.</p>
+<h2 id="Surjectivity"><a href="#Surjectivity" class="headerlink" title="Surjectivity"></a>Surjectivity</h2><p>def : a function for which the range is all of the co-domain is called surjective (onto).<br>&nbsp;<br>formula : ∀b ∈ B ∃a ∈ A. f(a) = b<br>&nbsp;<br>Theorem 12 : assuming A != 0/, card(A) &lt;= card(B) iff there is surjective function from B to A.<br>&nbsp;<br>examples : project a 3-D object to 2-D picture.</p>
+<p>NOTE : 两个不同的input可以映射到同一个output上。每一个input和每一个output都需要被覆盖。</p>
+<h2 id="Bijectivity"><a href="#Bijectivity" class="headerlink" title="Bijectivity"></a>Bijectivity</h2><p>def : a combination of injectivity and surjectivity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
+<p>example : cryptographic encodings</p>
+<h2 id="Forward-image-and-pre-image-inverse-function"><a href="#Forward-image-and-pre-image-inverse-function" class="headerlink" title="Forward image and pre-image; inverse function"></a>Forward image and pre-image; inverse function</h2><p>Given X is a subset of domain A, and Y a subset of co-domain B.</p>
+<ul>
+<li>forward image(像) : <code>f[X] = {b ∈ B | ∃a ∈ X. f(a) = b}</code><br>-pre-image(原像) : <code>f^-1[Y] = {a ∈ A | f(a) ∈ Y}</code></li>
+</ul>
+<p>NOTE : y = x^2 是某种程度上的双射。f(-2)的像是4，然而f^-1[4]的原像是{2,-2}。</p>
+<h2 id="Composing-functions"><a href="#Composing-functions" class="headerlink" title="Composing functions"></a>Composing functions</h2><p>Representation of composing function f : A -&gt; B with g : B -&gt; C</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; |    g    | ------&gt; C</span><br><span class="line">          |_________|         |_________|</span><br></pre></td></tr></table></figure>
+<p>in math and computer science we represent this from right to left : g◦f</p>
+<h2 id="Counting-functions"><a href="#Counting-functions" class="headerlink" title="Counting functions"></a>Counting functions</h2><p>if A is a finite set with n members, B is a finite set with m members.<br>number of injective functions from A to B : m &gt; n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                                               m!</span><br><span class="line">m x (m - 1) x (m - 2) x ... x (m - n + 1) = --------</span><br><span class="line">                                            (m - n)!</span><br></pre></td></tr></table></figure>
+<p>NOTE : if n &gt; m then result of this is 0 as there must have (m-k) = 0 (pigeon hole principle)<br>&nbsp;<br>number of bijective functions from A to B : m = n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m x (m - 1) x (m - 2) x ... x 1 = m!</span><br></pre></td></tr></table></figure>
+<p>NOTE : the number of functions N -&gt; N is uncountable.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]09_Functions/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1000,11 +990,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
@@ -1012,11 +1002,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
   </ul>
