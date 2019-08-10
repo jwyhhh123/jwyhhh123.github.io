@@ -110,7 +110,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
+			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -124,35 +124,36 @@
   <div class="row">
 	
 	
-		<h2 id="Church’s-Thesis"><a href="#Church’s-Thesis" class="headerlink" title="Church’s Thesis"></a>Church’s Thesis</h2><p>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
-<ul>
-<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
-<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
-<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
-<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
-</ul>
-<h2 id="Reduction-of-a-problem-to-another-problem"><a href="#Reduction-of-a-problem-to-another-problem" class="headerlink" title="Reduction of a problem to another problem"></a>Reduction of a problem to another problem</h2><p>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
-<ul>
-<li>if P is decidable, Q is then decidable</li>
-<li>if Q is undecidable, P is then undecidable</li>
-</ul>
-<h2 id="Undecidable-problems"><a href="#Undecidable-problems" class="headerlink" title="Undecidable problems"></a>Undecidable problems</h2><p>examples of undecidable problems :</p>
-<ul>
-<li>ambiguity of context free languages</li>
-<li>equivalence of context free languages</li>
-<li>the halting problem</li>
-</ul>
-<h2 id="The-Halting-Problem"><a href="#The-Halting-Problem" class="headerlink" title="The Halting Problem"></a>The Halting Problem</h2><p>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
-<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
+		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+<ol>
+<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
+<li>suppose a, b ∈ L and m &lt; n.</li>
+<li>let Xm be the state reached when we start from p and read a^m.</li>
+<li>let Xn be the state reached when we start from p and read a^n. </li>
+<li>if starting from Xm and reading b^m then we reach a Acc.</li>
+<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
+<li>So Xn != Xm</li>
+<li>So there are infinitely many states.</li>
+<li>we raise a contradiction. Hence the language is not regular.</li>
+</ol>
+<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
+<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
+<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
+<p>we can construct a derivation tree :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
+<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
+<p>this grammar is ambiguous :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -203,6 +204,66 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]14_N&NP/">Polynomial and non-Polynomial</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Polynomial-time-algorithms"><a href="#Polynomial-time-algorithms" class="headerlink" title="Polynomial time algorithms"></a>Polynomial time algorithms</h2><p>P : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
+<ul>
+<li>A constant time algorithm has running time in O(1).</li>
+<li>A linear time algorithm has running time in O(n).</li>
+<li>A quadratic time algorithm has running time in O(n2). </li>
+<li>A cubic time algorithm has running time in O(n3).</li>
+</ul>
+<h2 id="NP-Search-problems"><a href="#NP-Search-problems" class="headerlink" title="NP Search problems"></a>NP Search problems</h2><p>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP : an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
+<ul>
+<li>solutions have size polynomial in n : for a problem instance of size n, all words that are solutions have size &lt;= p(n). (where p(n) is some O())</li>
+<li>solutions can be checked in a time polynomial in n : given a problem instance A and a solution B, there is an alogorithm that checks whether it is &lt;= q(n). (where q(n) is some O())</li>
+</ul>
+<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question : can every NP seach problem be solved in polynomial time?</p>
+<p>example : sudoku (NP)</p>
+<ol>
+<li>solutions have size polynomial in n…</li>
+<li>solutions can be checked in a time polynomial in n…</li>
+<li>we can find a solution in exponential time…</li>
+</ol>
+<p>example : factorization (NP)</p>
+<ol>
+<li>solutions have size polynomial in n…</li>
+<li>solutions can be checked in a time polynomial in n…</li>
+<li>we can find a solution in exponential time…</li>
+</ol>
+<h2 id="examples-of-NP"><a href="#examples-of-NP" class="headerlink" title="examples of NP"></a>examples of NP</h2><p>problems in NP but are not known to be in P :</p>
+<ul>
+<li>The travelling salesman. A salesman has to plan a journey between n cities (and return to the<br>start) in a way that minimizes his total distance.</li>
+<li>Optimal scheduling.</li>
+<li>Path planning (used by robots).</li>
+<li>Many problems on graphs.</li>
+<li>Boolean satisfiability (SAT).</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]14_N&NP/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -334,66 +395,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]10_Regular Languages/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]14_N&NP/">Polynomial and non-Polynomial</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Polynomial-time-algorithms"><a href="#Polynomial-time-algorithms" class="headerlink" title="Polynomial time algorithms"></a>Polynomial time algorithms</h2><p>P : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
-<ul>
-<li>A constant time algorithm has running time in O(1).</li>
-<li>A linear time algorithm has running time in O(n).</li>
-<li>A quadratic time algorithm has running time in O(n2). </li>
-<li>A cubic time algorithm has running time in O(n3).</li>
-</ul>
-<h2 id="NP-Search-problems"><a href="#NP-Search-problems" class="headerlink" title="NP Search problems"></a>NP Search problems</h2><p>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP : an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
-<ul>
-<li>solutions have size polynomial in n : for a problem instance of size n, all words that are solutions have size &lt;= p(n). (where p(n) is some O())</li>
-<li>solutions can be checked in a time polynomial in n : given a problem instance A and a solution B, there is an alogorithm that checks whether it is &lt;= q(n). (where q(n) is some O())</li>
-</ul>
-<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question : can every NP seach problem be solved in polynomial time?</p>
-<p>example : sudoku (NP)</p>
-<ol>
-<li>solutions have size polynomial in n…</li>
-<li>solutions can be checked in a time polynomial in n…</li>
-<li>we can find a solution in exponential time…</li>
-</ol>
-<p>example : factorization (NP)</p>
-<ol>
-<li>solutions have size polynomial in n…</li>
-<li>solutions can be checked in a time polynomial in n…</li>
-<li>we can find a solution in exponential time…</li>
-</ol>
-<h2 id="examples-of-NP"><a href="#examples-of-NP" class="headerlink" title="examples of NP"></a>examples of NP</h2><p>problems in NP but are not known to be in P :</p>
-<ul>
-<li>The travelling salesman. A salesman has to plan a journey between n cities (and return to the<br>start) in a way that minimizes his total distance.</li>
-<li>Optimal scheduling.</li>
-<li>Path planning (used by robots).</li>
-<li>Many problems on graphs.</li>
-<li>Boolean satisfiability (SAT).</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]14_N&NP/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1328,11 +1329,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
   </ul>

@@ -176,7 +176,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
+			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -190,36 +190,88 @@
   <div class="row">
 	
 	
-		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
-<ol>
-<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
-<li>suppose a, b ∈ L and m &lt; n.</li>
-<li>let Xm be the state reached when we start from p and read a^m.</li>
-<li>let Xn be the state reached when we start from p and read a^n. </li>
-<li>if starting from Xm and reading b^m then we reach a Acc.</li>
-<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
-<li>So Xn != Xm</li>
-<li>So there are infinitely many states.</li>
-<li>we raise a contradiction. Hence the language is not regular.</li>
-</ol>
-<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
-<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
-<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
-<p>we can construct a derivation tree :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
-<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
-<p>this grammar is ambiguous :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
-<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
+		<h2 id="Church’s-Thesis"><a href="#Church’s-Thesis" class="headerlink" title="Church’s Thesis"></a>Church’s Thesis</h2><p>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
+<ul>
+<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
+<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
+<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
+<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
+</ul>
+<h2 id="Reduction-of-a-problem-to-another-problem"><a href="#Reduction-of-a-problem-to-another-problem" class="headerlink" title="Reduction of a problem to another problem"></a>Reduction of a problem to another problem</h2><p>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
+<ul>
+<li>if P is decidable, Q is then decidable</li>
+<li>if Q is undecidable, P is then undecidable</li>
+</ul>
+<h2 id="Undecidable-problems"><a href="#Undecidable-problems" class="headerlink" title="Undecidable problems"></a>Undecidable problems</h2><p>examples of undecidable problems :</p>
+<ul>
+<li>ambiguity of context free languages</li>
+<li>equivalence of context free languages</li>
+<li>the halting problem</li>
+</ul>
+<h2 id="The-Halting-Problem"><a href="#The-Halting-Problem" class="headerlink" title="The Halting Problem"></a>The Halting Problem</h2><p>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
+<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
+<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
+<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
+<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>validity check : lcf(x, y) = lcf(y, r)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
+<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>贝祖等式: 已知lcf，求u和v</p>
+</blockquote>
+<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
+<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
+<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
+<ul>
+<li>we use base 2 for both mantissa and exponent</li>
+<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>People are still dealing with multiplication on real numbers.</p>
+</blockquote>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -287,59 +339,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]03_Guassian Elimination/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
-<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
-<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
-<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>validity check : lcf(x, y) = lcf(y, r)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
-<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>贝祖等式: 已知lcf，求u和v</p>
-</blockquote>
-<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
-<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
-<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
-<ul>
-<li>we use base 2 for both mantissa and exponent</li>
-<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>People are still dealing with multiplication on real numbers.</p>
-</blockquote>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -430,6 +429,72 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]06_Matrices/">Matrices and Matrix Algebra</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="The-many-uses-of-matrices"><a href="#The-many-uses-of-matrices" class="headerlink" title="The many uses of matrices"></a>The many uses of matrices</h2><p>m x n  : dimension of the matrix<br>square : if the number of raws is equal to the number of columns</p>
+<p>applications :<br>a) Matrices as production tables (list the amounts of raw materials for manufacturing something)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    p1     p2     p3</span><br><span class="line"></span><br><span class="line">M1  10      1      9</span><br><span class="line"></span><br><span class="line">M2   5      7      9</span><br></pre></td></tr></table></figure>
+<p>b) Matrices as Markov chains (running process: ready for execution; sleeping process : ready for being interrupted)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">after / before    running       sleeping</span><br><span class="line"></span><br><span class="line">   running          .8             .01</span><br><span class="line"></span><br><span class="line">   sleeping         .2             .99</span><br></pre></td></tr></table></figure>
+<p>c) Matrices as linear transformations (rotations in graphics)</p>
+<h2 id="The-vector-algebra-operations-on-matrices"><a href="#The-vector-algebra-operations-on-matrices" class="headerlink" title="The vector algebra operations on matrices"></a>The vector algebra operations on matrices</h2><p>Addition : (ONLY in same dimension)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁+􏰀 / 7 −4  5 \ 􏰁  =􏰀   / 8 −2  8 \</span><br><span class="line">\ 0 -1 -2 /   \ 3  4 -1 /       \ 3  3 -3 /</span><br></pre></td></tr></table></figure>
+<p>Subtraction : (here we got: zero matrix)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁- / 1  2  3 \ 􏰁  =􏰀   / 0 0 0 \</span><br><span class="line">\ 0 -1 -2 /   \ 0 -1 -2 /       \ 0 0 0 /</span><br></pre></td></tr></table></figure>
+<p>scale : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 *  / 1  2  3 \ 􏰁 􏰁  =􏰀   / 5  10  15 \</span><br><span class="line">     \ 0 -1 -2 /        \ 3  -5  -2 /</span><br></pre></td></tr></table></figure>
+<h2 id="Matrix-multiplication-in-words"><a href="#Matrix-multiplication-in-words" class="headerlink" title="Matrix multiplication in words"></a>Matrix multiplication in words</h2><p>To compute the entry of AB in row i and column k, compute the inner product of the i-th row of A and with the k-th column of B.<br>&nbsp;<br>NOTE : The width of a row in the first matrix must be the same as the height of a column of the second.</p>
+<h2 id="The-properties-of-matrix-multiplication"><a href="#The-properties-of-matrix-multiplication" class="headerlink" title="The properties of matrix multiplication"></a>The properties of matrix multiplication</h2><p>Multiplication of matrices is usually not communicative : <code>A * B != B * A</code><br>&nbsp;<br>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  1 \ / 1 -1 \ = / 2 0 \ </span><br><span class="line">\ 0  1 / \ 1  1 /   \ 1 1 /     </span><br><span class="line"></span><br><span class="line">/ 1 -1 \ / 1  1 \ = / 1 0 \</span><br><span class="line">\ 1  1 / \ 0  1 / = \ 1 2 /</span><br></pre></td></tr></table></figure>
+<p>Identity matrix <code>E</code>: a matrix has no effect under multiplication<br>Example : 3 * 3 identity matrix</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 1 0 0 \</span><br><span class="line">| 0 1 0 |</span><br><span class="line">\ 0 0 1 /</span><br></pre></td></tr></table></figure>
+<p>Laws of matrix multiplication :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(A * B) * C    =  A * (B * C)</span><br><span class="line"> A * (B + C)   =  A * B + A * C </span><br><span class="line">(A + B) * C    =  A * C + B * C</span><br><span class="line"> A * E = E * A =  A </span><br><span class="line"> A * 0 = 0 * A =  0</span><br><span class="line"> s * (A * B)   =  (s * A) * B = A * (s * B)</span><br></pre></td></tr></table></figure>
+<h2 id="Inverting-matrix-multiplication"><a href="#Inverting-matrix-multiplication" class="headerlink" title="Inverting matrix multiplication"></a>Inverting matrix multiplication</h2><p>Given a matrix A :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 4 2 1 \</span><br><span class="line">| 3 4 2 | </span><br><span class="line">\ 1 2 4 /</span><br></pre></td></tr></table></figure>
+<p>and a 3 * 1 vector c = (2, 3, 2), and an unknown p = (p1, p2, p3)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 * p1 + 2 * p2 + 1 * p3 = 2 </span><br><span class="line">3 * p1 + 4 * p2 + 2 * p3 = 3 </span><br><span class="line">1 * p1 + 2 * p2 + 4 * p3 = 2</span><br></pre></td></tr></table></figure>
+<p>if given the inverse of A, we are able to calculate p:</p>
+<ol>
+<li>A x p = c </li>
+<li>A^(-1) x A x p = A^(-1) x c</li>
+<li>E x p = A^(-1) x c</li>
+<li>p = A^(-1) x c</li>
+</ol>
+<h2 id="Finding-the-inverse-matrix"><a href="#Finding-the-inverse-matrix" class="headerlink" title="Finding the inverse matrix"></a>Finding the inverse matrix</h2><p>Theorem 6 : if A and B are n x n matrices and A * B = E, then B x A = E also holds.<br>&nbsp;<br>as A x A^(-1) = E, we can compute the inverse :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           / 4 2 1 \</span><br><span class="line">A      =   | 3 4 2 | </span><br><span class="line">           \ 1 2 4 /</span><br><span class="line"></span><br><span class="line">           /a11 a12 a13\</span><br><span class="line">A^(-1) =   |a21 a22 a23|</span><br><span class="line">           \a31 a32 a33/</span><br></pre></td></tr></table></figure>
+<p>we solve the inverse :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   / 4 2 1 | 1 0 0 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 1 2 4 | 0 0 1 /</span><br><span class="line"></span><br><span class="line">   / 1 2 4 | 0 0 1 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 4 2 1 | 1 0 0 /</span><br><span class="line"></span><br><span class="line">   / 1 0 0 |   12/30 - 6/30      0 \</span><br><span class="line">=  | 0 1 0 | - 10/30  15/30 - 5/30 | </span><br><span class="line">   \ 0 0 1 |    2/30 - 6/30  10/30 /</span><br></pre></td></tr></table></figure>
+<p>NOTES : </p>
+<ul>
+<li>Matrices are not always invertible, for example zero matrix.</li>
+<li>We discover non-invertibility when we come to a special case in the Gaussian elimination procedure that we use to compute the inverse matrix.</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]06_Matrices/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]05_InnerProduct/">An alternate Way to Describe Lines and Planes - The inner Product</a>
 		</h3>
 		</div>
@@ -509,72 +574,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]05_InnerProduct/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]06_Matrices/">Matrices and Matrix Algebra</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="The-many-uses-of-matrices"><a href="#The-many-uses-of-matrices" class="headerlink" title="The many uses of matrices"></a>The many uses of matrices</h2><p>m x n  : dimension of the matrix<br>square : if the number of raws is equal to the number of columns</p>
-<p>applications :<br>a) Matrices as production tables (list the amounts of raw materials for manufacturing something)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    p1     p2     p3</span><br><span class="line"></span><br><span class="line">M1  10      1      9</span><br><span class="line"></span><br><span class="line">M2   5      7      9</span><br></pre></td></tr></table></figure>
-<p>b) Matrices as Markov chains (running process: ready for execution; sleeping process : ready for being interrupted)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">after / before    running       sleeping</span><br><span class="line"></span><br><span class="line">   running          .8             .01</span><br><span class="line"></span><br><span class="line">   sleeping         .2             .99</span><br></pre></td></tr></table></figure>
-<p>c) Matrices as linear transformations (rotations in graphics)</p>
-<h2 id="The-vector-algebra-operations-on-matrices"><a href="#The-vector-algebra-operations-on-matrices" class="headerlink" title="The vector algebra operations on matrices"></a>The vector algebra operations on matrices</h2><p>Addition : (ONLY in same dimension)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁+􏰀 / 7 −4  5 \ 􏰁  =􏰀   / 8 −2  8 \</span><br><span class="line">\ 0 -1 -2 /   \ 3  4 -1 /       \ 3  3 -3 /</span><br></pre></td></tr></table></figure>
-<p>Subtraction : (here we got: zero matrix)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁- / 1  2  3 \ 􏰁  =􏰀   / 0 0 0 \</span><br><span class="line">\ 0 -1 -2 /   \ 0 -1 -2 /       \ 0 0 0 /</span><br></pre></td></tr></table></figure>
-<p>scale : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 *  / 1  2  3 \ 􏰁 􏰁  =􏰀   / 5  10  15 \</span><br><span class="line">     \ 0 -1 -2 /        \ 3  -5  -2 /</span><br></pre></td></tr></table></figure>
-<h2 id="Matrix-multiplication-in-words"><a href="#Matrix-multiplication-in-words" class="headerlink" title="Matrix multiplication in words"></a>Matrix multiplication in words</h2><p>To compute the entry of AB in row i and column k, compute the inner product of the i-th row of A and with the k-th column of B.<br>&nbsp;<br>NOTE : The width of a row in the first matrix must be the same as the height of a column of the second.</p>
-<h2 id="The-properties-of-matrix-multiplication"><a href="#The-properties-of-matrix-multiplication" class="headerlink" title="The properties of matrix multiplication"></a>The properties of matrix multiplication</h2><p>Multiplication of matrices is usually not communicative : <code>A * B != B * A</code><br>&nbsp;<br>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  1 \ / 1 -1 \ = / 2 0 \ </span><br><span class="line">\ 0  1 / \ 1  1 /   \ 1 1 /     </span><br><span class="line"></span><br><span class="line">/ 1 -1 \ / 1  1 \ = / 1 0 \</span><br><span class="line">\ 1  1 / \ 0  1 / = \ 1 2 /</span><br></pre></td></tr></table></figure>
-<p>Identity matrix <code>E</code>: a matrix has no effect under multiplication<br>Example : 3 * 3 identity matrix</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 1 0 0 \</span><br><span class="line">| 0 1 0 |</span><br><span class="line">\ 0 0 1 /</span><br></pre></td></tr></table></figure>
-<p>Laws of matrix multiplication :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(A * B) * C    =  A * (B * C)</span><br><span class="line"> A * (B + C)   =  A * B + A * C </span><br><span class="line">(A + B) * C    =  A * C + B * C</span><br><span class="line"> A * E = E * A =  A </span><br><span class="line"> A * 0 = 0 * A =  0</span><br><span class="line"> s * (A * B)   =  (s * A) * B = A * (s * B)</span><br></pre></td></tr></table></figure>
-<h2 id="Inverting-matrix-multiplication"><a href="#Inverting-matrix-multiplication" class="headerlink" title="Inverting matrix multiplication"></a>Inverting matrix multiplication</h2><p>Given a matrix A :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 4 2 1 \</span><br><span class="line">| 3 4 2 | </span><br><span class="line">\ 1 2 4 /</span><br></pre></td></tr></table></figure>
-<p>and a 3 * 1 vector c = (2, 3, 2), and an unknown p = (p1, p2, p3)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 * p1 + 2 * p2 + 1 * p3 = 2 </span><br><span class="line">3 * p1 + 4 * p2 + 2 * p3 = 3 </span><br><span class="line">1 * p1 + 2 * p2 + 4 * p3 = 2</span><br></pre></td></tr></table></figure>
-<p>if given the inverse of A, we are able to calculate p:</p>
-<ol>
-<li>A x p = c </li>
-<li>A^(-1) x A x p = A^(-1) x c</li>
-<li>E x p = A^(-1) x c</li>
-<li>p = A^(-1) x c</li>
-</ol>
-<h2 id="Finding-the-inverse-matrix"><a href="#Finding-the-inverse-matrix" class="headerlink" title="Finding the inverse matrix"></a>Finding the inverse matrix</h2><p>Theorem 6 : if A and B are n x n matrices and A * B = E, then B x A = E also holds.<br>&nbsp;<br>as A x A^(-1) = E, we can compute the inverse :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           / 4 2 1 \</span><br><span class="line">A      =   | 3 4 2 | </span><br><span class="line">           \ 1 2 4 /</span><br><span class="line"></span><br><span class="line">           /a11 a12 a13\</span><br><span class="line">A^(-1) =   |a21 a22 a23|</span><br><span class="line">           \a31 a32 a33/</span><br></pre></td></tr></table></figure>
-<p>we solve the inverse :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   / 4 2 1 | 1 0 0 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 1 2 4 | 0 0 1 /</span><br><span class="line"></span><br><span class="line">   / 1 2 4 | 0 0 1 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 4 2 1 | 1 0 0 /</span><br><span class="line"></span><br><span class="line">   / 1 0 0 |   12/30 - 6/30      0 \</span><br><span class="line">=  | 0 1 0 | - 10/30  15/30 - 5/30 | </span><br><span class="line">   \ 0 0 1 |    2/30 - 6/30  10/30 /</span><br></pre></td></tr></table></figure>
-<p>NOTES : </p>
-<ul>
-<li>Matrices are not always invertible, for example zero matrix.</li>
-<li>We discover non-invertibility when we come to a special case in the Gaussian elimination procedure that we use to compute the inverse matrix.</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]06_Matrices/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -934,11 +933,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
   </ul>
