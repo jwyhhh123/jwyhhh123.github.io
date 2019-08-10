@@ -141,203 +141,6 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]09_Functions/">Functions</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Set-theoretic-definition-of-functions"><a href="#Set-theoretic-definition-of-functions" class="headerlink" title="Set-theoretic definition of functions"></a>Set-theoretic definition of functions</h2><p>From a binary relation R ⊆ A × B, we define a function by satisfying two conditions:</p>
-<ol>
-<li>Definedness : ∀a ∈ A ∃b ∈ B. (a, b) ∈ R</li>
-<li>Single valueness : ∀a ∈ A ∀b,b’ ∈ B. (a,b) ∈ R ∧ (a,b’) ∈ R -&gt; b = b’</li>
-</ol>
-<p>Notations (given A x B) :</p>
-<ul>
-<li>domain    : A</li>
-<li>co-domain : B</li>
-<li>range : elements in B which are the results of F(A)</li>
-</ul>
-<p>Representation : f : A -&gt; B<br>&nbsp;<br>Partial function : a relation that is single valued but not defined for all inputs.</p>
-<h2 id="The-many-faces-of-functions"><a href="#The-many-faces-of-functions" class="headerlink" title="The many faces of functions"></a>The many faces of functions</h2><p>in computer science, we would represent a function like :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; B</span><br><span class="line">          |_________|</span><br></pre></td></tr></table></figure>
-<h2 id="Injectivity"><a href="#Injectivity" class="headerlink" title="Injectivity"></a>Injectivity</h2><p>def : a function that will give different output for different input is called injective (one-to-one).<br>&nbsp;<br>formula : ∀a,a’ ∈ A. f(a) = f(a’) -&gt; a = a’<br>&nbsp;<br>Error correcting codes : coding theory where input “data vectors” are mapped to much longer “code words” (which are again tuples of bits). If this is done cleverly, then small errors that change the code word (for example, during transmission over long distances) can be discovered and repaired.<br>&nbsp;<br>NOTES : non-injective examples are mps and jpeg.<br>&nbsp;<br>Pigeon hole principle : if domain A has more elements than co-domain B, then no function from A to B can be injective.<br>&nbsp;<br>Theorem 11 : </p>
-<ol>
-<li>if card(A) &lt;= card(B) and card(B) &lt;= card(A) then card(A) = card(B)</li>
-<li>for any two sets A and B, we have card(A) &lt;= card(B) or card(B) &lt;= card(A)</li>
-</ol>
-<p>NOTE : see the picture above, it is injective.</p>
-<h2 id="Surjectivity"><a href="#Surjectivity" class="headerlink" title="Surjectivity"></a>Surjectivity</h2><p>def : a function for which the range is all of the co-domain is called surjective (onto).<br>&nbsp;<br>formula : ∀b ∈ B ∃a ∈ A. f(a) = b<br>&nbsp;<br>Theorem 12 : assuming A != 0/, card(A) &lt;= card(B) iff there is surjective function from B to A.<br>&nbsp;<br>examples : project a 3-D object to 2-D picture.</p>
-<p>NOTE : 两个不同的input可以映射到同一个output上。每一个input和每一个output都需要被覆盖。</p>
-<h2 id="Bijectivity"><a href="#Bijectivity" class="headerlink" title="Bijectivity"></a>Bijectivity</h2><p>def : a combination of injectivity and surjectivity.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
-<p>example : cryptographic encodings</p>
-<h2 id="Forward-image-and-pre-image-inverse-function"><a href="#Forward-image-and-pre-image-inverse-function" class="headerlink" title="Forward image and pre-image; inverse function"></a>Forward image and pre-image; inverse function</h2><p>Given X is a subset of domain A, and Y a subset of co-domain B.</p>
-<ul>
-<li>forward image(像) : <code>f[X] = {b ∈ B | ∃a ∈ X. f(a) = b}</code><br>-pre-image(原像) : <code>f^-1[Y] = {a ∈ A | f(a) ∈ Y}</code></li>
-</ul>
-<p>NOTE : y = x^2 是某种程度上的双射。f(-2)的像是4，然而f^-1[4]的原像是{2,-2}。</p>
-<h2 id="Composing-functions"><a href="#Composing-functions" class="headerlink" title="Composing functions"></a>Composing functions</h2><p>Representation of composing function f : A -&gt; B with g : B -&gt; C</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; |    g    | ------&gt; C</span><br><span class="line">          |_________|         |_________|</span><br></pre></td></tr></table></figure>
-<p>in math and computer science we represent this from right to left : g◦f</p>
-<h2 id="Counting-functions"><a href="#Counting-functions" class="headerlink" title="Counting functions"></a>Counting functions</h2><p>if A is a finite set with n members, B is a finite set with m members.<br>number of injective functions from A to B : m &gt; n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                                               m!</span><br><span class="line">m x (m - 1) x (m - 2) x ... x (m - n + 1) = --------</span><br><span class="line">                                            (m - n)!</span><br></pre></td></tr></table></figure>
-<p>NOTE : if n &gt; m then result of this is 0 as there must have (m-k) = 0 (pigeon hole principle)<br>&nbsp;<br>number of bijective functions from A to B : m = n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m x (m - 1) x (m - 2) x ... x 1 = m!</span><br></pre></td></tr></table></figure>
-<p>NOTE : the number of functions N -&gt; N is uncountable.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]09_Functions/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]10_Regular Languages/">Regular Languages and Automaton</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Regular-expressions"><a href="#Regular-expressions" class="headerlink" title="Regular expressions"></a>Regular expressions</h2><p>We use regular expression to solve :</p>
-<ol>
-<li>Matching problem</li>
-<li>Searching problem</li>
-</ol>
-<p>Σ   : set of characters<br>Σ^* : set of all words<br>L   : natural languages(passwords, email addresses)</p>
-<p>NOTE : L ⊆ Σ^*</p>
-<p>Notations :</p>
-<ul>
-<li>The regexp a accepts ONLY the word a.</li>
-<li>The regexp b accepts ONLY the word b.</li>
-<li>ε accepts ONLY the empty word ε.</li>
-<li>if E and F are regexps, then EF is a concatenation of words to be accepted.</li>
-<li>if E and F are regexps, then E|F accepts either E or F.</li>
-<li>E^* accepts words of E occuring zero or more times.</li>
-<li>The regexp Nothing does not accept any word.</li>
-</ul>
-<p>laws of precedence : <code>E|F</code> &lt; <code>EF</code> &lt; <code>()^*</code></p>
-<h2 id="Regular-and-Irregular-language"><a href="#Regular-and-Irregular-language" class="headerlink" title="Regular and Irregular language"></a>Regular and Irregular language</h2><p>Regular languages   :<br>any language L ⊆ Σ^* that can be represented in this way is said to be regular.<br>&nbsp;<br>Irregular languages :<br>we can ONLY show the existence as there are uncountablly many languages and countablly many regexps.</p>
-<p>NOTES :</p>
-<ul>
-<li>the complement of a regular language is still regular : a regexp that NOT accepts <code>c(bb|ca)^*</code></li>
-<li>the intersection of two regular languages is still regular : a regexp accepts both <code>cc(bb|ca)^*</code> and c<code>(bbbb|cca)^*</code></li>
-</ul>
-<h2 id="Decidability"><a href="#Decidability" class="headerlink" title="Decidability"></a>Decidability</h2><p>def              : problem is decidable when there is some program that can determine the answer of yes and no.<br>&nbsp;<br>to show a problem is decidable, introduce a program to do so.<br>to show a problem is undecidable : reduce to the halting problem or, use rice’s theorem.</p>
-<p>examples :</p>
-<ol>
-<li>there is a program <code>boolean equality(String E, String F){}</code> that can determine if two regexps are equal, so this problem is decidable.</li>
-<li>for every regexp E, matching problem for E is decidable.</li>
-</ol>
-<p>NOTE : After determining whether a qns can be solved, we can find Efficiency of the qns.</p>
-<h2 id="Introducing-Automata"><a href="#Introducing-Automata" class="headerlink" title="Introducing Automata"></a>Introducing Automata</h2><p>DFA(Deterministic Finite Automaton) : </p>
-<ul>
-<li>a finite set X of states</li>
-<li>an initial state p ∈ X</li>
-<li>a transition function δ: X × Σ → X</li>
-<li>a set of accepting states Acc ∈ X; Acc is indicated by a double ring.</li>
-</ul>
-<p>“Deterministic” because the initial state and the result of each transition are specified. “Finite” because the set of states is finite.</p>
-<p>partial DFA : δ is a partial function, meaning there are undefined transitions </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[]-----&gt; [error state] &lt;-----[]</span><br><span class="line">    a     |       ∧       b</span><br><span class="line">          |_______|</span><br></pre></td></tr></table></figure>
-<p>NOTES :</p>
-<ul>
-<li>DFA includes all possible transitions</li>
-<li>partial DFA includes NOT all transitions.</li>
-<li>turn a partial DFA into DFA: add an error state which takes all undefined transitions and transitions to itself.</li>
-</ul>
-<h2 id="Non-deterministic-Automata"><a href="#Non-deterministic-Automata" class="headerlink" title="Non-deterministic Automata"></a>Non-deterministic Automata</h2><p>difference:</p>
-<ol>
-<li>NDFA can have 1 and more initial states</li>
-<li>from a given state, when a (or any other character) is the input, there can be several possible next states. Example : 1 -&gt; a -&gt; 2 and 1 -&gt; a -&gt; 3</li>
-</ol>
-<p>Determinization : </p>
-<ol>
-<li>The initial “state” is the set of all the initial states of the NDFA. </li>
-<li>A “state” is accepting when it contains an accepting state of the NDFA. </li>
-<li>From a given “state”, when we input a character, we collect all the possible next states.</li>
-</ol>
-<h2 id="ε-transitions"><a href="#ε-transitions" class="headerlink" title="ε-transitions"></a>ε-transitions</h2><p>def   : transition taking empty word ε<br>εNDFA : nondeterministic automaton with ε-transitions<br>&nbsp;<br>Convert from εNDFA to NDFA : </p>
-<ol>
-<li>remove ε-transitions </li>
-<li>add new transitions</li>
-<li>determine new Acc</li>
-<li>remove non reachable states</li>
-</ol>
-<p>NOTE : during converting, we do not remove any reachable state.</p>
-<h2 id="How-to-add-sets"><a href="#How-to-add-sets" class="headerlink" title="How to add sets"></a>How to add sets</h2><p>sum A + B : </p>
-<ul>
-<li>inl a = (0, a)</li>
-<li>inr b = (1, b)</li>
-</ul>
-<p>example : {3,5,6} + {3,6,9,28}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;3,5,6&#125; + &#123;3,6,9,28&#125; = &#123;inl 3,inl 5,inl 6,inr 3,inr 6,inr 9,inr 28&#125;</span><br><span class="line">                     = &#123;(0, 3), (0, 5), (0, 6), (1, 3), (1, 6), (1, 9), (1, 28)&#125;</span><br></pre></td></tr></table></figure>
-<p>NOTE : A + 1 where 1 represents a singleton set. We use this to convert a partial DFA into DFA by adding and error state.</p>
-<h2 id="Kleene’s-Theorem"><a href="#Kleene’s-Theorem" class="headerlink" title="Kleene’s Theorem"></a>Kleene’s Theorem</h2><p>theorem 1 : for a language L ⊆ Σ^* , the following are equivalent:</p>
-<ol>
-<li>L is regular</li>
-<li>The matching problem for L can be solved by a DFA.</li>
-</ol>
-<p>We ONLY study from 1. to 2. : if L is regular, then there is a DFA that can solve the matching problem for L.<br>&nbsp;<br>We are now, based on Kleene’s theorem, able to convert a regular language L into DFA by:</p>
-<ol>
-<li>transfer L into εNDFA</li>
-<li>transfer εNDFA into NDFA (remove ε-transition)</li>
-<li>transfer NDFA to DFA (determinize)</li>
-</ol>
-<h2 id="Using-Kleene’s-Theorem"><a href="#Using-Kleene’s-Theorem" class="headerlink" title="Using Kleene’s Theorem"></a>Using Kleene’s Theorem</h2><p>Although regexps and finite automata are equivalent, it’s often easier to operate on automata. For example, we asked: is the complement of a regular language regular? That’s not obvious for regexps, but using (total) DFAs, it is clear: just replace ac- cepting states by non-accepting ones and vice versa.<br>&nbsp;<br>This implies that the intersection of regular languages L and M is regular, because M ∩ L = L ∪ M . But we can also see this directly. Say L is recognized by automaton A, and M by B. If you’re given a word w and you want to know whether it’s in L ∩ M, passing through w just once, you can simultaneously keep track of where you are in A and where you are in B, as you read through w. So your state at any time is a pair (x, y), where x is a state in A, and y is a state in B. This immediately gives you a DFA.<br>&nbsp;<br>For example, say you want a DFA for the password question in the last handout. You can make a DFA that determines whether a word has at least 3 characters, and another that determines whether it has a letter, and another that determines whether it has a digit. Then we want a DFA for the intersection of these languages. Kleene’s theorem tells us that there must be some corresponding regexp.</p>
-<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>def : According to Kleene’s Theorem, we can check if two regexps are language equivalent by checking their DFAs.<br>&nbsp;<br>Procedure :</p>
-<ol>
-<li>starting from the initial states of each automaton</li>
-<li>traverse from each word from Σ. This will give us a tree structure</li>
-<li>stop when given state is visited.</li>
-<li>if language inequivalent, then there is the case when one reaches an accepting state and the other reaches a rejecting state.</li>
-<li>if language equivalent, then all frontiers are stopped.</li>
-</ol>
-<h2 id="Minimizing-a-DFA"><a href="#Minimizing-a-DFA" class="headerlink" title="Minimizing a DFA"></a>Minimizing a DFA</h2><p>def : make a DFA as small as possible<br>&nbsp;<br>Procedure :</p>
-<ol>
-<li>remove unreachable states.</li>
-<li>identify states that are language equivalent.</li>
-</ol>
-<p>To prove a DFA is minimal :</p>
-<ol>
-<li>show each state is reachable, by giving a word that covers all states. (1. is satisfied)</li>
-<li>show that any two distinct states are not language equivalent, by giving a word that one accepts and the other rejects. (2. is satisfied)</li>
-</ol>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]10_Regular Languages/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
 		</h3>
 		</div>
@@ -553,11 +356,11 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/02/20/[DataStructure]02/">Programming part</a>
+			<a href="/2019/03/11/[MATH]15_TuringMachine/">Turing Machine</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2019-02-20  </div>
+		<div class="date">post @ 2019-03-11  </div>
 		</div>
 	</div>
 	
@@ -567,13 +370,99 @@ var _hmt = _hmt || [];
   <div class="row">
 	
 	
-		<p>I will provide source code on github.</p>
-<h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
-<h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4: <em>Merge Sort</em><br>ass5: <em>Graph</em></p>
+		<h2 id="Reasons-to-introduce-turing-machine"><a href="#Reasons-to-introduce-turing-machine" class="headerlink" title="Reasons to introduce turing machine"></a>Reasons to introduce turing machine</h2><p>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
+<h2 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h2><p>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
+<ol>
+<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
+<li>the set V of return values.</li>
+</ol>
+<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
+<ul>
+<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
+<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
+<li>left</li>
+<li>right</li>
+<li>No-op (which does nothing)</li>
+<li>Return True</li>
+<li>Return False</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
+<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
+<h2 id="Representation-of-a-turing-machine"><a href="#Representation-of-a-turing-machine" class="headerlink" title="Representation of a turing machine"></a>Representation of a turing machine</h2><p>A turing machine has :</p>
+<ol>
+<li>a finite state X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
+</ol>
+<p>example : convert a into b from a given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
+<p>example : return true if the number of as is even in the given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
+<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
+<p>example : reverse copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
+<h2 id="More-complex-TM"><a href="#More-complex-TM" class="headerlink" title="More complex TM"></a>More complex TM</h2><ul>
+<li>2-tape turing machine</li>
+<li>m x n turing machine</li>
+</ul>
 
 	
 	</div>
-  <a type="button" href="/2019/02/20/[DataStructure]02/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]16_PropertiesofCode/">Properties of Code</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Undecidability-by-reduction"><a href="#Undecidability-by-reduction" class="headerlink" title="Undecidability by reduction"></a>Undecidability by reduction</h2><p>def: to prove other undecidable problem we can reduce the halting problem to it.<br>Because if reducing Q to P we have</p>
+<ul>
+<li>if P is decidable then Q is decidable</li>
+<li>if Q is undecidable then P is undecidable</li>
+</ul>
+<p>example: X is a undecidable property when X halts and contains more occurances of a than b<br>proof: </p>
+<ol>
+<li>reduce the halting problem to X.</li>
+<li>for any program C of type void. let F(C) be the same code as C with an extra comment line which gives more occurances of a than b.</li>
+<li>if C halts, then F(C) is X</li>
+<li>if C does not halts, then F(C) is not X</li>
+<li>we cannot test whether C halts, so we cannot decide whether it is X.</li>
+<li>as C is undecidable, F(C) is undecidable</li>
+<li>so X is undecidable</li>
+</ol>
+<h2 id="Semantic-and-non-semantic-properties"><a href="#Semantic-and-non-semantic-properties" class="headerlink" title="Semantic and non-semantic properties"></a>Semantic and non-semantic properties</h2><p>semantic properties: </p>
+<ul>
+<li>Does this software print only polite words?</li>
+<li>Does this software provide good advice to all users, and excellent advice to premium users?</li>
+<li>Does this software, when supplied with two positive integers, always return the highest common factor?</li>
+</ul>
+<p>to test whether a given property is a semantic property or not: </p>
+<ul>
+<li>to show not semantic, give two programs one has the property and one has not.</li>
+<li>to show semantic, there is no program has different properties.</li>
+</ul>
+<h2 id="Rice’s-Theorem"><a href="#Rice’s-Theorem" class="headerlink" title="Rice’s Theorem"></a>Rice’s Theorem</h2><p>def: any semantic property of code that holds in some case and does not hold in some case is undecidable.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]16_PropertiesofCode/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -993,6 +882,36 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/02/20/[DataStructure]02/">Programming part</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-02-20  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>I will provide source code on github.</p>
+<h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
+<h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4: <em>Merge Sort</em><br>ass5: <em>Graph</em></p>
+
+	
+	</div>
+  <a type="button" href="/2019/02/20/[DataStructure]02/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/02/19/[AI]12_lejos/">Lejos-based programming</a>
 		</h3>
 		</div>
@@ -1041,7 +960,7 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/02/19/[Logic]02_predicateCalculus/">Classical Logic - Predicate calculus</a>
+			<a href="/2019/02/19/[Logic]01_propositionalLogic/">Classical Logic - Propositional logic</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -1055,120 +974,235 @@ var _hmt = _hmt || [];
   <div class="row">
 	
 	
-		<h2 id="Key-ingredients"><a href="#Key-ingredients" class="headerlink" title="Key ingredients"></a>Key ingredients</h2><p>Domain(universe) : non-empty set of individuals to reason about<br>&nbsp;<br>Constant : specific instances of individual(elements in domain); denoted as a,b,c<br>&nbsp;<br>Variables : symbols to represent individuals, variables x,y,z<br>&nbsp;<br>Quantifiers : (x is variable)</p>
+		<h2 id="Terminology"><a href="#Terminology" class="headerlink" title="Terminology"></a>Terminology</h2><p><strong>proposition</strong><br>def: a sentence which states a fact which can be true or false.<br>&nbsp;<br>Atomic propositions(atoms): </p>
 <ul>
-<li>∀x[…] = “forallx…” (universal quantifier)</li>
-<li>∃x[…] = ”thereexistsxsuchthat…” (existential quantifier)</li>
+<li>propositions that cannot be broken into smaller parts</li>
+<li>they are usually represented by symbols(P, Q, R…)</li>
 </ul>
-<p>Predicates : a proposition evaluates to true and false</p>
-<h2 id="Predicate-calculus-examples"><a href="#Predicate-calculus-examples" class="headerlink" title="Predicate calculus examples"></a>Predicate calculus examples</h2><p>Predicate symbols :<br>F(x) = x is fast<br>R(x) = x is red<br>P(x) = x is purple<br>&nbsp;<br>All cars are fast </p>
+<p><strong>argument</strong><br>def: argument is a collection of propositions<br>&nbsp;<br>an argument can have 0 and more premises and 1 conclusion.<br>&nbsp;<br>Validity: an argument is valid iff its premises are true and its conclusion is true.</p>
+<p><strong>Languages</strong><br>Semantics: the meaning of a formula in the language<br>Syntax: rules defining allowable formulas(sentences) in the language<br>&nbsp;<br>formula:  </p>
 <ul>
-<li>∀x[F(x)]</li>
+<li>Atomic formula   : if P is an atomic proposition, then P is a formula</li>
+<li>Compound formula : if P and Q are formulas then so are ¬P, P ∧ Q, P ∨ Q and P -&gt; Q</li>
 </ul>
-<p>All red cars are fast </p>
+<p>these are all called well-formed formulas.</p>
+<p><strong>Connectives</strong><br>conjunction ∧ : and<br>disjunction ∨ : or<br>negation    ¬ : not<br>implication -&gt; : implies<br>&nbsp;<br>Avoid ambiguity using parentheses <code>()</code> : (P ∧ Q) ∨ R<br>&nbsp;<br>Precedence of connectives: (¬) &gt; (∧) &gt; (∨) &gt; (-&gt;)</p>
+<p><strong>Parse trees</strong><br>def: we can use a tree to represent the syntactic structure of a sentence. For propositional logic, leaf nodes are atomic propositions and no-leaf nodes are connectives.<br>&nbsp;<br>Terminology: </p>
 <ul>
-<li>∀x[R(x)→F(x)]</li>
+<li>scope of a connective : connective itself and what it connects i.e. P -&gt; Q</li>
+<li>main connective: the connective which connects the whole furmula</li>
 </ul>
-<p>Some red cars are fast </p>
+<p>scope = sub-tree<br>main connectice: root node</p>
+<p><strong>Formal language</strong><br>Given an argument: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if John is at home, then his TV is on.</span><br><span class="line">His TV is not on.</span><br><span class="line">Therefore John is not at home.</span><br></pre></td></tr></table></figure>
+<p>Collect atomic propositions: </p>
+<ol>
+<li>H = “John is at home”</li>
+<li>O = “John’s TV is on”</li>
+</ol>
+<p>Argument in propositional logic: </p>
+<ol>
+<li>premise 1 : H -&gt; O</li>
+<li>premise 2 : ¬O</li>
+<li>conclusion : ¬H</li>
+</ol>
+<p>Written in sequent: H -&gt; O, ¬O : ¬H<br>&nbsp;<br>If the argument is valid we write : H -&gt; O, ¬O ⊢ ¬H</p>
+<p>NOTE: When collecting atomic propositions, we only collect original symbol without any connectives. for example ‘his TV is not on’ we collect ‘his TV is on’. And for ‘Therefore John is not at home’ and ‘John is at home’ we only collect ‘John is at home’.</p>
+<h2 id="Natural-Deduction"><a href="#Natural-Deduction" class="headerlink" title="Natural Deduction"></a>Natural Deduction</h2><p>def: In natural deduction, we use syntactic (rather than semantic) proof method<br>&nbsp;<br>Procedure: </p>
+<ol>
+<li>start with premises (we can assume these are true)</li>
+<li>repeatedly apply inference rules (which preserve truth)</li>
+<li>until we have inferred(推理) the conclusion</li>
+</ol>
+<p><strong>∧-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A   B</span><br><span class="line">-----  ∧ -introduction</span><br><span class="line">A ∧ B</span><br></pre></td></tr></table></figure>
+<p><strong>∧-elimination</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A ∧ B </span><br><span class="line">-----  ∧ -elimination</span><br><span class="line">  A</span><br><span class="line"></span><br><span class="line">A ∧ B </span><br><span class="line">-----  ∧ -elimination</span><br><span class="line">  B</span><br></pre></td></tr></table></figure>
+<p><strong>→-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ⊢ B </span><br><span class="line">-----  → -introduction</span><br><span class="line">A → B</span><br></pre></td></tr></table></figure>
+<p><strong>→-elimination (modus ponens)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A → B  A </span><br><span class="line">--------  → -elimination</span><br><span class="line">    B</span><br></pre></td></tr></table></figure>
+<p><strong>¬-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ⊢ ⊥ </span><br><span class="line">-----  ¬ -introduction</span><br><span class="line"> ¬A</span><br></pre></td></tr></table></figure>
+<p><strong>¬¬-elimination</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">¬¬A </span><br><span class="line">---  ¬¬ -elimination</span><br><span class="line"> A</span><br></pre></td></tr></table></figure>
+<p><strong>∨-introduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A</span><br><span class="line">-----  ∨ -introduction</span><br><span class="line">A ∨ B</span><br><span class="line"></span><br><span class="line">  A</span><br><span class="line">-----  ∨ -introduction</span><br><span class="line">B ∨ A</span><br></pre></td></tr></table></figure>
+<p><strong>∨-elimination</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ∨ B  A ⊢ C  B ⊢ C </span><br><span class="line">--------------------  ∨ -elimination</span><br><span class="line">         C</span><br></pre></td></tr></table></figure>
+<h2 id="Semantics-truth-table"><a href="#Semantics-truth-table" class="headerlink" title="Semantics, truth table"></a>Semantics, truth table</h2><p><strong>Semantics of propositional logic</strong><br>An interpretation for a formula is a function I assigning a truth value to its atomic propositions.<br>&nbsp;<br>Semantics of a propositional logic formula φ is a truth value for each interpretation.<br>I ⊨ φ : I satisfies φ, where φ is true for interpretation I</p>
+<p><strong>Truth table : semantic proof method</strong><br>Semantics of conjunction: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P     Q    P ∧ Q</span><br><span class="line"></span><br><span class="line">T     T      T</span><br><span class="line">T     F      F</span><br><span class="line">F     T      F</span><br><span class="line">F     F      F</span><br></pre></td></tr></table></figure>
+<p>Semantics of disjunction: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P     Q    P ∨ Q</span><br><span class="line">T     T      T</span><br><span class="line">T     F      T</span><br><span class="line">F     T      T</span><br><span class="line">F     F      F</span><br></pre></td></tr></table></figure>
+<p>Semantics of negation: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P    ¬P</span><br><span class="line">T     F</span><br><span class="line">F     T</span><br></pre></td></tr></table></figure>
+<p>Semantics of implication: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P     Q     P → Q</span><br><span class="line">T     T       T</span><br><span class="line">T     F       F</span><br><span class="line">F     T       T</span><br><span class="line">F     F       T</span><br></pre></td></tr></table></figure>
+<p>We can construct a truth table for any propostional formula.<br>example: given formula (P -&gt; Q) ∧ Q</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P   Q   |  P -&gt; Q    ¬Q     (P -&gt; Q) ∧ Q</span><br><span class="line">--------|-------------------------------</span><br><span class="line">T   T   |   T        F          F</span><br><span class="line">T   F   |   F        T          F</span><br><span class="line">F   T   |   T        F          F</span><br><span class="line">F   F   |   T        T          T</span><br></pre></td></tr></table></figure>
+<p><strong>Semantic Notations</strong><br>A formula φ is</p>
 <ul>
-<li>∃x[R(x)∧F(x)]</li>
-<li>not:∃x[R(x)→F(x)]</li>
+<li>Satisfiable   : iff there exists one interpretation I ⊨ φ</li>
+<li>Falsifiable   : iff there exists an interpretation that makes φ false</li>
+<li>Unsatisfiable : iff there is no interpretation that make I ⊨ φ</li>
+<li>Valid         : iff for all interpretation that I ⊨ φ</li>
 </ul>
-<p>There are no red cars </p>
+<p>NOTE: We are talking about formulas which can be both premises and conclusions<br>&nbsp;<br>Tautology (赘述): iff it is valid i.e. P∨¬P, P→P, ¬(P∧¬P)<br>Contradiction: iff it unsatisfiable<br>Contingent (一组): iff it is both satisfiable and falsifiable i.e. P, P∧Q<br>&nbsp;<br>A formula is unsatisfiable if its negation is valid :<br>example: ¬(P ∧ ¬P)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">P   ¬P  |  (P ∧ ¬P)   ¬(P ∧ ¬P)</span><br><span class="line">--------|----------------------</span><br><span class="line">T   F   |     F          T         </span><br><span class="line">F   T   |     F          T</span><br></pre></td></tr></table></figure>
+<p><strong>Validity of argument</strong><br>Informally : whenever the premises are true, then so is the conclusion<br>Formally : the argument P1, .., Pn ⊨ C is valid iff every interpretation that satisfies all of the premises P1, .., Pn also satisfies the conclusion (I ⊨ Pn are true and I ⊨ C is true)</p>
+<p>Steps: </p>
+<ol>
+<li>construct a truth table for premise(s) and conclusion.</li>
+<li>when we found one that all premises are true and so is conclusion, it is valid.</li>
+<li>when we found one that all premises are true and conclusion is false, it is invalid.</li>
+</ol>
+<p><strong>Comparison between truth table &amp; natural deduction</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">true table                |   natural deduction</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">simple easy to automate   |   difficult to automate</span><br><span class="line">size is exponential       |   problem can be solved in a decent size</span><br><span class="line">invalidity can be checked |   no way to check validity</span><br><span class="line">                          |   can be adopted to predicate calculus</span><br></pre></td></tr></table></figure>
+<h2 id="Proof-strategies-I"><a href="#Proof-strategies-I" class="headerlink" title="Proof strategies I"></a>Proof strategies I</h2><p><strong>Proof bt contradiction</strong><br>we can build on ¬-introduction to prove non-negated propositions.<br>&nbsp;<br>Procedure: </p>
+<ol>
+<li>determine what we want to prove</li>
+<li>hypothesize the negation of the conclusion C</li>
+<li>until we infer to ¬¬ of C</li>
+<li>using ¬¬-elimination to prove C</li>
+</ol>
+<p><strong>Inference rules</strong><br>Strategies: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Inference rule         Premises          Concl.        Annotation numbers           Dependencies</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∧-intro x,y             A, B              A∧B        Premises are at lines x, y        Dx ∪ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∧-elim x                 A∧B               A         Premise is at line x              Dx</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∨-intro x                 A               A∨B        Premise is at line x              Dx</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∨-elim x,y1,z1,y2,z2    A∨B, A⊢C, B⊢C      C         Disjunction is at line x,       (Dx ∪ Dz1 ∪ Dz2)</span><br><span class="line">                                                     sub-proofs are lines             \ (Dy1 ∪ Dy2)</span><br><span class="line">                                                     y1-z1 and y2-z2             </span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">→-intro y,z             A⊢B               A→B        Sub-proof is lines y-z           Dz \ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">→-elim x,y              A→B, A             B         Premises are at lines x, y       Dx ∪ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">¬-intro y,z              A⊢⊥              ¬A         Sub-proof is lines y-z           Dz \ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">¬¬-elim x                ¬¬A               A          Premise is at line x             Dx</span><br></pre></td></tr></table></figure>
+<p>Hints: </p>
+<ol>
+<li>negation introduction can prove anything as we can hypothesize something negated, if there is a contradiction can be found, then we can prove the thing we want.</li>
+<li>if the conclusion is negated, try to use ¬-introduction.</li>
+</ol>
+<p><strong>Rules of thumb</strong></p>
+<ol>
+<li>If the main connective in the CONCLUSION is an implication, use implication introduction</li>
+<li>If the main connective in any of the PREMISES is a disjunction, try to use disjunction elimination</li>
+<li>Otherwise, try negation introduction / proof by contradiction</li>
+</ol>
+<p><strong>Semantic and syntactic validity</strong><br>We have seen two methods to show validity of an argument: </p>
 <ul>
-<li>¬∃x[R(x)]</li>
-<li>or:∀x[¬R(x)]</li>
+<li>truth table construction [semantic validity]</li>
+<li>natural deduction proofs [syntax validity]</li>
 </ul>
-<p>No fast cars are purple</p>
+<p>Semantic validity A1, …, An ⊨ B : an argument is valid iff whenever the premises are true, and so is the conclusion (As are true so is B)<br>&nbsp;<br>Syntactic validity A1, …, An ⊢ B : an argument is valid iff the conclusion can be derived from the premises by using inference rules (B can be proved by As)</p>
+<p>NOTE: if there is no premise for an argument, we automatically think the truth values are true for each interpretation of the empty premise. so to check validity of : C we only need to check truth values of C for each interpretation.</p>
+<p><strong>Disproving</strong><br>arguments disproving: </p>
+<ol>
+<li>give a counter-example</li>
+<li>this means I(premises) is true and so is I(conclusion)</li>
+<li>if all true then is valid </li>
+<li>if premises are true and conclusion is false then is invalid.</li>
+</ol>
+<p><strong>Derived rules and reiterate</strong><br>proof decomposed into parts</p>
 <ul>
-<li>¬∃x[F(x)∧P(x)]</li>
-<li>or:∀x[F(x)→¬P(x)]</li>
+<li>auxiliary arguments/derived inference rules (“lemmas”)</li>
+<li>proved separately</li>
+<li>inserted with sequent introduction</li>
 </ul>
-<p>NOTE : ∃x[R(x)→F(x)] cannot be applied as we can find a counterexample where R(x) -&gt; F(x) is true but R(x) is false. it means there is some red cars which are fast but it is not red.</p>
-<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><p>def : in predicate calculus, we focus on the scope of a variable which is the scope of the quantifier that it is bound to.<br>&nbsp;<br>example : ∀x[F(x) → ¬P(x)].<br>the scope of x is F(x) → ¬P(x)<br>&nbsp;<br>example : ∀y[F(y) → ¬P(y)].<br>the scope of y is F(y) → ¬P(y)</p>
-<h2 id="Natural-deduction"><a href="#Natural-deduction" class="headerlink" title="Natural deduction"></a>Natural deduction</h2><p>in predicate calculus, we prove validity by applying natural deduction<br>&nbsp;<br><strong>Inference rules :</strong><br>1) ∀-introduction </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   φ(a)</span><br><span class="line">----------- ∀-introduction</span><br><span class="line"> ∀x [φ(x)]</span><br></pre></td></tr></table></figure>
-<p>NOTE : a needs to be a typical example of x. it means we know nothing else about a. to be more precise, φ(a) cannot be a premise.<br>&nbsp;<br>2) ∀-elimination</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ∀x [φ(x)]</span><br><span class="line">----------- ∀-elimination</span><br><span class="line">   φ(a)</span><br></pre></td></tr></table></figure>
-<p>3) ∃-introduction</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   φ(a) </span><br><span class="line">----------- ∃-introduction</span><br><span class="line"> ∃x [φ(x)]</span><br></pre></td></tr></table></figure>
-<p>4) ∃-elimination</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ∃x [φ(x)]   φ(a)⊢C</span><br><span class="line">-------------------- ∃-elimination</span><br><span class="line">          C</span><br></pre></td></tr></table></figure>
-<p>NOTE : a needs to be typical example of x. it means a cannot appear in the conclusion C and cannot occur in any dependencies of C. a cannot be a premise.</p>
-<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>term : either a variable x or a constant a<br>&nbsp;<br>well-formed Formula :<br>if P is a predicate symbol and t1, .., tn are terms then P(t1, .., tn) is a formula<br>if φ and ψ are formulas then ¬φ, φ∧ψ, φ∨ψ and φ→ψ are all formulas<br>if x is a variable and φ is a formula then ∀x[φ] and ∃x[φ] are formulas</p>
-<h2 id="Semantics"><a href="#Semantics" class="headerlink" title="Semantics"></a>Semantics</h2><p>We need to consider the domain which can be any non-empty set.<br>&nbsp;<br>an interpretation is a pair (D, I) where :</p>
+<p>in some case we may need to use a premise again, we can apply Reiterate<br>&nbsp;<br>Useful derived rules:<br>1) Sequent introduction (LEM) : P ∨ ¬P</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--------</span><br><span class="line">| ¬(P∨¬P)     hypo            &#123;1&#125;</span><br><span class="line">|  ------</span><br><span class="line">|  |  P       hypo            &#123;2&#125;</span><br><span class="line">|  |  P∨¬P    ∨-intro 2       &#123;2&#125;</span><br><span class="line">|  |  ⊥       ∧-intro 3,1    &#123;1,2&#125;</span><br><span class="line">|  ------</span><br><span class="line">|  ¬P         ¬-intro 2,4     &#123;1&#125;</span><br><span class="line">|  P∨¬P       ∨-intro 5       &#123;1&#125;</span><br><span class="line">|  ⊥          ∧-intro 6,1     &#123;&#125;</span><br><span class="line">--------</span><br><span class="line"> ¬¬(P∨¬P)     ¬-intro 1,7     &#123;&#125;</span><br><span class="line"> P∨¬P         ¬¬-elim 8       &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Soundness and Completeness</strong><br>Soundness: any syntactically valid argument is semantically valid<br>A1, …,An ⊢B implies A1, …,An ⊨B<br>&nbsp;<br>NOTE: this means if we can prove an argument then it is valid<br>&nbsp;<br>Completeness: any semantically valid argument is syntactically valid<br>A1, …,An ⊨ B implies A1, …,An ⊢ B<br>&nbsp;<br>NOTE: this means we can construct a proof of any valid argument<br>&nbsp;<br>Natural deduction is sound and complete : we can prove any valid argument.</p>
+<h2 id="Equivalencies"><a href="#Equivalencies" class="headerlink" title="Equivalencies"></a>Equivalencies</h2><p>Some formulas are equivalent, written A ≡ B. The equivalence relationship is called semantically equivalent(or, provably equivalent).<br>&nbsp;<br>def: A ≡ B iff the truth values of A and B are the same for all interpretations<br>(A ≡ B iff A ⊨ B and B ⊨ A)</p>
+<p><strong>Useful equivalence</strong><br>Commutativity: ∧ and ∨ are commutative </p>
 <ul>
-<li>D : domain</li>
-<li>I : the meaning of all predicates in terms of D</li>
-<li>it defines whether P(a1, .., an) is true or false</li>
+<li>A∧B ≡ B∧A</li>
+<li>A∨B ≡ B∨A</li>
 </ul>
-<h2 id="Validity-and-Satisfiability"><a href="#Validity-and-Satisfiability" class="headerlink" title="Validity and Satisfiability"></a>Validity and Satisfiability</h2><p>argument validity : an argument  A1,…,An : C is valid in predicate logic iff we can find a case where every interpreration of premise is true and so is the conclusion<br>&nbsp;<br>a formula φ is valid in PL iff φ is true for every possible domain/interpretation<br>a formula φ is satisfiable iff φ is true for some domain/interpretation<br>&nbsp;<br>NOTE : we will use natural deduction to check validity as domain can be infinite which make the truth table unable to be set up.<br>&nbsp;<br>Validity check :</p>
+<p>Associativity: ∧ and ∨ are associative </p>
+<ul>
+<li>A∧(B∧C) ≡ (A∧B)∧C</li>
+<li>A∨(B∨C) ≡ (A∨B)∨C</li>
+</ul>
+<p>Idempotency: ∧ and ∨ are idempotent </p>
+<ul>
+<li>A∧A ≡ A</li>
+<li>A∨A ≡ A</li>
+</ul>
+<p>Distributivity: ∧ distributes over ∨ (and vice versa) </p>
+<ul>
+<li>A∧(B∨C) ≡ (A∧B)∨(A∧C)</li>
+<li>A∨(B∧C) ≡ (A∨B)∧(A∨C)</li>
+</ul>
+<p>De Morgan’s laws</p>
+<ul>
+<li>¬(A∧B) ≡ ¬A∨¬B </li>
+<li>A∧B    ≡ ¬(¬A∨¬B) </li>
+<li>¬(A∨B) ≡ ¬A∧¬B </li>
+<li>A∨B    ≡ ¬(¬A∧¬B)</li>
+</ul>
+<p>Double negation </p>
+<ul>
+<li>¬¬A ≡ A</li>
+</ul>
+<p>Implication</p>
+<ul>
+<li>A→B ≡ ¬A∨B</li>
+</ul>
+<p>We can also define other new connectives</p>
+<ul>
+<li>A <-> B ≡ (A→B)∧(B→A) (bi-implication) </-></li>
+<li>A (+) B ≡ (A∧¬B)∨(¬A∧B) (exclusive or)</li>
+</ul>
+<p><strong>Proving equivalences</strong><br>As given some useful equivalence relations above, we can prove equivalences by working forwards/backwards with a single proof or replacing subformulas with equivalent ones.<br>&nbsp;<br>example: (P ∧ Q) -&gt; S ≡ P -&gt; (Q -&gt; S)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(P ∧ Q) → S ≡ P → (Q → S)</span><br><span class="line">            ≡ ¬ (P ∧ Q) ∨ S    // implication</span><br><span class="line">            ≡ (¬ p ∨ ¬ q)∨ s   // de morgan&apos;s</span><br><span class="line">            ≡ ¬ p ∨ (¬ q ∨ s)  // distributivity</span><br><span class="line">            ≡ ¬ p ∨ (q → s)    // implication</span><br><span class="line">            ≡ p → (q → s)      // implication</span><br></pre></td></tr></table></figure>
+<p>we can prove and disprove equivalences i.e. (P→Q)∧¬Q ≡ ¬P<br>&nbsp;<br>NOTE : equivalence is useful to check the (in)validity of argument.<br>&nbsp;<br>Redundancy : when applying equivalence equations, if we remove too many connectives it leads to lots of nesting and complex formulas. (so we introduce normal form)</p>
+<h2 id="Normal-form"><a href="#Normal-form" class="headerlink" title="Normal form"></a>Normal form</h2><p>literal: a literal is an atomic proposition or its negation i.e. P or ¬P<br>&nbsp;<br>DNF(disjunction normal form): a form of A1 ∨ A2 ∨ …∨ An where each clause(分句) Ai is a conjunction of one or more literals<br>i.e. (¬P ∧ Q) ∨ (¬P ∧ R) ∨ (¬P ∧ ¬R ∧ ¬Q)<br>&nbsp;<br>CNF(conjunction normal form): a form of A1 ∧ A2 ∧ …∧ An where each clause Ai is a disjunction of one or more literals<br>i.e. (R ∨ ¬Q ∨ ¬P) ∧ (Q ∨ ¬R)<br>&nbsp;<br>Often, we write CNF into clausal normal form as a set of sets of literals</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R, ¬Q, ¬P&#125;, &#123;Q, ¬R&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Conversion to normal form</strong><br>Procedure: </p>
+<ol>
+<li>eliminate -&gt; connectives</li>
+<li>move all negations so they only occur in literals</li>
+<li>use distributive laws until the formula is in normal form</li>
+</ol>
+<p><strong>Using CNF</strong><br>to make a CNF formula true, we need at least onw literal in each clause to be true. Often, we will check satisfiability of a CNF formula. i.e. (R ∨ ¬Q ∨ ¬P) ∧ (Q ∨ ¬R)<br>&nbsp;<br>Simplifications of Clausal normal form :<br>if a clause contains a literal and its negation, the clause can be removed from the CNF as truth always hold </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R,¬Q,¬R&#125;,&#123;Q,¬P,R&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>if a clause is a subset of another clause, then the other clause can be removed from the CNF as truth is determined by the sub-clause </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R,Q,¬P&#125;,&#123;Q,¬P&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>Special cases: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;P&#125;, &#123;&#125;&#125; is false as the empty disjunction is false</span><br><span class="line">&#123; &#125; this is true as the empty conjunction is true</span><br><span class="line">&#123;&#123;Q&#125;, &#123;¬Q&#125;, &#123;P&#125;&#125; is false as Q and ¬Q is contradiction</span><br></pre></td></tr></table></figure>
+<p>empty clauses are written as a square 口.<br>&nbsp;<br>NOTE: </p>
+<ul>
+<li>empty disjunction is false</li>
+<li>empty conjunction is true</li>
+</ul>
+<h2 id="Resolution-归结原理"><a href="#Resolution-归结原理" class="headerlink" title="Resolution(归结原理)"></a>Resolution(归结原理)</h2><p>def: Unlike natural deduction, resolution has only 1 inference rule :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;A&#125; ∨ X1     &#123;¬A&#125; ∨ X2   </span><br><span class="line">----------------------- Resolution</span><br><span class="line">       X1 ∨ X2</span><br></pre></td></tr></table></figure>
+<p>NOTE: {A} ∨ X1 and {¬A} ∨ X2 are two clauses/ premises in CNF form<br>&nbsp;<br>Special cases: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A     ¬A ∨ B   </span><br><span class="line">--------------- Resolution  // -&gt; -elimination</span><br><span class="line">       B</span><br><span class="line"></span><br><span class="line"> A    ¬A   </span><br><span class="line">--------- Resolution  // contradiction introduction</span><br><span class="line">    ⊥</span><br></pre></td></tr></table></figure>
+<p>NOTE: </p>
+<ul>
+<li>premises and conclusion are all disjunctions. </li>
+<li>this works because A ∨ ¬A is always true.</li>
+</ul>
+<p><strong>Resolution refutation</strong><br>A formula φ is valid iff ¬φ is unsatisfiable. we can prove φ by proving ¬φ is a contradiction<br>&nbsp;<br>to prove validity of a formula: </p>
+<ol>
+<li>negate the formula φ</li>
+<li>convert to CNF/ clausal normal form</li>
+<li>resolve a pair of clauses repeatly until :<ul>
+<li>we find an empty clause 口 (after we solve A and ¬A we got empty clause) : then φ is valid</li>
+<li>we find there are no more new pairs to resolve or find it true (P ∨ ¬P): then φ is invalid</li>
+</ul>
+</li>
+</ol>
+<p>NOTE: it is sound and complete</p>
+<p><strong>Satisfiability</strong><br>Checking validity via satisfiability</p>
 <ul>
 <li>formula φ is valid iff ¬φ is unsatisfiable </li>
-<li>formula φ is invalid iff ¬φ is satisfiable</li>
+<li>formula φ is invalid iff ¬φ is satisfiable </li>
 </ul>
-<p>example : ∀x[∀y[P(x)∧¬P(y)]] show the formula’s satisfiability</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1) negate : ¬ ∀x[∀y[P(x)∧¬P(y)]]</span><br><span class="line">2) we found when x = a and y = b</span><br><span class="line">    P(a) = true</span><br><span class="line">    P(b) = true</span><br><span class="line">    ¬ ∀x[∀y[P(x)∧¬P(y)]] = true</span><br><span class="line">   it is valid</span><br><span class="line">3) hence ∀x[∀y[P(x)∧¬P(y)]] is unsatisfiable</span><br><span class="line"></span><br><span class="line">--------------------------------------------</span><br><span class="line">1) construct truth table</span><br><span class="line">2) see if there is an interpretation makes it true</span><br></pre></td></tr></table></figure>
-<h2 id="Disproving"><a href="#Disproving" class="headerlink" title="Disproving"></a>Disproving</h2><p>to disprove an argument we need to find a counter-example :</p>
+<p>we can then, use these to show whether a argument is valid or not.</p>
+<p><strong>Proving arguments’ validity</strong><br>Procedure: </p>
 <ol>
-<li>give the domain</li>
-<li>assign truth values for each constant</li>
-<li>if there is a case when premises are all true but conclusion is false</li>
-<li>then it is invalid</li>
+<li>A1, …, An ⊢ C is valid iff (A1 ∧ …∧ An) -&gt; C is valid</li>
+<li>¬((A1 ∧ …∧ An) -&gt; C) ≡ A1 ∧…∧ An ∧ ¬C</li>
+<li>convert to clausal normal form</li>
+<li>apply resolution inference rule repeatly</li>
 </ol>
-<p>example : ∃x[F(x)∨G(x)], ∃x[¬F(x)] : ∃x[G(x)]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">give the domain &#123;a, b&#125;    //as we have 2 xs</span><br><span class="line">F(a) = true   G(a) = false</span><br><span class="line">F(b) = false  G(b) = false</span><br><span class="line"></span><br><span class="line">assign the values we got F(a) ∨ G(a) = true</span><br><span class="line">assign the values we got ¬F(b) = true</span><br><span class="line"></span><br><span class="line">but the conclusion we got is false (a and b both false)</span><br></pre></td></tr></table></figure>
-<h2 id="Equivalence"><a href="#Equivalence" class="headerlink" title="Equivalence"></a>Equivalence</h2><p>some useful equivalence relations :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">¬∃x[B] ≡ ∀x[¬B] </span><br><span class="line">¬∀x[B] ≡ ∃x[¬B]</span><br><span class="line"> ∃x[B] ≡ ¬∀x[¬B]</span><br><span class="line"> ∀x[B] ≡ ¬∃x[¬B]</span><br></pre></td></tr></table></figure>
-<p>De Morgans law also holds :<br>example : no fast cars are purple</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">¬∃x[F(x) ∧ P(x)] ≡ ∀x[F(x) → ¬P(x)]</span><br><span class="line">                 ≡ ∀x[¬(F(x) ∧ P(x))]</span><br><span class="line">                 ≡ ∀x[¬F(x) ∨ ¬P(x))]</span><br><span class="line">                 ≡ ∀x[F(x) → ¬P(x))]</span><br></pre></td></tr></table></figure>
-<h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><p>an equivalence relation is :</p>
-<ul>
-<li>reflexive L(a,a)</li>
-<li>summetric L(a,b) -&gt; L(b,a)</li>
-<li>transitive L(a,b) L(b,c) -&gt; L(a,c)</li>
-</ul>
-<h2 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h2><p>identity equivalence : x = y<br>non-equivalence : ¬(x = y)<br>&nbsp;<br>example :<br>John is the tallest person<br>given predicate symbol : T(x,y) meaning x is taller than y<br>given constant j = John</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">∀x[¬(x = j) -&gt; T(j,x)]</span><br></pre></td></tr></table></figure>
-<p>NOTE : ∀x[T(j,x)] is wrong because the domain is people while John cannot be taller than himself when x = j.<br>&nbsp;<br>example : Everybody except John and Chris loves Mary<br>given predicate symbol L(x,y) meaning x loves y<br>given constant j = John, c = Chris and m = Mary</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">∀x[¬(x = j, x = c) -&gt; L(x,m)]</span><br></pre></td></tr></table></figure>
-<p><strong>Inference rules :</strong><br>1) identity -introduction :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">------- =-introduction</span><br><span class="line"> a = a</span><br></pre></td></tr></table></figure>
-<p>2)identity -elimination :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = b  φ(a)</span><br><span class="line">----------- =-elmination</span><br><span class="line">   φ(b)</span><br></pre></td></tr></table></figure>
-<h2 id="Qunantities"><a href="#Qunantities" class="headerlink" title="Qunantities"></a>Qunantities</h2><p>quantifiers are able to state quantities :</p>
-<ul>
-<li>0 : ¬∃x(Q(x))</li>
-<li>at least 1 : ∃x[Q(x)]</li>
-<li>at most 1 : ∀x[∀y[(Q(x) ∧ Q(y)) -&gt; (x = y)]]</li>
-<li>at least 2 : ∃x[∃y[(Q(x) ∧ Q(y)) ∧ ¬(x = y)]] …</li>
-<li>exactly 1 : ∃x[Q(X)] ∧ ∀x[∀y[Q(x) ∧ Q(y) -&gt; (x = y)]]</li>
-<li>all : ∀x</li>
-</ul>
-<p><strong>Definite descriptions</strong><br>def: refering to a specific individual without constant symbol<br>&nbsp;<br>example : the person who loves Mary also loves Chris</p>
-<h2 id="Proof-Strategies-II"><a href="#Proof-Strategies-II" class="headerlink" title="Proof Strategies II"></a>Proof Strategies II</h2><p><strong>Translating to Formal language</strong><br>When given sentences we may need to convert to formal languages in order to process a proof.<br>&nbsp;<br>Procedure :</p>
-<ol>
-<li>identify domain</li>
-<li>collect predicates(atomic propositions) from the sentences i.e. A(x); B(x); C(x)</li>
-<li>collect constant symbols a,b,c..</li>
-<li>convert each into (well-formed) formula with quantifiers</li>
-</ol>
-<p>NOTE :</p>
-<ol>
-<li>everyone : ∀</li>
-<li>someone : ∃</li>
-<li>at least x : ∃</li>
-<li>at most : ∀</li>
-<li>no less : ∀</li>
-<li>‘all’ with implication</li>
-<li>‘exist’ with and</li>
-</ol>
-<p><strong>Arguments without premises</strong><br>Collection of some tricky arguments :<br>: ∀x[∀y[L(x, y)] → L(x, x)]</p>
-<p><strong>Rules of Thumb</strong><br>if there is a premise with an existential quantifier and the conclusion is with implication, try use existential elimination</p>
+<p><strong>SAT solver</strong><br>“TheScienceofBruteForce”,MarijnJ.H.Heule,OliverKullmann  – <a href="https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext" target="_blank" rel="noopener">https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext</a> – state-of-the-artSATandautomatedmathematicalproofs  <br>Z3: a theorem prover, including both SAT/SMT solvers – <a href="https://rise4fun.com/z3/tutorial" target="_blank" rel="noopener">https://rise4fun.com/z3/tutorial</a> </p>
 
 	
 	</div>
-  <a type="button" href="/2019/02/19/[Logic]02_predicateCalculus/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/02/19/[Logic]01_propositionalLogic/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1248,11 +1282,11 @@ var _hmt = _hmt || [];
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
