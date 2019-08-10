@@ -325,7 +325,7 @@ To-do :
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/[AI]11_ReinforcementLearning/">Reinforcement Learning</a>
+			<a href="/2019/06/02/[AI]10_NeuralNetwork/">Neural Network</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -339,30 +339,40 @@ To-do :
   <div class="row">
 	
 	
-		<p>Reinforcement learning, according to Wikipedia, is: </p>
-<blockquote>
-<p>an area of machine learning concerned with how software <strong>agents</strong> ought to take actions in an environment so as to maximize some notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.</p>
-</blockquote>
-<h2 id="Agents"><a href="#Agents" class="headerlink" title="Agents"></a>Agents</h2><p>In reinforcement learning, an agent is required to reach an end state in an environment<br>&nbsp;<br>Example :</p>
-<ol>
-<li>Agent : game</li>
-<li>End state : win</li>
-<li>Environment : board</li>
-</ol>
-<p>In order to reach the outcome we expected, we introduce reward :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for some [i] action</span></span><br><span class="line"><span class="keyword">switch</span>(i)&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>: goal -= <span class="number">100000</span>  <span class="comment">// large panalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>: goal -= <span class="number">10</span>      <span class="comment">// small penalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>: goal += <span class="number">100000</span>  <span class="comment">// large reward</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">4</span>: goal += <span class="number">10</span>      <span class="comment">// small reward</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Things to know :</p>
+		<h2 id="Reason-we-use-neural-network"><a href="#Reason-we-use-neural-network" class="headerlink" title="Reason we use neural network"></a>Reason we use neural network</h2><p>We found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases as well as weights increasing. Instead, we use neural network to create multilayered variables in order to hold more than one logistic regressions.<br>&nbsp;<br>NOTE : 神经网络是逻辑回归的加强版</p>
+<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation:"></a>Representation:</h2><p>linear logits:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g(z) ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure>
+<p>Bias : 1 x w0 which separates the result of 1 and 0.</p>
+<p>we evaluate sigmoid function g(z): </p>
 <ul>
-<li>reward and penalty are based on how they act in an environment</li>
-<li>an agent aims to maximise positive reward</li>
-<li>agent uses this to train a model(e.g. neural network)</li>
-<li>Environment should be fully observable or partially Observable.</li>
+<li>if z &lt; -4, then g(z) = 0</li>
+<li>if z &gt;  4, then g(z) = 1</li>
 </ul>
-<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://www.youtube.com/watch?v=4MlZncsh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4MlZncsh</a> y1Q<br><a href="https://www.youtube.com/watch?v=cUTMhmVh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=cUTMhmVh</a> 1qs</p>
+<h2 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h2><p>def: the process of calculating the inputs of subsequent layers until we reach the final input</p>
+<h2 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h2><p>def: an algorithm to find the gradient for neural network.<br>&nbsp;<br>Backpropagation is used to calculate the gradient(difference in weights); the gradient is calculated for the purpose of updating the weights of all logits.</p>
+<h2 id="one-vs-all"><a href="#one-vs-all" class="headerlink" title="one-vs-all"></a>one-vs-all</h2><p>def: logistic regression can be used on multiple classes by using one-vs-all.<br>&nbsp;<br>NOTE : for example we have a logistic regression to classify cat, dog, rat; another example, we can apply this on human facial identification which tells you who is the person from a given picture.</p>
+<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>cost = Σ(for each j) (expected - predicted)^2</p>
+<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Neural networks, like all non-linear models can overfit training data, there are three approaches :</p>
+<ol>
+<li>include regularisation for each logistic unit</li>
+<li>Dropout : ignore certain nodes(typically half) when traing the model</li>
+<li>reduce network depth : reduce the complexity of hypothesis h(x)</li>
+</ol>
+<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>def: function that used on the weighted sum of input<br>&nbsp;<br>NOTE: we learnt sigmoid function as an activation function in neural network, but there are others.</p>
+<h2 id="Hyperparameters"><a href="#Hyperparameters" class="headerlink" title="Hyperparameters"></a>Hyperparameters</h2><p>Neural Networks (and to a lesser extent Logistic Regression) require several parameters that can be used to “tune” how the network trains.<br>&nbsp;<br>Hyperparameter tuning : the process of picking the correct combination of hyperparameters. This is extremely expensive in terms of time and computational resources.<br>&nbsp;<br>Grid Search : the process of systematically going through all possible combination of the hyperparameters to find the best<br>&nbsp;</p>
+<h2 id="“Overfiting”"><a href="#“Overfiting”" class="headerlink" title="“Overfiting”"></a>“Overfiting”</h2><p>def: a combination of hyperparameters which works well for training data and does not work for any other data.<br>&nbsp;<br>to deal with this, we split our data into three parts :</p>
+<ol>
+<li>training set</li>
+<li>development set : used for hyperparameter tuning</li>
+<li>test set</li>
+</ol>
+<p>proportions of dividing :<br>80% ; 10% ; 10%<br>60% ; 20% ; 20%</p>
+<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>Fraud Prevention<br>Facial identification(人脸识别)</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a><br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/[AI]11_ReinforcementLearning/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/[AI]10_NeuralNetwork/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -452,7 +462,7 @@ To-do :
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/[AI]03_uninformed/">Uninformed Search</a>
+			<a href="/2019/06/02/[AI]02_swarm/">Swarm intelligence and firefly synchronization</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -466,26 +476,30 @@ To-do :
   <div class="row">
 	
 	
-		<h2 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h2><ol>
-<li>initial state</li>
-<li>goal state</li>
-<li>possible actions and their effects on states</li>
-<li>cost function</li>
-</ol>
-<h2 id="Breadth-First-Search-Queue"><a href="#Breadth-First-Search-Queue" class="headerlink" title="Breadth First Search: Queue"></a>Breadth First Search: Queue</h2><p>Complete: guaranted to find a goal state if one exits and terminate if failed.<br>Admissible(可采纳的): able to find the shortest path.<br>Space.Compx = O(b^d - 1) = O(b^d)<br>Time.Compx = O(b^d -1) = O(b^d)<br><code>b</code>: branching factor (二叉 : 2 ; 三叉 : 3)<br><code>d</code>: depth of the goal</p>
-<h2 id="Depth-First-Search-Stack"><a href="#Depth-First-Search-Stack" class="headerlink" title="Depth First Search: Stack"></a>Depth First Search: Stack</h2><p>Complete: if the state space is finite,…(incomplete if infinite)<br>Not admissible: not guaranteed to find the shortest path to a goal<br>Space.compx = O(b^m)<br>Time.Compx = O(b^m)<br><code>b</code>: branching factor<br><code>m</code>: maximum depth of the search tree</p>
-<p>NOTES: </p>
-<ul>
-<li>If a state can be reached by two nodes, we only remember the node associated to the lowest cost.</li>
-<li>in real practice, it is not the case we can simply find the shortest path, we need to explore the entire maze before.</li>
-<li>we mark explored nodes in a visited list, and nodes in the frontier is stored in an unvisited list.</li>
+		<h2 id="Swarm-intelligence-群体智能"><a href="#Swarm-intelligence-群体智能" class="headerlink" title="Swarm intelligence(群体智能)"></a>Swarm intelligence(群体智能)</h2><p>features :</p>
+<ol>
+<li>decentrialized control</li>
+<li>self-organization<ul>
+<li>no central authority</li>
+<li>local interaction pattern</li>
 </ul>
-<h2 id="Analysing-Searching-Algorithms"><a href="#Analysing-Searching-Algorithms" class="headerlink" title="Analysing Searching Algorithms"></a>Analysing Searching Algorithms</h2><p>Completeness     : if it is guaranteed to find a solution when at least one solution exists.<br>Admissibility    : if it is guaranteed to find the best solution when there are more than one solution.<br>Time Complexity  : the order of computation during the search process in the worst case<br>Space Complexity : storage space required in the worst case</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/29425290" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29425290</a><br><a href="https://blog.csdn.net/dyy_gusi/article/details/46414677" target="_blank" rel="noopener">https://blog.csdn.net/dyy_gusi/article/details/46414677</a></p>
+</li>
+</ol>
+<h2 id="firefly-synchronization-萤火虫同步"><a href="#firefly-synchronization-萤火虫同步" class="headerlink" title="firefly synchronization(萤火虫同步)"></a>firefly synchronization(萤火虫同步)</h2><p>representation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--^----^----||----^----^----      actual flash     </span><br><span class="line">                  ^             expected flash</span><br><span class="line">^----^----^-||----^----^----</span><br><span class="line">                ^</span><br><span class="line">---^----^---||----^----^----</span><br><span class="line">              ^</span><br><span class="line">-^----^-----||^----^----^---</span><br><span class="line">             ^</span><br></pre></td></tr></table></figure>
+<p>algorithm:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(firefly f: fireflys[][])&#123;</span><br><span class="line">    <span class="keyword">if</span>(isflashing(f.neighbour)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(f.timer [<span class="number">0</span>:<span class="number">3</span>]) &#123;</span><br><span class="line">            tick++;</span><br><span class="line">            f.timer decrements by <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(f.timer [<span class="number">4</span>:<span class="number">7</span>]) &#123;</span><br><span class="line">            tick++;</span><br><span class="line">            f.timer increments by <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(f.timer == <span class="number">8</span> || f.timer == <span class="number">9</span>) &#123;</span><br><span class="line">             tick++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        tick++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h2><p>1) Scalability : when the program is running, we can still increase the size of our objects without affecting other “fireflies”.<br>2) Fault tolerance : the program can still work when some fireflies die or has error.<br>3) No need for a central system</p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications**"></a>Applications**</h2><p>wireless sensor networks: </p>
+<ul>
+<li>to enable object detection</li>
+<li>to save battery</li>
+</ul>
+<p>robot fault detection</p>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/[AI]03_uninformed/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/[AI]02_swarm/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
