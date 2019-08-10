@@ -110,59 +110,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
-<ol>
-<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
-<li>suppose a, b ∈ L and m &lt; n.</li>
-<li>let Xm be the state reached when we start from p and read a^m.</li>
-<li>let Xn be the state reached when we start from p and read a^n. </li>
-<li>if starting from Xm and reading b^m then we reach a Acc.</li>
-<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
-<li>So Xn != Xm</li>
-<li>So there are infinitely many states.</li>
-<li>we raise a contradiction. Hence the language is not regular.</li>
-</ol>
-<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
-<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
-<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
-<p>we can construct a derivation tree :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
-<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
-<p>this grammar is ambiguous :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
-<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
 		</h3>
 		</div>
@@ -256,6 +203,137 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]10_Regular Languages/">Regular Languages and Automaton</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Regular-expressions"><a href="#Regular-expressions" class="headerlink" title="Regular expressions"></a>Regular expressions</h2><p>We use regular expression to solve :</p>
+<ol>
+<li>Matching problem</li>
+<li>Searching problem</li>
+</ol>
+<p>Σ   : set of characters<br>Σ^* : set of all words<br>L   : natural languages(passwords, email addresses)</p>
+<p>NOTE : L ⊆ Σ^*</p>
+<p>Notations :</p>
+<ul>
+<li>The regexp a accepts ONLY the word a.</li>
+<li>The regexp b accepts ONLY the word b.</li>
+<li>ε accepts ONLY the empty word ε.</li>
+<li>if E and F are regexps, then EF is a concatenation of words to be accepted.</li>
+<li>if E and F are regexps, then E|F accepts either E or F.</li>
+<li>E^* accepts words of E occuring zero or more times.</li>
+<li>The regexp Nothing does not accept any word.</li>
+</ul>
+<p>laws of precedence : <code>E|F</code> &lt; <code>EF</code> &lt; <code>()^*</code></p>
+<h2 id="Regular-and-Irregular-language"><a href="#Regular-and-Irregular-language" class="headerlink" title="Regular and Irregular language"></a>Regular and Irregular language</h2><p>Regular languages   :<br>any language L ⊆ Σ^* that can be represented in this way is said to be regular.<br>&nbsp;<br>Irregular languages :<br>we can ONLY show the existence as there are uncountablly many languages and countablly many regexps.</p>
+<p>NOTES :</p>
+<ul>
+<li>the complement of a regular language is still regular : a regexp that NOT accepts <code>c(bb|ca)^*</code></li>
+<li>the intersection of two regular languages is still regular : a regexp accepts both <code>cc(bb|ca)^*</code> and c<code>(bbbb|cca)^*</code></li>
+</ul>
+<h2 id="Decidability"><a href="#Decidability" class="headerlink" title="Decidability"></a>Decidability</h2><p>def              : problem is decidable when there is some program that can determine the answer of yes and no.<br>&nbsp;<br>to show a problem is decidable, introduce a program to do so.<br>to show a problem is undecidable : reduce to the halting problem or, use rice’s theorem.</p>
+<p>examples :</p>
+<ol>
+<li>there is a program <code>boolean equality(String E, String F){}</code> that can determine if two regexps are equal, so this problem is decidable.</li>
+<li>for every regexp E, matching problem for E is decidable.</li>
+</ol>
+<p>NOTE : After determining whether a qns can be solved, we can find Efficiency of the qns.</p>
+<h2 id="Introducing-Automata"><a href="#Introducing-Automata" class="headerlink" title="Introducing Automata"></a>Introducing Automata</h2><p>DFA(Deterministic Finite Automaton) : </p>
+<ul>
+<li>a finite set X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ: X × Σ → X</li>
+<li>a set of accepting states Acc ∈ X; Acc is indicated by a double ring.</li>
+</ul>
+<p>“Deterministic” because the initial state and the result of each transition are specified. “Finite” because the set of states is finite.</p>
+<p>partial DFA : δ is a partial function, meaning there are undefined transitions </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[]-----&gt; [error state] &lt;-----[]</span><br><span class="line">    a     |       ∧       b</span><br><span class="line">          |_______|</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
+<ul>
+<li>DFA includes all possible transitions</li>
+<li>partial DFA includes NOT all transitions.</li>
+<li>turn a partial DFA into DFA: add an error state which takes all undefined transitions and transitions to itself.</li>
+</ul>
+<h2 id="Non-deterministic-Automata"><a href="#Non-deterministic-Automata" class="headerlink" title="Non-deterministic Automata"></a>Non-deterministic Automata</h2><p>difference:</p>
+<ol>
+<li>NDFA can have 1 and more initial states</li>
+<li>from a given state, when a (or any other character) is the input, there can be several possible next states. Example : 1 -&gt; a -&gt; 2 and 1 -&gt; a -&gt; 3</li>
+</ol>
+<p>Determinization : </p>
+<ol>
+<li>The initial “state” is the set of all the initial states of the NDFA. </li>
+<li>A “state” is accepting when it contains an accepting state of the NDFA. </li>
+<li>From a given “state”, when we input a character, we collect all the possible next states.</li>
+</ol>
+<h2 id="ε-transitions"><a href="#ε-transitions" class="headerlink" title="ε-transitions"></a>ε-transitions</h2><p>def   : transition taking empty word ε<br>εNDFA : nondeterministic automaton with ε-transitions<br>&nbsp;<br>Convert from εNDFA to NDFA : </p>
+<ol>
+<li>remove ε-transitions </li>
+<li>add new transitions</li>
+<li>determine new Acc</li>
+<li>remove non reachable states</li>
+</ol>
+<p>NOTE : during converting, we do not remove any reachable state.</p>
+<h2 id="How-to-add-sets"><a href="#How-to-add-sets" class="headerlink" title="How to add sets"></a>How to add sets</h2><p>sum A + B : </p>
+<ul>
+<li>inl a = (0, a)</li>
+<li>inr b = (1, b)</li>
+</ul>
+<p>example : {3,5,6} + {3,6,9,28}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;3,5,6&#125; + &#123;3,6,9,28&#125; = &#123;inl 3,inl 5,inl 6,inr 3,inr 6,inr 9,inr 28&#125;</span><br><span class="line">                     = &#123;(0, 3), (0, 5), (0, 6), (1, 3), (1, 6), (1, 9), (1, 28)&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE : A + 1 where 1 represents a singleton set. We use this to convert a partial DFA into DFA by adding and error state.</p>
+<h2 id="Kleene’s-Theorem"><a href="#Kleene’s-Theorem" class="headerlink" title="Kleene’s Theorem"></a>Kleene’s Theorem</h2><p>theorem 1 : for a language L ⊆ Σ^* , the following are equivalent:</p>
+<ol>
+<li>L is regular</li>
+<li>The matching problem for L can be solved by a DFA.</li>
+</ol>
+<p>We ONLY study from 1. to 2. : if L is regular, then there is a DFA that can solve the matching problem for L.<br>&nbsp;<br>We are now, based on Kleene’s theorem, able to convert a regular language L into DFA by:</p>
+<ol>
+<li>transfer L into εNDFA</li>
+<li>transfer εNDFA into NDFA (remove ε-transition)</li>
+<li>transfer NDFA to DFA (determinize)</li>
+</ol>
+<h2 id="Using-Kleene’s-Theorem"><a href="#Using-Kleene’s-Theorem" class="headerlink" title="Using Kleene’s Theorem"></a>Using Kleene’s Theorem</h2><p>Although regexps and finite automata are equivalent, it’s often easier to operate on automata. For example, we asked: is the complement of a regular language regular? That’s not obvious for regexps, but using (total) DFAs, it is clear: just replace ac- cepting states by non-accepting ones and vice versa.<br>&nbsp;<br>This implies that the intersection of regular languages L and M is regular, because M ∩ L = L ∪ M . But we can also see this directly. Say L is recognized by automaton A, and M by B. If you’re given a word w and you want to know whether it’s in L ∩ M, passing through w just once, you can simultaneously keep track of where you are in A and where you are in B, as you read through w. So your state at any time is a pair (x, y), where x is a state in A, and y is a state in B. This immediately gives you a DFA.<br>&nbsp;<br>For example, say you want a DFA for the password question in the last handout. You can make a DFA that determines whether a word has at least 3 characters, and another that determines whether it has a letter, and another that determines whether it has a digit. Then we want a DFA for the intersection of these languages. Kleene’s theorem tells us that there must be some corresponding regexp.</p>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>def : According to Kleene’s Theorem, we can check if two regexps are language equivalent by checking their DFAs.<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>starting from the initial states of each automaton</li>
+<li>traverse from each word from Σ. This will give us a tree structure</li>
+<li>stop when given state is visited.</li>
+<li>if language inequivalent, then there is the case when one reaches an accepting state and the other reaches a rejecting state.</li>
+<li>if language equivalent, then all frontiers are stopped.</li>
+</ol>
+<h2 id="Minimizing-a-DFA"><a href="#Minimizing-a-DFA" class="headerlink" title="Minimizing a DFA"></a>Minimizing a DFA</h2><p>def : make a DFA as small as possible<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>remove unreachable states.</li>
+<li>identify states that are language equivalent.</li>
+</ol>
+<p>To prove a DFA is minimal :</p>
+<ol>
+<li>show each state is reachable, by giving a word that covers all states. (1. is satisfied)</li>
+<li>show that any two distinct states are not language equivalent, by giving a word that one accepts and the other rejects. (2. is satisfied)</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]10_Regular Languages/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1250,11 +1328,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
   </ul>
