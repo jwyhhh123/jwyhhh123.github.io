@@ -110,6 +110,58 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Church’s-Thesis"><a href="#Church’s-Thesis" class="headerlink" title="Church’s Thesis"></a>Church’s Thesis</h2><p>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
+<ul>
+<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
+<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
+<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
+<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
+</ul>
+<h2 id="Reduction-of-a-problem-to-another-problem"><a href="#Reduction-of-a-problem-to-another-problem" class="headerlink" title="Reduction of a problem to another problem"></a>Reduction of a problem to another problem</h2><p>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
+<ul>
+<li>if P is decidable, Q is then decidable</li>
+<li>if Q is undecidable, P is then undecidable</li>
+</ul>
+<h2 id="Undecidable-problems"><a href="#Undecidable-problems" class="headerlink" title="Undecidable problems"></a>Undecidable problems</h2><p>examples of undecidable problems :</p>
+<ul>
+<li>ambiguity of context free languages</li>
+<li>equivalence of context free languages</li>
+<li>the halting problem</li>
+</ul>
+<h2 id="The-Halting-Problem"><a href="#The-Halting-Problem" class="headerlink" title="The Halting Problem"></a>The Halting Problem</h2><p>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
+<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
 		</h3>
 		</div>
@@ -163,7 +215,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
+			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -177,35 +229,33 @@
   <div class="row">
 	
 	
-		<h2 id="Church’s-Thesis"><a href="#Church’s-Thesis" class="headerlink" title="Church’s Thesis"></a>Church’s Thesis</h2><p>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
+		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
 <ul>
-<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
-<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
-<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
-<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
+<li>an impossible event has P = 0</li>
+<li>some certain events have P = 1</li>
+<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
+<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
 </ul>
-<h2 id="Reduction-of-a-problem-to-another-problem"><a href="#Reduction-of-a-problem-to-another-problem" class="headerlink" title="Reduction of a problem to another problem"></a>Reduction of a problem to another problem</h2><p>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
+<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
+<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
+<ol>
+<li>small arguments</li>
+<li>constant factors</li>
+</ol>
+<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
 <ul>
-<li>if P is decidable, Q is then decidable</li>
-<li>if Q is undecidable, P is then undecidable</li>
+<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
 </ul>
-<h2 id="Undecidable-problems"><a href="#Undecidable-problems" class="headerlink" title="Undecidable problems"></a>Undecidable problems</h2><p>examples of undecidable problems :</p>
-<ul>
-<li>ambiguity of context free languages</li>
-<li>equivalence of context free languages</li>
-<li>the halting problem</li>
-</ul>
-<h2 id="The-Halting-Problem"><a href="#The-Halting-Problem" class="headerlink" title="The Halting Problem"></a>The Halting Problem</h2><p>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
-<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
+<p>NOTE : exponential growth is faster than polunomial growth.</p>
+<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
+<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -328,56 +378,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
-<ul>
-<li>an impossible event has P = 0</li>
-<li>some certain events have P = 1</li>
-<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
-<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
-</ul>
-<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
-<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
-<ol>
-<li>small arguments</li>
-<li>constant factors</li>
-</ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
-<ul>
-<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
-</ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
-<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
-<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1250,11 +1250,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
   </ul>

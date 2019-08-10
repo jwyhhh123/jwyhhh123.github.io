@@ -209,7 +209,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/[AI]10_NeuralNetwork/">Neural Network</a>
+			<a href="/2019/06/02/[AI]09_linearLogistic/">Linear Regression and Logistic Regression</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -223,40 +223,120 @@
   <div class="row">
 	
 	
-		<h2 id="Reason-we-use-neural-network"><a href="#Reason-we-use-neural-network" class="headerlink" title="Reason we use neural network"></a>Reason we use neural network</h2><p>We found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases as well as weights increasing. Instead, we use neural network to create multilayered variables in order to hold more than one logistic regressions.<br>&nbsp;<br>NOTE : 神经网络是逻辑回归的加强版</p>
-<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation:"></a>Representation:</h2><p>linear logits:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g(z) ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure>
-<p>Bias : 1 x w0 which separates the result of 1 and 0.</p>
-<p>we evaluate sigmoid function g(z): </p>
+		<h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><p>def : classify observations into different classes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">y</span><br><span class="line"> |  .                       </span><br><span class="line"> |    .         </span><br><span class="line"> |      .   flue             </span><br><span class="line"> |        .</span><br><span class="line"> | no flue  .     </span><br><span class="line"> |            .</span><br><span class="line"> ----------------------&gt; x</span><br></pre></td></tr></table></figure>
+<h2 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h2><p>def : given some observations, find a trend of the given data</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">y</span><br><span class="line"> |          * .              </span><br><span class="line"> |          .               </span><br><span class="line"> |    *   .  *               </span><br><span class="line"> |     .</span><br><span class="line"> |  *.  *   </span><br><span class="line"> | .            </span><br><span class="line"> ----------------------&gt; x</span><br></pre></td></tr></table></figure>
+<h2 id="Least-square"><a href="#Least-square" class="headerlink" title="Least square"></a>Least square</h2><p>two ways to formulate badness</p>
 <ul>
-<li>if z &lt; -4, then g(z) = 0</li>
-<li>if z &gt;  4, then g(z) = 1</li>
+<li>L1 : Sum of absolute values of distances’ error</li>
+<li>L2 : Sum of squares of distances’ error</li>
 </ul>
-<h2 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h2><p>def: the process of calculating the inputs of subsequent layers until we reach the final input</p>
-<h2 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h2><p>def: an algorithm to find the gradient for neural network.<br>&nbsp;<br>Backpropagation is used to calculate the gradient(difference in weights); the gradient is calculated for the purpose of updating the weights of all logits.</p>
-<h2 id="one-vs-all"><a href="#one-vs-all" class="headerlink" title="one-vs-all"></a>one-vs-all</h2><p>def: logistic regression can be used on multiple classes by using one-vs-all.<br>&nbsp;<br>NOTE : for example we have a logistic regression to classify cat, dog, rat; another example, we can apply this on human facial identification which tells you who is the person from a given picture.</p>
-<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>cost = Σ(for each j) (expected - predicted)^2</p>
-<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Neural networks, like all non-linear models can overfit training data, there are three approaches :</p>
+<p>We choose L2 to evaluate our w’s because it punish points which are far away from the best fit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L2 = ∑(for each i) (yi - hw(xi))2</span><br></pre></td></tr></table></figure>
+<h2 id="gradient-descent-univariant"><a href="#gradient-descent-univariant" class="headerlink" title="gradient descent(univariant)"></a>gradient descent(univariant)</h2><p>Algorithms : example of y = w0 + w1 * x</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (not converging)&#123;</span><br><span class="line">    <span class="keyword">for</span> each training data j &#123;</span><br><span class="line">        update w1 using loss on j:  w1 = w1 + α * (yj - h(xj)) * xj </span><br><span class="line">        update w0 using loss on j:  w0 = w0 + α * (yj - h(xj))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE : univariate means ONLY contain x, x^n; multivariate means contain x1, x2 …</p>
+<p><strong>Web src</strong><br><a href="https://zh.wikipedia.org/wiki/最小二乘法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/最小二乘法</a><br><a href="https://www.zhihu.com/question/37031188" target="_blank" rel="noopener">https://www.zhihu.com/question/37031188</a>)</p>
+<p><strong>Linear regression</strong></p>
 <ol>
-<li>include regularisation for each logistic unit</li>
-<li>Dropout : ignore certain nodes(typically half) when traing the model</li>
-<li>reduce network depth : reduce the complexity of hypothesis h(x)</li>
+<li>hypothesis h(x) = w0 <em> x0 + w1 </em> x1 + … + wn <em> xn = w^T </em> x  // assume x(0) = 1</li>
+<li>cost function: cost = Σ(for each j) (y(j) - hw(x(j)))^2</li>
+<li>(partial) differential(w0 w1) : <ul>
+<li>univariate  (wn = ?)</li>
+<li>multivariate (wn = ?)</li>
+</ul>
+</li>
 </ol>
-<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>def: function that used on the weighted sum of input<br>&nbsp;<br>NOTE: we learnt sigmoid function as an activation function in neural network, but there are others.</p>
-<h2 id="Hyperparameters"><a href="#Hyperparameters" class="headerlink" title="Hyperparameters"></a>Hyperparameters</h2><p>Neural Networks (and to a lesser extent Logistic Regression) require several parameters that can be used to “tune” how the network trains.<br>&nbsp;<br>Hyperparameter tuning : the process of picking the correct combination of hyperparameters. This is extremely expensive in terms of time and computational resources.<br>&nbsp;<br>Grid Search : the process of systematically going through all possible combination of the hyperparameters to find the best<br>&nbsp;</p>
-<h2 id="“Overfiting”"><a href="#“Overfiting”" class="headerlink" title="“Overfiting”"></a>“Overfiting”</h2><p>def: a combination of hyperparameters which works well for training data and does not work for any other data.<br>&nbsp;<br>to deal with this, we split our data into three parts :</p>
+<h1 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h1><ol>
+<li>hypothesis h(x) = sigmoid function: g(z) = 1/(1 + e^(-z)) where z = w^T * x</li>
+<li>cost function: cost = -1/m * Σ[ y(i)log(hw(x(i))) + (1-y(i))(log(1 - hw(x(i)))]</li>
+<li>(partial) differential : wi = wi + α <em> (y(j) - hw(x(j))) </em> x(i)</li>
+<li>decision boundary </li>
+</ol>
+<p>hypothesis h(x) gives the probability between 0 and 1. In general we predict :</p>
+<ul>
+<li>y = 1 if h(x) &gt;  0.5</li>
+<li>y = 0 if h(x) &lt;= 0.5</li>
+</ul>
+<h2 id="linear-separable"><a href="#linear-separable" class="headerlink" title="linear separable"></a>linear separable</h2><p>Similar to linear regression, the logistic regression decision boundary can be made more complex(not straight line) by adding non-linear terms.<br>&nbsp;<br>linear separable : when the decision boundary is a straight line.</p>
+<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>Our cost function for logistic regression is different because it is not convex function :<br>cost = -1/m <em> Σ [y(i) </em> log(hw(x(i))) + (1-y(i)) * (log(1 - hw(x(i)))]<br><code>m</code> : m data<br>&nbsp;<br>NOTE : 代价函数不是凸函数; 凸函数，有全局最优解</p>
+<h2 id="Training-data-amp-Test-data"><a href="#Training-data-amp-Test-data" class="headerlink" title="Training data &amp; Test data"></a>Training data &amp; Test data</h2><p>Training data:</p>
+<ul>
+<li>provides a way to form a model for new data</li>
+<li>the model is based on previous data set<br>&nbsp;<br>Data format :</li>
+</ul>
 <ol>
-<li>training set</li>
-<li>development set : used for hyperparameter tuning</li>
-<li>test set</li>
+<li>(x(j), y(j)) for data j</li>
+<li>(x1(j),x2(j),x3(j), …,y(j)) for data j with inputs 1,2,3 </li>
 </ol>
-<p>proportions of dividing :<br>80% ; 10% ; 10%<br>60% ; 20% ; 20%</p>
-<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>Fraud Prevention<br>Facial identification(人脸识别)</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a><br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
+<p>Test data: by using the model we can make prediction for new data (x, ?)</p>
+<h2 id="Overfitting-and-Underfitting"><a href="#Overfitting-and-Underfitting" class="headerlink" title="Overfitting and Underfitting"></a>Overfitting and Underfitting</h2><p>overfitting : </p>
+<ul>
+<li>result of a model that is more complex than it required.</li>
+<li>fit exactly to training data and will perform badly on test data</li>
+</ul>
+<p>underfitting :</p>
+<h2 id="Model-Complexity"><a href="#Model-Complexity" class="headerlink" title="Model Complexity"></a>Model Complexity</h2><p>complexity of a model is determined by how many nonlinear terms there are in a training model.<br>&nbsp;<br>NOTE : if there are many x^n, then it causes overfitting.</p>
+<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Cost = Cost + ƛ <em> Σ(for all w’s) (wi)^2            - L2 Regularisation<br>wi   = wi + α </em> (y(j) - hw(x(j))) <em> x(i) + ƛ </em> wi<br>w0   = w0 + α * (y(j) - hw(x(j)))<br><code>ƛ</code>：how much to penalise complex terms.<br>&nbsp;<br>It can be shown that smaller values of w will result in the “disappearance” of higher polynomials.<br>&nbsp;<br>NOTE : increase ƛ leads to higher regularisation, less model complexity and less overfitting.(reduce the effect from higher order polynomials)</p>
+<h2 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h2><p>If the hypothesis function is non-linear and multivariate, where the number of independent variables is large, the number of “weights” required to be updated would be extremely large (impractical).</p>
+<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://blog.csdn.net/walilk/article/details/50978864" target="_blank" rel="noopener">https://blog.csdn.net/walilk/article/details/50978864</a><br><a href="https://zhuanlan.zhihu.com/p/28408516" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28408516</a><br><a href="https://blog.csdn.net/nwpuwyk/article/details/36065153" target="_blank" rel="noopener">https://blog.csdn.net/nwpuwyk/article/details/36065153</a><br>&nbsp;<br>for all information  : <a href="https://scruel.gitee.io/ml-andrewng-notes/" target="_blank" rel="noopener">https://scruel.gitee.io/ml-andrewng-notes/</a><br>Andrew ng online lec : <a href="https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN</a></p>
+<h2 id="Revisit"><a href="#Revisit" class="headerlink" title="Revisit"></a>Revisit</h2><p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x3 ...</code></p>
+<p><em>Your updates are:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x3</span><br></pre></td></tr></table></figure>
+<p><em>For some</em><br><code>hw(x) = w0 + w1x + w2x^2</code></p>
+<p><em>Your updates are:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x</span><br><span class="line">w2 += ... * x^2</span><br></pre></td></tr></table></figure>
+<p><em>For some</em><br><code>hw(x) = w0 + w1x1 + w2x2 + w3x1x2</code></p>
+<p>Your updates are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w0 += ... * 1</span><br><span class="line">w1 += ... * x1</span><br><span class="line">w2 += ... * x2</span><br><span class="line">w3 += ... * x1 * x2</span><br></pre></td></tr></table></figure>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/[AI]10_NeuralNetwork/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/[AI]09_linearLogistic/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/[AI]03_uninformed/">Uninformed Search</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h2><ol>
+<li>initial state</li>
+<li>goal state</li>
+<li>possible actions and their effects on states</li>
+<li>cost function</li>
+</ol>
+<h2 id="Breadth-First-Search-Queue"><a href="#Breadth-First-Search-Queue" class="headerlink" title="Breadth First Search: Queue"></a>Breadth First Search: Queue</h2><p>Complete: guaranted to find a goal state if one exits and terminate if failed.<br>Admissible(可采纳的): able to find the shortest path.<br>Space.Compx = O(b^d - 1) = O(b^d)<br>Time.Compx = O(b^d -1) = O(b^d)<br><code>b</code>: branching factor (二叉 : 2 ; 三叉 : 3)<br><code>d</code>: depth of the goal</p>
+<h2 id="Depth-First-Search-Stack"><a href="#Depth-First-Search-Stack" class="headerlink" title="Depth First Search: Stack"></a>Depth First Search: Stack</h2><p>Complete: if the state space is finite,…(incomplete if infinite)<br>Not admissible: not guaranteed to find the shortest path to a goal<br>Space.compx = O(b^m)<br>Time.Compx = O(b^m)<br><code>b</code>: branching factor<br><code>m</code>: maximum depth of the search tree</p>
+<p>NOTES: </p>
+<ul>
+<li>If a state can be reached by two nodes, we only remember the node associated to the lowest cost.</li>
+<li>in real practice, it is not the case we can simply find the shortest path, we need to explore the entire maze before.</li>
+<li>we mark explored nodes in a visited list, and nodes in the frontier is stored in an unvisited list.</li>
+</ul>
+<h2 id="Analysing-Searching-Algorithms"><a href="#Analysing-Searching-Algorithms" class="headerlink" title="Analysing Searching Algorithms"></a>Analysing Searching Algorithms</h2><p>Completeness     : if it is guaranteed to find a solution when at least one solution exists.<br>Admissibility    : if it is guaranteed to find the best solution when there are more than one solution.<br>Time Complexity  : the order of computation during the search process in the worst case<br>Space Complexity : storage space required in the worst case</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/29425290" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29425290</a><br><a href="https://blog.csdn.net/dyy_gusi/article/details/46414677" target="_blank" rel="noopener">https://blog.csdn.net/dyy_gusi/article/details/46414677</a></p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/[AI]03_uninformed/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -351,57 +431,6 @@
 	
 	</div>
   <a type="button" href="/2019/06/02/[AI]02_swarm/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/[AI]01_intro/">What is Artificial Intelligence</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>人工智能已经不是新鲜课题，它是计算机算计学科的一个分支。传统意义上人们对这门学科有四种理解:</p>
-<ul>
-<li>像人一样思考 think humanly</li>
-<li>像人一样行动 act humanly</li>
-<li>合理地思考 think rationally</li>
-<li>合理地行动 act rationally</li>
-</ul>
-<p>这四种理解意味着人们将从四种方向去研究和发展智能。而研究的结果，将会是一种具有创造性，自我学习和语言能力的机器。但是，当前大学教材主要采用“合理地行动”这种理解，旨在设计能够获取周围环境信息,作出合理的行为以获得最优解的计算机程序。</p>
-<p>这本小册主要是作者在大学期间整理的内容，希望读者能对以下概念有基本了解:</p>
-<ol>
-<li>四种理解</li>
-<li>群体智能</li>
-<li>非启发式搜索</li>
-<li>启发式搜索</li>
-<li>爬山算法</li>
-<li>模拟退火</li>
-<li>机器学习介绍</li>
-<li>k-nn分类</li>
-<li>朴素贝叶斯分类</li>
-<li>线性回归</li>
-<li>逻辑回归</li>
-<li>神经网络</li>
-<li>强化学习介绍</li>
-</ol>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/[AI]01_intro/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -717,11 +746,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
   </ul>
