@@ -110,7 +110,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]07_Bases/">Bases</a>
+			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -124,46 +124,36 @@
   <div class="row">
 	
 	
-		<h2 id="Digital-images"><a href="#Digital-images" class="headerlink" title="Digital images"></a>Digital images</h2><p>Digital images are composed of pixels. For a grey-scale picture, every pixel is represented by a one-byte number, from 0 (for black) to 255 (for white). In a colour picture, every pixel is represented by three one-byte numbers, one each for red, green, and blue.<br>&nbsp;<br>NOTE : we are thinking of a grey-scale picture from now on.</p>
-<h2 id="Generating-an-algebra-of-vectors"><a href="#Generating-an-algebra-of-vectors" class="headerlink" title="Generating an algebra of vectors"></a>Generating an algebra of vectors</h2><p>Linear combination : ∑ a(i) <em> v(i) = a1 </em> v1 + … + a(n) * v(n)<br>&nbsp;<br>the collection of all linear combinations is itself an algebra of vectors :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">∑ a(i) * v(i) + ∑ b(i) * v(i) = ∑ (a(i) + b(i)) * v(i)</span><br><span class="line"></span><br><span class="line">k * ∑ a(i) * v(i) = ∑ (a * k)(i) * v(i)</span><br></pre></td></tr></table></figure>
-<h2 id="Linear-independence"><a href="#Linear-independence" class="headerlink" title="Linear independence"></a>Linear independence</h2><p>Theorem 3 : A collection v1, …, vn of vectors is linear independent if ∑ a(i) * v(i) = 0 happens only in case a1 = a2 = a3 = … = an = 0.</p>
-<ul>
-<li>the null vector 0 does not occur in the list v1, …, vn (because thi doesn’t generate anything)</li>
-<li>none of the v(i) is a linear combination of the rest. (because this would be aredundancy)</li>
-</ul>
-<p>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1)  Suppose the collection is not linear independent</span><br><span class="line"> </span><br><span class="line">    case 1 : null vector occurs among v1...vn</span><br><span class="line">             &gt; assume v1 = 0, so we have 1 * v1 + ∑(i = 2) 0 * v(i) = 0.</span><br><span class="line">             &gt; But not all coefficients a(n) are zero.</span><br><span class="line">             &gt; we conclude a contradiction.</span><br><span class="line">    case 2 : there is a vector which can form a linear comnbination of the rest vectors.</span><br><span class="line">             &gt; assume v1 = ∑(i = 2) a(i) * v(i), so we have 1 * v2 - ∑(i = 2) a(i) * v(i) = 0</span><br><span class="line">             &gt; similarly this contradicts the given criterion.</span><br><span class="line"></span><br><span class="line">    ------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">2)  Suppose ∑ a(i) * v(i) = 0 and a1 != 0.</span><br><span class="line"></span><br><span class="line">    case 1 : n = 1</span><br><span class="line">             &gt; so we have a1 * v1 = 0</span><br><span class="line">             &gt; as a1 != 0, so v1 is a null vector.</span><br><span class="line">             &gt; the first condition is violated.</span><br><span class="line">    case 2 : n &gt; 1</span><br><span class="line">             &gt; we write v1 as : v1 = (-a1^(-1)) * ∑(i = 2) a(i) * v(i)</span><br><span class="line">             &gt; v1 is a linear combination of the rest vectors.</span><br><span class="line">             &gt; the second condition is violated.</span><br></pre></td></tr></table></figure>
-<p>if every element of an algebra V of vectors can be written as a linear combination of vector v1 … vn and if the v(i) of v1 … vn are linearly independent, then we call v1 … vn a basis of V.<br>&nbsp;<br>NOTE : for example, in an image, we convert every 8 * 8 pixels to jpeg-format.<br>&NBSP;<br>example: 4-tuples of rational numbers.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/ p1 \</span><br><span class="line">| p2 | = p1 * v1 + p2 * v2 + p3 * v3 + p4 * v4</span><br><span class="line">| p3 |</span><br><span class="line">\ p4 /</span><br><span class="line">             </span><br><span class="line">basis : v1 = (1, 0, 0, 0)</span><br><span class="line">        v2 = (0, 1, 0, 0)</span><br><span class="line">        v3 = (0, 0, 1, 0)</span><br><span class="line">        v4 = (0, 0, 0, 1)</span><br><span class="line">           </span><br><span class="line">they are linearly independent :</span><br><span class="line">        &gt; a1 * v1 + a2 * v2 + a3 * v3 + a4 * v4 = 0 = (0, 0, 0, 0)</span><br><span class="line">        &gt; as v(i) are not null vectors, and none of them is a LC of the rest</span><br><span class="line">        &gt; a1 = a2 = a3 = a4 = 0</span><br><span class="line">        &gt; they are linearly independent</span><br></pre></td></tr></table></figure>
-<h2 id="Coordinates"><a href="#Coordinates" class="headerlink" title="Coordinates"></a>Coordinates</h2><p>vector generator by using the basis: w = ∑ a(i) <em> v(i)<br><code>a1, ..., an</code>: the coordinates of w<br>&nbsp;<br>A question     : Are the coordinates for w are uniquely determined.<br>representation : ? w = ∑ a(i) </em> v(i) = ∑ b(i) * v(i)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Assume : w = ∑ (b(i) - a(i)) * v(i) = 0   // according to theorem 3</span><br><span class="line"></span><br><span class="line">so we have b(i) - a(i) = 0 for all i</span><br><span class="line"></span><br><span class="line">then,</span><br><span class="line">b(i) = a(i)</span><br></pre></td></tr></table></figure>
-<h2 id="Dimension-of-an-algebra-of-vectors"><a href="#Dimension-of-an-algebra-of-vectors" class="headerlink" title="Dimension of an algebra of vectors"></a>Dimension of an algebra of vectors</h2><p>Theorem 4 : Any two bases of an algebra of vectors have the same number of elements.</p>
-<h2 id="All-bases-are-not-equal"><a href="#All-bases-are-not-equal" class="headerlink" title="All bases are not equal"></a>All bases are not equal</h2><p>example: a 2 × 2 digital (grey-scale) image, written as a four-tuple. In the standard basis, we can read off the coordinates immediately:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10 \        /1\        /0\        /0\        /0\</span><br><span class="line">| 10 | = 10 * |0| + 10 * |1| + 11 * |0| + 12 * |0|</span><br><span class="line">| 11 |        |0|        |0|        |1|        |0|</span><br><span class="line">\ 12 /        \0/        \0/        \0/        \1/</span><br></pre></td></tr></table></figure>
-<p>the same image can be represented by a different basis.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10 \          /1\         / 1\         / 1\         / 1\</span><br><span class="line">| 10 | = 43/4 * |1| - 3/4 * | 1| + 1/4 * |-1| + 1/4 * |-1|</span><br><span class="line">| 11 |          |1|         |-1|         |-1|         | 1|</span><br><span class="line">\ 12 /          \1/         \-1/         \ 1/         \-1/</span><br></pre></td></tr></table></figure>
-<p>convert to a jpeg-compression where we ONLY leave the bigger coordinates.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10   \          /1\         / 1\</span><br><span class="line">| 10   | = 43/4 * |1| - 3/4 * | 1|</span><br><span class="line">| 11.5 |          |1|         |-1|</span><br><span class="line">\ 12.5 /          \1/         \-1/</span><br></pre></td></tr></table></figure>
-<h2 id="Orthogonal-and-orthonormal-bases"><a href="#Orthogonal-and-orthonormal-bases" class="headerlink" title="Orthogonal and orthonormal bases"></a>Orthogonal and orthonormal bases</h2><p>NOTE :The coordinates of an image in jpeg-format comes from orthogonality.<br>&nbsp;<br>Assume that we have a basis v1 .. vn where any two vectors are orthogonal to each other, that is :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v(i), v(j)&gt; = 0 whenever i != j</span><br></pre></td></tr></table></figure>
-<p>then coordinate of a(k) is computed :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        &lt;w, v(k)&gt;</span><br><span class="line">a(k) = ------------</span><br><span class="line">       &lt;v(k), v(k)&gt;</span><br></pre></td></tr></table></figure>
-<p>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;w, v(k)&gt; = &lt;∑ a(i) * v(i), v(k)&gt;</span><br><span class="line">          =  ∑ a(i) * &lt;v(i),v(k)&gt;   // law of inner product</span><br><span class="line">          = a(k) * &lt;v(k), v(k)&gt;</span><br></pre></td></tr></table></figure>
-<p>positive definiteness of the inner product:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;v, v&gt;  &gt;=  0</span><br><span class="line">&lt;v, v&gt;   =  0  -&gt;  v = 0</span><br></pre></td></tr></table></figure>
-<p>NOTES :</p>
-<ul>
-<li>If the computations are done on a computer, then we can make sure that each basis vector has length 1, so the division by &lt;v(k), v(k)&gt; is not necessary when computing the coordinates. In that case one speaks of an orthonormal basis. If computations are done on paper, then it’s better to avoid the surds and stay with the merely orthogonal basis. </li>
-<li>this formula can be checked by using above example (10, 10, 11, 12).</li>
-</ul>
-<h2 id="Creating-an-orthogonal-basis"><a href="#Creating-an-orthogonal-basis" class="headerlink" title="Creating an orthogonal basis"></a>Creating an orthogonal basis</h2><p>if we have a positive definte inner product then we can turn any basis into an orthogonal one<br>We define a new basis w1 … wn :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">w1 = v1</span><br><span class="line">          &lt;w1, v2&gt;</span><br><span class="line">w2 = v2 - -------- * w1</span><br><span class="line">          &lt;w1, w1&gt;</span><br><span class="line"></span><br><span class="line"> .</span><br><span class="line"> .</span><br><span class="line"> .</span><br><span class="line">                        &lt;wi, vn&gt;</span><br><span class="line">wn = vn - ∑(n-1; i = 1) -------- * wi</span><br><span class="line">                        &lt;wi, wi&gt;</span><br></pre></td></tr></table></figure>
+		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+<ol>
+<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
+<li>suppose a, b ∈ L and m &lt; n.</li>
+<li>let Xm be the state reached when we start from p and read a^m.</li>
+<li>let Xn be the state reached when we start from p and read a^n. </li>
+<li>if starting from Xm and reading b^m then we reach a Acc.</li>
+<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
+<li>So Xn != Xm</li>
+<li>So there are infinitely many states.</li>
+<li>we raise a contradiction. Hence the language is not regular.</li>
+</ol>
+<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
+<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
+<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
+<p>we can construct a derivation tree :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
+<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
+<p>this grammar is ambiguous :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]07_Bases/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -225,6 +215,56 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
+<ul>
+<li>an impossible event has P = 0</li>
+<li>some certain events have P = 1</li>
+<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
+<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
+</ul>
+<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
+<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
+<ol>
+<li>small arguments</li>
+<li>constant factors</li>
+</ol>
+<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<ul>
+<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
+</ul>
+<p>NOTE : exponential growth is faster than polunomial growth.</p>
+<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
+<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]14_N&NP/">Polynomial and non-Polynomial</a>
 		</h3>
 		</div>
@@ -276,56 +316,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]14_N&NP/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
-<ul>
-<li>an impossible event has P = 0</li>
-<li>some certain events have P = 1</li>
-<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
-<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
-</ul>
-<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
-<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
-<ol>
-<li>small arguments</li>
-<li>constant factors</li>
-</ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
-<ul>
-<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
-</ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
-<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
-<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1248,11 +1238,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
@@ -1260,11 +1250,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
   </ul>
