@@ -360,6 +360,87 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]04_Analytic Geometry/">Analytic Geometry</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Distance-between-points"><a href="#Distance-between-points" class="headerlink" title="Distance between points"></a>Distance between points</h2><p>Given points (p1, p2) and (q1, q2), d = root( (q1 - p1)^2 + (q2 - p2)^2 )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^  </span><br><span class="line">|  . P = (p1, p2)</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">|  </span><br><span class="line">|            . Q = (q1, q2)</span><br><span class="line">|                 </span><br><span class="line">.--------------------&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Vectors-and-straight-line-movement"><a href="#Vectors-and-straight-line-movement" class="headerlink" title="Vectors and straight line movement"></a>Vectors and straight line movement</h2><p>Given a movement : (v1, v2), P’ = (p1 + v1, p2 + v2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^  </span><br><span class="line">|       .     .</span><br><span class="line">|      /     /</span><br><span class="line">|     /     /</span><br><span class="line">|    /     /</span><br><span class="line">|   /     /     </span><br><span class="line">|  /     /          </span><br><span class="line">.--------------------&gt;</span><br></pre></td></tr></table></figure>
+<p>length of a vector : <code>|v| = root( (v1)^2 + (v2)^2 )</code><br>null vector        : (0, 0)<br>unit vector        : length = 1<br>&nbsp;<br>For every vector other than null vector, there is a unit vector:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> v</span><br><span class="line">--- = (v1/|v| , v2/|v|)</span><br><span class="line">|v|</span><br></pre></td></tr></table></figure>
+<p>Given points P and Q, vector of PQ has coordinates (q1 - p1, q2 - p2)</p>
+<h2 id="The-algebra-of-vectors"><a href="#The-algebra-of-vectors" class="headerlink" title="The algebra of vectors"></a>The algebra of vectors</h2><p>Movements can be composed (向量组合) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v3 = v1 + v2</span><br></pre></td></tr></table></figure>
+<p>Movements can be extended or shrunk :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  2 * v = (  2 * v1,   2 * v2)  // extend</span><br><span class="line">1/2 * v = (1/2 * v1, 1/2 * v2)  // shrink</span><br></pre></td></tr></table></figure>
+<h2 id="Laws-of-vetor-algebra"><a href="#Laws-of-vetor-algebra" class="headerlink" title="Laws of vetor algebra"></a>Laws of vetor algebra</h2><ul>
+<li>Laws of vector addition</li>
+<li>Laws of the null vectors</li>
+<li>Laws of scalar multiplication</li>
+</ul>
+<p>NOTE: we ONLY have additive inverse of a vector. We do not need multiplicative inverse.</p>
+<h2 id="Representing-straight-lines"><a href="#Representing-straight-lines" class="headerlink" title="Representing straight lines"></a>Representing straight lines</h2><p>Given a point P and a vector v (!= 0), a line can be represented as:<br><code>X = P + s * v</code>.  (parametric representation)<br><code>s</code> : parameter / generating expression</p>
+<p>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">X = (-2,-1) + s * (1, 1)</span><br><span class="line">  = (-2 + s, -1 + s)</span><br><span class="line"> </span><br><span class="line">              |</span><br><span class="line">              |</span><br><span class="line">              |/ </span><br><span class="line">              |</span><br><span class="line">             /|         </span><br><span class="line">            / |  </span><br><span class="line"> __________/__|________________</span><br><span class="line">        -2/   |       </span><br><span class="line">         .    |  -1</span><br><span class="line">         P    |</span><br><span class="line">              |</span><br><span class="line">              |</span><br></pre></td></tr></table></figure>
+<h2 id="Intersection"><a href="#Intersection" class="headerlink" title="Intersection"></a>Intersection</h2><ol>
+<li>test whether a given point lies on a given line or plane; </li>
+<li>find the intersection point between two lines;</li>
+<li>find the intersection point between a line and a plane; </li>
+<li>find the intersection line between two planes.</li>
+</ol>
+<p>Step 1 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">          X = Y</span><br><span class="line">  P + s * v = Q + T * w</span><br><span class="line"></span><br><span class="line">p1 + s * v1 = q1 + t * w1   // x-axis</span><br><span class="line">p2 + s * v2 = q2 + t * w2   // y-axis</span><br></pre></td></tr></table></figure>
+<p>Step 2 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s * v1 - t * w1 = q1 - p1 </span><br><span class="line">s * v2 - t * w2 = q2 - p2</span><br></pre></td></tr></table></figure>
+<p>Step 3 : Use Gaussian elimination to solve <code>s</code> or <code>t</code><br>&nbsp;<br>Step 4 : Check answer, by bring the answer into the quations</p>
+<h2 id="Cartesian-coordinate-systems-and-points-in-space"><a href="#Cartesian-coordinate-systems-and-points-in-space" class="headerlink" title="Cartesian coordinate systems and points in space"></a>Cartesian coordinate systems and points in space</h2><p>Given points (p1, p2, p3) and (q1, q2, q3),<br>d = root( (q1 - p1)^2 + (q2 - p2)^2 + (q3 - p3)^2 )</p>
+<h2 id="Vectors-and-lines"><a href="#Vectors-and-lines" class="headerlink" title="Vectors and lines"></a>Vectors and lines</h2><p>in 3-D, Given a vector v = (v1, v2, v3) and a point P = (p1, p2, p3) :<br>&nbsp;<br>length of a vector : |v| = root( (v1)^2 + (v2)^2 + (v3)^2 )<br>A line is still    : X = P + s x v</p>
+<h2 id="Planes"><a href="#Planes" class="headerlink" title="Planes"></a>Planes</h2><p>Parametric representation of a plane : X = P + s x v + t x w</p>
+<p>NOTE: vectors <code>v</code> and <code>w</code> must not point to the same direction, otherwise only a line is generated.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> -------------------</span><br><span class="line">|     ^ v           |</span><br><span class="line">|     |             |</span><br><span class="line">|     |             |</span><br><span class="line">|   P . -------&gt; w  |</span><br><span class="line">|                   |</span><br><span class="line"> -------------------</span><br><span class="line"></span><br><span class="line">. -------&gt; -----&gt;</span><br><span class="line">      w       v</span><br></pre></td></tr></table></figure>
+<p>Task 4 in Intersection:<br>find the intersection line between two planes.<br>Given X = (1, -2, 1) + s <em> (0, 2, 1) + t </em> (-1, 1, -1)<br>and,  Y = (2,  1, 0) + r <em> (1, 1, 0) + q </em> ( 0, 0,  1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Step 1 :</span><br><span class="line">         1 - t = 2 + r</span><br><span class="line">-2 + 2 * s + t = 1 + r </span><br><span class="line"> 1 + 1 * s - t = q</span><br><span class="line"></span><br><span class="line">Step 2 :</span><br><span class="line">       - r - t =  1</span><br><span class="line">-r + 2 * s + t =  3</span><br><span class="line">     s - q - t = -1</span><br><span class="line"></span><br><span class="line">Step 3 :</span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line">-1  2  1  0 |  3</span><br><span class="line"> 0  1 -1 -1 | -1</span><br><span class="line"></span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line"> 0  2  2  0 |  2</span><br><span class="line"> 0  1 -1 -1 | -1</span><br><span class="line"></span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line"> 0  2  2  0 |  2</span><br><span class="line"> 0  0 -2 -1 | -2</span><br><span class="line"></span><br><span class="line">r = (q - 4) / 2 = q/2 - 2</span><br><span class="line">s</span><br><span class="line">t</span><br><span class="line">q = chosen freely</span><br><span class="line"></span><br><span class="line">Step 4 :</span><br><span class="line">Y = (2,  1, 0) + (q/2 - 2) * (1, 1, 0) + q * ( 0, 0,  1)</span><br><span class="line">  = (2,  1, 0) + [(-2, -2, 0) + q * (1/2, 1/2, 0)] + q * ( 0, 0,  1)</span><br><span class="line">  = (0, -1, 0) + q * (1/2, 1/2, 1)</span><br><span class="line">  = (0, -1, 0) + q * (1, 1, 2)</span><br></pre></td></tr></table></figure>
+<h2 id="Two-point-description-of-a-line"><a href="#Two-point-description-of-a-line" class="headerlink" title="Two-point description of a line"></a>Two-point description of a line</h2><p>Given X = P + s * PQ<br><code>PQ</code> : a vector pointing from P to Q<br>&nbsp;<br>Two-point description :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X = P + s * PQ </span><br><span class="line">  = P + s * (Q - P)</span><br><span class="line">  = P + s * (-P) + s * Q</span><br><span class="line">  = P - s * P + s * Q</span><br><span class="line"></span><br><span class="line">X = (1 - s) * P + s * Q</span><br></pre></td></tr></table></figure>
+<p>NOTE: Given a condition s + t = 1, this can be written as X = t <em> P + s </em> Q.</p>
+<h2 id="Three-point-description-of-a-plane"><a href="#Three-point-description-of-a-plane" class="headerlink" title="Three-point description of a plane"></a>Three-point description of a plane</h2><p>Similarly,<br>Three-point description of a plane :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X = P + s * PQ + t * PR</span><br><span class="line">  = P + s * (Q - P) + t * (R - P)</span><br><span class="line">  = P - s * P - t * P + s * Q + t * R</span><br><span class="line"></span><br><span class="line">X = (1 - s - t) * P + s * Q + t * R</span><br></pre></td></tr></table></figure>
+<h2 id="Practical-advice"><a href="#Practical-advice" class="headerlink" title="Practical advice"></a>Practical advice</h2><p>NOTES:</p>
+<ul>
+<li>Always write the coordinates of points and vectors in the column form. This will help you to avoid mistakes such as confusing coordinates (particularly in 3D).</li>
+<li>A line has infinitely many generating expressions :<ul>
+<li>Your solution and my model solution could look different although they both describe the same line.</li>
+<li>Sometimes your computation will produce a direction vector with fractions as coordinates. You can avoid these by simply stretching the direction vector. </li>
+</ul>
+</li>
+<li>The same is true for planes in 3D, only more so!</li>
+<li>When computing the intersection point between two lines (or a line and a plane, or two planes) with Gaussian elimination (as in Items 51 and 55) make sure you are not using the same parameter name twice! (Note how I used r and q in Item 55 for the second plane.)</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]04_Analytic Geometry/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]03_Guassian Elimination/">System of Linear Equations - Guassian Elimination</a>
 		</h3>
 		</div>
@@ -506,87 +587,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]05_InnerProduct/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]04_Analytic Geometry/">Analytic Geometry</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Distance-between-points"><a href="#Distance-between-points" class="headerlink" title="Distance between points"></a>Distance between points</h2><p>Given points (p1, p2) and (q1, q2), d = root( (q1 - p1)^2 + (q2 - p2)^2 )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^  </span><br><span class="line">|  . P = (p1, p2)</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">|  </span><br><span class="line">|            . Q = (q1, q2)</span><br><span class="line">|                 </span><br><span class="line">.--------------------&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Vectors-and-straight-line-movement"><a href="#Vectors-and-straight-line-movement" class="headerlink" title="Vectors and straight line movement"></a>Vectors and straight line movement</h2><p>Given a movement : (v1, v2), P’ = (p1 + v1, p2 + v2)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^  </span><br><span class="line">|       .     .</span><br><span class="line">|      /     /</span><br><span class="line">|     /     /</span><br><span class="line">|    /     /</span><br><span class="line">|   /     /     </span><br><span class="line">|  /     /          </span><br><span class="line">.--------------------&gt;</span><br></pre></td></tr></table></figure>
-<p>length of a vector : <code>|v| = root( (v1)^2 + (v2)^2 )</code><br>null vector        : (0, 0)<br>unit vector        : length = 1<br>&nbsp;<br>For every vector other than null vector, there is a unit vector:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> v</span><br><span class="line">--- = (v1/|v| , v2/|v|)</span><br><span class="line">|v|</span><br></pre></td></tr></table></figure>
-<p>Given points P and Q, vector of PQ has coordinates (q1 - p1, q2 - p2)</p>
-<h2 id="The-algebra-of-vectors"><a href="#The-algebra-of-vectors" class="headerlink" title="The algebra of vectors"></a>The algebra of vectors</h2><p>Movements can be composed (向量组合) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v3 = v1 + v2</span><br></pre></td></tr></table></figure>
-<p>Movements can be extended or shrunk :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  2 * v = (  2 * v1,   2 * v2)  // extend</span><br><span class="line">1/2 * v = (1/2 * v1, 1/2 * v2)  // shrink</span><br></pre></td></tr></table></figure>
-<h2 id="Laws-of-vetor-algebra"><a href="#Laws-of-vetor-algebra" class="headerlink" title="Laws of vetor algebra"></a>Laws of vetor algebra</h2><ul>
-<li>Laws of vector addition</li>
-<li>Laws of the null vectors</li>
-<li>Laws of scalar multiplication</li>
-</ul>
-<p>NOTE: we ONLY have additive inverse of a vector. We do not need multiplicative inverse.</p>
-<h2 id="Representing-straight-lines"><a href="#Representing-straight-lines" class="headerlink" title="Representing straight lines"></a>Representing straight lines</h2><p>Given a point P and a vector v (!= 0), a line can be represented as:<br><code>X = P + s * v</code>.  (parametric representation)<br><code>s</code> : parameter / generating expression</p>
-<p>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">X = (-2,-1) + s * (1, 1)</span><br><span class="line">  = (-2 + s, -1 + s)</span><br><span class="line"> </span><br><span class="line">              |</span><br><span class="line">              |</span><br><span class="line">              |/ </span><br><span class="line">              |</span><br><span class="line">             /|         </span><br><span class="line">            / |  </span><br><span class="line"> __________/__|________________</span><br><span class="line">        -2/   |       </span><br><span class="line">         .    |  -1</span><br><span class="line">         P    |</span><br><span class="line">              |</span><br><span class="line">              |</span><br></pre></td></tr></table></figure>
-<h2 id="Intersection"><a href="#Intersection" class="headerlink" title="Intersection"></a>Intersection</h2><ol>
-<li>test whether a given point lies on a given line or plane; </li>
-<li>find the intersection point between two lines;</li>
-<li>find the intersection point between a line and a plane; </li>
-<li>find the intersection line between two planes.</li>
-</ol>
-<p>Step 1 : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">          X = Y</span><br><span class="line">  P + s * v = Q + T * w</span><br><span class="line"></span><br><span class="line">p1 + s * v1 = q1 + t * w1   // x-axis</span><br><span class="line">p2 + s * v2 = q2 + t * w2   // y-axis</span><br></pre></td></tr></table></figure>
-<p>Step 2 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s * v1 - t * w1 = q1 - p1 </span><br><span class="line">s * v2 - t * w2 = q2 - p2</span><br></pre></td></tr></table></figure>
-<p>Step 3 : Use Gaussian elimination to solve <code>s</code> or <code>t</code><br>&nbsp;<br>Step 4 : Check answer, by bring the answer into the quations</p>
-<h2 id="Cartesian-coordinate-systems-and-points-in-space"><a href="#Cartesian-coordinate-systems-and-points-in-space" class="headerlink" title="Cartesian coordinate systems and points in space"></a>Cartesian coordinate systems and points in space</h2><p>Given points (p1, p2, p3) and (q1, q2, q3),<br>d = root( (q1 - p1)^2 + (q2 - p2)^2 + (q3 - p3)^2 )</p>
-<h2 id="Vectors-and-lines"><a href="#Vectors-and-lines" class="headerlink" title="Vectors and lines"></a>Vectors and lines</h2><p>in 3-D, Given a vector v = (v1, v2, v3) and a point P = (p1, p2, p3) :<br>&nbsp;<br>length of a vector : |v| = root( (v1)^2 + (v2)^2 + (v3)^2 )<br>A line is still    : X = P + s x v</p>
-<h2 id="Planes"><a href="#Planes" class="headerlink" title="Planes"></a>Planes</h2><p>Parametric representation of a plane : X = P + s x v + t x w</p>
-<p>NOTE: vectors <code>v</code> and <code>w</code> must not point to the same direction, otherwise only a line is generated.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> -------------------</span><br><span class="line">|     ^ v           |</span><br><span class="line">|     |             |</span><br><span class="line">|     |             |</span><br><span class="line">|   P . -------&gt; w  |</span><br><span class="line">|                   |</span><br><span class="line"> -------------------</span><br><span class="line"></span><br><span class="line">. -------&gt; -----&gt;</span><br><span class="line">      w       v</span><br></pre></td></tr></table></figure>
-<p>Task 4 in Intersection:<br>find the intersection line between two planes.<br>Given X = (1, -2, 1) + s <em> (0, 2, 1) + t </em> (-1, 1, -1)<br>and,  Y = (2,  1, 0) + r <em> (1, 1, 0) + q </em> ( 0, 0,  1)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Step 1 :</span><br><span class="line">         1 - t = 2 + r</span><br><span class="line">-2 + 2 * s + t = 1 + r </span><br><span class="line"> 1 + 1 * s - t = q</span><br><span class="line"></span><br><span class="line">Step 2 :</span><br><span class="line">       - r - t =  1</span><br><span class="line">-r + 2 * s + t =  3</span><br><span class="line">     s - q - t = -1</span><br><span class="line"></span><br><span class="line">Step 3 :</span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line">-1  2  1  0 |  3</span><br><span class="line"> 0  1 -1 -1 | -1</span><br><span class="line"></span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line"> 0  2  2  0 |  2</span><br><span class="line"> 0  1 -1 -1 | -1</span><br><span class="line"></span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line"> 0  2  2  0 |  2</span><br><span class="line"> 0  0 -2 -1 | -2</span><br><span class="line"></span><br><span class="line">r = (q - 4) / 2 = q/2 - 2</span><br><span class="line">s</span><br><span class="line">t</span><br><span class="line">q = chosen freely</span><br><span class="line"></span><br><span class="line">Step 4 :</span><br><span class="line">Y = (2,  1, 0) + (q/2 - 2) * (1, 1, 0) + q * ( 0, 0,  1)</span><br><span class="line">  = (2,  1, 0) + [(-2, -2, 0) + q * (1/2, 1/2, 0)] + q * ( 0, 0,  1)</span><br><span class="line">  = (0, -1, 0) + q * (1/2, 1/2, 1)</span><br><span class="line">  = (0, -1, 0) + q * (1, 1, 2)</span><br></pre></td></tr></table></figure>
-<h2 id="Two-point-description-of-a-line"><a href="#Two-point-description-of-a-line" class="headerlink" title="Two-point description of a line"></a>Two-point description of a line</h2><p>Given X = P + s * PQ<br><code>PQ</code> : a vector pointing from P to Q<br>&nbsp;<br>Two-point description :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X = P + s * PQ </span><br><span class="line">  = P + s * (Q - P)</span><br><span class="line">  = P + s * (-P) + s * Q</span><br><span class="line">  = P - s * P + s * Q</span><br><span class="line"></span><br><span class="line">X = (1 - s) * P + s * Q</span><br></pre></td></tr></table></figure>
-<p>NOTE: Given a condition s + t = 1, this can be written as X = t <em> P + s </em> Q.</p>
-<h2 id="Three-point-description-of-a-plane"><a href="#Three-point-description-of-a-plane" class="headerlink" title="Three-point description of a plane"></a>Three-point description of a plane</h2><p>Similarly,<br>Three-point description of a plane :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X = P + s * PQ + t * PR</span><br><span class="line">  = P + s * (Q - P) + t * (R - P)</span><br><span class="line">  = P - s * P - t * P + s * Q + t * R</span><br><span class="line"></span><br><span class="line">X = (1 - s - t) * P + s * Q + t * R</span><br></pre></td></tr></table></figure>
-<h2 id="Practical-advice"><a href="#Practical-advice" class="headerlink" title="Practical advice"></a>Practical advice</h2><p>NOTES:</p>
-<ul>
-<li>Always write the coordinates of points and vectors in the column form. This will help you to avoid mistakes such as confusing coordinates (particularly in 3D).</li>
-<li>A line has infinitely many generating expressions :<ul>
-<li>Your solution and my model solution could look different although they both describe the same line.</li>
-<li>Sometimes your computation will produce a direction vector with fractions as coordinates. You can avoid these by simply stretching the direction vector. </li>
-</ul>
-</li>
-<li>The same is true for planes in 3D, only more so!</li>
-<li>When computing the intersection point between two lines (or a line and a plane, or two planes) with Gaussian elimination (as in Items 51 and 55) make sure you are not using the same parameter name twice! (Note how I used r and q in Item 55 for the second plane.)</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]04_Analytic Geometry/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1000,11 +1000,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
@@ -1012,11 +1012,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
   </ul>
@@ -1049,8 +1049,7 @@
   <footer> <p>
   &copy; 2019 Wenye Jin
   
-      | with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
-     <br> based on <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+            based on <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
 </p>
  </footer>
 </div> <!-- container-narrow -->
