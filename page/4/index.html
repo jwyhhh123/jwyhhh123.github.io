@@ -325,6 +325,60 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]16_PropertiesofCode/">Properties of Code</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Undecidability-by-reduction"><a href="#Undecidability-by-reduction" class="headerlink" title="Undecidability by reduction"></a>Undecidability by reduction</h2><p>def: to prove other undecidable problem we can reduce the halting problem to it.<br>Because if reducing Q to P we have</p>
+<ul>
+<li>if P is decidable then Q is decidable</li>
+<li>if Q is undecidable then P is undecidable</li>
+</ul>
+<p>example: X is a undecidable property when X halts and contains more occurances of a than b<br>proof: </p>
+<ol>
+<li>reduce the halting problem to X.</li>
+<li>for any program C of type void. let F(C) be the same code as C with an extra comment line which gives more occurances of a than b.</li>
+<li>if C halts, then F(C) is X</li>
+<li>if C does not halts, then F(C) is not X</li>
+<li>we cannot test whether C halts, so we cannot decide whether it is X.</li>
+<li>as C is undecidable, F(C) is undecidable</li>
+<li>so X is undecidable</li>
+</ol>
+<h2 id="Semantic-and-non-semantic-properties"><a href="#Semantic-and-non-semantic-properties" class="headerlink" title="Semantic and non-semantic properties"></a>Semantic and non-semantic properties</h2><p>semantic properties: </p>
+<ul>
+<li>Does this software print only polite words?</li>
+<li>Does this software provide good advice to all users, and excellent advice to premium users?</li>
+<li>Does this software, when supplied with two positive integers, always return the highest common factor?</li>
+</ul>
+<p>to test whether a given property is a semantic property or not: </p>
+<ul>
+<li>to show not semantic, give two programs one has the property and one has not.</li>
+<li>to show semantic, there is no program has different properties.</li>
+</ul>
+<h2 id="Rice’s-Theorem"><a href="#Rice’s-Theorem" class="headerlink" title="Rice’s Theorem"></a>Rice’s Theorem</h2><p>def: any semantic property of code that holds in some case and does not hold in some case is undecidable.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]16_PropertiesofCode/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]15_TuringMachine/">Turing Machine</a>
 		</h3>
 		</div>
@@ -378,60 +432,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]16_PropertiesofCode/">Properties of Code</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Undecidability-by-reduction"><a href="#Undecidability-by-reduction" class="headerlink" title="Undecidability by reduction"></a>Undecidability by reduction</h2><p>def: to prove other undecidable problem we can reduce the halting problem to it.<br>Because if reducing Q to P we have</p>
-<ul>
-<li>if P is decidable then Q is decidable</li>
-<li>if Q is undecidable then P is undecidable</li>
-</ul>
-<p>example: X is a undecidable property when X halts and contains more occurances of a than b<br>proof: </p>
-<ol>
-<li>reduce the halting problem to X.</li>
-<li>for any program C of type void. let F(C) be the same code as C with an extra comment line which gives more occurances of a than b.</li>
-<li>if C halts, then F(C) is X</li>
-<li>if C does not halts, then F(C) is not X</li>
-<li>we cannot test whether C halts, so we cannot decide whether it is X.</li>
-<li>as C is undecidable, F(C) is undecidable</li>
-<li>so X is undecidable</li>
-</ol>
-<h2 id="Semantic-and-non-semantic-properties"><a href="#Semantic-and-non-semantic-properties" class="headerlink" title="Semantic and non-semantic properties"></a>Semantic and non-semantic properties</h2><p>semantic properties: </p>
-<ul>
-<li>Does this software print only polite words?</li>
-<li>Does this software provide good advice to all users, and excellent advice to premium users?</li>
-<li>Does this software, when supplied with two positive integers, always return the highest common factor?</li>
-</ul>
-<p>to test whether a given property is a semantic property or not: </p>
-<ul>
-<li>to show not semantic, give two programs one has the property and one has not.</li>
-<li>to show semantic, there is no program has different properties.</li>
-</ul>
-<h2 id="Rice’s-Theorem"><a href="#Rice’s-Theorem" class="headerlink" title="Rice’s Theorem"></a>Rice’s Theorem</h2><p>def: any semantic property of code that holds in some case and does not hold in some case is undecidable.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]16_PropertiesofCode/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1238,11 +1238,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
@@ -1250,11 +1250,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
   </ul>
