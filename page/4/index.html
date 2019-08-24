@@ -110,56 +110,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
-<ul>
-<li>an impossible event has P = 0</li>
-<li>some certain events have P = 1</li>
-<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
-<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
-</ul>
-<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
-<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
-<ol>
-<li>small arguments</li>
-<li>constant factors</li>
-</ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
-<ul>
-<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
-</ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
-<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
-<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/03/11/[MATH]10_Regular Languages/">Regular Languages and Automaton</a>
 		</h3>
 		</div>
@@ -334,6 +284,56 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
+<ul>
+<li>an impossible event has P = 0</li>
+<li>some certain events have P = 1</li>
+<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
+<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
+</ul>
+<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
+<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
+<ol>
+<li>small arguments</li>
+<li>constant factors</li>
+</ol>
+<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<ul>
+<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
+</ul>
+<p>NOTE : exponential growth is faster than polunomial growth.</p>
+<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
+<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1011,7 +1011,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/02/19/[Logic]01_propositionalLogic/">Classical Logic - Propositional logic</a>
+			<a href="/2019/02/19/[Logic]03_computation/">Computation</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -1025,235 +1025,120 @@
   <div class="row">
 	
 	
-		<h2 id="Terminology"><a href="#Terminology" class="headerlink" title="Terminology"></a>Terminology</h2><p><strong>proposition</strong><br>def: a sentence which states a fact which can be true or false.<br>&nbsp;<br>Atomic propositions(atoms): </p>
+		<h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>&nbsp;<br>a formal system:</p>
 <ul>
-<li>propositions that cannot be broken into smaller parts</li>
-<li>they are usually represented by symbols(P, Q, R…)</li>
+<li>sound(true then cannot be false)</li>
+<li>complete(true or false can be determined)</li>
+<li>computable(be computed by machine)</li>
 </ul>
-<p><strong>argument</strong><br>def: argument is a collection of propositions<br>&nbsp;<br>an argument can have 0 and more premises and 1 conclusion.<br>&nbsp;<br>Validity: an argument is valid iff its premises are true and its conclusion is true.</p>
-<p><strong>Languages</strong><br>Semantics: the meaning of a formula in the language<br>Syntax: rules defining allowable formulas(sentences) in the language<br>&nbsp;<br>formula:  </p>
+<h2 id="Computer-Proof-Checking"><a href="#Computer-Proof-Checking" class="headerlink" title="Computer Proof Checking"></a>Computer Proof Checking</h2><p><strong>Inference rules</strong><br>and-elimination:</p>
 <ul>
-<li>Atomic formula   : if P is an atomic proposition, then P is a formula</li>
-<li>Compound formula : if P and Q are formulas then so are ¬P, P ∧ Q, P ∨ Q and P -&gt; Q</li>
+<li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
+<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
 </ul>
-<p>these are all called well-formed formulas.</p>
-<p><strong>Connectives</strong><br>conjunction ∧ : and<br>disjunction ∨ : or<br>negation    ¬ : not<br>implication -&gt; : implies<br>&nbsp;<br>Avoid ambiguity using parentheses <code>()</code> : (P ∧ Q) ∨ R<br>&nbsp;<br>Precedence of connectives: (¬) &gt; (∧) &gt; (∨) &gt; (-&gt;)</p>
-<p><strong>Parse trees</strong><br>def: we can use a tree to represent the syntactic structure of a sentence. For propositional logic, leaf nodes are atomic propositions and no-leaf nodes are connectives.<br>&nbsp;<br>Terminology: </p>
+<p>and-introduction:</p>
 <ul>
-<li>scope of a connective : connective itself and what it connects i.e. P -&gt; Q</li>
-<li>main connective: the connective which connects the whole furmula</li>
+<li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
 </ul>
-<p>scope = sub-tree<br>main connectice: root node</p>
-<p><strong>Formal language</strong><br>Given an argument: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if John is at home, then his TV is on.</span><br><span class="line">His TV is not on.</span><br><span class="line">Therefore John is not at home.</span><br></pre></td></tr></table></figure>
-<p>Collect atomic propositions: </p>
-<ol>
-<li>H = “John is at home”</li>
-<li>O = “John’s TV is on”</li>
-</ol>
-<p>Argument in propositional logic: </p>
-<ol>
-<li>premise 1 : H -&gt; O</li>
-<li>premise 2 : ¬O</li>
-<li>conclusion : ¬H</li>
-</ol>
-<p>Written in sequent: H -&gt; O, ¬O : ¬H<br>&nbsp;<br>If the argument is valid we write : H -&gt; O, ¬O ⊢ ¬H</p>
-<p>NOTE: When collecting atomic propositions, we only collect original symbol without any connectives. for example ‘his TV is not on’ we collect ‘his TV is on’. And for ‘Therefore John is not at home’ and ‘John is at home’ we only collect ‘John is at home’.</p>
-<h2 id="Natural-Deduction"><a href="#Natural-Deduction" class="headerlink" title="Natural Deduction"></a>Natural Deduction</h2><p>def: In natural deduction, we use syntactic (rather than semantic) proof method<br>&nbsp;<br>Procedure: </p>
-<ol>
-<li>start with premises (we can assume these are true)</li>
-<li>repeatedly apply inference rules (which preserve truth)</li>
-<li>until we have inferred(推理) the conclusion</li>
-</ol>
-<p><strong>∧-introduction</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A   B</span><br><span class="line">-----  ∧ -introduction</span><br><span class="line">A ∧ B</span><br></pre></td></tr></table></figure>
-<p><strong>∧-elimination</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A ∧ B </span><br><span class="line">-----  ∧ -elimination</span><br><span class="line">  A</span><br><span class="line"></span><br><span class="line">A ∧ B </span><br><span class="line">-----  ∧ -elimination</span><br><span class="line">  B</span><br></pre></td></tr></table></figure>
-<p><strong>→-introduction</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ⊢ B </span><br><span class="line">-----  → -introduction</span><br><span class="line">A → B</span><br></pre></td></tr></table></figure>
-<p><strong>→-elimination (modus ponens)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A → B  A </span><br><span class="line">--------  → -elimination</span><br><span class="line">    B</span><br></pre></td></tr></table></figure>
-<p><strong>¬-introduction</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ⊢ ⊥ </span><br><span class="line">-----  ¬ -introduction</span><br><span class="line"> ¬A</span><br></pre></td></tr></table></figure>
-<p><strong>¬¬-elimination</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">¬¬A </span><br><span class="line">---  ¬¬ -elimination</span><br><span class="line"> A</span><br></pre></td></tr></table></figure>
-<p><strong>∨-introduction</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A</span><br><span class="line">-----  ∨ -introduction</span><br><span class="line">A ∨ B</span><br><span class="line"></span><br><span class="line">  A</span><br><span class="line">-----  ∨ -introduction</span><br><span class="line">B ∨ A</span><br></pre></td></tr></table></figure>
-<p><strong>∨-elimination</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A ∨ B  A ⊢ C  B ⊢ C </span><br><span class="line">--------------------  ∨ -elimination</span><br><span class="line">         C</span><br></pre></td></tr></table></figure>
-<h2 id="Semantics-truth-table"><a href="#Semantics-truth-table" class="headerlink" title="Semantics, truth table"></a>Semantics, truth table</h2><p><strong>Semantics of propositional logic</strong><br>An interpretation for a formula is a function I assigning a truth value to its atomic propositions.<br>&nbsp;<br>Semantics of a propositional logic formula φ is a truth value for each interpretation.<br>I ⊨ φ : I satisfies φ, where φ is true for interpretation I</p>
-<p><strong>Truth table : semantic proof method</strong><br>Semantics of conjunction: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P     Q    P ∧ Q</span><br><span class="line"></span><br><span class="line">T     T      T</span><br><span class="line">T     F      F</span><br><span class="line">F     T      F</span><br><span class="line">F     F      F</span><br></pre></td></tr></table></figure>
-<p>Semantics of disjunction: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P     Q    P ∨ Q</span><br><span class="line">T     T      T</span><br><span class="line">T     F      T</span><br><span class="line">F     T      T</span><br><span class="line">F     F      F</span><br></pre></td></tr></table></figure>
-<p>Semantics of negation: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P    ¬P</span><br><span class="line">T     F</span><br><span class="line">F     T</span><br></pre></td></tr></table></figure>
-<p>Semantics of implication: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P     Q     P → Q</span><br><span class="line">T     T       T</span><br><span class="line">T     F       F</span><br><span class="line">F     T       T</span><br><span class="line">F     F       T</span><br></pre></td></tr></table></figure>
-<p>We can construct a truth table for any propostional formula.<br>example: given formula (P -&gt; Q) ∧ Q</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">P   Q   |  P -&gt; Q    ¬Q     (P -&gt; Q) ∧ Q</span><br><span class="line">--------|-------------------------------</span><br><span class="line">T   T   |   T        F          F</span><br><span class="line">T   F   |   F        T          F</span><br><span class="line">F   T   |   T        F          F</span><br><span class="line">F   F   |   T        T          T</span><br></pre></td></tr></table></figure>
-<p><strong>Semantic Notations</strong><br>A formula φ is</p>
+<p>or-introduction</p>
 <ul>
-<li>Satisfiable   : iff there exists one interpretation I ⊨ φ</li>
-<li>Falsifiable   : iff there exists an interpretation that makes φ false</li>
-<li>Unsatisfiable : iff there is no interpretation that make I ⊨ φ</li>
-<li>Valid         : iff for all interpretation that I ⊨ φ</li>
+<li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
+<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q</li>
 </ul>
-<p>NOTE: We are talking about formulas which can be both premises and conclusions<br>&nbsp;<br>Tautology (赘述): iff it is valid i.e. P∨¬P, P→P, ¬(P∧¬P)<br>Contradiction: iff it unsatisfiable<br>Contingent (一组): iff it is both satisfiable and falsifiable i.e. P, P∧Q<br>&nbsp;<br>A formula is unsatisfiable if its negation is valid :<br>example: ¬(P ∧ ¬P)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">P   ¬P  |  (P ∧ ¬P)   ¬(P ∧ ¬P)</span><br><span class="line">--------|----------------------</span><br><span class="line">T   F   |     F          T         </span><br><span class="line">F   T   |     F          T</span><br></pre></td></tr></table></figure>
-<p><strong>Validity of argument</strong><br>Informally : whenever the premises are true, then so is the conclusion<br>Formally : the argument P1, .., Pn ⊨ C is valid iff every interpretation that satisfies all of the premises P1, .., Pn also satisfies the conclusion (I ⊨ Pn are true and I ⊨ C is true)</p>
-<p>Steps: </p>
-<ol>
-<li>construct a truth table for premise(s) and conclusion.</li>
-<li>when we found one that all premises are true and so is conclusion, it is valid.</li>
-<li>when we found one that all premises are true and conclusion is false, it is invalid.</li>
-</ol>
-<p><strong>Comparison between truth table &amp; natural deduction</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">true table                |   natural deduction</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">simple easy to automate   |   difficult to automate</span><br><span class="line">size is exponential       |   problem can be solved in a decent size</span><br><span class="line">invalidity can be checked |   no way to check validity</span><br><span class="line">                          |   can be adopted to predicate calculus</span><br></pre></td></tr></table></figure>
-<h2 id="Proof-strategies-I"><a href="#Proof-strategies-I" class="headerlink" title="Proof strategies I"></a>Proof strategies I</h2><p><strong>Proof bt contradiction</strong><br>we can build on ¬-introduction to prove non-negated propositions.<br>&nbsp;<br>Procedure: </p>
-<ol>
-<li>determine what we want to prove</li>
-<li>hypothesize the negation of the conclusion C</li>
-<li>until we infer to ¬¬ of C</li>
-<li>using ¬¬-elimination to prove C</li>
-</ol>
-<p><strong>Inference rules</strong><br>Strategies: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Inference rule         Premises          Concl.        Annotation numbers           Dependencies</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∧-intro x,y             A, B              A∧B        Premises are at lines x, y        Dx ∪ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∧-elim x                 A∧B               A         Premise is at line x              Dx</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∨-intro x                 A               A∨B        Premise is at line x              Dx</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">∨-elim x,y1,z1,y2,z2    A∨B, A⊢C, B⊢C      C         Disjunction is at line x,       (Dx ∪ Dz1 ∪ Dz2)</span><br><span class="line">                                                     sub-proofs are lines             \ (Dy1 ∪ Dy2)</span><br><span class="line">                                                     y1-z1 and y2-z2             </span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">→-intro y,z             A⊢B               A→B        Sub-proof is lines y-z           Dz \ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">→-elim x,y              A→B, A             B         Premises are at lines x, y       Dx ∪ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">¬-intro y,z              A⊢⊥              ¬A         Sub-proof is lines y-z           Dz \ Dy</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">¬¬-elim x                ¬¬A               A          Premise is at line x             Dx</span><br></pre></td></tr></table></figure>
-<p>Hints: </p>
-<ol>
-<li>negation introduction can prove anything as we can hypothesize something negated, if there is a contradiction can be found, then we can prove the thing we want.</li>
-<li>if the conclusion is negated, try to use ¬-introduction.</li>
-</ol>
-<p><strong>Rules of thumb</strong></p>
-<ol>
-<li>If the main connective in the CONCLUSION is an implication, use implication introduction</li>
-<li>If the main connective in any of the PREMISES is a disjunction, try to use disjunction elimination</li>
-<li>Otherwise, try negation introduction / proof by contradiction</li>
-</ol>
-<p><strong>Semantic and syntactic validity</strong><br>We have seen two methods to show validity of an argument: </p>
+<p>or-elimination</p>
 <ul>
-<li>truth table construction [semantic validity]</li>
-<li>natural deduction proofs [syntax validity]</li>
+<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
 </ul>
-<p>Semantic validity A1, …, An ⊨ B : an argument is valid iff whenever the premises are true, and so is the conclusion (As are true so is B)<br>&nbsp;<br>Syntactic validity A1, …, An ⊢ B : an argument is valid iff the conclusion can be derived from the premises by using inference rules (B can be proved by As)</p>
-<p>NOTE: if there is no premise for an argument, we automatically think the truth values are true for each interpretation of the empty premise. so to check validity of : C we only need to check truth values of C for each interpretation.</p>
-<p><strong>Disproving</strong><br>arguments disproving: </p>
-<ol>
-<li>give a counter-example</li>
-<li>this means I(premises) is true and so is I(conclusion)</li>
-<li>if all true then is valid </li>
-<li>if premises are true and conclusion is false then is invalid.</li>
-</ol>
-<p><strong>Derived rules and reiterate</strong><br>proof decomposed into parts</p>
+<p>falsity-elimination</p>
 <ul>
-<li>auxiliary arguments/derived inference rules (“lemmas”)</li>
-<li>proved separately</li>
-<li>inserted with sequent introduction</li>
+<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
 </ul>
-<p>in some case we may need to use a premise again, we can apply Reiterate<br>&nbsp;<br>Useful derived rules:<br>1) Sequent introduction (LEM) : P ∨ ¬P</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--------</span><br><span class="line">| ¬(P∨¬P)     hypo            &#123;1&#125;</span><br><span class="line">|  ------</span><br><span class="line">|  |  P       hypo            &#123;2&#125;</span><br><span class="line">|  |  P∨¬P    ∨-intro 2       &#123;2&#125;</span><br><span class="line">|  |  ⊥       ∧-intro 3,1    &#123;1,2&#125;</span><br><span class="line">|  ------</span><br><span class="line">|  ¬P         ¬-intro 2,4     &#123;1&#125;</span><br><span class="line">|  P∨¬P       ∨-intro 5       &#123;1&#125;</span><br><span class="line">|  ⊥          ∧-intro 6,1     &#123;&#125;</span><br><span class="line">--------</span><br><span class="line"> ¬¬(P∨¬P)     ¬-intro 1,7     &#123;&#125;</span><br><span class="line"> P∨¬P         ¬¬-elim 8       &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Soundness and Completeness</strong><br>Soundness: any syntactically valid argument is semantically valid<br>A1, …,An ⊢B implies A1, …,An ⊨B<br>&nbsp;<br>NOTE: this means if we can prove an argument then it is valid<br>&nbsp;<br>Completeness: any semantically valid argument is syntactically valid<br>A1, …,An ⊨ B implies A1, …,An ⊢ B<br>&nbsp;<br>NOTE: this means we can construct a proof of any valid argument<br>&nbsp;<br>Natural deduction is sound and complete : we can prove any valid argument.</p>
-<h2 id="Equivalencies"><a href="#Equivalencies" class="headerlink" title="Equivalencies"></a>Equivalencies</h2><p>Some formulas are equivalent, written A ≡ B. The equivalence relationship is called semantically equivalent(or, provably equivalent).<br>&nbsp;<br>def: A ≡ B iff the truth values of A and B are the same for all interpretations<br>(A ≡ B iff A ⊨ B and B ⊨ A)</p>
-<p><strong>Useful equivalence</strong><br>Commutativity: ∧ and ∨ are commutative </p>
+<p>double-negation-elimination</p>
 <ul>
-<li>A∧B ≡ B∧A</li>
-<li>A∨B ≡ B∨A</li>
+<li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
 </ul>
-<p>Associativity: ∧ and ∨ are associative </p>
-<ul>
-<li>A∧(B∧C) ≡ (A∧B)∧C</li>
-<li>A∨(B∨C) ≡ (A∨B)∨C</li>
-</ul>
-<p>Idempotency: ∧ and ∨ are idempotent </p>
-<ul>
-<li>A∧A ≡ A</li>
-<li>A∨A ≡ A</li>
-</ul>
-<p>Distributivity: ∧ distributes over ∨ (and vice versa) </p>
-<ul>
-<li>A∧(B∨C) ≡ (A∧B)∨(A∧C)</li>
-<li>A∨(B∧C) ≡ (A∨B)∧(A∨C)</li>
-</ul>
-<p>De Morgan’s laws</p>
-<ul>
-<li>¬(A∧B) ≡ ¬A∨¬B </li>
-<li>A∧B    ≡ ¬(¬A∨¬B) </li>
-<li>¬(A∨B) ≡ ¬A∧¬B </li>
-<li>A∨B    ≡ ¬(¬A∧¬B)</li>
-</ul>
-<p>Double negation </p>
-<ul>
-<li>¬¬A ≡ A</li>
-</ul>
-<p>Implication</p>
-<ul>
-<li>A→B ≡ ¬A∨B</li>
-</ul>
-<p>We can also define other new connectives</p>
-<ul>
-<li>A <-> B ≡ (A→B)∧(B→A) (bi-implication) </-></li>
-<li>A (+) B ≡ (A∧¬B)∨(¬A∧B) (exclusive or)</li>
-</ul>
-<p><strong>Proving equivalences</strong><br>As given some useful equivalence relations above, we can prove equivalences by working forwards/backwards with a single proof or replacing subformulas with equivalent ones.<br>&nbsp;<br>example: (P ∧ Q) -&gt; S ≡ P -&gt; (Q -&gt; S)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(P ∧ Q) → S ≡ P → (Q → S)</span><br><span class="line">            ≡ ¬ (P ∧ Q) ∨ S    // implication</span><br><span class="line">            ≡ (¬ p ∨ ¬ q)∨ s   // de morgan&apos;s</span><br><span class="line">            ≡ ¬ p ∨ (¬ q ∨ s)  // distributivity</span><br><span class="line">            ≡ ¬ p ∨ (q → s)    // implication</span><br><span class="line">            ≡ p → (q → s)      // implication</span><br></pre></td></tr></table></figure>
-<p>we can prove and disprove equivalences i.e. (P→Q)∧¬Q ≡ ¬P<br>&nbsp;<br>NOTE : equivalence is useful to check the (in)validity of argument.<br>&nbsp;<br>Redundancy : when applying equivalence equations, if we remove too many connectives it leads to lots of nesting and complex formulas. (so we introduce normal form)</p>
-<h2 id="Normal-form"><a href="#Normal-form" class="headerlink" title="Normal form"></a>Normal form</h2><p>literal: a literal is an atomic proposition or its negation i.e. P or ¬P<br>&nbsp;<br>DNF(disjunction normal form): a form of A1 ∨ A2 ∨ …∨ An where each clause(分句) Ai is a conjunction of one or more literals<br>i.e. (¬P ∧ Q) ∨ (¬P ∧ R) ∨ (¬P ∧ ¬R ∧ ¬Q)<br>&nbsp;<br>CNF(conjunction normal form): a form of A1 ∧ A2 ∧ …∧ An where each clause Ai is a disjunction of one or more literals<br>i.e. (R ∨ ¬Q ∨ ¬P) ∧ (Q ∨ ¬R)<br>&nbsp;<br>Often, we write CNF into clausal normal form as a set of sets of literals</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R, ¬Q, ¬P&#125;, &#123;Q, ¬R&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Conversion to normal form</strong><br>Procedure: </p>
-<ol>
-<li>eliminate -&gt; connectives</li>
-<li>move all negations so they only occur in literals</li>
-<li>use distributive laws until the formula is in normal form</li>
-</ol>
-<p><strong>Using CNF</strong><br>to make a CNF formula true, we need at least onw literal in each clause to be true. Often, we will check satisfiability of a CNF formula. i.e. (R ∨ ¬Q ∨ ¬P) ∧ (Q ∨ ¬R)<br>&nbsp;<br>Simplifications of Clausal normal form :<br>if a clause contains a literal and its negation, the clause can be removed from the CNF as truth always hold </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R,¬Q,¬R&#125;,&#123;Q,¬P,R&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>if a clause is a subset of another clause, then the other clause can be removed from the CNF as truth is determined by the sub-clause </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;R,Q,¬P&#125;,&#123;Q,¬P&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>Special cases: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;P&#125;, &#123;&#125;&#125; is false as the empty disjunction is false</span><br><span class="line">&#123; &#125; this is true as the empty conjunction is true</span><br><span class="line">&#123;&#123;Q&#125;, &#123;¬Q&#125;, &#123;P&#125;&#125; is false as Q and ¬Q is contradiction</span><br></pre></td></tr></table></figure>
-<p>empty clauses are written as a square 口.<br>&nbsp;<br>NOTE: </p>
-<ul>
-<li>empty disjunction is false</li>
-<li>empty conjunction is true</li>
-</ul>
-<h2 id="Resolution-归结原理"><a href="#Resolution-归结原理" class="headerlink" title="Resolution(归结原理)"></a>Resolution(归结原理)</h2><p>def: Unlike natural deduction, resolution has only 1 inference rule :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;A&#125; ∨ X1     &#123;¬A&#125; ∨ X2   </span><br><span class="line">----------------------- Resolution</span><br><span class="line">       X1 ∨ X2</span><br></pre></td></tr></table></figure>
-<p>NOTE: {A} ∨ X1 and {¬A} ∨ X2 are two clauses/ premises in CNF form<br>&nbsp;<br>Special cases: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  A     ¬A ∨ B   </span><br><span class="line">--------------- Resolution  // -&gt; -elimination</span><br><span class="line">       B</span><br><span class="line"></span><br><span class="line"> A    ¬A   </span><br><span class="line">--------- Resolution  // contradiction introduction</span><br><span class="line">    ⊥</span><br></pre></td></tr></table></figure>
-<p>NOTE: </p>
-<ul>
-<li>premises and conclusion are all disjunctions. </li>
-<li>this works because A ∨ ¬A is always true.</li>
-</ul>
-<p><strong>Resolution refutation</strong><br>A formula φ is valid iff ¬φ is unsatisfiable. we can prove φ by proving ¬φ is a contradiction<br>&nbsp;<br>to prove validity of a formula: </p>
-<ol>
-<li>negate the formula φ</li>
-<li>convert to CNF/ clausal normal form</li>
-<li>resolve a pair of clauses repeatly until :<ul>
-<li>we find an empty clause 口 (after we solve A and ¬A we got empty clause) : then φ is valid</li>
-<li>we find there are no more new pairs to resolve or find it true (P ∨ ¬P): then φ is invalid</li>
-</ul>
-</li>
-</ol>
-<p>NOTE: it is sound and complete</p>
-<p><strong>Satisfiability</strong><br>Checking validity via satisfiability</p>
-<ul>
-<li>formula φ is valid iff ¬φ is unsatisfiable </li>
-<li>formula φ is invalid iff ¬φ is satisfiable </li>
-</ul>
-<p>we can then, use these to show whether a argument is valid or not.</p>
-<p><strong>Proving arguments’ validity</strong><br>Procedure: </p>
-<ol>
-<li>A1, …, An ⊢ C is valid iff (A1 ∧ …∧ An) -&gt; C is valid</li>
-<li>¬((A1 ∧ …∧ An) -&gt; C) ≡ A1 ∧…∧ An ∧ ¬C</li>
-<li>convert to clausal normal form</li>
-<li>apply resolution inference rule repeatly</li>
-</ol>
-<p><strong>SAT solver</strong><br>“TheScienceofBruteForce”,MarijnJ.H.Heule,OliverKullmann  – <a href="https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext" target="_blank" rel="noopener">https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext</a> – state-of-the-artSATandautomatedmathematicalproofs  <br>Z3: a theorem prover, including both SAT/SMT solvers – <a href="https://rise4fun.com/z3/tutorial" target="_blank" rel="noopener">https://rise4fun.com/z3/tutorial</a> </p>
+<p>Modus ponens</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line"> q: Q        </span><br><span class="line"> q = f p</span><br></pre></td></tr></table></figure>
+<p>Implication introduction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comp : &#123;A B C : Prop&#125; -&gt; (f : A -&gt; B) -&gt; (g : B -&gt; C) -&gt; (A -&gt; C) </span><br><span class="line">comp &#123;A&#125; &#123;B&#125; &#123;C&#125; f g = h where</span><br><span class="line">  h : A -&gt; C</span><br><span class="line">  h a = c where</span><br><span class="line">    b : B</span><br><span class="line">    b = f a</span><br><span class="line">    c : C</span><br><span class="line">    c = g b</span><br></pre></td></tr></table></figure>
+<p>NOTE : except the last proposition, f and g are all hypothesis(premises).<br>&nbsp;<br><strong>Proof checking examples</strong><br>Or-elimination :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ore : &#123;P Q R S&#125; -&gt; p or (Q and R) -&gt; S -&gt; (S and P) or Q</span><br><span class="line">ore &#123;P&#125; &#123;Q&#125; &#123;R&#125; &#123;S&#125; x s = y where</span><br><span class="line">  a : P -&gt; (S and P) or Q</span><br><span class="line">  a p = orIl andI p s</span><br><span class="line">  b : Q and R -&gt; (S and P) or Q</span><br><span class="line">  b m = n where</span><br><span class="line">    q : Q</span><br><span class="line">    q = andEl m</span><br><span class="line">    n : (S and P) or Q</span><br><span class="line">    n = orIr q</span><br><span class="line">  y : (S and P) or Q</span><br><span class="line">  y = orE x a b</span><br></pre></td></tr></table></figure>
+<p><strong>Negation</strong><br>we write (not A) as : A -&gt; Falsity</p>
+<p>Double negation introduction:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DNI : &#123;A : Prop&#125; : A -&gt; (A -&gt; Falsity) -&gt; Falsity</span><br><span class="line">DNI &#123;A&#125; a f = x where</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f a</span><br></pre></td></tr></table></figure>
+<p>Triple negation elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
+<p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
+<p><strong>Law of Excluded Middle</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE goal where</span><br><span class="line">  goal : (P or (P -&gt; Falsity) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  goal z = z u where</span><br><span class="line">    v : P -&gt; Falsity</span><br><span class="line">    v x = z w where</span><br><span class="line">      w : P or (P -&gt; Falsity)</span><br><span class="line">      w = orIl x </span><br><span class="line">    u : P or ( P -&gt; Falsity)</span><br><span class="line">    u = orIr v</span><br></pre></td></tr></table></figure>
+<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p><strong>Introduce functions</strong><br>Some functions written in Agda:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
+<p>NOTE: by using a programming language, we read <code>p : A</code> as a program <code>p</code> has type A, and <code>f : A -&gt; B</code> as <code>f</code> is a function converting A to B.</p>
+<p><strong>Basic types or enums</strong><br>Void type :<br>no constructor so this type cannot be instantiated</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
+<p><code>data</code>  : introduces the definition<br><code>Void</code>  : the name of the type<br><code>Set</code>   : it is a type<br><code>where</code> : introduces the constructors</p>
+<p>Empty type :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty : unit</span><br></pre></td></tr></table></figure>
+<p>Boolean type :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
+<p>Similarly, we can define our own types :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Weekdays : Set where</span><br><span class="line">  Monday Tuesday Wednesday Thursday Friday : Weekdays</span><br></pre></td></tr></table></figure>
+<p><strong>Composite(复合的) types</strong><br>def : we can put two existing data types together to form a new data type.<br>&nbsp;<br>Product (tuple) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
+<p><code>data</code>        : we are defining a data type<br><code>Prod</code>        : the name of the data type<br><code>(A B : Set)</code> : A and B are other data types<br><code>: Set</code>       : we are defining a type indeed<br><code>where</code>       : definitions to follow<br><code>pair</code>        : the name of the constructor<br><code>X -&gt; Y -&gt; Prod X Y</code> : the type of the constructor. given <code>X</code> and <code>Y</code> and return their product <code>Prod X Y</code>. </p>
+<p>Sum (union) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
+<p>NOTE: <code>Sum</code> and <code>Prod</code> are usually called algrebraic types.<br>&nbsp;<br>Similarly, we can define our own composite types :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data Triple (A B C : Set) : Set where</span><br><span class="line">  triple : A -&gt; B -&gt; C -&gt; Triple A B C</span><br><span class="line"></span><br><span class="line">data Sum (A B C : Set) : Set where</span><br><span class="line">  left : A -&gt; Sum A B C</span><br><span class="line">  middle : B -&gt; Sum A B C</span><br><span class="line">  right : C -&gt; Sum A B C</span><br></pre></td></tr></table></figure>
+<p><strong>The differences between Sum and Prod</strong><br>If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
+<p><code>Sum A B</code> have  m + n elements;<br><code>Prod A B</code> have  m x n elements;<br>&nbsp;<br>can we define any element of <code>Prod A Void</code> for some <code>A</code>?     null; because void cannot be instantiated<br>can we define any element of <code>Sum A Void</code> for some <code>A</code>?   A; because right can be instantiated</p>
+<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>def: As we have constructed some data types, we want to access the data inside a type in functional languages, so we introduce destructors. These destructors are built into function definitions via a mechanism known as pattern-matching.<br>&nbsp;<br>NOTE : we can define some operators by using this machanism.</p>
+<p><strong>Pattern matching enumerations</strong><br>The pattern matching machanism will check all cases are covered. If we lost some cases Agda will throw an error.<br>&nbsp;<br>pattern matching <code>and</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false</span><br></pre></td></tr></table></figure>
+<p>In order to avoid missing cases, we can simplify to :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and x y = false</span><br></pre></td></tr></table></figure>
+<p>as we can see the remaining cases are all concluded to false, the truth values can be assigned to x and y. And from top to bottom, each case is covered.<br>&nbsp;<br>If a case is not actually used, we can assign <code>_</code>. for example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and _ _ = false                  ... if the remaining cases are unused...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">pattern matched type can be used to define other functions relating to it :</span><br></pre></td></tr></table></figure>
+<p>nand : Boolean -&gt; Boolean -&gt; Boolean<br>nand true true = false<br>nand x y = true</p>
+<p>negate : Boolean -&gt; Boolean<br>negate x = nand x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">where the second Boolean is a result of nand (Boolean -&gt; Boolean).</span><br><span class="line"></span><br><span class="line">**Pattern matching prod**</span><br><span class="line">Sightly different, the function we pattern match here is composite, namely polymorphic(working for more than one types). So we need to specify that types we are using :</span><br></pre></td></tr></table></figure></p>
+<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 (pair a _) = a                    … b is unused …</p>
+<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; B<br>proj2 (pair _ b) = b                    … a is unused …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NOTE : here we have seperate pattern matching functions. As type of A and type of B are elements in `Prod`, whenever we are given an element of that type we match it against `pair a b`.</span><br><span class="line"></span><br><span class="line">**Pattern matching sum**</span><br><span class="line">Important to remember, we need to pattern match all cases appearing in each single type. Example below, as `sum Unit Unit` has as many proof terms as Boolean, so we have :</span><br></pre></td></tr></table></figure></p>
+<p>f : Sum Unit Unit -&gt; Boolean<br>f (left x)  = true<br>f (right y) = false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from the opposite we have :</span><br></pre></td></tr></table></figure></p>
+<p>g : Boolean -&gt; Sum Unit Unit<br>g true  = left empty<br>g false = right empty<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example : since `A + A = 2 * A`, we can convert between `Sum A A` and `Prod Boolean A`</span><br></pre></td></tr></table></figure></p>
+<p>h : {A : Set} -&gt; Sum A A -&gt; Prod Boolean A<br>h (left a)  = pair true a<br>h (right a) = pair false a</p>
+<p>i : {A : Set} -&gt; Prod Boolean A -&gt; Sum A A<br>i (pair true a) = left a<br>i (pair false a) = right a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**A special case**</span><br><span class="line">We can pattern match `Void` using () :</span><br></pre></td></tr></table></figure></p>
+<p>impossible : {A : Set} -&gt; void -&gt; A<br>impossible ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Sum A Void` and `A`.</span><br></pre></td></tr></table></figure></p>
+<p>to : {A : Set} -&gt; Sum A Void -&gt; A<br>to left a = a</p>
+<p>from : {A : Set} -&gt; A -&gt; Sum A Void<br>from a = left a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Prod A Void` and `Void`</span><br></pre></td></tr></table></figure></p>
+<p>to : {A : Set} -&gt; Prod A Void -&gt; Void<br>to pair a _ = a</p>
+<p>from : {A : Set} -&gt; Void -&gt; Prod A Void<br>from ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Generally**</span><br><span class="line">Note that arbitrary types can be created using the language of type definition, and they are always destructed via pattern matching :</span><br></pre></td></tr></table></figure></p>
+<p>data Foo (A : Set) : Set where<br> foo1 : Foo A<br> foo2 : A -&gt; A -&gt; Foo A<br> foo3 : A -&gt; A -&gt; Foo A</p>
+<p>ff : {A : Set} -&gt; Foo A -&gt; Foo A<br>ff foo1 = foo1<br>ff (foo2 x y) = foo3 y x<br>ff (foo3 x _) = foo2 x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Type Isomorphisms</span><br><span class="line">**A note on syntax**</span><br><span class="line">if we look the examples below, the only difference is in the proj2 we remove &#123;A&#125; and &#123;B&#125;. This is because we did not use them in the definition.</span><br></pre></td></tr></table></figure></p>
+<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 {A} {B} (pair a b) = a</p>
+<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj2 (pair a b) = a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Another example : modus ponens</span><br></pre></td></tr></table></figure></p>
+<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp {A} {B} f a = b where<br>  b : B                         …we used B here…<br>  b = f a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if we inline the definition and remove optional arguments we have :</span><br></pre></td></tr></table></figure></p>
+<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp f a = f b<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Type isomorphism**</span><br><span class="line">def : The existence of invertible functions `f : A -&gt; B`, and `g : B -&gt; A` means that the two types are isomorphic (&quot;same shape&quot;), written `A ~ B`. Isomorphism is a very important mathematical and programming concept, indicating that data can be converted between the f and g without loss of precision.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">Type isomorphisms are consistent in semi-ring :</span><br></pre></td></tr></table></figure></p>
+<pre><code>A + (B + C) ~ (A + B) + C
+      A + B ~ B + A
+      A + B ~ A
+A * (B * C) ~ (A * B) * C
+      A * B ~ B * A
+      A * 1 ~ A
+A * (B + C) ~ A * B + A * C
+(A + B) * C ~ A * C + B * C
+      A * 0 ~ 0 
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example: Show that `A + (B + C) ~ (A + B) + C`.</span><br></pre></td></tr></table></figure>
+<p>q1-to : {A B C : Set} -&gt; Sum A (Sum B C) -&gt; Sum (Sum A B) C<br>q1-to (left a) = left (left a)<br>q1-to (right (left b)) = left (right b)<br>q1-to (right (right c)) = right c</p>
+<p>q1-from : {A B C : Set} -&gt; Sum (Sum A B) C -&gt; Sum A (Sum B C)<br>q1-from (left (left a)) = left a<br>q1-from (left (right b)) = right (left b)<br>q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">To check that these are inverse, we want to show q1-to (q1-from x) = x and q1-from (q1-to x) = x :</span><br></pre></td></tr></table></figure></p>
+<p>q1-to (q1-from (left (left a))) = q1-to (left a) = left (left a)<br>q1-to (q1-from (left (right b))) = q1-to (right (left b)) = left (right b)<br>q1-to (q1-from (right c)) = q1-to (right (right c)) = right c</p>
+<p>q1-from (q1-to (left a)) = q1-from (left (left a)) = left a<br>q1-from (q1-to (right (left b))) = q1-from (left (right b)) = right (lef b)<br>q1-from (q1-to (right (right c))) = q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HOTE : When checking isomorphism, we need to check EACH pattern matched case.</span><br><span class="line"></span><br><span class="line">**Not isomorphic**</span><br><span class="line">There are conversion functions `f : A -&gt; B`, `g : B -&gt; A` that they are NOT isomorphic.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">example : `Boolean` and `Unit`</span><br></pre></td></tr></table></figure></p>
+<p>to : Boolean -&gt; Unit<br>to _ = empty</p>
+<p>from : Unit -&gt; Boolean<br>from empty = true<br><code>`</code></p>
+<p>This is often when two types have different number of elements. This case, Boolean has 2 elements and Unit has only 1.</p>
 
 	
 	</div>
-  <a type="button" href="/2019/02/19/[Logic]01_propositionalLogic/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/02/19/[Logic]03_computation/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1320,11 +1205,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
@@ -1332,11 +1217,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
   </ul>

@@ -110,59 +110,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
-<ol>
-<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
-<li>suppose a, b ∈ L and m &lt; n.</li>
-<li>let Xm be the state reached when we start from p and read a^m.</li>
-<li>let Xn be the state reached when we start from p and read a^n. </li>
-<li>if starting from Xm and reading b^m then we reach a Acc.</li>
-<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
-<li>So Xn != Xm</li>
-<li>So there are infinitely many states.</li>
-<li>we raise a contradiction. Hence the language is not regular.</li>
-</ol>
-<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
-<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
-<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
-<p>we can construct a derivation tree :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
-<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
-<p>this grammar is ambiguous :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
-<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/03/11/[MATH]09_Functions/">Functions</a>
 		</h3>
 		</div>
@@ -229,7 +176,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
+			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -243,36 +190,163 @@
   <div class="row">
 	
 	
-		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
-<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
-<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
-<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>validity check : lcf(x, y) = lcf(y, r)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
-<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+<ol>
+<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
+<li>suppose a, b ∈ L and m &lt; n.</li>
+<li>let Xm be the state reached when we start from p and read a^m.</li>
+<li>let Xn be the state reached when we start from p and read a^n. </li>
+<li>if starting from Xm and reading b^m then we reach a Acc.</li>
+<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
+<li>So Xn != Xm</li>
+<li>So there are infinitely many states.</li>
+<li>we raise a contradiction. Hence the language is not regular.</li>
+</ol>
+<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
+<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
+<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
+<p>we can construct a derivation tree :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
+<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
+<p>this grammar is ambiguous :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]01_NaturalNumbers/">Natural Numbers and Integers</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="The-natural-numbers-N"><a href="#The-natural-numbers-N" class="headerlink" title="The natural numbers (N)"></a>The natural numbers (N)</h2><p><strong>Peano Axiom :</strong><br>0 is a natural number<br>if n is nature, then so is sn<br>n does not exist if sn = 0<br>sn = sm if and only if n = m<br>&nbsp;<br><code>s</code> : successor (推进器; +1)<br><code>p</code> : predecessor (回溯器; -1)</p>
+<p>NOTE : Peano Axiom 定义了自然数。</p>
+<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n + 0 = n</span><br><span class="line">n + sm = s(n + m)</span><br><span class="line">n * 0 = 0</span><br><span class="line">n * sm = (n * m) + n</span><br><span class="line"></span><br><span class="line">n - 0 = n</span><br><span class="line">n - sm = p(n - m)</span><br><span class="line">n - pm = s(n - m)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n^0 = 1</span><br><span class="line">n^sm = n * n^m</span><br><span class="line">0^m = 0</span><br><span class="line">n^m * n^q = n^(m + q)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n * psm = (n * pm) + n</span><br><span class="line">        = ((n * m) - n) + n</span><br><span class="line">        = (n * m) + (-n + n)  // associativity</span><br><span class="line">        = n * m</span><br></pre></td></tr></table></figure>
+<p><strong>Therom 1</strong> : given b != 0, every natural number can be presented in the form m x b + r where r &lt; b.<br><code>m</code> : quotient    n <strong>div</strong> b<br><code>r</code> : remainder   n <strong>mod</strong> b</p>
+<h2 id="Induction"><a href="#Induction" class="headerlink" title="Induction"></a>Induction</h2><p>To prove P(n), we use a strategy called Induction(归纳法):</p>
+<ol>
+<li>P(0) is true</li>
+<li>Assume P(n) is true,</li>
+<li>P(sn) is true</li>
+</ol>
+<h2 id="Semi-ring"><a href="#Semi-ring" class="headerlink" title="Semi-ring"></a>Semi-ring</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a + 0 = a                  a * 1 = a                  // neutral elements</span><br><span class="line">a + b = b + a              a * b = b * a              // commutativity</span><br><span class="line">(a + b) + c = a + (b + c)  (a * b) * c = a * (b * c)  // associativity</span><br><span class="line">a + (-a) = 0                                          // cancellation</span><br><span class="line">a * (b + c) = a * b + a * c                           // distributivity</span><br></pre></td></tr></table></figure>
+<h2 id="Place-value-systems"><a href="#Place-value-systems" class="headerlink" title="Place value systems**"></a>Place value systems**</h2><p>We can convert a decimal to any number in base b :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dn d(n-1) ... d0 = dn x b^n + d(n-1) x b^(n-1) + ... + d1 x b    + d0 </span><br><span class="line">                 = (dn x b^(n-1) + d(n-1) x b^(n-1)... + d1) x b + d1</span><br><span class="line">                 = ...                                           + dn</span><br><span class="line">                (recursively)</span><br></pre></td></tr></table></figure>
+<p>example : Represent 57 in base 7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">59 = m * b + r</span><br><span class="line">   = m * 7 + r                 // r &lt; 7</span><br><span class="line">   = 8 * 7 + 3</span><br><span class="line">   = (1 * 7 + 1) * 7 + 3</span><br><span class="line">   = ((0 * 7 + 1) * 7 + 1) * 7 + 3</span><br><span class="line"></span><br><span class="line">Collect the remainders : 113</span><br><span class="line"></span><br><span class="line">113 = 1 * 7^2 + 1 * 7^1 + 3 * 1 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
+<p>This can ONLY be used in converting from decimal to other bases. In order to convert from others to decimal :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">113 in base 7 --&gt; 59 in decimal</span><br><span class="line"></span><br><span class="line">1 * 7^2 + 1 * 7^1 + 3 * 7^0 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>贝祖等式: 已知lcf，求u和v</p>
+<p>进制可以看作是一种容器，10个数进一位是十进制，7个数进一位是七进制，那么它的余数r就是当前数。</p>
 </blockquote>
-<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
-<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
-<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
-<ul>
-<li>we use base 2 for both mantissa and exponent</li>
-<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
+<h2 id="Natural-number-representation-in-a-computer"><a href="#Natural-number-representation-in-a-computer" class="headerlink" title="Natural number representation in a computer"></a>Natural number representation in a computer</h2><p>examples :<br>[0][0][0][0][0] … [0][0][0][0][0] = 0<br>[0][0][0][0][0] … [0][0][0][0][1] = 1<br>[0][0][0][0][0] … [0][0][0][1][0] = 2<br>…<br>[0][0][0][0][0] … [0][1][0][1][1] = 11<br>&nbsp;<br>if a number exceeds 2^32:</p>
+<ol>
+<li>The excess digits are lost.</li>
+<li>CPU sends a signal.</li>
+<li>Java ignores these signals.</li>
+</ol>
+<h2 id="Integers-in-computers"><a href="#Integers-in-computers" class="headerlink" title="Integers in computers"></a>Integers in computers</h2><p>1 = 1 or -(2^32 - 1)<br>2 = 2 or -(2^32 - 3)<br>3 = 3 or -(2^32 - 3)<br>…<br>2^32 - 1 = 2^32 - 1 or -1<br>&nbsp;<br>example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-(2^32 - 3) - (-(2^32 - 3))</span><br><span class="line">= 3 - 2</span><br><span class="line">= 3 + 2^32 -2</span><br><span class="line">= 2^32 + (3 - 2)</span><br><span class="line">= 2^32 + 1</span><br><span class="line">= 1</span><br></pre></td></tr></table></figure>
+<h2 id="Modulo-arithmetic"><a href="#Modulo-arithmetic" class="headerlink" title="Modulo arithmetic"></a>Modulo arithmetic</h2><p><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring over m（整数模 环）<br>&nbsp;<br>example : modulo 7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.. −14 ≡ −7 ≡ 0 ≡ 7  ≡ 14 ≡ ..</span><br><span class="line">.. −13 ≡ −6 ≡ 1 ≡ 8  ≡ 15 ≡ ..</span><br><span class="line">.. -12 ≡ -5 ≡ 2 ≡ 9  ≡ 16 ≡ ..</span><br><span class="line">.. -11 ≡ -4 ≡ 3 ≡ 10 ≡ 17 ≡ ..</span><br><span class="line">.. -10 ≡ -3 ≡ 4 ≡ 11 ≡ 18 ≡ ..</span><br><span class="line">..  -9 ≡ -2 ≡ 5 ≡ 12 ≡ 19 ≡ ..</span><br><span class="line">.. − 8 ≡ −1 ≡ 6 ≡ 13 ≡ 20 ≡ ..</span><br><span class="line"></span><br><span class="line">6^10 = (1)^10 = 1</span><br></pre></td></tr></table></figure>
+<p>NOTE : 模运算最形象的解释是生活中使用的钟，在一个12刻度的钟表上，13 mod 12 表示为1</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]01_NaturalNumbers/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]03_Guassian Elimination/">System of Linear Equations - Guassian Elimination</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Another-example-of-a-field"><a href="#Another-example-of-a-field" class="headerlink" title="Another example of a field"></a>Another example of a field</h2><p>Complex field C consists of pair(a, b) of real numbers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b)+(c,d) = (a+c,b+d) </span><br><span class="line">(a,b)×(c,d) = (ac−bd,ad+bc)</span><br></pre></td></tr></table></figure>
+<p>NOTE: (a,b) can be writtern in a + ib where i · i = -1.</p>
+<p>// (a, b)(x, y) = (1, 0)</p>
 <blockquote>
-<p>People are still dealing with multiplication on real numbers.</p>
+<p>complex numbers are used in Robot rotations.</p>
+</blockquote>
+<h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Base Case    : ax = b. This can be solved directly: x = b/a.<br>General Case : There are n equations and each contains n unknowns.</p>
+<ol>
+<li>use the first equation to eliminate the first unknown in the remaing (n-1) equations.</li>
+<li>apply step 1 recursively.</li>
+<li>determine the last unknown and bring it back recursively.</li>
+<li>reduce each question to base case.</li>
+</ol>
+<p>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line"> 3 * x1 − 2 * x2 + 7 * x3 =   5 </span><br><span class="line">−2 * x1 −     x2 −     x3 =   0</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">          9 * x2 − 5 * x3 = -22</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                  32 * x3 = -32</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                       x3 = - 1</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1    </span><br><span class="line"></span><br><span class="line">                       x1 =   2</span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1</span><br></pre></td></tr></table></figure>
+<h2 id="A-more-compact-notation"><a href="#A-more-compact-notation" class="headerlink" title="A more compact notation"></a>A more compact notation</h2><p>The unknowns themselves have no effect on GE, all computation happens on the numeric coefficients.<br>&nbsp;<br>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|  -3   1  -2  | -5  |    // (second equation) +- (first equation)</span><br><span class="line">\   3  -1   7  | 10  /</span><br><span class="line"> </span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the first unknown in the remaining 2.</span><br><span class="line">\   0  -2   2  |  7  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the second unknown in the remaining 1.</span><br><span class="line">\   0   0   5  |  5  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     </span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  | -2  \</span><br><span class="line">|   0   2   0  | -5  |     // bring it back to all equations</span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  |  -2 \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   6   0   0  |  1  \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   1   0   0  |  1/6\</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  /</span><br></pre></td></tr></table></figure>
+<p>NOTES: </p>
+<ul>
+<li>Do not miss minus signs.</li>
+<li>Avoid fractions until the very end.</li>
+<li>Only follow the rules of GE.</li>
+<li>After solving the answers, CHECK your answers.</li>
+<li>Echelon form(梯队形式) // as shown in the example</li>
+</ul>
+<h2 id="Special-cases"><a href="#Special-cases" class="headerlink" title="Special cases"></a>Special cases</h2><p>Case 1 : contradictory equation<br>result : no solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 7 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 1 /</span><br></pre></td></tr></table></figure>
+<p>Case 2 : irrelevant equation<br>result : can be chosen freely</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 6 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 0 /</span><br><span class="line"></span><br><span class="line">x1 = 3 + 2 * x2     // x1 can be chosen freely then x2 = (x1 - 3)/2</span><br><span class="line">x2 = chosen freely</span><br></pre></td></tr></table></figure>
+<p>Case 3   : cannot use the first equation to eliminate.<br>solution : swap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  0  -2   3 |  3 \</span><br><span class="line">|  2  -1  -2 |  6 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br><span class="line"></span><br><span class="line">/  2  -1  -2 |  6 \</span><br><span class="line">|  0  -2   3 |  3 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br></pre></td></tr></table></figure>
+<p>Case 4   : cannot use any of the equations to solve the first unknown.<br>solution : General Gaussian Elimination<br>answer   : the first unkown can be chosen freely</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  1  -2   1 |  3 \</span><br><span class="line">|  2  -4  -2 |  7 |</span><br><span class="line">\ -5  -10 -1 | -9 /</span><br><span class="line"></span><br><span class="line">/  1  -2  -1 |  3 \</span><br><span class="line">|  0   0  -4 |  1 |</span><br><span class="line">\  0   0   4 |  6 /</span><br></pre></td></tr></table></figure>
+<h2 id="General-Gaussian-Elimination"><a href="#General-Gaussian-Elimination" class="headerlink" title="General Gaussian Elimination"></a>General Gaussian Elimination</h2><p>Base Case 1 : Only one unknown is left over but there may be more than one equation. In this case we solve each equation independently and compare the answers; if they agree, then that is what we return. If they disagree, then the system has no solution (which we can communicate back by raising an exception).<br>Base Case 2 : Only one equation is left over but more than one unknown appears in it (let’s say m many). In this case m − 1 unknowns can be chosen freely and the other one is computed from the equation. (It does not matter which m − 1 unknowns are chosen and which is computed.)</p>
+<h2 id="Systems-of-linear-equations-over-other-fields"><a href="#Systems-of-linear-equations-over-other-fields" class="headerlink" title="Systems of linear equations over other fields"></a>Systems of linear equations over other fields</h2><p>example in GF(2) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ | 0   1        * | 0   1    </span><br><span class="line">----------       ----------</span><br><span class="line">0 | 0   1        0 | 0   0</span><br><span class="line">  |                |</span><br><span class="line">1 | 1   0        1 | 0   1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Gaussian elimination can be employed for systems of equations over an arbitrary field</p>
 </blockquote>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]03_Guassian Elimination/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -354,73 +428,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]04_Analytic Geometry/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]03_Guassian Elimination/">System of Linear Equations - Guassian Elimination</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Another-example-of-a-field"><a href="#Another-example-of-a-field" class="headerlink" title="Another example of a field"></a>Another example of a field</h2><p>Complex field C consists of pair(a, b) of real numbers.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b)+(c,d) = (a+c,b+d) </span><br><span class="line">(a,b)×(c,d) = (ac−bd,ad+bc)</span><br></pre></td></tr></table></figure>
-<p>NOTE: (a,b) can be writtern in a + ib where i · i = -1.</p>
-<p>// (a, b)(x, y) = (1, 0)</p>
-<blockquote>
-<p>complex numbers are used in Robot rotations.</p>
-</blockquote>
-<h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Base Case    : ax = b. This can be solved directly: x = b/a.<br>General Case : There are n equations and each contains n unknowns.</p>
-<ol>
-<li>use the first equation to eliminate the first unknown in the remaing (n-1) equations.</li>
-<li>apply step 1 recursively.</li>
-<li>determine the last unknown and bring it back recursively.</li>
-<li>reduce each question to base case.</li>
-</ol>
-<p>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line"> 3 * x1 − 2 * x2 + 7 * x3 =   5 </span><br><span class="line">−2 * x1 −     x2 −     x3 =   0</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">          9 * x2 − 5 * x3 = -22</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                  32 * x3 = -32</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                       x3 = - 1</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1    </span><br><span class="line"></span><br><span class="line">                       x1 =   2</span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1</span><br></pre></td></tr></table></figure>
-<h2 id="A-more-compact-notation"><a href="#A-more-compact-notation" class="headerlink" title="A more compact notation"></a>A more compact notation</h2><p>The unknowns themselves have no effect on GE, all computation happens on the numeric coefficients.<br>&nbsp;<br>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|  -3   1  -2  | -5  |    // (second equation) +- (first equation)</span><br><span class="line">\   3  -1   7  | 10  /</span><br><span class="line"> </span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the first unknown in the remaining 2.</span><br><span class="line">\   0  -2   2  |  7  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the second unknown in the remaining 1.</span><br><span class="line">\   0   0   5  |  5  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     </span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  | -2  \</span><br><span class="line">|   0   2   0  | -5  |     // bring it back to all equations</span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  |  -2 \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   6   0   0  |  1  \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   1   0   0  |  1/6\</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  /</span><br></pre></td></tr></table></figure>
-<p>NOTES: </p>
-<ul>
-<li>Do not miss minus signs.</li>
-<li>Avoid fractions until the very end.</li>
-<li>Only follow the rules of GE.</li>
-<li>After solving the answers, CHECK your answers.</li>
-<li>Echelon form(梯队形式) // as shown in the example</li>
-</ul>
-<h2 id="Special-cases"><a href="#Special-cases" class="headerlink" title="Special cases"></a>Special cases</h2><p>Case 1 : contradictory equation<br>result : no solution</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 7 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 1 /</span><br></pre></td></tr></table></figure>
-<p>Case 2 : irrelevant equation<br>result : can be chosen freely</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 6 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 0 /</span><br><span class="line"></span><br><span class="line">x1 = 3 + 2 * x2     // x1 can be chosen freely then x2 = (x1 - 3)/2</span><br><span class="line">x2 = chosen freely</span><br></pre></td></tr></table></figure>
-<p>Case 3   : cannot use the first equation to eliminate.<br>solution : swap</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  0  -2   3 |  3 \</span><br><span class="line">|  2  -1  -2 |  6 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br><span class="line"></span><br><span class="line">/  2  -1  -2 |  6 \</span><br><span class="line">|  0  -2   3 |  3 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br></pre></td></tr></table></figure>
-<p>Case 4   : cannot use any of the equations to solve the first unknown.<br>solution : General Gaussian Elimination<br>answer   : the first unkown can be chosen freely</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  1  -2   1 |  3 \</span><br><span class="line">|  2  -4  -2 |  7 |</span><br><span class="line">\ -5  -10 -1 | -9 /</span><br><span class="line"></span><br><span class="line">/  1  -2  -1 |  3 \</span><br><span class="line">|  0   0  -4 |  1 |</span><br><span class="line">\  0   0   4 |  6 /</span><br></pre></td></tr></table></figure>
-<h2 id="General-Gaussian-Elimination"><a href="#General-Gaussian-Elimination" class="headerlink" title="General Gaussian Elimination"></a>General Gaussian Elimination</h2><p>Base Case 1 : Only one unknown is left over but there may be more than one equation. In this case we solve each equation independently and compare the answers; if they agree, then that is what we return. If they disagree, then the system has no solution (which we can communicate back by raising an exception).<br>Base Case 2 : Only one equation is left over but more than one unknown appears in it (let’s say m many). In this case m − 1 unknowns can be chosen freely and the other one is computed from the equation. (It does not matter which m − 1 unknowns are chosen and which is computed.)</p>
-<h2 id="Systems-of-linear-equations-over-other-fields"><a href="#Systems-of-linear-equations-over-other-fields" class="headerlink" title="Systems of linear equations over other fields"></a>Systems of linear equations over other fields</h2><p>example in GF(2) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ | 0   1        * | 0   1    </span><br><span class="line">----------       ----------</span><br><span class="line">0 | 0   1        0 | 0   0</span><br><span class="line">  |                |</span><br><span class="line">1 | 1   0        1 | 0   1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Gaussian elimination can be employed for systems of equations over an arbitrary field</p>
-</blockquote>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]03_Guassian Elimination/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -647,7 +654,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]01_NaturalNumbers/">Natural Numbers and Integers</a>
+			<a href="/2019/03/11/[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -661,43 +668,36 @@
   <div class="row">
 	
 	
-		<h2 id="The-natural-numbers-N"><a href="#The-natural-numbers-N" class="headerlink" title="The natural numbers (N)"></a>The natural numbers (N)</h2><p><strong>Peano Axiom :</strong><br>0 is a natural number<br>if n is nature, then so is sn<br>n does not exist if sn = 0<br>sn = sm if and only if n = m<br>&nbsp;<br><code>s</code> : successor (推进器; +1)<br><code>p</code> : predecessor (回溯器; -1)</p>
-<p>NOTE : Peano Axiom 定义了自然数。</p>
-<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n + 0 = n</span><br><span class="line">n + sm = s(n + m)</span><br><span class="line">n * 0 = 0</span><br><span class="line">n * sm = (n * m) + n</span><br><span class="line"></span><br><span class="line">n - 0 = n</span><br><span class="line">n - sm = p(n - m)</span><br><span class="line">n - pm = s(n - m)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n^0 = 1</span><br><span class="line">n^sm = n * n^m</span><br><span class="line">0^m = 0</span><br><span class="line">n^m * n^q = n^(m + q)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n * psm = (n * pm) + n</span><br><span class="line">        = ((n * m) - n) + n</span><br><span class="line">        = (n * m) + (-n + n)  // associativity</span><br><span class="line">        = n * m</span><br></pre></td></tr></table></figure>
-<p><strong>Therom 1</strong> : given b != 0, every natural number can be presented in the form m x b + r where r &lt; b.<br><code>m</code> : quotient    n <strong>div</strong> b<br><code>r</code> : remainder   n <strong>mod</strong> b</p>
-<h2 id="Induction"><a href="#Induction" class="headerlink" title="Induction"></a>Induction</h2><p>To prove P(n), we use a strategy called Induction(归纳法):</p>
-<ol>
-<li>P(0) is true</li>
-<li>Assume P(n) is true,</li>
-<li>P(sn) is true</li>
-</ol>
-<h2 id="Semi-ring"><a href="#Semi-ring" class="headerlink" title="Semi-ring"></a>Semi-ring</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a + 0 = a                  a * 1 = a                  // neutral elements</span><br><span class="line">a + b = b + a              a * b = b * a              // commutativity</span><br><span class="line">(a + b) + c = a + (b + c)  (a * b) * c = a * (b * c)  // associativity</span><br><span class="line">a + (-a) = 0                                          // cancellation</span><br><span class="line">a * (b + c) = a * b + a * c                           // distributivity</span><br></pre></td></tr></table></figure>
-<h2 id="Place-value-systems"><a href="#Place-value-systems" class="headerlink" title="Place value systems**"></a>Place value systems**</h2><p>We can convert a decimal to any number in base b :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dn d(n-1) ... d0 = dn x b^n + d(n-1) x b^(n-1) + ... + d1 x b    + d0 </span><br><span class="line">                 = (dn x b^(n-1) + d(n-1) x b^(n-1)... + d1) x b + d1</span><br><span class="line">                 = ...                                           + dn</span><br><span class="line">                (recursively)</span><br></pre></td></tr></table></figure>
-<p>example : Represent 57 in base 7</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">59 = m * b + r</span><br><span class="line">   = m * 7 + r                 // r &lt; 7</span><br><span class="line">   = 8 * 7 + 3</span><br><span class="line">   = (1 * 7 + 1) * 7 + 3</span><br><span class="line">   = ((0 * 7 + 1) * 7 + 1) * 7 + 3</span><br><span class="line"></span><br><span class="line">Collect the remainders : 113</span><br><span class="line"></span><br><span class="line">113 = 1 * 7^2 + 1 * 7^1 + 3 * 1 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
-<p>This can ONLY be used in converting from decimal to other bases. In order to convert from others to decimal :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">113 in base 7 --&gt; 59 in decimal</span><br><span class="line"></span><br><span class="line">1 * 7^2 + 1 * 7^1 + 3 * 7^0 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
+		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
+<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
+<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
+<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>validity check : lcf(x, y) = lcf(y, r)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
+<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>进制可以看作是一种容器，10个数进一位是十进制，7个数进一位是七进制，那么它的余数r就是当前数。</p>
+<p>贝祖等式: 已知lcf，求u和v</p>
 </blockquote>
-<h2 id="Natural-number-representation-in-a-computer"><a href="#Natural-number-representation-in-a-computer" class="headerlink" title="Natural number representation in a computer"></a>Natural number representation in a computer</h2><p>examples :<br>[0][0][0][0][0] … [0][0][0][0][0] = 0<br>[0][0][0][0][0] … [0][0][0][0][1] = 1<br>[0][0][0][0][0] … [0][0][0][1][0] = 2<br>…<br>[0][0][0][0][0] … [0][1][0][1][1] = 11<br>&nbsp;<br>if a number exceeds 2^32:</p>
-<ol>
-<li>The excess digits are lost.</li>
-<li>CPU sends a signal.</li>
-<li>Java ignores these signals.</li>
-</ol>
-<h2 id="Integers-in-computers"><a href="#Integers-in-computers" class="headerlink" title="Integers in computers"></a>Integers in computers</h2><p>1 = 1 or -(2^32 - 1)<br>2 = 2 or -(2^32 - 3)<br>3 = 3 or -(2^32 - 3)<br>…<br>2^32 - 1 = 2^32 - 1 or -1<br>&nbsp;<br>example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-(2^32 - 3) - (-(2^32 - 3))</span><br><span class="line">= 3 - 2</span><br><span class="line">= 3 + 2^32 -2</span><br><span class="line">= 2^32 + (3 - 2)</span><br><span class="line">= 2^32 + 1</span><br><span class="line">= 1</span><br></pre></td></tr></table></figure>
-<h2 id="Modulo-arithmetic"><a href="#Modulo-arithmetic" class="headerlink" title="Modulo arithmetic"></a>Modulo arithmetic</h2><p><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring over m（整数模 环）<br>&nbsp;<br>example : modulo 7</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.. −14 ≡ −7 ≡ 0 ≡ 7  ≡ 14 ≡ ..</span><br><span class="line">.. −13 ≡ −6 ≡ 1 ≡ 8  ≡ 15 ≡ ..</span><br><span class="line">.. -12 ≡ -5 ≡ 2 ≡ 9  ≡ 16 ≡ ..</span><br><span class="line">.. -11 ≡ -4 ≡ 3 ≡ 10 ≡ 17 ≡ ..</span><br><span class="line">.. -10 ≡ -3 ≡ 4 ≡ 11 ≡ 18 ≡ ..</span><br><span class="line">..  -9 ≡ -2 ≡ 5 ≡ 12 ≡ 19 ≡ ..</span><br><span class="line">.. − 8 ≡ −1 ≡ 6 ≡ 13 ≡ 20 ≡ ..</span><br><span class="line"></span><br><span class="line">6^10 = (1)^10 = 1</span><br></pre></td></tr></table></figure>
-<p>NOTE : 模运算最形象的解释是生活中使用的钟，在一个12刻度的钟表上，13 mod 12 表示为1</p>
+<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
+<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
+<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
+<ul>
+<li>we use base 2 for both mantissa and exponent</li>
+<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>People are still dealing with multiplication on real numbers.</p>
+</blockquote>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]01_NaturalNumbers/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -922,11 +922,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
@@ -934,11 +934,11 @@
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
       </li>
     
   </ul>
