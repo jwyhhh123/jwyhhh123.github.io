@@ -110,7 +110,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
+			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -124,36 +124,216 @@
   <div class="row">
 	
 	
-		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
+<ul>
+<li>an impossible event has P = 0</li>
+<li>some certain events have P = 1</li>
+<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
+<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
+</ul>
+<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
+<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
 <ol>
-<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
-<li>suppose a, b ∈ L and m &lt; n.</li>
-<li>let Xm be the state reached when we start from p and read a^m.</li>
-<li>let Xn be the state reached when we start from p and read a^n. </li>
-<li>if starting from Xm and reading b^m then we reach a Acc.</li>
-<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
-<li>So Xn != Xm</li>
-<li>So there are infinitely many states.</li>
-<li>we raise a contradiction. Hence the language is not regular.</li>
+<li>small arguments</li>
+<li>constant factors</li>
 </ol>
-<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
-<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
-<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
-<p>we can construct a derivation tree :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
-<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
-<p>this grammar is ambiguous :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
-<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
+<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<ul>
+<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
+</ul>
+<p>NOTE : exponential growth is faster than polunomial growth.</p>
+<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
+<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]10_Regular Languages/">Regular Languages and Automaton</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Regular-expressions"><a href="#Regular-expressions" class="headerlink" title="Regular expressions"></a>Regular expressions</h2><p>We use regular expression to solve :</p>
+<ol>
+<li>Matching problem</li>
+<li>Searching problem</li>
+</ol>
+<p>Σ   : set of characters<br>Σ^* : set of all words<br>L   : natural languages(passwords, email addresses)</p>
+<p>NOTE : L ⊆ Σ^*</p>
+<p>Notations :</p>
+<ul>
+<li>The regexp a accepts ONLY the word a.</li>
+<li>The regexp b accepts ONLY the word b.</li>
+<li>ε accepts ONLY the empty word ε.</li>
+<li>if E and F are regexps, then EF is a concatenation of words to be accepted.</li>
+<li>if E and F are regexps, then E|F accepts either E or F.</li>
+<li>E^* accepts words of E occuring zero or more times.</li>
+<li>The regexp Nothing does not accept any word.</li>
+</ul>
+<p>laws of precedence : <code>E|F</code> &lt; <code>EF</code> &lt; <code>()^*</code></p>
+<h2 id="Regular-and-Irregular-language"><a href="#Regular-and-Irregular-language" class="headerlink" title="Regular and Irregular language"></a>Regular and Irregular language</h2><p>Regular languages   :<br>any language L ⊆ Σ^* that can be represented in this way is said to be regular.<br>&nbsp;<br>Irregular languages :<br>we can ONLY show the existence as there are uncountablly many languages and countablly many regexps.</p>
+<p>NOTES :</p>
+<ul>
+<li>the complement of a regular language is still regular : a regexp that NOT accepts <code>c(bb|ca)^*</code></li>
+<li>the intersection of two regular languages is still regular : a regexp accepts both <code>cc(bb|ca)^*</code> and c<code>(bbbb|cca)^*</code></li>
+</ul>
+<h2 id="Decidability"><a href="#Decidability" class="headerlink" title="Decidability"></a>Decidability</h2><p>def              : problem is decidable when there is some program that can determine the answer of yes and no.<br>&nbsp;<br>to show a problem is decidable, introduce a program to do so.<br>to show a problem is undecidable : reduce to the halting problem or, use rice’s theorem.</p>
+<p>examples :</p>
+<ol>
+<li>there is a program <code>boolean equality(String E, String F){}</code> that can determine if two regexps are equal, so this problem is decidable.</li>
+<li>for every regexp E, matching problem for E is decidable.</li>
+</ol>
+<p>NOTE : After determining whether a qns can be solved, we can find Efficiency of the qns.</p>
+<h2 id="Introducing-Automata"><a href="#Introducing-Automata" class="headerlink" title="Introducing Automata"></a>Introducing Automata</h2><p>DFA(Deterministic Finite Automaton) : </p>
+<ul>
+<li>a finite set X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ: X × Σ → X</li>
+<li>a set of accepting states Acc ∈ X; Acc is indicated by a double ring.</li>
+</ul>
+<p>“Deterministic” because the initial state and the result of each transition are specified. “Finite” because the set of states is finite.</p>
+<p>partial DFA : δ is a partial function, meaning there are undefined transitions </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[]-----&gt; [error state] &lt;-----[]</span><br><span class="line">    a     |       ∧       b</span><br><span class="line">          |_______|</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
+<ul>
+<li>DFA includes all possible transitions</li>
+<li>partial DFA includes NOT all transitions.</li>
+<li>turn a partial DFA into DFA: add an error state which takes all undefined transitions and transitions to itself.</li>
+</ul>
+<h2 id="Non-deterministic-Automata"><a href="#Non-deterministic-Automata" class="headerlink" title="Non-deterministic Automata"></a>Non-deterministic Automata</h2><p>difference:</p>
+<ol>
+<li>NDFA can have 1 and more initial states</li>
+<li>from a given state, when a (or any other character) is the input, there can be several possible next states. Example : 1 -&gt; a -&gt; 2 and 1 -&gt; a -&gt; 3</li>
+</ol>
+<p>Determinization : </p>
+<ol>
+<li>The initial “state” is the set of all the initial states of the NDFA. </li>
+<li>A “state” is accepting when it contains an accepting state of the NDFA. </li>
+<li>From a given “state”, when we input a character, we collect all the possible next states.</li>
+</ol>
+<h2 id="ε-transitions"><a href="#ε-transitions" class="headerlink" title="ε-transitions"></a>ε-transitions</h2><p>def   : transition taking empty word ε<br>εNDFA : nondeterministic automaton with ε-transitions<br>&nbsp;<br>Convert from εNDFA to NDFA : </p>
+<ol>
+<li>remove ε-transitions </li>
+<li>add new transitions</li>
+<li>determine new Acc</li>
+<li>remove non reachable states</li>
+</ol>
+<p>NOTE : during converting, we do not remove any reachable state.</p>
+<h2 id="How-to-add-sets"><a href="#How-to-add-sets" class="headerlink" title="How to add sets"></a>How to add sets</h2><p>sum A + B : </p>
+<ul>
+<li>inl a = (0, a)</li>
+<li>inr b = (1, b)</li>
+</ul>
+<p>example : {3,5,6} + {3,6,9,28}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;3,5,6&#125; + &#123;3,6,9,28&#125; = &#123;inl 3,inl 5,inl 6,inr 3,inr 6,inr 9,inr 28&#125;</span><br><span class="line">                     = &#123;(0, 3), (0, 5), (0, 6), (1, 3), (1, 6), (1, 9), (1, 28)&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE : A + 1 where 1 represents a singleton set. We use this to convert a partial DFA into DFA by adding and error state.</p>
+<h2 id="Kleene’s-Theorem"><a href="#Kleene’s-Theorem" class="headerlink" title="Kleene’s Theorem"></a>Kleene’s Theorem</h2><p>theorem 1 : for a language L ⊆ Σ^* , the following are equivalent:</p>
+<ol>
+<li>L is regular</li>
+<li>The matching problem for L can be solved by a DFA.</li>
+</ol>
+<p>We ONLY study from 1. to 2. : if L is regular, then there is a DFA that can solve the matching problem for L.<br>&nbsp;<br>We are now, based on Kleene’s theorem, able to convert a regular language L into DFA by:</p>
+<ol>
+<li>transfer L into εNDFA</li>
+<li>transfer εNDFA into NDFA (remove ε-transition)</li>
+<li>transfer NDFA to DFA (determinize)</li>
+</ol>
+<h2 id="Using-Kleene’s-Theorem"><a href="#Using-Kleene’s-Theorem" class="headerlink" title="Using Kleene’s Theorem"></a>Using Kleene’s Theorem</h2><p>Although regexps and finite automata are equivalent, it’s often easier to operate on automata. For example, we asked: is the complement of a regular language regular? That’s not obvious for regexps, but using (total) DFAs, it is clear: just replace ac- cepting states by non-accepting ones and vice versa.<br>&nbsp;<br>This implies that the intersection of regular languages L and M is regular, because M ∩ L = L ∪ M . But we can also see this directly. Say L is recognized by automaton A, and M by B. If you’re given a word w and you want to know whether it’s in L ∩ M, passing through w just once, you can simultaneously keep track of where you are in A and where you are in B, as you read through w. So your state at any time is a pair (x, y), where x is a state in A, and y is a state in B. This immediately gives you a DFA.<br>&nbsp;<br>For example, say you want a DFA for the password question in the last handout. You can make a DFA that determines whether a word has at least 3 characters, and another that determines whether it has a letter, and another that determines whether it has a digit. Then we want a DFA for the intersection of these languages. Kleene’s theorem tells us that there must be some corresponding regexp.</p>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>def : According to Kleene’s Theorem, we can check if two regexps are language equivalent by checking their DFAs.<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>starting from the initial states of each automaton</li>
+<li>traverse from each word from Σ. This will give us a tree structure</li>
+<li>stop when given state is visited.</li>
+<li>if language inequivalent, then there is the case when one reaches an accepting state and the other reaches a rejecting state.</li>
+<li>if language equivalent, then all frontiers are stopped.</li>
+</ol>
+<h2 id="Minimizing-a-DFA"><a href="#Minimizing-a-DFA" class="headerlink" title="Minimizing a DFA"></a>Minimizing a DFA</h2><p>def : make a DFA as small as possible<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>remove unreachable states.</li>
+<li>identify states that are language equivalent.</li>
+</ol>
+<p>To prove a DFA is minimal :</p>
+<ol>
+<li>show each state is reachable, by giving a word that covers all states. (1. is satisfied)</li>
+<li>show that any two distinct states are not language equivalent, by giving a word that one accepts and the other rejects. (2. is satisfied)</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]10_Regular Languages/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Church’s-Thesis"><a href="#Church’s-Thesis" class="headerlink" title="Church’s Thesis"></a>Church’s Thesis</h2><p>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
+<ul>
+<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
+<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
+<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
+<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
+</ul>
+<h2 id="Reduction-of-a-problem-to-another-problem"><a href="#Reduction-of-a-problem-to-another-problem" class="headerlink" title="Reduction of a problem to another problem"></a>Reduction of a problem to another problem</h2><p>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
+<ul>
+<li>if P is decidable, Q is then decidable</li>
+<li>if Q is undecidable, P is then undecidable</li>
+</ul>
+<h2 id="Undecidable-problems"><a href="#Undecidable-problems" class="headerlink" title="Undecidable problems"></a>Undecidable problems</h2><p>examples of undecidable problems :</p>
+<ul>
+<li>ambiguity of context free languages</li>
+<li>equivalence of context free languages</li>
+<li>the halting problem</li>
+</ul>
+<h2 id="The-Halting-Problem"><a href="#The-Halting-Problem" class="headerlink" title="The Halting Problem"></a>The Halting Problem</h2><p>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
+<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -214,56 +394,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]14_N&NP/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
-<ul>
-<li>an impossible event has P = 0</li>
-<li>some certain events have P = 1</li>
-<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
-<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
-</ul>
-<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
-<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
-<ol>
-<li>small arguments</li>
-<li>constant factors</li>
-</ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
-<ul>
-<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
-</ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
-<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
-<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -389,194 +519,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/[MATH]08_SetTheory/">Set Theory</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>In set theory, we will discuss the following topics :</p>
-<ul>
-<li>Sets</li>
-<li>Power Sets</li>
-<li>Relations</li>
-</ul>
-<h1 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h1><h2 id="The-intuitive-idea-of-a-set"><a href="#The-intuitive-idea-of-a-set" class="headerlink" title="The intuitive idea of a set"></a>The intuitive idea of a set</h2><p>def : a set is a collection of things. And, the things in the set are called elements/ members.</p>
-<ul>
-<li>The elements of a set are identifiable and can be distinguished.</li>
-<li>There is a clear criterion that identify members.</li>
-<li>A member must be counted ONLY once.</li>
-<li>there is no order of members.</li>
-<li>if two sets have the same elements, then they form the same set, independently of how the collections were defined.</li>
-</ul>
-<p>NOTE : Set in JAVA is supported as an interface and one possible implementation is <code>HashSet</code>.</p>
-<h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><ol>
-<li>To indicate x is an element in set A, we write : <code>x ∈ A</code></li>
-<li>A = B  iff ∀x. x∈A <-> x∈B</-></li>
-<li>Finite sets   : {Spring, Summer, Autumn, Winter}</li>
-<li>Infinite sets : {1, 4, 9, 16, 25, …}</li>
-</ol>
-<h2 id="Sets-of-numbers"><a href="#Sets-of-numbers" class="headerlink" title="Sets of numbers"></a>Sets of numbers</h2><p>1) Union of two sets : <code>∪</code></p>
-<ul>
-<li>Integers can be represented : <code>Z = N ∪ {−1,−2,−3,...}</code></li>
-</ul>
-<p>2) Product of two sets :</p>
-<ul>
-<li>if A and B are different, A x B</li>
-<li>if A  =  B, A x B = A ^ 2</li>
-</ul>
-<p>3) set difference : <code>\</code></p>
-<ul>
-<li>The set of fractions could be written as : <code>Z x (Z \ {0})</code></li>
-</ul>
-<p>4) Subset : A ⊆ B</p>
-<ul>
-<li>Q (rational numbers) is a subset of the set of fractions.</li>
-</ul>
-<p>5) the tuples in products :</p>
-<ul>
-<li>B x B x…x B in 32-tuples : B^32 = {0, 1}^32</li>
-<li>assume A is an alphabet set of {a, …, z}, then A^* is the set of all words over A.</li>
-<li>in JAVA, Unicode is the set of alphabet.</li>
-<li>Real numbers can be represented as : <code>R = Z x D^w</code>, where D = {0, 1, …, 9}</li>
-</ul>
-<p>NOTE : a finite ring Zm = {0, 1, …, m-1} is viewed as the set of integers with alternate equality “congruent modulo m”.</p>
-<h2 id="Counting-the-elements-of-a-set"><a href="#Counting-the-elements-of-a-set" class="headerlink" title="Counting the elements of a set"></a>Counting the elements of a set</h2><p>size of a set can be written as <code>card(k)</code> or <code>|k|</code><br><code>card(k)</code> : cardinality<br>&nbsp;<br>Instead of counting, we check two sets have the same cardinality by pairing one element by one element between the two sets.<br>&nbsp;<br>example : card(Seasons) = card(Compass)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Seasons = &#123;Spring, Summer, Autumn, Winter&#125;</span><br><span class="line">             |       |       |       |</span><br><span class="line">Compass = &#123;East,   South,  West,   North &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Cardinality-of-infinite-sets"><a href="#Cardinality-of-infinite-sets" class="headerlink" title="Cardinality of infinite sets"></a>Cardinality of infinite sets</h2><p>A set is countably infinite if it has the same cardinality as N :</p>
-<ul>
-<li>A = N ∪ {−1} is countable infinite set</li>
-<li>Z countable infinite set</li>
-<li>N^2 is countable infinite set</li>
-<li>if A is finite set then A^* is countable</li>
-<li>Theorem 7 : The set of valid Java programs is countable</li>
-</ul>
-<h2 id="An-uncountable-set"><a href="#An-uncountable-set" class="headerlink" title="An uncountable set"></a>An uncountable set</h2><p>real number R is an uncountable set<br>&nbspl;<br>proof steps :</p>
-<ol>
-<li>assume R is countable</li>
-<li>given a real number : a = a0 a1 a2 …</li>
-<li>list some real numbers in a matrix</li>
-<li>for i(s), ai = 0 if r(i,i) != 0</li>
-<li>for i(s), ai = 1 if r(i,i) == 0</li>
-<li>we will introduce a real number have not appear in the matrix.</li>
-<li>the matrix is not complete.</li>
-<li>contradiction, hence the set of real numbers is uncountable.</li>
-</ol>
-<p>Theorem 8 : The set of real numbers is uncountable<br>Theorem 9 : There are non-computable real numbers (as set of java programs is countable and set of reals is uncountable)</p>
-<p><strong>Comparing uncountable sets</strong><br>The examples above illustrate how we can establish that two countably infinite sets have the same cardinality. To show that two uncountable sets have the same size requires a bit more ingenuity but the principle is the same: We establish a one-to-one relationship between the elements. For example, we can show that the elements of a circle (minus one point) can be lined up against the elements of the real line.</p>
-<h1 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h1><h2 id="Defining-a-subset"><a href="#Defining-a-subset" class="headerlink" title="Defining a subset"></a>Defining a subset</h2><p>If subset has only few elements, we can list them            : <code>{3, 5, 17, 257, 65537} ⊆ N</code><br>A set excluding some members is a subset of the original set : <code>F\{0} ⊆ F</code> where F is a field.<br>Empty set is a subset of any set                             : <code>{}</code> or <code>0/ (zero with a slash)</code><br>A set is a subset of itself                                  : <code>A ⊆ A</code><br>For more complex subsets we employ logical conditions        : <code>B = {x ∈ A | x satisfies condition c}</code></p>
-<h2 id="Comparing-subsets"><a href="#Comparing-subsets" class="headerlink" title="Comparing subsets"></a>Comparing subsets</h2><p>B ⊆ A : B ⊆ A iff ∀x. x ∈ B –&gt; x ∈ A<br>equality of two sets : A = B iff A ⊆ B and B ⊆ A<br>&nbsp;<br>NOTE : there are two conditions to check equality: firstly A ⊆ B, secondly B ⊆ A</p>
-<h2 id="Operations-on-subsets"><a href="#Operations-on-subsets" class="headerlink" title="Operations on subsets"></a>Operations on subsets</h2><p>Union          : B1 ∪ B2 = {x ∈ A | x ∈ B1 or x ∈ B2}<br>Intersection   : B1 ∩ B2 = {x ∈ A | x ∈ B1 and x ∈ B2}<br>Complement     :   -B    = {x ∈ A | x !∈ B}<br>Set difference : B1 \ B2 = B1 ∩ -B2 = {x ∈ A | x ∈ B1 and x !∈ B2}</p>
-<h2 id="Power-sets"><a href="#Power-sets" class="headerlink" title="Power sets"></a>Power sets</h2><p>def : the collection of the subsets of a set A. It is written as PA</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = &#123;1,2&#125;</span><br><span class="line">PA = &#123;0/, &#123;1&#125;, &#123;2&#125;, &#123;1,2&#125;&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>the elements of a power set are identifiable(for each is different from others).</li>
-<li>if B is a member of PA then B is a subset of A</li>
-<li>we ALWAYS have empty subset as an element in PA.</li>
-</ul>
-<p>there are ALWAYS more members in PA than in A.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">card(A)   0     1     2     3     4   ...</span><br><span class="line">card(PA)  1     2     4     8     16</span><br><span class="line"></span><br><span class="line">          2^0   2^1   2^2   2^3   2^4</span><br></pre></td></tr></table></figure>
-<p>Theorem 10 : for any set A, the cardinality of the power set PA is strictly larger than the cardinality of A.</p>
-<p>NOTE : the powerset of N is uncountable due to theorem 10.</p>
-<h2 id="The-power-set-as-an-algebra"><a href="#The-power-set-as-an-algebra" class="headerlink" title="The power set as an algebra"></a>The power set as an algebra</h2><p>Given X is the PA of A :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A ∪ 0/ = A                    A ∩ X = A </span><br><span class="line">A ∪ X = X                     A ∩ 0/ = 0/</span><br><span class="line">A ∪ B = B ∪ A                 A ∩ B = B ∩ A</span><br><span class="line">(A ∪ B) ∪ C = A ∪ (B ∪ C)    (A ∩ B) ∩ C = A ∩ (B ∩ C)</span><br><span class="line">A ∪ A = A                     A ∩ A = A</span><br><span class="line">(A ∪ B) ∩ B = B              (A ∩ B) ∪ B = B</span><br><span class="line">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span><br><span class="line">A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</span><br><span class="line">A ∪ -A = X                    A ∩ -A= 0/</span><br><span class="line">_____   _   _                 _____   _   _</span><br><span class="line">A ∪ B = A ∩ B                 A ∩ B = A ∪ B</span><br><span class="line">=</span><br><span class="line">A = A</span><br></pre></td></tr></table></figure>
-<h2 id="Propositional-logic"><a href="#Propositional-logic" class="headerlink" title="Propositional logic"></a>Propositional logic</h2><p>the subset operations above are corresponding to logic.<br>&nbsp;<br>Correspondence :</p>
-<ol>
-<li>∨ or    <--> ∪</--></li>
-<li>∧ and   <--> ∩</--></li>
-<li>¬ not   <--> -</--></li>
-<li>Falsity <--> 0/</--></li>
-</ol>
-<h2 id="Boolean-algebra"><a href="#Boolean-algebra" class="headerlink" title="Boolean algebra"></a>Boolean algebra</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A ∨ Falsity = A                    A ∧ X = A </span><br><span class="line">A ∨ True = True                     A ∧ Falsity = Falsity</span><br><span class="line">A ∨ B = B ∨ A                 A ∧ B = B ∧ A</span><br><span class="line">(A ∨ B) ∨ C = A ∨ (B ∨ C)    (A ∧ B) ∧ C = A ∧ (B ∧ C)</span><br><span class="line">A ∨ A = A                     A ∧ A = A</span><br><span class="line">(A ∨ B) ∩ B = B              (A ∧ B) ∨ B = B</span><br><span class="line">A ∧ (B ∨ C) = (A ∧ B) ∨ (A ∧ C)</span><br><span class="line">A ∨ (B ∧ C) = (A ∨ B) ∧ (A ∨ C)</span><br><span class="line">A ∨ -A = True                    A ∧ -A= Falsity</span><br><span class="line">_____   _   _                 _____   _   _</span><br><span class="line">A ∨ B = A ∧ B                 A ∧ B = A ∨ B</span><br><span class="line">=</span><br><span class="line">A = A</span><br></pre></td></tr></table></figure>
-<h1 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h1><h2 id="General-relations"><a href="#General-relations" class="headerlink" title="General relations"></a>General relations</h2><p>def : if A1, A2, …, An are sets and R is a subset of A1 x A2 x …x An, then R is called a (n-ary) relation.<br>&nbsp;<br>NOTE : the elements of A1 ×A2 ×…×An are n-tuples (x1,x2,…,xn). Also, note that any subset is allowed; there are no conditions for a subset to be called a relation.<br>&nbsp;<br>Example : 3-ary relation given A1 : the set Σ∗ of strings, and A2, A3: sets of N</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  A1 : staff in UOB</span><br><span class="line">  A2 : phone numbers</span><br><span class="line">  A3 : office numbers</span><br><span class="line"></span><br><span class="line">  A1 x A2 x A3 is the relation of a staff with his phone and office number.</span><br><span class="line"></span><br><span class="line">   |       |       |</span><br><span class="line">   |    A2 .       |</span><br><span class="line">A1 .       |       |</span><br><span class="line">   |       |       |</span><br><span class="line">   |       |    A3 .</span><br></pre></td></tr></table></figure>
-<p>NOTE : we are looking ar the special case of 2-ary(binary) relations on a single set. To explain, we look at subsets of A x A<br>&nbsp;<br>Directed graph representation :</p>
-<ul>
-<li>vertices : elements in A</li>
-<li>edges    : relations/ subsets of A</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> --&gt; a ------&gt; c &lt;-- c</span><br><span class="line">|    |         |     ∧</span><br><span class="line">|    |         |_____|</span><br><span class="line">|    |         |</span><br><span class="line">|    |         ∨</span><br><span class="line"> ----|-------- d</span><br><span class="line">     ∨</span><br><span class="line">     b   </span><br><span class="line"></span><br><span class="line">V = &#123;a, b, c, d&#125;</span><br><span class="line">E = &#123;&#123;a, b&#125;, &#123;a, c&#125;, &#123;c, c&#125;, &#123;d, a&#125;, &#123;c, d&#125;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Reflexivity"><a href="#Reflexivity" class="headerlink" title="Reflexivity"></a>Reflexivity</h2><p>def : We call a binary relation R ⊆ A × A reflexive if it contains all pairs (x, x) for x an element of A.<br>&nbsp;<br>R ⊆ A x A is reflexive = ∀x ∈ A. (x, x) ∈ R<br>&nbsp;<br>if given a relation R that is not reflexive, then we can make it reflexive by adding the missing edges :<br><code>refl-closure(R) = R ∪ {(x, y) ∈ A x A | x = y}</code><br>&nbsp;<br>Irreflexive relation : relation that contains no edge pointing to itself</p>
-<h2 id="Symmetry"><a href="#Symmetry" class="headerlink" title="Symmetry"></a>Symmetry</h2><p>def : A binary relation R ⊆ A × A is called symmetric if with every pair (x, y) ∈ R we also have (y, x) ∈ R.<br>&nbsp;<br>R ⊆ A × A is symmetric = ∀(x,y) ∈ A×A. (x,y) ∈ R -&gt; (y,x) ∈ R<br>&nbsp;<br>if given a relation R that is not symmetric, then we can make it symmetric by giving:</p>
-<ol>
-<li>inverse relation : <code>R^(-1) = {(x,y) ∈ A x A | (y,x) ∈ R}</code></li>
-<li>symm-closure(R) = R ∪ R^(-1)</li>
-</ol>
-<p>Anti-symmetric : there is no a and b connecting each other. While reflexivity is allowed.</p>
-<h2 id="Transitivity"><a href="#Transitivity" class="headerlink" title="Transitivity"></a>Transitivity</h2><p>def : A binary relation R ⊆ A × A is called transitive if whenever (x, y) ∈ R and (y, z) ∈ R then also (x, z) ∈ R.<br>&nbsp;<br>R ⊆ A × A is transitive = ∀x,y,z ∈ A.(x,y) ∈ R and (y,z) ∈ R -&gt; (x,z) ∈ R<br>&nbsp;<br>if given a relation R that is not transitive, then we can make it transitive by given :</p>
-<ol>
-<li>composition of binary relations : <code>R;S = {(x,z) ∈ A x A | ∃y ∈ A. (x, y) ∈ R and (y, z) ∈ S}</code></li>
-<li>trans-closure(R) = R ∪ (R;R) ∪ (R;R;R) ∪ …</li>
-</ol>
-<p>NOTE : this idea is like finding a path from liverpool to birmingham, there are lot of paths we can choose.</p>
-<h2 id="Two-packages-of-properties"><a href="#Two-packages-of-properties" class="headerlink" title="Two packages of properties"></a>Two packages of properties</h2><p>Order relation :<br>A relation R ⊆ A × A is called an order relation if it is reflexive, anti-symmetric, and transitive.</p>
-<p>Equivalence relation :<br>A relation R ⊆ A × A is called an equivalence relation if it is reflexive, symmetric, and transitive.</p>
-<h2 id="Order-relations"><a href="#Order-relations" class="headerlink" title="Order relations"></a>Order relations</h2><p>examples :</p>
-<ul>
-<li><code>&lt;=</code></li>
-<li>precedence graphs</li>
-</ul>
-<p>small order relations can be drawn as graphs where all edges point upwards and where those edges that follow from transitivity are left out. an example of divisibility(可除性) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 ---&gt; 6 ---&gt; 18</span><br><span class="line">∧      ∧       ∧</span><br><span class="line">|      |       |</span><br><span class="line">1 ---&gt; 3 ----&gt; 9    //Hasse diagram</span><br></pre></td></tr></table></figure>
-<h2 id="Equivalence-relations"><a href="#Equivalence-relations" class="headerlink" title="Equivalence relations"></a>Equivalence relations</h2><p>symbol : ≈ (congruence modulo m is commonly written as ≡ or ≡m).<br>equiv-closure(R) = trans-closure(symm-closure(refl-closure(R)))</p>
-<h2 id="Equivalence-relations-lead-to-classifications"><a href="#Equivalence-relations-lead-to-classifications" class="headerlink" title="Equivalence relations lead to classifications"></a>Equivalence relations lead to classifications</h2><p>Equivalence classification : <code>[a]≈ = {x ∈ A| x ≈ a}</code> where a is an element of A.<br>&nbsp;<br>Theorem : if ≈ is an equivalence relation on a set A, and a, b are elements of A, then always one of the following two situations is true :</p>
-<ol>
-<li>a ≈ b and [a]≈ = [b]≈</li>
-<li>a !≈ b and [a]≈ ∩ [b]≈ = 0/</li>
-</ol>
-<p>NOTE : this means class [a]≈ and class [b]≈ are disjointed.</p>
-<h2 id="Working-with-classifications-via-representatives"><a href="#Working-with-classifications-via-representatives" class="headerlink" title="Working with classifications via representatives"></a>Working with classifications via representatives</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> ________________________</span><br><span class="line">|     |      .  |        |</span><br><span class="line">| .   |         |        |</span><br><span class="line">|_____|_________|   .    |</span><br><span class="line">|          |    |        |</span><br><span class="line">|    .     | .  |        |</span><br><span class="line">|__________|____|________|</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]08_SetTheory/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/20/[DataStructure]02/">Programming part</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-20  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>I will provide source code on github.</p>
-<h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
-<h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4: <em>Merge Sort</em><br>ass5: <em>Graph</em></p>
-
-	
-	</div>
-  <a type="button" href="/2019/02/20/[DataStructure]02/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/02/20/[DataStructure]01/">Theory part</a>
 		</h3>
 		</div>
@@ -591,7 +533,11 @@
   <div class="row">
 	
 	
-		<h2 id="Basic-Data-Structure"><a href="#Basic-Data-Structure" class="headerlink" title="Basic Data Structure"></a>Basic Data Structure</h2><p><strong>Arrays</strong><br>An ordered collection of items : <code>a[i]</code><br><code>i</code> : the index of item.</p>
+		<!-- 过于精简，添加内容:
+       what is ds
+       diff types of programming
+-->
+<h2 id="Basic-Data-Structure"><a href="#Basic-Data-Structure" class="headerlink" title="Basic Data Structure"></a>Basic Data Structure</h2><p><strong>Arrays</strong><br>An ordered collection of items : <code>a[i]</code><br><code>i</code> : the index of item.</p>
 <p><strong>Loops and invariants</strong><br>General for-loop structure :</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(INITIALIZATION; CONDITION; UPDATE) &#123;</span><br><span class="line">    REPEATED PROCESS</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Invariant : a condition that does not change during the excution of a given program. i.e. i&lt;20 invariants enable correctness proof and verification. In particular, a loop-invariant is a condition that holds at the beginning and the end of every iteration.</p>
@@ -987,6 +933,36 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/02/20/[DataStructure]02/">Programming part</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-02-20  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>I will provide source code on github.</p>
+<h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
+<h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4: <em>Merge Sort</em><br>ass5: <em>Graph</em></p>
+
+	
+	</div>
+  <a type="button" href="/2019/02/20/[DataStructure]02/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/02/19/[AI]12_lejos/">Lejos-based programming</a>
 		</h3>
 		</div>
@@ -1330,7 +1306,7 @@
 		
 			<li><a href="/categories/Year1-Java/">Year1/ Java<span>4</span></a></li>
 		
-			<li><a href="/categories/Year1-Logic-and-Computation/">Year1/ Logic and Computation<span>3</span></a></li>
+			<li><a href="/categories/Year1-Logic-and-Computation/">Year1/ Logic and Computation<span>4</span></a></li>
 		
 			<li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
 		

@@ -9,10 +9,8 @@
   <title>Data Types | WY J</title>
   <meta name="author" content="Wenye Jin">
   
-  <meta name="description" content="String1String a = &amp;quot;John&amp;quot;;
-Character1char a = &amp;apos;a&amp;apos;;
-Integer1int c = 0;
-FloatIEEE754 Single-Precision Format(32 bits)def : IEEE754 is">
+  <meta name="description" content="Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter.
+String1String">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -107,11 +105,14 @@ FloatIEEE754 Single-Precision Format(32 bits)def : IEEE754 is">
 	<div class="mypage">		
 	  		
 
-	  <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String a = &quot;John&quot;;</span><br></pre></td></tr></table></figure>
-<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char a = &apos;a&apos;;</span><br></pre></td></tr></table></figure>
-<h2 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int c = 0;</span><br></pre></td></tr></table></figure>
-<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><p><strong>IEEE754 Single-Precision Format(32 bits)</strong><br>def : IEEE754 is a strategy to represent numbers in a computer<br>&nbsp;<br>sign bit: positive(0) or negative(1)<br>exponent: power<br>mantissa: fractional part of a number</p>
-<p>Converting to IEEE754 :</p>
+	  <p>Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter.<br><!-- I have posted source code on github --></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String hello = <span class="string">"hello"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a1 = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">char</span> a2 = (<span class="keyword">char</span>) <span class="number">97</span>; <span class="comment">//ascii: a</span></span><br></pre></td></tr></table></figure>
+<h2 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> d = <span class="number">0.1f</span>;</span><br></pre></td></tr></table></figure>
+<p>some numbers are not precise in a computer, for example pi, and the reason fot it is that we only have limit number of bits to represent a number. It is inevitable to lose some precision when we store floating point numbers.</p>
+<p><strong>IEEE754 Single-Precision Format(32 bits)</strong><br>def : we introduce IEEE754 strategy to represent numbers in a computer.<br>&nbsp;<br>sign bit: positive(0) or negative(1)<br>exponent: power<br>mantissa: fractional part of a number</p>
+<p>Encoding strategy:</p>
 <ol>
 <li>record the sign bit</li>
 <li>convert the number part to binary</li>
@@ -121,14 +122,11 @@ FloatIEEE754 Single-Precision Format(32 bits)def : IEEE754 is">
 <li>record the exponent</li>
 <li>record the mantissa</li>
 </ol>
-<p><strong>Density of floating point numbers</strong><br>As numbers are encoded into IEEE754 format where there is a limited number of exponent part, it is inevitable that some numbers stored as float cannot be represented<br>&nbsp;<br>Density Representation :</p>
+<p><strong>Density of floating point numbers</strong><br>As numbers are encoded into IEEE754 format where there is a limited number of exponent part, it is inevitable that some numbers stored as float cannot be represented.<br>&nbsp;<br>Density Representation :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> |-.-.-.-|-.-.-.-|---.----.----.---|------.--------.--------.------|</span><br><span class="line">-n       0       n                2n                              4n</span><br></pre></td></tr></table></figure>
-<p><strong>ASCII</strong><br>def : ASCII is an encoding system to represent English charactors in a computer.</p>
-<p><strong>Unicode</strong><br>def : Unicode is an encoding system that can represent English and other languages’ charactors.</p>
-<h2 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h2><h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean t = true;</span><br><span class="line">boolean false = false;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>&lt; == .equals return a boolean value</p>
-</blockquote>
+<h2 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> e = <span class="number">0.1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> t = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">boolean</span> <span class="keyword">false</span> = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+<p><code>&gt;</code> <code>&lt;</code> <code>==</code> <code>.equals</code> return boolean values</p>
 	  
 	</div>
 
@@ -138,7 +136,7 @@ FloatIEEE754 Single-Precision Format(32 bits)def : IEEE754 is">
 
     
     
-    <a href="/2019/04/05/[JAVA]03_operators/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/2019/04/05/[Java]04_genetic/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>

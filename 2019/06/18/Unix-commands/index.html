@@ -111,12 +111,27 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     Desktop</span><br><span class="line">    /       \</span><br><span class="line">  com      source</span><br><span class="line"> /   \       |</span><br><span class="line">Me   You   README</span><br></pre></td></tr></table></figure>
 <p><strong>指令格式</strong>: command [options…] [arguments…]<br>command: 指令名称<br>options: 修饰(modifiers); 通常为 “-“<br>arguments: 参数(parameters); 通常为文件名称</p>
 <p>NOTE : 中括号可以省略。</p>
-<h2 id="man-使用手册"><a href="#man-使用手册" class="headerlink" title="man 使用手册"></a>man 使用手册</h2><p>def: 对于任意一条命令，我们也许不知道它的具体功能和使用方法。man命令就像一本字典，我们可以查询一项命令的用户手册。<br>format: man [-k] name</p>
-<h2 id="pwd-打印当前路径"><a href="#pwd-打印当前路径" class="headerlink" title="pwd 打印当前路径"></a>pwd 打印当前路径</h2><p>def: pwd(print the working directory) 能够打印当前所在的路径。<br>format: pwd<br>&nbsp;<br>比如尝试在终端输入: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dayueyue: pwd</span><br><span class="line">/Users/dayueyue</span><br></pre></td></tr></table></figure>
-<p>第二行我们获得了当前所在的路径</p>
-<h2 id="cd-更改路径"><a href="#cd-更改路径" class="headerlink" title="cd 更改路径"></a>cd 更改路径</h2><p>def: cd(change directory) 更改当前路径位置。前文所述目录是一种树状结构，所以我们使用cd命令访问子目录。<br>format: cd [directory]<br>&nbsp;<br>值得注意地是，如果单独输入cd而不跟随任何目录名称，cd命令会跳回原始目录(home)</p>
-<h2 id="ls-列出目录下文件"><a href="#ls-列出目录下文件" class="headerlink" title="ls 列出目录下文件"></a>ls 列出目录下文件</h2><h2 id="mkdir-新建文件夹"><a href="#mkdir-新建文件夹" class="headerlink" title="mkdir 新建文件夹"></a>mkdir 新建文件夹</h2><h2 id="rmdir-删除文件夹"><a href="#rmdir-删除文件夹" class="headerlink" title="rmdir 删除文件夹"></a>rmdir 删除文件夹</h2><h2 id="cp-复制文件"><a href="#cp-复制文件" class="headerlink" title="cp 复制文件"></a>cp 复制文件</h2><h2 id="find-查找文件"><a href="#find-查找文件" class="headerlink" title="find 查找文件"></a>find 查找文件</h2><h2 id="cat-打印文件内容"><a href="#cat-打印文件内容" class="headerlink" title="cat 打印文件内容"></a>cat 打印文件内容</h2><h2 id="more-cat2-0"><a href="#more-cat2-0" class="headerlink" title="more cat2.0"></a>more cat2.0</h2><h2 id="diff-比较两个文件"><a href="#diff-比较两个文件" class="headerlink" title="diff 比较两个文件"></a>diff 比较两个文件</h2><h2 id="wc-字数统计"><a href="#wc-字数统计" class="headerlink" title="wc 字数统计"></a>wc 字数统计</h2><h2 id="mail-邮件"><a href="#mail-邮件" class="headerlink" title="mail 邮件"></a>mail 邮件</h2><h2 id="talk-聊天"><a href="#talk-聊天" class="headerlink" title="talk 聊天"></a>talk 聊天</h2><h2 id="say"><a href="#say" class="headerlink" title="say"></a>say</h2><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><h2 id="cal-日历"><a href="#cal-日历" class="headerlink" title="cal 日历"></a>cal 日历</h2><h2 id="date-日期"><a href="#date-日期" class="headerlink" title="date 日期"></a>date 日期</h2><h2 id="time-时间"><a href="#time-时间" class="headerlink" title="time 时间"></a>time 时间</h2>	  
+<h2 id="man-使用手册"><a href="#man-使用手册" class="headerlink" title="man 使用手册"></a>man 使用手册</h2><p>def: 对于任意一条命令，我们也许不知道它的具体功能和使用方法。man命令就像一本字典，我们可以查询一项命令的用户手册。<br>format: man [-k] name<br>&nbsp;<br>example: man pwd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayueyue $ man pwd</span><br></pre></td></tr></table></figure>
+<h2 id="List-of-some-commands"><a href="#List-of-some-commands" class="headerlink" title="List of some commands"></a>List of some commands</h2><p><strong>pwd</strong> 打印当前路径</p>
+<p><strong>cd</strong> 更改路径</p>
+<p><strong>ls</strong> 列出目录下文件</p>
+<p><strong>mkdir</strong> 新建文件夹</p>
+<p><strong>rmdir</strong> 删除文件夹</p>
+<p><strong>cp</strong> 复制文件</p>
+<p><strong>find</strong> 查找文件</p>
+<p><strong>cat</strong> 打印文件内容</p>
+<p><strong>more</strong> cat2.0</p>
+<p><strong>diff</strong> 比较两个文件</p>
+<p><strong>wc</strong> 字数统计</p>
+<p><strong>mail</strong> 邮件</p>
+<p><strong>talk</strong> 聊天</p>
+<p><strong>say</strong> 让电脑说话</p>
+<p><strong>id</strong> ?? </p>
+<p><strong>cal</strong> 日历</p>
+<p><strong>date</strong> 日期</p>
+<p><strong>time</strong> 时间</p>
+	  
 	</div>
 
 	<div>
