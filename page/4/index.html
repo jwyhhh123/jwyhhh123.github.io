@@ -108,6 +108,287 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]07_Bases/">Bases</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Digital-images"><a href="#Digital-images" class="headerlink" title="Digital images"></a>Digital images</h2><p>Digital images are composed of pixels. For a grey-scale picture, every pixel is represented by a one-byte number, from 0 (for black) to 255 (for white). In a colour picture, every pixel is represented by three one-byte numbers, one each for red, green, and blue.<br>&nbsp;<br>NOTE : we are thinking of a grey-scale picture from now on.</p>
+<h2 id="Generating-an-algebra-of-vectors"><a href="#Generating-an-algebra-of-vectors" class="headerlink" title="Generating an algebra of vectors"></a>Generating an algebra of vectors</h2><p>Linear combination : ∑ a(i) <em> v(i) = a1 </em> v1 + … + a(n) * v(n)<br>&nbsp;<br>the collection of all linear combinations is itself an algebra of vectors :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">∑ a(i) * v(i) + ∑ b(i) * v(i) = ∑ (a(i) + b(i)) * v(i)</span><br><span class="line"></span><br><span class="line">k * ∑ a(i) * v(i) = ∑ (a * k)(i) * v(i)</span><br></pre></td></tr></table></figure>
+<h2 id="Linear-independence"><a href="#Linear-independence" class="headerlink" title="Linear independence"></a>Linear independence</h2><p>Theorem 3 : A collection v1, …, vn of vectors is linear independent if ∑ a(i) * v(i) = 0 happens only in case a1 = a2 = a3 = … = an = 0.</p>
+<ul>
+<li>the null vector 0 does not occur in the list v1, …, vn (because thi doesn’t generate anything)</li>
+<li>none of the v(i) is a linear combination of the rest. (because this would be aredundancy)</li>
+</ul>
+<p>proof:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1)  Suppose the collection is not linear independent</span><br><span class="line"> </span><br><span class="line">    case 1 : null vector occurs among v1...vn</span><br><span class="line">             &gt; assume v1 = 0, so we have 1 * v1 + ∑(i = 2) 0 * v(i) = 0.</span><br><span class="line">             &gt; But not all coefficients a(n) are zero.</span><br><span class="line">             &gt; we conclude a contradiction.</span><br><span class="line">    case 2 : there is a vector which can form a linear comnbination of the rest vectors.</span><br><span class="line">             &gt; assume v1 = ∑(i = 2) a(i) * v(i), so we have 1 * v2 - ∑(i = 2) a(i) * v(i) = 0</span><br><span class="line">             &gt; similarly this contradicts the given criterion.</span><br><span class="line"></span><br><span class="line">    ------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">2)  Suppose ∑ a(i) * v(i) = 0 and a1 != 0.</span><br><span class="line"></span><br><span class="line">    case 1 : n = 1</span><br><span class="line">             &gt; so we have a1 * v1 = 0</span><br><span class="line">             &gt; as a1 != 0, so v1 is a null vector.</span><br><span class="line">             &gt; the first condition is violated.</span><br><span class="line">    case 2 : n &gt; 1</span><br><span class="line">             &gt; we write v1 as : v1 = (-a1^(-1)) * ∑(i = 2) a(i) * v(i)</span><br><span class="line">             &gt; v1 is a linear combination of the rest vectors.</span><br><span class="line">             &gt; the second condition is violated.</span><br></pre></td></tr></table></figure>
+<p>if every element of an algebra V of vectors can be written as a linear combination of vector v1 … vn and if the v(i) of v1 … vn are linearly independent, then we call v1 … vn a basis of V.<br>&nbsp;<br>NOTE : for example, in an image, we convert every 8 * 8 pixels to jpeg-format.<br>&NBSP;<br>example: 4-tuples of rational numbers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/ p1 \</span><br><span class="line">| p2 | = p1 * v1 + p2 * v2 + p3 * v3 + p4 * v4</span><br><span class="line">| p3 |</span><br><span class="line">\ p4 /</span><br><span class="line">             </span><br><span class="line">basis : v1 = (1, 0, 0, 0)</span><br><span class="line">        v2 = (0, 1, 0, 0)</span><br><span class="line">        v3 = (0, 0, 1, 0)</span><br><span class="line">        v4 = (0, 0, 0, 1)</span><br><span class="line">           </span><br><span class="line">they are linearly independent :</span><br><span class="line">        &gt; a1 * v1 + a2 * v2 + a3 * v3 + a4 * v4 = 0 = (0, 0, 0, 0)</span><br><span class="line">        &gt; as v(i) are not null vectors, and none of them is a LC of the rest</span><br><span class="line">        &gt; a1 = a2 = a3 = a4 = 0</span><br><span class="line">        &gt; they are linearly independent</span><br></pre></td></tr></table></figure>
+<h2 id="Coordinates"><a href="#Coordinates" class="headerlink" title="Coordinates"></a>Coordinates</h2><p>vector generator by using the basis: w = ∑ a(i) <em> v(i)<br><code>a1, ..., an</code>: the coordinates of w<br>&nbsp;<br>A question     : Are the coordinates for w are uniquely determined.<br>representation : ? w = ∑ a(i) </em> v(i) = ∑ b(i) * v(i)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Assume : w = ∑ (b(i) - a(i)) * v(i) = 0   // according to theorem 3</span><br><span class="line"></span><br><span class="line">so we have b(i) - a(i) = 0 for all i</span><br><span class="line"></span><br><span class="line">then,</span><br><span class="line">b(i) = a(i)</span><br></pre></td></tr></table></figure>
+<h2 id="Dimension-of-an-algebra-of-vectors"><a href="#Dimension-of-an-algebra-of-vectors" class="headerlink" title="Dimension of an algebra of vectors"></a>Dimension of an algebra of vectors</h2><p>Theorem 4 : Any two bases of an algebra of vectors have the same number of elements.</p>
+<h2 id="All-bases-are-not-equal"><a href="#All-bases-are-not-equal" class="headerlink" title="All bases are not equal"></a>All bases are not equal</h2><p>example: a 2 × 2 digital (grey-scale) image, written as a four-tuple. In the standard basis, we can read off the coordinates immediately:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10 \        /1\        /0\        /0\        /0\</span><br><span class="line">| 10 | = 10 * |0| + 10 * |1| + 11 * |0| + 12 * |0|</span><br><span class="line">| 11 |        |0|        |0|        |1|        |0|</span><br><span class="line">\ 12 /        \0/        \0/        \0/        \1/</span><br></pre></td></tr></table></figure>
+<p>the same image can be represented by a different basis.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10 \          /1\         / 1\         / 1\         / 1\</span><br><span class="line">| 10 | = 43/4 * |1| - 3/4 * | 1| + 1/4 * |-1| + 1/4 * |-1|</span><br><span class="line">| 11 |          |1|         |-1|         |-1|         | 1|</span><br><span class="line">\ 12 /          \1/         \-1/         \ 1/         \-1/</span><br></pre></td></tr></table></figure>
+<p>convert to a jpeg-compression where we ONLY leave the bigger coordinates.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ 10   \          /1\         / 1\</span><br><span class="line">| 10   | = 43/4 * |1| - 3/4 * | 1|</span><br><span class="line">| 11.5 |          |1|         |-1|</span><br><span class="line">\ 12.5 /          \1/         \-1/</span><br></pre></td></tr></table></figure>
+<h2 id="Orthogonal-and-orthonormal-bases"><a href="#Orthogonal-and-orthonormal-bases" class="headerlink" title="Orthogonal and orthonormal bases"></a>Orthogonal and orthonormal bases</h2><p>NOTE :The coordinates of an image in jpeg-format comes from orthogonality.<br>&nbsp;<br>Assume that we have a basis v1 .. vn where any two vectors are orthogonal to each other, that is :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v(i), v(j)&gt; = 0 whenever i != j</span><br></pre></td></tr></table></figure>
+<p>then coordinate of a(k) is computed :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        &lt;w, v(k)&gt;</span><br><span class="line">a(k) = ------------</span><br><span class="line">       &lt;v(k), v(k)&gt;</span><br></pre></td></tr></table></figure>
+<p>proof:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;w, v(k)&gt; = &lt;∑ a(i) * v(i), v(k)&gt;</span><br><span class="line">          =  ∑ a(i) * &lt;v(i),v(k)&gt;   // law of inner product</span><br><span class="line">          = a(k) * &lt;v(k), v(k)&gt;</span><br></pre></td></tr></table></figure>
+<p>positive definiteness of the inner product:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;v, v&gt;  &gt;=  0</span><br><span class="line">&lt;v, v&gt;   =  0  -&gt;  v = 0</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
+<ul>
+<li>If the computations are done on a computer, then we can make sure that each basis vector has length 1, so the division by &lt;v(k), v(k)&gt; is not necessary when computing the coordinates. In that case one speaks of an orthonormal basis. If computations are done on paper, then it’s better to avoid the surds and stay with the merely orthogonal basis. </li>
+<li>this formula can be checked by using above example (10, 10, 11, 12).</li>
+</ul>
+<h2 id="Creating-an-orthogonal-basis"><a href="#Creating-an-orthogonal-basis" class="headerlink" title="Creating an orthogonal basis"></a>Creating an orthogonal basis</h2><p>if we have a positive definte inner product then we can turn any basis into an orthogonal one<br>We define a new basis w1 … wn :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">w1 = v1</span><br><span class="line">          &lt;w1, v2&gt;</span><br><span class="line">w2 = v2 - -------- * w1</span><br><span class="line">          &lt;w1, w1&gt;</span><br><span class="line"></span><br><span class="line"> .</span><br><span class="line"> .</span><br><span class="line"> .</span><br><span class="line">                        &lt;wi, vn&gt;</span><br><span class="line">wn = vn - ∑(n-1; i = 1) -------- * wi</span><br><span class="line">                        &lt;wi, wi&gt;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]07_Bases/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]01_NaturalNumbers/">Natural Numbers and Integers</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="The-natural-numbers-N"><a href="#The-natural-numbers-N" class="headerlink" title="The natural numbers (N)"></a>The natural numbers (N)</h2><p><strong>Peano Axiom :</strong><br>0 is a natural number<br>if n is nature, then so is sn<br>n does not exist if sn = 0<br>sn = sm if and only if n = m<br>&nbsp;<br><code>s</code> : successor (推进器; +1)<br><code>p</code> : predecessor (回溯器; -1)</p>
+<p>NOTE : Peano Axiom 定义了自然数。</p>
+<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n + 0 = n</span><br><span class="line">n + sm = s(n + m)</span><br><span class="line">n * 0 = 0</span><br><span class="line">n * sm = (n * m) + n</span><br><span class="line"></span><br><span class="line">n - 0 = n</span><br><span class="line">n - sm = p(n - m)</span><br><span class="line">n - pm = s(n - m)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n^0 = 1</span><br><span class="line">n^sm = n * n^m</span><br><span class="line">0^m = 0</span><br><span class="line">n^m * n^q = n^(m + q)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n * psm = (n * pm) + n</span><br><span class="line">        = ((n * m) - n) + n</span><br><span class="line">        = (n * m) + (-n + n)  // associativity</span><br><span class="line">        = n * m</span><br></pre></td></tr></table></figure>
+<p><strong>Therom 1</strong> : given b != 0, every natural number can be presented in the form m x b + r where r &lt; b.<br><code>m</code> : quotient    n <strong>div</strong> b<br><code>r</code> : remainder   n <strong>mod</strong> b</p>
+<h2 id="Induction"><a href="#Induction" class="headerlink" title="Induction"></a>Induction</h2><p>To prove P(n), we use a strategy called Induction(归纳法):</p>
+<ol>
+<li>P(0) is true</li>
+<li>Assume P(n) is true,</li>
+<li>P(sn) is true</li>
+</ol>
+<h2 id="Semi-ring"><a href="#Semi-ring" class="headerlink" title="Semi-ring"></a>Semi-ring</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a + 0 = a                  a * 1 = a                  // neutral elements</span><br><span class="line">a + b = b + a              a * b = b * a              // commutativity</span><br><span class="line">(a + b) + c = a + (b + c)  (a * b) * c = a * (b * c)  // associativity</span><br><span class="line">a + (-a) = 0                                          // cancellation</span><br><span class="line">a * (b + c) = a * b + a * c                           // distributivity</span><br></pre></td></tr></table></figure>
+<h2 id="Place-value-systems"><a href="#Place-value-systems" class="headerlink" title="Place value systems**"></a>Place value systems**</h2><p>We can convert a decimal to any number in base b :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dn d(n-1) ... d0 = dn x b^n + d(n-1) x b^(n-1) + ... + d1 x b    + d0 </span><br><span class="line">                 = (dn x b^(n-1) + d(n-1) x b^(n-1)... + d1) x b + d1</span><br><span class="line">                 = ...                                           + dn</span><br><span class="line">                (recursively)</span><br></pre></td></tr></table></figure>
+<p>example : Represent 57 in base 7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">59 = m * b + r</span><br><span class="line">   = m * 7 + r                 // r &lt; 7</span><br><span class="line">   = 8 * 7 + 3</span><br><span class="line">   = (1 * 7 + 1) * 7 + 3</span><br><span class="line">   = ((0 * 7 + 1) * 7 + 1) * 7 + 3</span><br><span class="line"></span><br><span class="line">Collect the remainders : 113</span><br><span class="line"></span><br><span class="line">113 = 1 * 7^2 + 1 * 7^1 + 3 * 1 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
+<p>This can ONLY be used in converting from decimal to other bases. In order to convert from others to decimal :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">113 in base 7 --&gt; 59 in decimal</span><br><span class="line"></span><br><span class="line">1 * 7^2 + 1 * 7^1 + 3 * 7^0 = 49 + 7 + 3 = 59</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>进制可以看作是一种容器，10个数进一位是十进制，7个数进一位是七进制，那么它的余数r就是当前数。</p>
+</blockquote>
+<h2 id="Natural-number-representation-in-a-computer"><a href="#Natural-number-representation-in-a-computer" class="headerlink" title="Natural number representation in a computer"></a>Natural number representation in a computer</h2><p>examples :<br>[0][0][0][0][0] … [0][0][0][0][0] = 0<br>[0][0][0][0][0] … [0][0][0][0][1] = 1<br>[0][0][0][0][0] … [0][0][0][1][0] = 2<br>…<br>[0][0][0][0][0] … [0][1][0][1][1] = 11<br>&nbsp;<br>if a number exceeds 2^32:</p>
+<ol>
+<li>The excess digits are lost.</li>
+<li>CPU sends a signal.</li>
+<li>Java ignores these signals.</li>
+</ol>
+<h2 id="Integers-in-computers"><a href="#Integers-in-computers" class="headerlink" title="Integers in computers"></a>Integers in computers</h2><p>1 = 1 or -(2^32 - 1)<br>2 = 2 or -(2^32 - 3)<br>3 = 3 or -(2^32 - 3)<br>…<br>2^32 - 1 = 2^32 - 1 or -1<br>&nbsp;<br>example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-(2^32 - 3) - (-(2^32 - 3))</span><br><span class="line">= 3 - 2</span><br><span class="line">= 3 + 2^32 -2</span><br><span class="line">= 2^32 + (3 - 2)</span><br><span class="line">= 2^32 + 1</span><br><span class="line">= 1</span><br></pre></td></tr></table></figure>
+<h2 id="Modulo-arithmetic"><a href="#Modulo-arithmetic" class="headerlink" title="Modulo arithmetic"></a>Modulo arithmetic</h2><p><code>congruent</code> : ≡ (全等)<br><code>Zm</code>        : ring over m（整数模 环）<br>&nbsp;<br>example : modulo 7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.. −14 ≡ −7 ≡ 0 ≡ 7  ≡ 14 ≡ ..</span><br><span class="line">.. −13 ≡ −6 ≡ 1 ≡ 8  ≡ 15 ≡ ..</span><br><span class="line">.. -12 ≡ -5 ≡ 2 ≡ 9  ≡ 16 ≡ ..</span><br><span class="line">.. -11 ≡ -4 ≡ 3 ≡ 10 ≡ 17 ≡ ..</span><br><span class="line">.. -10 ≡ -3 ≡ 4 ≡ 11 ≡ 18 ≡ ..</span><br><span class="line">..  -9 ≡ -2 ≡ 5 ≡ 12 ≡ 19 ≡ ..</span><br><span class="line">.. − 8 ≡ −1 ≡ 6 ≡ 13 ≡ 20 ≡ ..</span><br><span class="line"></span><br><span class="line">6^10 = (1)^10 = 1</span><br></pre></td></tr></table></figure>
+<p>NOTE : 模运算最形象的解释是生活中使用的钟，在一个12刻度的钟表上，13 mod 12 表示为1</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]01_NaturalNumbers/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]08_SetTheory/">Set Theory</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>In set theory, we will discuss the following topics :</p>
+<ul>
+<li>Sets</li>
+<li>Power Sets</li>
+<li>Relations</li>
+</ul>
+<h1 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h1><h2 id="The-intuitive-idea-of-a-set"><a href="#The-intuitive-idea-of-a-set" class="headerlink" title="The intuitive idea of a set"></a>The intuitive idea of a set</h2><p>def : a set is a collection of things. And, the things in the set are called elements/ members.</p>
+<ul>
+<li>The elements of a set are identifiable and can be distinguished.</li>
+<li>There is a clear criterion that identify members.</li>
+<li>A member must be counted ONLY once.</li>
+<li>there is no order of members.</li>
+<li>if two sets have the same elements, then they form the same set, independently of how the collections were defined.</li>
+</ul>
+<p>NOTE : Set in JAVA is supported as an interface and one possible implementation is <code>HashSet</code>.</p>
+<h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><ol>
+<li>To indicate x is an element in set A, we write : <code>x ∈ A</code></li>
+<li>A = B  iff ∀x. x∈A <-> x∈B</-></li>
+<li>Finite sets   : {Spring, Summer, Autumn, Winter}</li>
+<li>Infinite sets : {1, 4, 9, 16, 25, …}</li>
+</ol>
+<h2 id="Sets-of-numbers"><a href="#Sets-of-numbers" class="headerlink" title="Sets of numbers"></a>Sets of numbers</h2><p>1) Union of two sets : <code>∪</code></p>
+<ul>
+<li>Integers can be represented : <code>Z = N ∪ {−1,−2,−3,...}</code></li>
+</ul>
+<p>2) Product of two sets :</p>
+<ul>
+<li>if A and B are different, A x B</li>
+<li>if A  =  B, A x B = A ^ 2</li>
+</ul>
+<p>3) set difference : <code>\</code></p>
+<ul>
+<li>The set of fractions could be written as : <code>Z x (Z \ {0})</code></li>
+</ul>
+<p>4) Subset : A ⊆ B</p>
+<ul>
+<li>Q (rational numbers) is a subset of the set of fractions.</li>
+</ul>
+<p>5) the tuples in products :</p>
+<ul>
+<li>B x B x…x B in 32-tuples : B^32 = {0, 1}^32</li>
+<li>assume A is an alphabet set of {a, …, z}, then A^* is the set of all words over A.</li>
+<li>in JAVA, Unicode is the set of alphabet.</li>
+<li>Real numbers can be represented as : <code>R = Z x D^w</code>, where D = {0, 1, …, 9}</li>
+</ul>
+<p>NOTE : a finite ring Zm = {0, 1, …, m-1} is viewed as the set of integers with alternate equality “congruent modulo m”.</p>
+<h2 id="Counting-the-elements-of-a-set"><a href="#Counting-the-elements-of-a-set" class="headerlink" title="Counting the elements of a set"></a>Counting the elements of a set</h2><p>size of a set can be written as <code>card(k)</code> or <code>|k|</code><br><code>card(k)</code> : cardinality<br>&nbsp;<br>Instead of counting, we check two sets have the same cardinality by pairing one element by one element between the two sets.<br>&nbsp;<br>example : card(Seasons) = card(Compass)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Seasons = &#123;Spring, Summer, Autumn, Winter&#125;</span><br><span class="line">             |       |       |       |</span><br><span class="line">Compass = &#123;East,   South,  West,   North &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Cardinality-of-infinite-sets"><a href="#Cardinality-of-infinite-sets" class="headerlink" title="Cardinality of infinite sets"></a>Cardinality of infinite sets</h2><p>A set is countably infinite if it has the same cardinality as N :</p>
+<ul>
+<li>A = N ∪ {−1} is countable infinite set</li>
+<li>Z countable infinite set</li>
+<li>N^2 is countable infinite set</li>
+<li>if A is finite set then A^* is countable</li>
+<li>Theorem 7 : The set of valid Java programs is countable</li>
+</ul>
+<h2 id="An-uncountable-set"><a href="#An-uncountable-set" class="headerlink" title="An uncountable set"></a>An uncountable set</h2><p>real number R is an uncountable set<br>&nbspl;<br>proof steps :</p>
+<ol>
+<li>assume R is countable</li>
+<li>given a real number : a = a0 a1 a2 …</li>
+<li>list some real numbers in a matrix</li>
+<li>for i(s), ai = 0 if r(i,i) != 0</li>
+<li>for i(s), ai = 1 if r(i,i) == 0</li>
+<li>we will introduce a real number have not appear in the matrix.</li>
+<li>the matrix is not complete.</li>
+<li>contradiction, hence the set of real numbers is uncountable.</li>
+</ol>
+<p>Theorem 8 : The set of real numbers is uncountable<br>Theorem 9 : There are non-computable real numbers (as set of java programs is countable and set of reals is uncountable)</p>
+<p><strong>Comparing uncountable sets</strong><br>The examples above illustrate how we can establish that two countably infinite sets have the same cardinality. To show that two uncountable sets have the same size requires a bit more ingenuity but the principle is the same: We establish a one-to-one relationship between the elements. For example, we can show that the elements of a circle (minus one point) can be lined up against the elements of the real line.</p>
+<h1 id="Power-Sets-and-Boolean-Algebra"><a href="#Power-Sets-and-Boolean-Algebra" class="headerlink" title="Power Sets and Boolean Algebra"></a>Power Sets and Boolean Algebra</h1><h2 id="Defining-a-subset"><a href="#Defining-a-subset" class="headerlink" title="Defining a subset"></a>Defining a subset</h2><p>If subset has only few elements, we can list them            : <code>{3, 5, 17, 257, 65537} ⊆ N</code><br>A set excluding some members is a subset of the original set : <code>F\{0} ⊆ F</code> where F is a field.<br>Empty set is a subset of any set                             : <code>{}</code> or <code>0/ (zero with a slash)</code><br>A set is a subset of itself                                  : <code>A ⊆ A</code><br>For more complex subsets we employ logical conditions        : <code>B = {x ∈ A | x satisfies condition c}</code></p>
+<h2 id="Comparing-subsets"><a href="#Comparing-subsets" class="headerlink" title="Comparing subsets"></a>Comparing subsets</h2><p>B ⊆ A : B ⊆ A iff ∀x. x ∈ B –&gt; x ∈ A<br>equality of two sets : A = B iff A ⊆ B and B ⊆ A<br>&nbsp;<br>NOTE : there are two conditions to check equality: firstly A ⊆ B, secondly B ⊆ A</p>
+<h2 id="Operations-on-subsets"><a href="#Operations-on-subsets" class="headerlink" title="Operations on subsets"></a>Operations on subsets</h2><p>Union          : B1 ∪ B2 = {x ∈ A | x ∈ B1 or x ∈ B2}<br>Intersection   : B1 ∩ B2 = {x ∈ A | x ∈ B1 and x ∈ B2}<br>Complement     :   -B    = {x ∈ A | x !∈ B}<br>Set difference : B1 \ B2 = B1 ∩ -B2 = {x ∈ A | x ∈ B1 and x !∈ B2}</p>
+<h2 id="Power-sets"><a href="#Power-sets" class="headerlink" title="Power sets"></a>Power sets</h2><p>def : the collection of the subsets of a set A. It is written as PA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = &#123;1,2&#125;</span><br><span class="line">PA = &#123;0/, &#123;1&#125;, &#123;2&#125;, &#123;1,2&#125;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>the elements of a power set are identifiable(for each is different from others).</li>
+<li>if B is a member of PA then B is a subset of A</li>
+<li>we ALWAYS have empty subset as an element in PA.</li>
+</ul>
+<p>there are ALWAYS more members in PA than in A.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">card(A)   0     1     2     3     4   ...</span><br><span class="line">card(PA)  1     2     4     8     16</span><br><span class="line"></span><br><span class="line">          2^0   2^1   2^2   2^3   2^4</span><br></pre></td></tr></table></figure>
+<p>Theorem 10 : for any set A, the cardinality of the power set PA is strictly larger than the cardinality of A.</p>
+<p>NOTE : the powerset of N is uncountable due to theorem 10.</p>
+<h2 id="The-power-set-as-an-algebra"><a href="#The-power-set-as-an-algebra" class="headerlink" title="The power set as an algebra"></a>The power set as an algebra</h2><p>Given X is the PA of A :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A ∪ 0/ = A                    A ∩ X = A </span><br><span class="line">A ∪ X = X                     A ∩ 0/ = 0/</span><br><span class="line">A ∪ B = B ∪ A                 A ∩ B = B ∩ A</span><br><span class="line">(A ∪ B) ∪ C = A ∪ (B ∪ C)    (A ∩ B) ∩ C = A ∩ (B ∩ C)</span><br><span class="line">A ∪ A = A                     A ∩ A = A</span><br><span class="line">(A ∪ B) ∩ B = B              (A ∩ B) ∪ B = B</span><br><span class="line">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span><br><span class="line">A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</span><br><span class="line">A ∪ -A = X                    A ∩ -A= 0/</span><br><span class="line">_____   _   _                 _____   _   _</span><br><span class="line">A ∪ B = A ∩ B                 A ∩ B = A ∪ B</span><br><span class="line">=</span><br><span class="line">A = A</span><br></pre></td></tr></table></figure>
+<h2 id="Propositional-logic"><a href="#Propositional-logic" class="headerlink" title="Propositional logic"></a>Propositional logic</h2><p>the subset operations above are corresponding to logic.<br>&nbsp;<br>Correspondence :</p>
+<ol>
+<li>∨ or    <--> ∪</--></li>
+<li>∧ and   <--> ∩</--></li>
+<li>¬ not   <--> -</--></li>
+<li>Falsity <--> 0/</--></li>
+</ol>
+<h2 id="Boolean-algebra"><a href="#Boolean-algebra" class="headerlink" title="Boolean algebra"></a>Boolean algebra</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A ∨ Falsity = A                    A ∧ X = A </span><br><span class="line">A ∨ True = True                     A ∧ Falsity = Falsity</span><br><span class="line">A ∨ B = B ∨ A                 A ∧ B = B ∧ A</span><br><span class="line">(A ∨ B) ∨ C = A ∨ (B ∨ C)    (A ∧ B) ∧ C = A ∧ (B ∧ C)</span><br><span class="line">A ∨ A = A                     A ∧ A = A</span><br><span class="line">(A ∨ B) ∩ B = B              (A ∧ B) ∨ B = B</span><br><span class="line">A ∧ (B ∨ C) = (A ∧ B) ∨ (A ∧ C)</span><br><span class="line">A ∨ (B ∧ C) = (A ∨ B) ∧ (A ∨ C)</span><br><span class="line">A ∨ -A = True                    A ∧ -A= Falsity</span><br><span class="line">_____   _   _                 _____   _   _</span><br><span class="line">A ∨ B = A ∧ B                 A ∧ B = A ∨ B</span><br><span class="line">=</span><br><span class="line">A = A</span><br></pre></td></tr></table></figure>
+<h1 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h1><h2 id="General-relations"><a href="#General-relations" class="headerlink" title="General relations"></a>General relations</h2><p>def : if A1, A2, …, An are sets and R is a subset of A1 x A2 x …x An, then R is called a (n-ary) relation.<br>&nbsp;<br>NOTE : the elements of A1 ×A2 ×…×An are n-tuples (x1,x2,…,xn). Also, note that any subset is allowed; there are no conditions for a subset to be called a relation.<br>&nbsp;<br>Example : 3-ary relation given A1 : the set Σ∗ of strings, and A2, A3: sets of N</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  A1 : staff in UOB</span><br><span class="line">  A2 : phone numbers</span><br><span class="line">  A3 : office numbers</span><br><span class="line"></span><br><span class="line">  A1 x A2 x A3 is the relation of a staff with his phone and office number.</span><br><span class="line"></span><br><span class="line">   |       |       |</span><br><span class="line">   |    A2 .       |</span><br><span class="line">A1 .       |       |</span><br><span class="line">   |       |       |</span><br><span class="line">   |       |    A3 .</span><br></pre></td></tr></table></figure>
+<p>NOTE : we are looking ar the special case of 2-ary(binary) relations on a single set. To explain, we look at subsets of A x A<br>&nbsp;<br>Directed graph representation :</p>
+<ul>
+<li>vertices : elements in A</li>
+<li>edges    : relations/ subsets of A</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> --&gt; a ------&gt; c &lt;-- c</span><br><span class="line">|    |         |     ∧</span><br><span class="line">|    |         |_____|</span><br><span class="line">|    |         |</span><br><span class="line">|    |         ∨</span><br><span class="line"> ----|-------- d</span><br><span class="line">     ∨</span><br><span class="line">     b   </span><br><span class="line"></span><br><span class="line">V = &#123;a, b, c, d&#125;</span><br><span class="line">E = &#123;&#123;a, b&#125;, &#123;a, c&#125;, &#123;c, c&#125;, &#123;d, a&#125;, &#123;c, d&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reflexivity"><a href="#Reflexivity" class="headerlink" title="Reflexivity"></a>Reflexivity</h2><p>def : We call a binary relation R ⊆ A × A reflexive if it contains all pairs (x, x) for x an element of A.<br>&nbsp;<br>R ⊆ A x A is reflexive = ∀x ∈ A. (x, x) ∈ R<br>&nbsp;<br>if given a relation R that is not reflexive, then we can make it reflexive by adding the missing edges :<br><code>refl-closure(R) = R ∪ {(x, y) ∈ A x A | x = y}</code><br>&nbsp;<br>Irreflexive relation : relation that contains no edge pointing to itself</p>
+<h2 id="Symmetry"><a href="#Symmetry" class="headerlink" title="Symmetry"></a>Symmetry</h2><p>def : A binary relation R ⊆ A × A is called symmetric if with every pair (x, y) ∈ R we also have (y, x) ∈ R.<br>&nbsp;<br>R ⊆ A × A is symmetric = ∀(x,y) ∈ A×A. (x,y) ∈ R -&gt; (y,x) ∈ R<br>&nbsp;<br>if given a relation R that is not symmetric, then we can make it symmetric by giving:</p>
+<ol>
+<li>inverse relation : <code>R^(-1) = {(x,y) ∈ A x A | (y,x) ∈ R}</code></li>
+<li>symm-closure(R) = R ∪ R^(-1)</li>
+</ol>
+<p>Anti-symmetric : there is no a and b connecting each other. While reflexivity is allowed.</p>
+<h2 id="Transitivity"><a href="#Transitivity" class="headerlink" title="Transitivity"></a>Transitivity</h2><p>def : A binary relation R ⊆ A × A is called transitive if whenever (x, y) ∈ R and (y, z) ∈ R then also (x, z) ∈ R.<br>&nbsp;<br>R ⊆ A × A is transitive = ∀x,y,z ∈ A.(x,y) ∈ R and (y,z) ∈ R -&gt; (x,z) ∈ R<br>&nbsp;<br>if given a relation R that is not transitive, then we can make it transitive by given :</p>
+<ol>
+<li>composition of binary relations : <code>R;S = {(x,z) ∈ A x A | ∃y ∈ A. (x, y) ∈ R and (y, z) ∈ S}</code></li>
+<li>trans-closure(R) = R ∪ (R;R) ∪ (R;R;R) ∪ …</li>
+</ol>
+<p>NOTE : this idea is like finding a path from liverpool to birmingham, there are lot of paths we can choose.</p>
+<h2 id="Two-packages-of-properties"><a href="#Two-packages-of-properties" class="headerlink" title="Two packages of properties"></a>Two packages of properties</h2><p>Order relation :<br>A relation R ⊆ A × A is called an order relation if it is reflexive, anti-symmetric, and transitive.</p>
+<p>Equivalence relation :<br>A relation R ⊆ A × A is called an equivalence relation if it is reflexive, symmetric, and transitive.</p>
+<h2 id="Order-relations"><a href="#Order-relations" class="headerlink" title="Order relations"></a>Order relations</h2><p>examples :</p>
+<ul>
+<li><code>&lt;=</code></li>
+<li>precedence graphs</li>
+</ul>
+<p>small order relations can be drawn as graphs where all edges point upwards and where those edges that follow from transitivity are left out. an example of divisibility(可除性) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 ---&gt; 6 ---&gt; 18</span><br><span class="line">∧      ∧       ∧</span><br><span class="line">|      |       |</span><br><span class="line">1 ---&gt; 3 ----&gt; 9    //Hasse diagram</span><br></pre></td></tr></table></figure>
+<h2 id="Equivalence-relations"><a href="#Equivalence-relations" class="headerlink" title="Equivalence relations"></a>Equivalence relations</h2><p>symbol : ≈ (congruence modulo m is commonly written as ≡ or ≡m).<br>equiv-closure(R) = trans-closure(symm-closure(refl-closure(R)))</p>
+<h2 id="Equivalence-relations-lead-to-classifications"><a href="#Equivalence-relations-lead-to-classifications" class="headerlink" title="Equivalence relations lead to classifications"></a>Equivalence relations lead to classifications</h2><p>Equivalence classification : <code>[a]≈ = {x ∈ A| x ≈ a}</code> where a is an element of A.<br>&nbsp;<br>Theorem : if ≈ is an equivalence relation on a set A, and a, b are elements of A, then always one of the following two situations is true :</p>
+<ol>
+<li>a ≈ b and [a]≈ = [b]≈</li>
+<li>a !≈ b and [a]≈ ∩ [b]≈ = 0/</li>
+</ol>
+<p>NOTE : this means class [a]≈ and class [b]≈ are disjointed.</p>
+<h2 id="Working-with-classifications-via-representatives"><a href="#Working-with-classifications-via-representatives" class="headerlink" title="Working with classifications via representatives"></a>Working with classifications via representatives</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> ________________________</span><br><span class="line">|     |      .  |        |</span><br><span class="line">| .   |         |        |</span><br><span class="line">|_____|_________|   .    |</span><br><span class="line">|          |    |        |</span><br><span class="line">|    .     | .  |        |</span><br><span class="line">|__________|____|________|</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]08_SetTheory/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
 		</h3>
 		</div>
@@ -161,6 +442,56 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
+<ul>
+<li>an impossible event has P = 0</li>
+<li>some certain events have P = 1</li>
+<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
+<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
+</ul>
+<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
+<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
+<ol>
+<li>small arguments</li>
+<li>constant factors</li>
+</ol>
+<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<ul>
+<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
+<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
+</ul>
+<p>NOTE : exponential growth is faster than polunomial growth.</p>
+<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
+<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
 		</h3>
 		</div>
@@ -204,118 +535,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]15_TuringMachine/">Turing Machine</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Reasons-to-introduce-turing-machine"><a href="#Reasons-to-introduce-turing-machine" class="headerlink" title="Reasons to introduce turing machine"></a>Reasons to introduce turing machine</h2><p>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
-<h2 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h2><p>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
-<ol>
-<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
-<li>the set V of return values.</li>
-</ol>
-<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
-<ul>
-<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
-<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
-<li>left</li>
-<li>right</li>
-<li>No-op (which does nothing)</li>
-<li>Return True</li>
-<li>Return False</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
-<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
-<h2 id="Representation-of-a-turing-machine"><a href="#Representation-of-a-turing-machine" class="headerlink" title="Representation of a turing machine"></a>Representation of a turing machine</h2><p>A turing machine has :</p>
-<ol>
-<li>a finite state X of states</li>
-<li>an initial state p ∈ X</li>
-<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
-</ol>
-<p>example : convert a into b from a given tape</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
-<p>example : return true if the number of as is even in the given tape</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
-<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
-<p>example : reverse copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
-<h2 id="More-complex-TM"><a href="#More-complex-TM" class="headerlink" title="More complex TM"></a>More complex TM</h2><ul>
-<li>2-tape turing machine</li>
-<li>m x n turing machine</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/[MATH]13_Complexity/">Complexity</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
-<ul>
-<li>an impossible event has P = 0</li>
-<li>some certain events have P = 1</li>
-<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
-<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
-</ul>
-<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
-<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
-<ol>
-<li>small arguments</li>
-<li>constant factors</li>
-</ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
-<ul>
-<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
-</ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
-<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
-<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -430,6 +649,68 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/[MATH]16_PropertiesofCode/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/[MATH]15_TuringMachine/">Turing Machine</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Reasons-to-introduce-turing-machine"><a href="#Reasons-to-introduce-turing-machine" class="headerlink" title="Reasons to introduce turing machine"></a>Reasons to introduce turing machine</h2><p>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
+<h2 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h2><p>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
+<ol>
+<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
+<li>the set V of return values.</li>
+</ol>
+<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
+<ul>
+<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
+<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
+<li>left</li>
+<li>right</li>
+<li>No-op (which does nothing)</li>
+<li>Return True</li>
+<li>Return False</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
+<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
+<h2 id="Representation-of-a-turing-machine"><a href="#Representation-of-a-turing-machine" class="headerlink" title="Representation of a turing machine"></a>Representation of a turing machine</h2><p>A turing machine has :</p>
+<ol>
+<li>a finite state X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
+</ol>
+<p>example : convert a into b from a given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
+<p>example : return true if the number of as is even in the given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
+<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
+<p>example : reverse copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
+<h2 id="More-complex-TM"><a href="#More-complex-TM" class="headerlink" title="More complex TM"></a>More complex TM</h2><ul>
+<li>2-tape turing machine</li>
+<li>m x n turing machine</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -847,221 +1128,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/20/[DataStructure]02/">Programming part</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-20  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>I will provide source code on github.</p>
-<h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
-<h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4: <em>Merge Sort</em><br>ass5: <em>Graph</em></p>
-
-	
-	</div>
-  <a type="button" href="/2019/02/20/[DataStructure]02/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/19/[AI]12_lejos/">Lejos-based programming</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-19  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>This part of the module is fully based on LEGO EV3. To be more precise, we are using lejos API to acheive some functionalities on a robot. I have uploaded source code of some contents to my github.</p>
-<h2 id="Robot-sensors"><a href="#Robot-sensors" class="headerlink" title="Robot sensors"></a>Robot sensors</h2><p><strong>Color sensor</strong><br>def: sensor used to determine color.<br>.ColorIDMode<br>.ColorRGBMode<br>.AmbientMode</p>
-<p><strong>Ir_Sensor</strong><br>Low precision</p>
-<p><strong>Ultra_sonic_Sensor</strong><br>High precision</p>
-<p><strong>Touch_Sensor</strong><br>def: sensor used to detect pressure. if pressed, return 1 else 0.</p>
-<h2 id="Robot-Motors"><a href="#Robot-Motors" class="headerlink" title="Robot Motors"></a>Robot Motors</h2><p><strong>Large Motors</strong><br>def: api used to control left and right wheels.</p>
-<p><strong>pilot</strong><br>def : api used to control robot to move. Compared to Motor api, this has great advantage when we control the robot turning.</p>
-<h2 id="Arbitrator"><a href="#Arbitrator" class="headerlink" title="Arbitrator"></a>Arbitrator</h2><p>Behavior</p>
-<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p><strong>Waypoint</strong><br>def: </p>
-<p><strong>Heading</strong><br>def: </p>
-<h2 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h2><ul>
-<li>Topology map</li>
-<li>metric map</li>
-<li>cell-based map</li>
-<li>occupancy grids: 0-empty; 1-occupied</li>
-</ul>
-<h2 id="Robot-wifi-connection"><a href="#Robot-wifi-connection" class="headerlink" title="Robot wifi connection"></a>Robot wifi connection</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> host A                 host B</span><br><span class="line">    |                     |</span><br><span class="line">server socket &lt;-------&gt; socket</span><br><span class="line">            |        </span><br><span class="line">          port1234</span><br><span class="line">  (server: robot)         (client: PC)</span><br></pre></td></tr></table></figure>
-<h2 id="Communication-between-Server-and-Client"><a href="#Communication-between-Server-and-Client" class="headerlink" title="Communication between Server and Client"></a>Communication between Server and Client</h2><p>Server: robot as the server sending infomation to Eclipse console.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.net.*;</span><br><span class="line">import lejos.hardware.Battery;</span><br><span class="line"></span><br><span class="line">public class EV3Server &#123;</span><br><span class="line">    public static final int port = 1234;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        ServerSocket server = new ServerSocket(port);</span><br><span class="line">        System.out.println(&quot;Awaiting client..&quot;);</span><br><span class="line">        Socket client = server.accept();</span><br><span class="line">        System.out.println(&quot;CONNECTED&quot;);</span><br><span class="line">        OutputStream out = client.getOutputStream();</span><br><span class="line">        DataOutputStream dOut = new DataOutputStream(out);</span><br><span class="line">        dOut.writeUTF(&quot;Battery: &quot; + Battery.getVoltage());</span><br><span class="line">        dOut.flush();</span><br><span class="line">        server.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Client: PC as the client receiving infomation from EV3.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.net.*;</span><br><span class="line"></span><br><span class="line">public class PCClient &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        String ip = &quot;10.0.1.1&quot;; // BT</span><br><span class="line">        if(args.length &gt; 0)ip = args[0];</span><br><span class="line">        Socket sock = new Socket(ip, EV3Server.port);</span><br><span class="line">        System.out.println(&quot;Connected&quot;);</span><br><span class="line">        InputStream in = sock.getInputStream();</span><br><span class="line">        DataInputStream dIn = new DataInputStream(in);</span><br><span class="line">        String str = dIn.readUTF();</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        sock.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/02/19/[AI]12_lejos/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/19/[Logic]03_computation/">Computation</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-19  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>&nbsp;<br>a formal system:</p>
-<ul>
-<li>sound(true then cannot be false)</li>
-<li>complete(true or false can be determined)</li>
-<li>computable(be computed by machine)</li>
-</ul>
-<h2 id="Computer-Proof-Checking"><a href="#Computer-Proof-Checking" class="headerlink" title="Computer Proof Checking"></a>Computer Proof Checking</h2><p><strong>Inference rules</strong><br>and-elimination:</p>
-<ul>
-<li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
-<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
-</ul>
-<p>and-introduction:</p>
-<ul>
-<li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
-</ul>
-<p>or-introduction</p>
-<ul>
-<li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
-<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q</li>
-</ul>
-<p>or-elimination</p>
-<ul>
-<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
-</ul>
-<p>falsity-elimination</p>
-<ul>
-<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
-</ul>
-<p>double-negation-elimination</p>
-<ul>
-<li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
-</ul>
-<p>Modus ponens</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line"> q: Q        </span><br><span class="line"> q = f p</span><br></pre></td></tr></table></figure>
-<p>Implication introduction</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comp : &#123;A B C : Prop&#125; -&gt; (f : A -&gt; B) -&gt; (g : B -&gt; C) -&gt; (A -&gt; C) </span><br><span class="line">comp &#123;A&#125; &#123;B&#125; &#123;C&#125; f g = h where</span><br><span class="line">  h : A -&gt; C</span><br><span class="line">  h a = c where</span><br><span class="line">    b : B</span><br><span class="line">    b = f a</span><br><span class="line">    c : C</span><br><span class="line">    c = g b</span><br></pre></td></tr></table></figure>
-<p>NOTE : except the last proposition, f and g are all hypothesis(premises).<br>&nbsp;<br><strong>Proof checking examples</strong><br>Or-elimination :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ore : &#123;P Q R S&#125; -&gt; p or (Q and R) -&gt; S -&gt; (S and P) or Q</span><br><span class="line">ore &#123;P&#125; &#123;Q&#125; &#123;R&#125; &#123;S&#125; x s = y where</span><br><span class="line">  a : P -&gt; (S and P) or Q</span><br><span class="line">  a p = orIl andI p s</span><br><span class="line">  b : Q and R -&gt; (S and P) or Q</span><br><span class="line">  b m = n where</span><br><span class="line">    q : Q</span><br><span class="line">    q = andEl m</span><br><span class="line">    n : (S and P) or Q</span><br><span class="line">    n = orIr q</span><br><span class="line">  y : (S and P) or Q</span><br><span class="line">  y = orE x a b</span><br></pre></td></tr></table></figure>
-<p><strong>Negation</strong><br>we write (not A) as : A -&gt; Falsity</p>
-<p>Double negation introduction:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DNI : &#123;A : Prop&#125; : A -&gt; (A -&gt; Falsity) -&gt; Falsity</span><br><span class="line">DNI &#123;A&#125; a f = x where</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f a</span><br></pre></td></tr></table></figure>
-<p>Triple negation elimination</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
-<p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
-<p><strong>Law of Excluded Middle</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE goal where</span><br><span class="line">  goal : (P or (P -&gt; Falsity) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  goal z = z u where</span><br><span class="line">    v : P -&gt; Falsity</span><br><span class="line">    v x = z w where</span><br><span class="line">      w : P or (P -&gt; Falsity)</span><br><span class="line">      w = orIl x </span><br><span class="line">    u : P or ( P -&gt; Falsity)</span><br><span class="line">    u = orIr v</span><br></pre></td></tr></table></figure>
-<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p><strong>Introduce functions</strong><br>Some functions written in Agda:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
-<p>NOTE: by using a programming language, we read <code>p : A</code> as a program <code>p</code> has type A, and <code>f : A -&gt; B</code> as <code>f</code> is a function converting A to B.</p>
-<p><strong>Basic types or enums</strong><br>Void type :<br>no constructor so this type cannot be instantiated</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
-<p><code>data</code>  : introduces the definition<br><code>Void</code>  : the name of the type<br><code>Set</code>   : it is a type<br><code>where</code> : introduces the constructors</p>
-<p>Empty type :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty : unit</span><br></pre></td></tr></table></figure>
-<p>Boolean type :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
-<p>Similarly, we can define our own types :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Weekdays : Set where</span><br><span class="line">  Monday Tuesday Wednesday Thursday Friday : Weekdays</span><br></pre></td></tr></table></figure>
-<p><strong>Composite(复合的) types</strong><br>def : we can put two existing data types together to form a new data type.<br>&nbsp;<br>Product (tuple) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
-<p><code>data</code>        : we are defining a data type<br><code>Prod</code>        : the name of the data type<br><code>(A B : Set)</code> : A and B are other data types<br><code>: Set</code>       : we are defining a type indeed<br><code>where</code>       : definitions to follow<br><code>pair</code>        : the name of the constructor<br><code>X -&gt; Y -&gt; Prod X Y</code> : the type of the constructor. given <code>X</code> and <code>Y</code> and return their product <code>Prod X Y</code>. </p>
-<p>Sum (union) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
-<p>NOTE: <code>Sum</code> and <code>Prod</code> are usually called algrebraic types.<br>&nbsp;<br>Similarly, we can define our own composite types :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data Triple (A B C : Set) : Set where</span><br><span class="line">  triple : A -&gt; B -&gt; C -&gt; Triple A B C</span><br><span class="line"></span><br><span class="line">data Sum (A B C : Set) : Set where</span><br><span class="line">  left : A -&gt; Sum A B C</span><br><span class="line">  middle : B -&gt; Sum A B C</span><br><span class="line">  right : C -&gt; Sum A B C</span><br></pre></td></tr></table></figure>
-<p><strong>The differences between Sum and Prod</strong><br>If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
-<p><code>Sum A B</code> have  m + n elements;<br><code>Prod A B</code> have  m x n elements;<br>&nbsp;<br>can we define any element of <code>Prod A Void</code> for some <code>A</code>?     null; because void cannot be instantiated<br>can we define any element of <code>Sum A Void</code> for some <code>A</code>?   A; because right can be instantiated</p>
-<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>def: As we have constructed some data types, we want to access the data inside a type in functional languages, so we introduce destructors. These destructors are built into function definitions via a mechanism known as pattern-matching.<br>&nbsp;<br>NOTE : we can define some operators by using this machanism.</p>
-<p><strong>Pattern matching enumerations</strong><br>The pattern matching machanism will check all cases are covered. If we lost some cases Agda will throw an error.<br>&nbsp;<br>pattern matching <code>and</code> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false</span><br></pre></td></tr></table></figure>
-<p>In order to avoid missing cases, we can simplify to :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and x y = false</span><br></pre></td></tr></table></figure>
-<p>as we can see the remaining cases are all concluded to false, the truth values can be assigned to x and y. And from top to bottom, each case is covered.<br>&nbsp;<br>If a case is not actually used, we can assign <code>_</code>. for example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and _ _ = false                  ... if the remaining cases are unused...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">pattern matched type can be used to define other functions relating to it :</span><br></pre></td></tr></table></figure>
-<p>nand : Boolean -&gt; Boolean -&gt; Boolean<br>nand true true = false<br>nand x y = true</p>
-<p>negate : Boolean -&gt; Boolean<br>negate x = nand x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">where the second Boolean is a result of nand (Boolean -&gt; Boolean).</span><br><span class="line"></span><br><span class="line">**Pattern matching prod**</span><br><span class="line">Sightly different, the function we pattern match here is composite, namely polymorphic(working for more than one types). So we need to specify that types we are using :</span><br></pre></td></tr></table></figure></p>
-<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 (pair a _) = a                    … b is unused …</p>
-<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; B<br>proj2 (pair _ b) = b                    … a is unused …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NOTE : here we have seperate pattern matching functions. As type of A and type of B are elements in `Prod`, whenever we are given an element of that type we match it against `pair a b`.</span><br><span class="line"></span><br><span class="line">**Pattern matching sum**</span><br><span class="line">Important to remember, we need to pattern match all cases appearing in each single type. Example below, as `sum Unit Unit` has as many proof terms as Boolean, so we have :</span><br></pre></td></tr></table></figure></p>
-<p>f : Sum Unit Unit -&gt; Boolean<br>f (left x)  = true<br>f (right y) = false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from the opposite we have :</span><br></pre></td></tr></table></figure></p>
-<p>g : Boolean -&gt; Sum Unit Unit<br>g true  = left empty<br>g false = right empty<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example : since `A + A = 2 * A`, we can convert between `Sum A A` and `Prod Boolean A`</span><br></pre></td></tr></table></figure></p>
-<p>h : {A : Set} -&gt; Sum A A -&gt; Prod Boolean A<br>h (left a)  = pair true a<br>h (right a) = pair false a</p>
-<p>i : {A : Set} -&gt; Prod Boolean A -&gt; Sum A A<br>i (pair true a) = left a<br>i (pair false a) = right a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**A special case**</span><br><span class="line">We can pattern match `Void` using () :</span><br></pre></td></tr></table></figure></p>
-<p>impossible : {A : Set} -&gt; void -&gt; A<br>impossible ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Sum A Void` and `A`.</span><br></pre></td></tr></table></figure></p>
-<p>to : {A : Set} -&gt; Sum A Void -&gt; A<br>to left a = a</p>
-<p>from : {A : Set} -&gt; A -&gt; Sum A Void<br>from a = left a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Prod A Void` and `Void`</span><br></pre></td></tr></table></figure></p>
-<p>to : {A : Set} -&gt; Prod A Void -&gt; Void<br>to pair a _ = a</p>
-<p>from : {A : Set} -&gt; Void -&gt; Prod A Void<br>from ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Generally**</span><br><span class="line">Note that arbitrary types can be created using the language of type definition, and they are always destructed via pattern matching :</span><br></pre></td></tr></table></figure></p>
-<p>data Foo (A : Set) : Set where<br> foo1 : Foo A<br> foo2 : A -&gt; A -&gt; Foo A<br> foo3 : A -&gt; A -&gt; Foo A</p>
-<p>ff : {A : Set} -&gt; Foo A -&gt; Foo A<br>ff foo1 = foo1<br>ff (foo2 x y) = foo3 y x<br>ff (foo3 x _) = foo2 x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Type Isomorphisms</span><br><span class="line">**A note on syntax**</span><br><span class="line">if we look the examples below, the only difference is in the proj2 we remove &#123;A&#125; and &#123;B&#125;. This is because we did not use them in the definition.</span><br></pre></td></tr></table></figure></p>
-<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 {A} {B} (pair a b) = a</p>
-<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj2 (pair a b) = a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Another example : modus ponens</span><br></pre></td></tr></table></figure></p>
-<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp {A} {B} f a = b where<br>  b : B                         …we used B here…<br>  b = f a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if we inline the definition and remove optional arguments we have :</span><br></pre></td></tr></table></figure></p>
-<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp f a = f b<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Type isomorphism**</span><br><span class="line">def : The existence of invertible functions `f : A -&gt; B`, and `g : B -&gt; A` means that the two types are isomorphic (&quot;same shape&quot;), written `A ~ B`. Isomorphism is a very important mathematical and programming concept, indicating that data can be converted between the f and g without loss of precision.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">Type isomorphisms are consistent in semi-ring :</span><br></pre></td></tr></table></figure></p>
-<pre><code>A + (B + C) ~ (A + B) + C
-      A + B ~ B + A
-      A + B ~ A
-A * (B * C) ~ (A * B) * C
-      A * B ~ B * A
-      A * 1 ~ A
-A * (B + C) ~ A * B + A * C
-(A + B) * C ~ A * C + B * C
-      A * 0 ~ 0 
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example: Show that `A + (B + C) ~ (A + B) + C`.</span><br></pre></td></tr></table></figure>
-<p>q1-to : {A B C : Set} -&gt; Sum A (Sum B C) -&gt; Sum (Sum A B) C<br>q1-to (left a) = left (left a)<br>q1-to (right (left b)) = left (right b)<br>q1-to (right (right c)) = right c</p>
-<p>q1-from : {A B C : Set} -&gt; Sum (Sum A B) C -&gt; Sum A (Sum B C)<br>q1-from (left (left a)) = left a<br>q1-from (left (right b)) = right (left b)<br>q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">To check that these are inverse, we want to show q1-to (q1-from x) = x and q1-from (q1-to x) = x :</span><br></pre></td></tr></table></figure></p>
-<p>q1-to (q1-from (left (left a))) = q1-to (left a) = left (left a)<br>q1-to (q1-from (left (right b))) = q1-to (right (left b)) = left (right b)<br>q1-to (q1-from (right c)) = q1-to (right (right c)) = right c</p>
-<p>q1-from (q1-to (left a)) = q1-from (left (left a)) = left a<br>q1-from (q1-to (right (left b))) = q1-from (left (right b)) = right (lef b)<br>q1-from (q1-to (right (right c))) = q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HOTE : When checking isomorphism, we need to check EACH pattern matched case.</span><br><span class="line"></span><br><span class="line">**Not isomorphic**</span><br><span class="line">There are conversion functions `f : A -&gt; B`, `g : B -&gt; A` that they are NOT isomorphic.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">example : `Boolean` and `Unit`</span><br></pre></td></tr></table></figure></p>
-<p>to : Boolean -&gt; Unit<br>to _ = empty</p>
-<p>from : Unit -&gt; Boolean<br>from empty = true<br><code>`</code></p>
-<p>This is often when two types have different number of elements. This case, Boolean has 2 elements and Unit has only 1.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/02/19/[Logic]03_computation/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -1115,6 +1181,8 @@ A * (B + C) ~ A * B + A * C
 		
 			<li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
 		
+			<li><a href="/categories/Year2-Systems-Programming-in-c-c/">Year2/ Systems Programming in c/c++<span>3</span></a></li>
+		
 		</ul>
 	</div>
 
@@ -1125,11 +1193,11 @@ A * (B + C) ~ A * B + A * C
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
+        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
       </li>
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
+        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
       </li>
     
       <li>
