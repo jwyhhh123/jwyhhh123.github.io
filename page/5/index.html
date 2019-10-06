@@ -108,635 +108,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/02/20/[DataStructure]02/">Programming part</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-20  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>I will provide source code on github.</p>
-<h2 id="GIT-testing-Set-up-eclipse"><a href="#GIT-testing-Set-up-eclipse" class="headerlink" title="GIT, testing, Set up eclipse"></a>GIT, testing, Set up eclipse</h2><p>log<br>testing<br>junit<br>debug<br>javaDoc<br><a href="http://www.runoob.com/eclipse/eclipse-debug-configuration.html" target="_blank" rel="noopener">http://www.runoob.com/eclipse/eclipse-debug-configuration.html</a>  </p>
-<h2 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h2><p>ass1:<br>ass2: <em>Stack &amp; Queue</em><br>ass3: <em>Binary Tree</em><br>ass4: <em>Merge Sort</em><br>ass5: <em>Graph</em></p>
-
-	
-	</div>
-  <a type="button" href="/2019/02/20/[DataStructure]02/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/20/[DataStructure]01/">Theory part</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-20  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<!-- 过于精简，添加内容:
-       what is ds
-       diff types of programming
--->
-<h2 id="Basic-Data-Structure"><a href="#Basic-Data-Structure" class="headerlink" title="Basic Data Structure"></a>Basic Data Structure</h2><p><strong>Arrays</strong><br>An ordered collection of items : <code>a[i]</code><br><code>i</code> : the index of item.</p>
-<p><strong>Loops and invariants</strong><br>General for-loop structure :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(INITIALIZATION; CONDITION; UPDATE) &#123;</span><br><span class="line">    REPEATED PROCESS</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Invariant : a condition that does not change during the excution of a given program. i.e. i&lt;20 invariants enable correctness proof and verification. In particular, a loop-invariant is a condition that holds at the beginning and the end of every iteration.</p>
-<p>example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mimimum(int n, float a[n]) &#123;</span><br><span class="line">    float min = a[0];</span><br><span class="line"></span><br><span class="line">    for(int i = 0; i != n; i++) &#123;</span><br><span class="line">        if(a[i] &lt; min) min = a[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>Initialization   : invariant is true at the beginning.</li>
-<li>loop starting    : invariant preserved.</li>
-<li>repeated process : invariant is true at the end.</li>
-<li>loop ends        : end condition.</li>
-</ol>
-<p>NOTE : the example above is a kind of proof by induction.</p>
-<p><strong>Lists</strong><br>2-cell Representation of a non-empty list :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt; [3][]-&gt; [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][/]</span><br></pre></td></tr></table></figure>
-<p>Primitive operators<br>1) Constructors</p>
-<ul>
-<li>emptyList</li>
-<li>makeList(element, List) : return a list</li>
-</ul>
-<p>2) Selectors</p>
-<ul>
-<li>first(list) : return an item</li>
-<li>rest(list)  : return a list</li>
-</ul>
-<p>3) Condition</p>
-<ul>
-<li>isEmpty(list)</li>
-</ul>
-<p>4) mutators</p>
-<ul>
-<li>replaceFirst(x,list)</li>
-<li>replaceRest(rest,list)</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">replaceFirst(x, l) &#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(l)) <span class="keyword">return</span> <span class="string">"Error"</span>;</span><br><span class="line">    <span class="keyword">return</span> makeList(x,rest(l));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">replaceRest(r, l) &#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(l)) <span class="keyword">return</span> <span class="string">"Error"</span>;</span><br><span class="line">    <span class="keyword">return</span> makeList(first(l),r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Recursion</strong><br>When items are stored as linked-list, it is unlike arrays which can use loops with indices to acess each item. we shall use recursion for data structures like lists.<br>&nbsp;<br>def : the idea is to formulate procedures which involve at least one step  that invokes the procedure itself.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">last(list) &#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(list)) <span class="keyword">return</span> <span class="string">"cannot access the last item"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(isEmpty(rest(list))) </span><br><span class="line">        <span class="keyword">return</span> first(list);</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> last(rest(list));</span><br><span class="line">&#125;  <span class="comment">// this is also called : tail recursion where recursion happens at the end.</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">append(list1, list2) &#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(list1)) </span><br><span class="line">        <span class="keyword">return</span> list2;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> makeList(first(list1), append(rest(list1),list2));</span><br><span class="line">&#125;  <span class="comment">//time.Compx = length of list1</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">isMember(x, list) &#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(list)) </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(first(list) == x)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(isEmpty(rest(list)))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        isMember(x,rest(list));</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Stacks</strong><br>def : data structure to model a First-In-Last-Out (FILO), or Last-In-First-Out (LIFO), strategy in search.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[3][]-&gt; [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][/]  </span><br><span class="line"></span><br><span class="line">top we got : [3]</span><br><span class="line">pop we got : [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][/]</span><br><span class="line">push(9, stack) we got : [9][]-&gt; [3][]-&gt; [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][/]</span><br></pre></td></tr></table></figure>
-<p>Primitive operators<br>1) Constructors</p>
-<ul>
-<li>emptyStack</li>
-<li>push(element, stack) : return a stack, push item at the top</li>
-</ul>
-<p>2) Selectors</p>
-<ul>
-<li>top(stack) : return the top most element of a stack.</li>
-<li>pop(stack) : return the stack without the top most element.</li>
-</ul>
-<p>3) Condition</p>
-<ul>
-<li>isEmpty(Stack)</li>
-</ul>
-<p><strong>Queues</strong><br>def : data structure used to model a First-In-First-Out (FIFO) strategy. Conceptually, we add to the end of a queue and take away elements from its front.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[3][]-&gt; [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][/]  </span><br><span class="line">top we got : [3]</span><br><span class="line">pop we got : [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][/]</span><br><span class="line">push(9, queue) we got : [3][]-&gt; [1][] -&gt; [4][] -&gt; [2][] -&gt; [5][]-&gt; [9][/]</span><br></pre></td></tr></table></figure>
-<p>Primitive operators<br>1) Constructors</p>
-<ul>
-<li>emptyQuene</li>
-<li>push(element, queue) : return a queue, push the item at the tail</li>
-</ul>
-<p>2) Selectors</p>
-<ul>
-<li>top(queue) : return the top element of a queue.</li>
-<li>pop(queue) : return the queue without the top most element.</li>
-</ul>
-<p>3) Condition</p>
-<ul>
-<li>isEmpty(queue)</li>
-</ul>
-<p>NOTE : as we can see, the only difference between a stack and a queue is the mothod of push.</p>
-<p><strong>Doubly linked lists</strong><br>def : a doubly linked list is a list which has two pointers on each cell. Unlike a linked list, we think it as web pages which has each page containing previous page and next page.<br>&nbsp;<br>Primitive operators<br>1) Constructors</p>
-<ul>
-<li>emptyList</li>
-<li>MakeListLeft(element, list) : return a new DLL containing the new element on the left</li>
-<li>MakeListRight(element, list) : return a new DLL containing the new element on the right</li>
-</ul>
-<p>2) Selectors</p>
-<ul>
-<li>firstLeft(list)</li>
-<li>restLeft(list)</li>
-<li>firstRight(list)</li>
-<li>restRight(list)</li>
-</ul>
-<p>3) Condition</p>
-<ul>
-<li>isEmpty(list)</li>
-</ul>
-<p>Circular doubly linked list : it is a DLL which connects the left-most element to the right-most elements with two pointers.</p>
-<h2 id="Efficiency-amp-amp-Complexity"><a href="#Efficiency-amp-amp-Complexity" class="headerlink" title="Efficiency &amp;&amp; Complexity"></a>Efficiency &amp;&amp; Complexity</h2><p><strong>Time and Space complexity</strong><br>time complexity : how much the excution time is required, depending on the size of the data stucture.<br>space complexity : how much the memory space is required, depending on the size of the data structure<br>&nbsp;<br>NOTES:</p>
-<ul>
-<li>In general, we consider complexity of the psuedocodes or algorithms.</li>
-<li>we need to make a balance between time complexity and space complexity.</li>
-</ul>
-<p><strong>Worst and Average case</strong><br>Average case is more important when saving time overall needs to be guaranteed.<br>Worst case is more important when we are dealing with time-critical problems such as airplane application.<br>&nbsp;<br>NOTE : the most efficient algorithm on average might have a particulaly bad worst case efficiency.</p>
-<p><strong>Big-Oh notation</strong><br>def : we ONLY complexity ignoring any constant factors and small arguments. This wll just tell us the principal growth of the complexity function with problem size.<br>&nbsp;<br>Usually, we compute the complexity based on the number of loops and how often the content of those loops are being executed.<br>&nbsp;<br>The most common complexity classes :</p>
-<ul>
-<li>constant complexity    : O(1)</li>
-<li>logarithmic complexity : O(log2(n))</li>
-<li>linear complexity      : O(n)</li>
-<li>quadratic complexity   : O(n^2)</li>
-<li>cubic complexity       : O(n^3)</li>
-<li>exponential complexity : O(2^n)</li>
-</ul>
-<p>It is easier to see the growth of each class of complexity by doubling the size :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f(n)            | If the size of the problem doubles then f(n) will be </span><br><span class="line">----------------|-----------------------------------------------------------</span><br><span class="line">  1             |  the same,                                 f(2n) = f(n)</span><br><span class="line">log2(log2(n))   |  almost the same,                          log2(log2(2n)) = log2 (log2 (n) + 1)</span><br><span class="line">log2(n)         |  more by 1=log2(2),                        f(2n) = f(n)+1</span><br><span class="line">  n             |  twice as big as before,                   f(2n) = 2 * f(n)</span><br><span class="line">nlog2n          |  a bit more than twice as big as before,   2nlog2 (2n) = 2(nlog2 n) + 2n</span><br><span class="line"> n^2            |  four times as big as before,              f(2n) = 4 * f(n)</span><br><span class="line"> n^3            |  eight times as big as before,             f(2n) = 8 * f(n)</span><br><span class="line"> 2^n            |  the square of what it was before,         f(2n) = (f(n))^2</span><br></pre></td></tr></table></figure>
-<p>NOTE : computation - exact and approximate</p>
-<h2 id="Trees-general-binary-quad-trees"><a href="#Trees-general-binary-quad-trees" class="headerlink" title="Trees - general, binary, quad trees"></a>Trees - general, binary, quad trees</h2><p><strong>General definition of trees</strong><br>def : a tree contains nodes and edges. Nodes are usually labelled by a search keys(int, String…).<br>&nbsp;<br>Terminology: </p>
-<ol>
-<li>root</li>
-<li>parent (ancestor)</li>
-<li>children (descendent)</li>
-<li>siblings</li>
-<li>leaves</li>
-<li>path</li>
-<li>height of the tree</li>
-<li>size of the tree</li>
-</ol>
-<p>Representation: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    [8]   ......... root (parent of 3 and 11)   - level 0</span><br><span class="line">  /     \</span><br><span class="line">[3]     [11]  ..... children (of 8)             - level 1</span><br><span class="line">   \    /   \</span><br><span class="line">  [6] [9]  [14] ... leaves                      - level 2</span><br><span class="line">        </span><br><span class="line">height = 2</span><br><span class="line">size = 6</span><br></pre></td></tr></table></figure>
-<p><strong>Quad-trees</strong><br>def: a quadtree is a tree in which each-leaf is labelled by a value and each non-leaf node has exactly four children.<br>&nbsp;<br>inductive definition :</p>
-<ol>
-<li>a root node with a value, or</li>
-<li>a root node without a value but with four quad tree children : lu,ll,ru,rl</li>
-</ol>
-<p>NOTE: here we use “root node” because every sub-tree is itself a quadtree<br>&NBSP;<br>Presentation: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> __________________________</span><br><span class="line">|            |             |</span><br><span class="line">|            |             |</span><br><span class="line">|     0      |     10      |</span><br><span class="line">|            |             |</span><br><span class="line">|            |             |</span><br><span class="line">|------------|-------------|</span><br><span class="line">|     | 1| 3 |             |</span><br><span class="line">| 30  |--|---|             |</span><br><span class="line">|-----|------|     12      |</span><br><span class="line">| 40  |  2   |             |</span><br><span class="line">|_____|______|_____________|</span><br></pre></td></tr></table></figure>
-<p>Primitive operations:<br>1) Constructors</p>
-<ul>
-<li>baseQT(value): return a single node with label value</li>
-<li>makeQT(luqt,ruqt,llqt,rlqt): return a quadtree with four nodes</li>
-</ul>
-<p>2) Selectors</p>
-<ul>
-<li>lu(qt): return the left-upper quadtree</li>
-<li>ll(qt): return the left-lower quadtree</li>
-<li>ru(qt): return the right-upper quadtree</li>
-<li>rl(qt): return the right-lower quadtree</li>
-</ul>
-<p>3) Condition</p>
-<ul>
-<li>isValue(qt): return true if quadtree qt is a single node</li>
-</ul>
-<p>Rotate a quadtree by 180 degrees: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rotate(qt)&#123;</span><br><span class="line">    <span class="keyword">if</span>(isValue(qt))</span><br><span class="line">        <span class="keyword">return</span> qt;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> makeQT(rotate(rl(qt)), rotate(ll(qt)),</span><br><span class="line">                      rotate(ru(qt)), rotate(lu(qt)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>NOTE: similar idea arises from averaging the values of qt.</p>
-<p><strong>Binary trees</strong><br>def: a binary tree is a tree in which each node has at most two children.<br>&nbsp;<br>inductive def:</p>
-<ol>
-<li>the empty tree EmptyTree, or</li>
-<li>it consists of a node and two binary trees(left subtree and right subtree)</li>
-</ol>
-<p>Primitive operations:<br>1) Constructors</p>
-<ul>
-<li>EmptyTree: return an empty tree</li>
-<li>makeTree(v,l,r) : return a binary tree with a root node and two sub-trees</li>
-</ul>
-<p>2) derived Constructor</p>
-<ul>
-<li>Leaf(v) = MakeTree(v,EmptyTree,EmptyTree)</li>
-</ul>
-<p>3) Selectors</p>
-<ul>
-<li>root(t): return the value of the root node of t</li>
-<li>left(t): return the left sub-tree</li>
-<li>right(t): return the right sub-tree</li>
-</ul>
-<p>4) Condition</p>
-<ul>
-<li>isEmpty(t): return true if the binary tree t is the EmptyTree</li>
-</ul>
-<p>NOTE: This primitive operators are what expected to be covered when we created a tree class.<br>&nbsp;<br>Abstract data types : without focusing on the details of the data or the implementation, it is a general principle of how to construct and destruct the data type.</p>
-<p><strong>Height of a binary tree</strong><br>Many tree-based applications, for example searching, take as many steps as the height of the tree, so minimizing the height minimizes the time needed to perform those operations.<br>&nbsp;<br>size   : s(h) = 2^(h+1) - 1<br>height : h(s) = log2(s+1) - 1 = log2(s)<br>&nbsp;<br>NOTE : height is computed as log2(n) when the tree is balanced.</p>
-<p><strong>Size of a binary tree</strong><br>size of a tree :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">size(t)&#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(t))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> + size(left(t)) + size(right(t)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree"></a>Binary Search Tree</h2><p>one possible implementation of a binary tree is binary search tree, which provide an efficient way of sorting data that allows particular items to be found as quickly as possible.<br>&nbsp;<br>def : BST is a binary tree that is either an emptyTree or satisfies the following :</p>
-<ol>
-<li>all search keys occuring in the left subtree are smaller than that of the root</li>
-<li>all search keys occuring in the right subtree are larger than that of the root</li>
-<li>the left and right subtrees are themselves binary search trees(1 and 2 still hold)</li>
-</ol>
-<p>NOTE : As to a BST, it does not matter what the root node is, we simply want to determine, if given a key, where the key is located on the tree.</p>
-<p><strong>Building binary search trees</strong><br>one naturally starts with the root and then adds further new nodes as needed. we have two cases :</p>
-<ul>
-<li>if the given tree is empty then simply assigin the new value v to the root, and leave the left and right subtrees empty</li>
-<li>if the given tree is nonempty, then a node is inserted to :<ol>
-<li>the left subtree if it is smaller than the root</li>
-<li>the right subtree if it is larger than the root</li>
-<li>nowhere but we throw exception</li>
-</ol>
-</li>
-</ul>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">insert(v, bst)&#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(bst))</span><br><span class="line">        <span class="keyword">return</span> MakeTree(v,emptyTree,emptyTree);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(v &lt; root(bst))</span><br><span class="line">        <span class="keyword">return</span> MakeTree(v,insert(v,left(bst)),right(bst));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(v &gt; root(bst))</span><br><span class="line">        <span class="keyword">return</span> MakeTree(v,left(bst),insert(v,right(bst)));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"violated assumption in procedure insert(v equals :)"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>NOTE : this algorithm made a new tree based on bst. the original tree bst is not modified, it is merely inspected(被巡视). When we are dealing with a large database, it is more efficient to modify the given tree, rather than to construct a whole new tree.</p>
-<p><strong>Searching a BST</strong><br>Algorithm in pseudocode :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">search(n, bst)&#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty(bst))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n &lt; root(bst))</span><br><span class="line">        <span class="keyword">return</span> search(n,left(bst));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n &gt; root(bst))</span><br><span class="line">        <span class="keyword">return</span> search(n,right(bst));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>or we can use a while-loop :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">search(n,bst)&#123;</span><br><span class="line">    <span class="keyword">while</span>(!isEmpty(bst) &amp;&amp; n != root(bst))&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; root(bst))</span><br><span class="line">            t = left(bst);</span><br><span class="line">        <span class="keyword">if</span>(n &gt; root(bst))</span><br><span class="line">            t = right(bst);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> !isEmpty(bst);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Time complexity of searching and inserting</strong><br>Searching :</p>
-<ul>
-<li>average case = O(log2(n))</li>
-<li>worst case = O(n)</li>
-</ul>
-<p>Inserting :</p>
-<ul>
-<li>average case = O(log2(n))</li>
-<li>worst case = O(n)</li>
-</ul>
-<p>NOTE : if BST is perfectly balanced, the worst cases are both O(log2(n))</p>
-<p><strong>Deleting</strong><br>in order to perform better than O(n x log2(n)) or better than O(n), we design the following procedures :</p>
-<ol>
-<li>if the node in question is a leaf, just remove it</li>
-<li>if only one of the node’s subtree is non-empty, move up the remaining subtree</li>
-<li>if the node has two non-empty sub-trees, find the left-most leaf on the right subtree(this has the smallest key in the right sub-tree). Use this to overwrite the node we deleted. replace the left-most node by its right subtree, if this exists; otherwise just delete it.</li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">delete(value v, tree t)&#123;</span><br><span class="line">  <span class="keyword">if</span>(isEmpty(t))</span><br><span class="line">    error(<span class="string">"error : given item is not in the given tree"</span>);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; root(t))</span><br><span class="line">      <span class="keyword">return</span> MakeTree(root(t),delete(v,left(t)),right(t));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(v &gt; root(t))</span><br><span class="line">      <span class="keyword">return</span> MakeTree(root(t),left(t),delete(v,right(t)));</span><br><span class="line">    <span class="keyword">else</span>  <span class="comment">// v is the root(t)</span></span><br><span class="line">      <span class="keyword">if</span>(isEmpty(left(t)))</span><br><span class="line">        <span class="keyword">return</span> right(t);</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span>(isEmpty(right(t)))</span><br><span class="line">        <span class="keyword">return</span> left(t);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> MakeTree(smallestNode(right(t))),left(t),removeSmallestNode(right(t));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smallestNode(tree t)&#123;</span><br><span class="line">  <span class="keyword">if</span>(isEmpty(left(t)))</span><br><span class="line">    <span class="keyword">return</span> root(t);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> smallestNode(left(t));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">removeSmallestNode(tree t)&#123;</span><br><span class="line">  <span class="keyword">if</span>(isEmpty(left(t)))</span><br><span class="line">    <span class="keyword">return</span> right(t);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> MakeTree(root(t),removeSmallestNode(left(t)), right(t));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Complexity : O(log2(n))</p>
-<p><strong>Sorting using binary search tree</strong></p>
-<p>print the nodes in order :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">printInOrder(tree t)&#123;</span><br><span class="line">  <span class="keyword">if</span>(!isEmpty(t))&#123;</span><br><span class="line">    printInOrder(left(t));</span><br><span class="line">    print(root(t));</span><br><span class="line">    printInOrder(right(t));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>if there is a collection of items stored in an array with size n, they can be printed in sorted order :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sort(T[] a)&#123;</span><br><span class="line">  t = emptyTree;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; i++)&#123;</span><br><span class="line">    t = insert(a[i],t);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  printInOrder(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Balancing BST</strong><br>Reason : more balance the tree is, less time taken to search/insert/delete the tree<br>Tree balance : for each level, the tree is completely filled with as many nodes as possible.<br>Tree rotation : to rebalance the tree</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     [D]               [B]</span><br><span class="line">    /   \    ----&gt;    /   \</span><br><span class="line">  [B]   [E]  &lt;----  [A]   [D]</span><br><span class="line">  / \                     / \</span><br><span class="line">[A] [C]                 [C] [E]</span><br></pre></td></tr></table></figure>
-<p><strong>Exercises</strong><br>Ex1. Qns 6.  (To build all possible trees among {1,2,3,4}<br>Ex2 ,Qns 3 &amp; 4, check whether is a BST or tree</p>
-<h2 id="Binary-Heap-Trees-and-Priority-queues"><a href="#Binary-Heap-Trees-and-Priority-queues" class="headerlink" title="Binary Heap Trees and Priority queues"></a>Binary Heap Trees and Priority queues</h2><p>Completeness : A binary tree is complete if every level, except possibly the last, is completely filled, and all the leaves on the last level are placed as far to the left as possible.<br>&nbsp;<br>dif : unlike BST, a binary heap tree is a binary tree with each node labelled by a priority number(the higher number is labelled, the higher priority the node is). So, the root is the biggest number and it holds for left and right heap subtrees. The left and right subtrees are interchangable in binary heap trees.<br>&nbsp;<br>def : a binary heap tree is a complete binary tree which is either empty or satisfies the following :</p>
-<ol>
-<li>the priority of the root is higher than or equal to that of its children</li>
-<li>the left and right subtrees of the root are heap trees themselves</li>
-</ol>
-<p><strong>Basic operations</strong><br>to construct a heap tree we need :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> MAX = <span class="number">100</span>      <span class="comment">// Maximum number of nodes allowed</span></span><br><span class="line"><span class="keyword">int</span> heap[MAX + <span class="number">1</span>]  <span class="comment">// Store priority values of nodes + empty of heap tree;  </span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">0</span>          <span class="comment">// Largest position that has been filled so far</span></span><br></pre></td></tr></table></figure>
-<p>for heap trees to be a useful representation of priority queues, we need</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">insert(<span class="keyword">int</span> p, array heap, <span class="keyword">int</span> n)</span><br><span class="line">delete(<span class="keyword">int</span> i, array heap, <span class="keyword">int</span> n)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">root</span><span class="params">(array heap, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(heapEmpty(heap,n))</span><br><span class="line">      error(<span class="string">"heap is empty"</span>);</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">      <span class="keyword">return</span> heap[<span class="number">1</span>];  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">heapEmpty</span><span class="params">(array heap, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n == <span class="number">0</span>;  <span class="comment">// we use n = 0 to represent an empty heap</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lastLeaf</span><span class="params">(array heap, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(heapEmpty(heap,n))</span><br><span class="line">      <span class="keyword">return</span> error(<span class="string">"heap is empty"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> heap[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Inserting a new heap tree node</strong><br>Procedure :</p>
-<ol>
-<li>insert the new node into the last position n+1</li>
-<li>bubble up the node to the right position by comparing priority with parent node</li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">insert(<span class="keyword">int</span> p, array heap, <span class="keyword">int</span> n)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == MAX)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"error: heap is full"</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      heap[++n] = p;           <span class="comment">// O(1)</span></span><br><span class="line">      bubbleUp(n, heap, n);    <span class="comment">// O(log2(n))</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bubbleUp(<span class="keyword">int</span> i, array p, <span class="keyword">int</span> n)&#123;</span><br><span class="line">  <span class="keyword">if</span>(isRoot(i)) <span class="comment">// i has the highest priority</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(heap[i] &gt; heap[parent(i)])&#123;</span><br><span class="line">    swap heap[i] and heap[parent(i)]</span><br><span class="line">    bubbleUp(parent(i),heap,n); </span><br><span class="line">    <span class="comment">// the parent of parent of i is now being the parent of i</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>worst case &amp; average case of time Complexity = O(log2(n))</p>
-<p><strong>Deleting a heap tree node</strong><br>Procedure :</p>
-<ol>
-<li>replace the node we want to delete by the last node</li>
-<li>bubble up or bubble down the node to achive the correct priority order</li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">delete(<span class="keyword">int</span> i, array p, <span class="keyword">int</span> n)&#123;</span><br><span class="line">  <span class="keyword">if</span>(n &lt; i)</span><br><span class="line">    error(<span class="string">"empty tree, unable to delete"</span>);</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    heap[i] = heap[n];</span><br><span class="line">    bubbleUp(i,heap,n-<span class="number">1</span>);</span><br><span class="line">    bubbleDown(i,heap,n-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bubbleDown(<span class="keyword">int</span> i, array heap, <span class="keyword">int</span> n)&#123;</span><br><span class="line">  <span class="keyword">if</span>(left(i) &gt; n)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(right &gt; n)  <span class="comment">// left(i) &lt;= n; only one children</span></span><br><span class="line">    <span class="keyword">if</span>(heap[i] &lt; heap[left(i)])</span><br><span class="line">      swap heap[i] and heap[left(i)];</span><br><span class="line">  <span class="keyword">else</span>                <span class="comment">// two children</span></span><br><span class="line">    <span class="keyword">if</span>(heap[left(i)] &gt; heap[right(i)] &amp;&amp; heap[i] &lt; heap[left(i)])</span><br><span class="line">      swap heap[i] and heap[left(i)]</span><br><span class="line">      bubbleDown(left(i),heap,n);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(heap[i] &lt; heap[right])</span><br><span class="line">      swap heap[i] and heap[right(i)]</span><br><span class="line">      bubbleDown(right(i),heap,n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>worst case &amp; average case of time Complexity = O(log2(n))</p>
-<p><strong>Building a new heap tree</strong><br>Sometimes we have a set of items that we wish to heapify. One obvious possibility would be to insert the n items one by one into a heap tree, starting from an empty tree, using the O(log2 n) ‘bubble up’ based insert algorithm discussed earlier. That would clearly have overall time complexity of O(nlog2 n).<br>It turns out, however, that rearranging an array of items into heap tree form can be done more efficiently using “bubble down”. It potentially bubbles down [n/2] items. So the complexity at most is (n/2)log2(n) = nlog2(n).<br>&nbsp;<br>Precisely :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C(h) =  Σ(for each level i) 2^i * (h - i) = 2^h * Σ (h - i)/2^(h-i)</span><br><span class="line">C(h) = 2^h * Σ j/2^j = 2^h * 2 = 2^(h+1) = n</span><br></pre></td></tr></table></figure>
-<p>hence, the complexity of heapify is actually O(n), by using bubble down.</p>
-<p><strong>Merging binary heap trees</strong><br>Method 1 :<br>Move all the items from the smaller heap tree one at a time into the larger heap tree using the standard insert algorithm. This will involve moving O(n) items, and each of them will need to be bubbled up at cost O(log2 n), giving an overall time complexity of O(nlog2 n).<br>Method 2 :<br>Repeatedly move the last items from one heap tree to the other using the standard insert algorithm, until the new binary tree makeTree(0,t,s) is complete. Then move the last item of the new tree to replace the dummy root “0”, and bubble down that new root. How this is best done will depend on the sizes of the two trees, so this algorithm is not totally straightforward. On average, around half the items in the last level of one tree will need moving and bubbling, so that will be O(n) moves, each with a cost of O(log2 n), again giving an overall time complexity of O(nlog2 n). However, the actual number of operations required will, on average, be a lot less than the previous approach, by something like a factor of four, so this approach is more efficient.<br>Method 3 :<br>Simply concatenate the array forms of the heap trees s and t and use the standard heapify algorithm to convert that array into a new binary heap tree. The heapify algorithm has time complexity O(n), and the concatenation need be no more than that, so this approach has O(n) overall time complexity, making it in the best general approach of all three.<br>&nbsp;<br>NOTE : to decide which one we use, it depends on the sizes of two heap trees. </p>
-<p><strong>Binomial heaps</strong><br>def : a binomial heap is more efficient than BHT when inserting and merging.<br>&nbsp;<br>inductive def : a binomial tree is defined recursively as follows :</p>
-<ol>
-<li>a binomial tree of order 0 is a single node</li>
-<li>a binomial tree of order k has a root node with children that are roots of binomial trees of orders k-1, k-2, …, 2, 1, 0 (in that order)</li>
-</ol>
-<p>Representation :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">k    0     1       2             3</span><br><span class="line">    [ ]   [ ]     [ ]         [     ]</span><br><span class="line">           |      / |        /  /   |</span><br><span class="line">          [ ]   [ ] [ ]    [ ] [ ] [ ]</span><br><span class="line">                           / |   |</span><br><span class="line">                        [ ] [ ] [ ]</span><br></pre></td></tr></table></figure>
-<p>height : k<br>size   : 2^k</p>
-<p>A binomial heap is constructed as a collection of binomial trees with a particular structure and node ordering properties :</p>
-<ol>
-<li>there can only be zero or one binomial tree of each order</li>
-<li>each constituent binomial tree must satisfy the priority ordering property i.e. each node must have priority less than or equal to its parent</li>
-</ol>
-<p>merging : time complexity = O(log2(n))<br>inserting : time complexity = O(1)<br>heapify : O(n)<br>deleting : time complexity = O(log2(n))</p>
-<h2 id="Sorting-strategies-Sorting-algotithem-stability"><a href="#Sorting-strategies-Sorting-algotithem-stability" class="headerlink" title="Sorting strategies, Sorting algotithem stability"></a>Sorting strategies, Sorting algotithem stability</h2><p><strong>General definitions and theoretical limits</strong><br>Comparison-based :</p>
-<ul>
-<li>enumeration sorting</li>
-<li>exchange sorting </li>
-<li>selection sorting </li>
-<li>insertion sorting</li>
-<li>divide and conquer</li>
-<li>comparison-based </li>
-</ul>
-<p>lower bound for comparison-based algorithms : O(nlog2(n))<br>&nbsp;<br>Noncomparison-based</p>
-<p><strong>BubbleSort, insertion sort, selection Sort</strong><br>BubbleSort : exchange sorting</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">1</span> ; i &lt; n ; i++ )</span><br><span class="line">  <span class="keyword">for</span> ( j = n-<span class="number">1</span> ; j &gt;= i ; j-- ) <span class="comment">// dif with insertion sort</span></span><br><span class="line">    <span class="keyword">if</span> ( a[j] &lt; a[j-<span class="number">1</span>] )</span><br><span class="line">       swap a[j] and a[j-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<p>time complexity :</p>
-<ul>
-<li>worst case : O(n^2)</li>
-<li>average case : O(n^2)</li>
-</ul>
-<p>InsertionSort : insertion sorting</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">1</span> ; i &lt; n ; i++ ) &#123;</span><br><span class="line">  <span class="keyword">for</span>( j = i ; j &gt; <span class="number">0</span> ; j-- )    <span class="comment">// dif with bubble sort</span></span><br><span class="line">    <span class="keyword">if</span> ( a[j] &lt; a[j-<span class="number">1</span>] )</span><br><span class="line">       swap a[j] and a[j-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">break</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>time complexity :</p>
-<ul>
-<li>worst case : O(n^2)</li>
-<li>average case : O(n^2)</li>
-</ul>
-<p>SelectionSort : selection sorting</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = <span class="number">0</span> ; i &lt; n-<span class="number">1</span> ; i++ ) &#123; </span><br><span class="line"></span><br><span class="line"> k = i</span><br><span class="line"> <span class="keyword">for</span> ( j = i+<span class="number">1</span> ; j &lt; n ; j++ )</span><br><span class="line">    <span class="keyword">if</span> ( a[j] &lt; a[k] )</span><br><span class="line">      k = j</span><br><span class="line">      swap a[i] and a[k]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>time complexity :</p>
-<ul>
-<li>worst case : O(n^2)</li>
-<li>average case : O(n^2)</li>
-</ul>
-<p>Comparison between bubble, insertion, selection sortings:</p>
-<ol>
-<li>bubble sorts does a lot of swaps</li>
-<li>if there is a few items are misplaced, insertionSort performs very quick</li>
-<li>in general selectionSort is better than insertionSort is better than bubbleSort</li>
-</ol>
-<p>Stability between bubble, insertion, selection sortings: (when considering identical keys [2,1] [2,2])</p>
-<ul>
-<li>bubbleSort is stable</li>
-<li>InsertionSort is stable</li>
-<li>SelectionSort is unstable</li>
-</ul>
-<p><strong>TreeSort, HeapSort</strong><br>TreeSort procedure :</p>
-<ol>
-<li>build an empty BST, insert each a[i] into it</li>
-<li>use a method to fill nodes into an array in order</li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">treeSort(array a)&#123;</span><br><span class="line">  t = emptyTree;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; i++)&#123;</span><br><span class="line">    t = insert(a[i],t);    <span class="comment">// log2(n)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fillArray(t,a,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fillArray(tree t, array a, <span class="keyword">int</span> j)&#123;</span><br><span class="line">  <span class="keyword">if</span>(!isEmpty(t))&#123;</span><br><span class="line">    j = fillArray(left(t),a,j);</span><br><span class="line">    a[j++] = root(t);</span><br><span class="line">    j = fillArray(right(t),a,j);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>time complexity :</p>
-<ul>
-<li>worst case : O(n^2) when the array given is sorted</li>
-<li>average case : O(nlog2(n))</li>
-</ul>
-<p>HeapSort procedure :</p>
-<ol>
-<li>heapify the array into a BHT.</li>
-<li>swap the largest root node and the smallest leaf node for each iteration.(bubble down)</li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">heapSort(array a, <span class="keyword">int</span> n) &#123;</span><br><span class="line">  heapify(a,n)</span><br><span class="line">    <span class="keyword">for</span>( j = n ; j &gt; <span class="number">1</span> ; j-- ) &#123;</span><br><span class="line">      swap a[<span class="number">1</span>] and a[j]</span><br><span class="line">      bubbleDown(<span class="number">1</span>,a,j-<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>time complexity :</p>
-<ul>
-<li>worst case : O(nlog2(n))</li>
-<li>average case : O(nlog2(n))</li>
-<li>best case : O(n)</li>
-</ul>
-<p>HeapSort is not stable as it can change the order of identical keys.</p>
-<p><strong>Devide and conquer sorting</strong><br>Quicksort procedure :</p>
-<ol>
-<li></li>
-<li></li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-<p>time Complexity : </p>
-<ul>
-<li>worst case O(n^2)</li>
-<li>average case O(nlog(n))</li>
-<li>best case O(n)</li>
-</ul>
-<p>Mergesort procedure :</p>
-<ol>
-<li>2.</li>
-</ol>
-<p>Algorithm :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>time Complexity : </p>
-<ul>
-<li>worst case O(nlog(n))</li>
-<li>average case O(nlog(n))</li>
-</ul>
-<p>quickSort代码: <a href="https://blog.51cto.com/flyingcat2013/1281614" target="_blank" rel="noopener">https://blog.51cto.com/flyingcat2013/1281614</a><br>mergeSort代码: <a href="https://blog.csdn.net/javyzheng/article/details/12377585" target="_blank" rel="noopener">https://blog.csdn.net/javyzheng/article/details/12377585</a></p>
-<p><strong>Non-comparision : Radix sort</strong></p>
-<p><strong>Comparisons</strong></p>
-<h2 id="Hash-Tables"><a href="#Hash-Tables" class="headerlink" title="Hash Tables"></a>Hash Tables</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">h(KEY) -&gt; position</span><br><span class="line">[K0][K1][K2][K3][K4][K5][K6][K7]</span><br></pre></td></tr></table></figure>
-<p>&nbsp; if two keys goes to the same position, it is called <code>collision</code>(散列冲突)</p>
-<p>Collision likelihoods and load factors for hash tables<br><code>q(n)= 364·363···(366 - n) / 365^(n-1) = 1 - p(n)</code><br>&nbsp; - prob(not colli 3) = (364*363)/365^2 = 1 - prob(colli)</p>
-<p>strategies to deal with collisions<br>&nbsp; Buckets: build a two dimension array<br>&nbsp; Direct chaining: build a linked list<br>&nbsp; open addressing: linear probing &amp; double hashing</p>
-<p><code>linear probing</code>: 线性探查法<br>&nbsp; <strong>def:</strong> if there is a collision, reduce index by 1 and insert. As a ring.<br>&nbsp; time.Compx = O(1)</p>
-<p><code>double hashing</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( (k/<span class="number">11</span>)%<span class="number">11</span> !=<span class="number">0</span> ) &#123;</span><br><span class="line">    h2(n) = (k/<span class="number">11</span>)%<span class="number">11</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    h2(n) = <span class="number">1</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&nbsp; try every <em>h2(n) steps</em> to the left until a empty location is found<br>&nbsp; time.Compx = o(1)</p>
-<h2 id="Graphs"><a href="#Graphs" class="headerlink" title="Graphs"></a>Graphs</h2><p>1.Array-based implementation<br>2.Mixed implementation<br>3.Pointer-based implementation</p>
-<p>Relations between graphs</p>
-<p>Planarity<br>K5 K3,3<br>&nbsp; planar and non-planar graph</p>
-<p>Traversals</p>
-<p><strong>Dijkstra’s algorithm:</strong> shortest path from one specific node to all other nodes<br>version I : use <em>boolean array</em> tight<br>version II : <em>priority queue</em> of tight</p>
-<p><strong>Floyd’s algorithm:</strong> shortest path between each pair of nodes</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Store initial estimates and predecessors.</span></span><br><span class="line">   <span class="keyword">for</span> ( each vertex s ) &#123;</span><br><span class="line">       <span class="keyword">for</span> ( each vertex z ) &#123;</span><br><span class="line">           distance[s][z] = weight[s][z]</span><br><span class="line">           predecessor[s][z] = s</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// Improve them by considering all possible shortcuts u.</span></span><br><span class="line">   <span class="keyword">for</span> ( each vertex u ) &#123;</span><br><span class="line">       <span class="keyword">for</span> ( each vertex s ) &#123;</span><br><span class="line">           <span class="keyword">for</span> ( each vertex z ) &#123;</span><br><span class="line">               <span class="keyword">if</span> ( distance[s][u]+distance[u][z] &lt; distance[s][z] ) &#123;</span><br><span class="line">                  distance[s][z] = distance[s][u]+distance[u][z]</span><br><span class="line">                  predecessor[s][z] = predecessor[u][z]</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;  </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>Greedy algorithms:<br>an algorithm is greedy if it makes its decision based only on what is based on ‘local considerations’ without considering overall result</p>
-<p>Minimal spanning trees(最小生成树)<br>prim’s algorithm: A greedy <strong>vertex-based</strong> approach<br>Kruskal’s algorithm: A greedy <strong>edge-based</strong> approach.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/02/20/[DataStructure]01/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/19/[AI]12_lejos/">Lejos-based programming</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-19  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>This part of the module is fully based on LEGO EV3. To be more precise, we are using lejos API to acheive some functionalities on a robot. I have uploaded source code of some contents to my github.</p>
-<h2 id="Robot-sensors"><a href="#Robot-sensors" class="headerlink" title="Robot sensors"></a>Robot sensors</h2><p><strong>Color sensor</strong><br>def: sensor used to determine color.<br>.ColorIDMode<br>.ColorRGBMode<br>.AmbientMode</p>
-<p><strong>Ir_Sensor</strong><br>Low precision</p>
-<p><strong>Ultra_sonic_Sensor</strong><br>High precision</p>
-<p><strong>Touch_Sensor</strong><br>def: sensor used to detect pressure. if pressed, return 1 else 0.</p>
-<h2 id="Robot-Motors"><a href="#Robot-Motors" class="headerlink" title="Robot Motors"></a>Robot Motors</h2><p><strong>Large Motors</strong><br>def: api used to control left and right wheels.</p>
-<p><strong>pilot</strong><br>def : api used to control robot to move. Compared to Motor api, this has great advantage when we control the robot turning.</p>
-<h2 id="Arbitrator"><a href="#Arbitrator" class="headerlink" title="Arbitrator"></a>Arbitrator</h2><p>Behavior</p>
-<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p><strong>Waypoint</strong><br>def: </p>
-<p><strong>Heading</strong><br>def: </p>
-<h2 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h2><ul>
-<li>Topology map</li>
-<li>metric map</li>
-<li>cell-based map</li>
-<li>occupancy grids: 0-empty; 1-occupied</li>
-</ul>
-<h2 id="Robot-wifi-connection"><a href="#Robot-wifi-connection" class="headerlink" title="Robot wifi connection"></a>Robot wifi connection</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> host A                 host B</span><br><span class="line">    |                     |</span><br><span class="line">server socket &lt;-------&gt; socket</span><br><span class="line">            |        </span><br><span class="line">          port1234</span><br><span class="line">  (server: robot)         (client: PC)</span><br></pre></td></tr></table></figure>
-<h2 id="Communication-between-Server-and-Client"><a href="#Communication-between-Server-and-Client" class="headerlink" title="Communication between Server and Client"></a>Communication between Server and Client</h2><p>Server: robot as the server sending infomation to Eclipse console.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.net.*;</span><br><span class="line">import lejos.hardware.Battery;</span><br><span class="line"></span><br><span class="line">public class EV3Server &#123;</span><br><span class="line">    public static final int port = 1234;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        ServerSocket server = new ServerSocket(port);</span><br><span class="line">        System.out.println(&quot;Awaiting client..&quot;);</span><br><span class="line">        Socket client = server.accept();</span><br><span class="line">        System.out.println(&quot;CONNECTED&quot;);</span><br><span class="line">        OutputStream out = client.getOutputStream();</span><br><span class="line">        DataOutputStream dOut = new DataOutputStream(out);</span><br><span class="line">        dOut.writeUTF(&quot;Battery: &quot; + Battery.getVoltage());</span><br><span class="line">        dOut.flush();</span><br><span class="line">        server.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Client: PC as the client receiving infomation from EV3.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.net.*;</span><br><span class="line"></span><br><span class="line">public class PCClient &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        String ip = &quot;10.0.1.1&quot;; // BT</span><br><span class="line">        if(args.length &gt; 0)ip = args[0];</span><br><span class="line">        Socket sock = new Socket(ip, EV3Server.port);</span><br><span class="line">        System.out.println(&quot;Connected&quot;);</span><br><span class="line">        InputStream in = sock.getInputStream();</span><br><span class="line">        DataInputStream dIn = new DataInputStream(in);</span><br><span class="line">        String str = dIn.readUTF();</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        sock.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/02/19/[AI]12_lejos/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/19/[Logic]03_computation/">Computation</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-19  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>&nbsp;<br>a formal system:</p>
-<ul>
-<li>sound(true then cannot be false)</li>
-<li>complete(true or false can be determined)</li>
-<li>computable(be computed by machine)</li>
-</ul>
-<h2 id="Computer-Proof-Checking"><a href="#Computer-Proof-Checking" class="headerlink" title="Computer Proof Checking"></a>Computer Proof Checking</h2><p><strong>Inference rules</strong><br>and-elimination:</p>
-<ul>
-<li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
-<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
-</ul>
-<p>and-introduction:</p>
-<ul>
-<li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
-</ul>
-<p>or-introduction</p>
-<ul>
-<li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
-<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q</li>
-</ul>
-<p>or-elimination</p>
-<ul>
-<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
-</ul>
-<p>falsity-elimination</p>
-<ul>
-<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
-</ul>
-<p>double-negation-elimination</p>
-<ul>
-<li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
-</ul>
-<p>Modus ponens</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line"> q: Q        </span><br><span class="line"> q = f p</span><br></pre></td></tr></table></figure>
-<p>Implication introduction</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comp : &#123;A B C : Prop&#125; -&gt; (f : A -&gt; B) -&gt; (g : B -&gt; C) -&gt; (A -&gt; C) </span><br><span class="line">comp &#123;A&#125; &#123;B&#125; &#123;C&#125; f g = h where</span><br><span class="line">  h : A -&gt; C</span><br><span class="line">  h a = c where</span><br><span class="line">    b : B</span><br><span class="line">    b = f a</span><br><span class="line">    c : C</span><br><span class="line">    c = g b</span><br></pre></td></tr></table></figure>
-<p>NOTE : except the last proposition, f and g are all hypothesis(premises).<br>&nbsp;<br><strong>Proof checking examples</strong><br>Or-elimination :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ore : &#123;P Q R S&#125; -&gt; p or (Q and R) -&gt; S -&gt; (S and P) or Q</span><br><span class="line">ore &#123;P&#125; &#123;Q&#125; &#123;R&#125; &#123;S&#125; x s = y where</span><br><span class="line">  a : P -&gt; (S and P) or Q</span><br><span class="line">  a p = orIl andI p s</span><br><span class="line">  b : Q and R -&gt; (S and P) or Q</span><br><span class="line">  b m = n where</span><br><span class="line">    q : Q</span><br><span class="line">    q = andEl m</span><br><span class="line">    n : (S and P) or Q</span><br><span class="line">    n = orIr q</span><br><span class="line">  y : (S and P) or Q</span><br><span class="line">  y = orE x a b</span><br></pre></td></tr></table></figure>
-<p><strong>Negation</strong><br>we write (not A) as : A -&gt; Falsity</p>
-<p>Double negation introduction:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DNI : &#123;A : Prop&#125; : A -&gt; (A -&gt; Falsity) -&gt; Falsity</span><br><span class="line">DNI &#123;A&#125; a f = x where</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f a</span><br></pre></td></tr></table></figure>
-<p>Triple negation elimination</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
-<p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
-<p><strong>Law of Excluded Middle</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE goal where</span><br><span class="line">  goal : (P or (P -&gt; Falsity) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  goal z = z u where</span><br><span class="line">    v : P -&gt; Falsity</span><br><span class="line">    v x = z w where</span><br><span class="line">      w : P or (P -&gt; Falsity)</span><br><span class="line">      w = orIl x </span><br><span class="line">    u : P or ( P -&gt; Falsity)</span><br><span class="line">    u = orIr v</span><br></pre></td></tr></table></figure>
-<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p><strong>Introduce functions</strong><br>Some functions written in Agda:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
-<p>NOTE: by using a programming language, we read <code>p : A</code> as a program <code>p</code> has type A, and <code>f : A -&gt; B</code> as <code>f</code> is a function converting A to B.</p>
-<p><strong>Basic types or enums</strong><br>Void type :<br>no constructor so this type cannot be instantiated</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
-<p><code>data</code>  : introduces the definition<br><code>Void</code>  : the name of the type<br><code>Set</code>   : it is a type<br><code>where</code> : introduces the constructors</p>
-<p>Empty type :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty : unit</span><br></pre></td></tr></table></figure>
-<p>Boolean type :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
-<p>Similarly, we can define our own types :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Weekdays : Set where</span><br><span class="line">  Monday Tuesday Wednesday Thursday Friday : Weekdays</span><br></pre></td></tr></table></figure>
-<p><strong>Composite(复合的) types</strong><br>def : we can put two existing data types together to form a new data type.<br>&nbsp;<br>Product (tuple) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
-<p><code>data</code>        : we are defining a data type<br><code>Prod</code>        : the name of the data type<br><code>(A B : Set)</code> : A and B are other data types<br><code>: Set</code>       : we are defining a type indeed<br><code>where</code>       : definitions to follow<br><code>pair</code>        : the name of the constructor<br><code>X -&gt; Y -&gt; Prod X Y</code> : the type of the constructor. given <code>X</code> and <code>Y</code> and return their product <code>Prod X Y</code>. </p>
-<p>Sum (union) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
-<p>NOTE: <code>Sum</code> and <code>Prod</code> are usually called algrebraic types.<br>&nbsp;<br>Similarly, we can define our own composite types :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data Triple (A B C : Set) : Set where</span><br><span class="line">  triple : A -&gt; B -&gt; C -&gt; Triple A B C</span><br><span class="line"></span><br><span class="line">data Sum (A B C : Set) : Set where</span><br><span class="line">  left : A -&gt; Sum A B C</span><br><span class="line">  middle : B -&gt; Sum A B C</span><br><span class="line">  right : C -&gt; Sum A B C</span><br></pre></td></tr></table></figure>
-<p><strong>The differences between Sum and Prod</strong><br>If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
-<p><code>Sum A B</code> have  m + n elements;<br><code>Prod A B</code> have  m x n elements;<br>&nbsp;<br>can we define any element of <code>Prod A Void</code> for some <code>A</code>?     null; because void cannot be instantiated<br>can we define any element of <code>Sum A Void</code> for some <code>A</code>?   A; because right can be instantiated</p>
-<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>def: As we have constructed some data types, we want to access the data inside a type in functional languages, so we introduce destructors. These destructors are built into function definitions via a mechanism known as pattern-matching.<br>&nbsp;<br>NOTE : we can define some operators by using this machanism.</p>
-<p><strong>Pattern matching enumerations</strong><br>The pattern matching machanism will check all cases are covered. If we lost some cases Agda will throw an error.<br>&nbsp;<br>pattern matching <code>and</code> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false</span><br></pre></td></tr></table></figure>
-<p>In order to avoid missing cases, we can simplify to :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and x y = false</span><br></pre></td></tr></table></figure>
-<p>as we can see the remaining cases are all concluded to false, the truth values can be assigned to x and y. And from top to bottom, each case is covered.<br>&nbsp;<br>If a case is not actually used, we can assign <code>_</code>. for example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and _ _ = false                  ... if the remaining cases are unused...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">pattern matched type can be used to define other functions relating to it :</span><br></pre></td></tr></table></figure>
-<p>nand : Boolean -&gt; Boolean -&gt; Boolean<br>nand true true = false<br>nand x y = true</p>
-<p>negate : Boolean -&gt; Boolean<br>negate x = nand x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">where the second Boolean is a result of nand (Boolean -&gt; Boolean).</span><br><span class="line"></span><br><span class="line">**Pattern matching prod**</span><br><span class="line">Sightly different, the function we pattern match here is composite, namely polymorphic(working for more than one types). So we need to specify that types we are using :</span><br></pre></td></tr></table></figure></p>
-<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 (pair a _) = a                    … b is unused …</p>
-<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; B<br>proj2 (pair _ b) = b                    … a is unused …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NOTE : here we have seperate pattern matching functions. As type of A and type of B are elements in `Prod`, whenever we are given an element of that type we match it against `pair a b`.</span><br><span class="line"></span><br><span class="line">**Pattern matching sum**</span><br><span class="line">Important to remember, we need to pattern match all cases appearing in each single type. Example below, as `sum Unit Unit` has as many proof terms as Boolean, so we have :</span><br></pre></td></tr></table></figure></p>
-<p>f : Sum Unit Unit -&gt; Boolean<br>f (left x)  = true<br>f (right y) = false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from the opposite we have :</span><br></pre></td></tr></table></figure></p>
-<p>g : Boolean -&gt; Sum Unit Unit<br>g true  = left empty<br>g false = right empty<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example : since `A + A = 2 * A`, we can convert between `Sum A A` and `Prod Boolean A`</span><br></pre></td></tr></table></figure></p>
-<p>h : {A : Set} -&gt; Sum A A -&gt; Prod Boolean A<br>h (left a)  = pair true a<br>h (right a) = pair false a</p>
-<p>i : {A : Set} -&gt; Prod Boolean A -&gt; Sum A A<br>i (pair true a) = left a<br>i (pair false a) = right a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**A special case**</span><br><span class="line">We can pattern match `Void` using () :</span><br></pre></td></tr></table></figure></p>
-<p>impossible : {A : Set} -&gt; void -&gt; A<br>impossible ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Sum A Void` and `A`.</span><br></pre></td></tr></table></figure></p>
-<p>to : {A : Set} -&gt; Sum A Void -&gt; A<br>to left a = a</p>
-<p>from : {A : Set} -&gt; A -&gt; Sum A Void<br>from a = left a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Prod A Void` and `Void`</span><br></pre></td></tr></table></figure></p>
-<p>to : {A : Set} -&gt; Prod A Void -&gt; Void<br>to pair a _ = a</p>
-<p>from : {A : Set} -&gt; Void -&gt; Prod A Void<br>from ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Generally**</span><br><span class="line">Note that arbitrary types can be created using the language of type definition, and they are always destructed via pattern matching :</span><br></pre></td></tr></table></figure></p>
-<p>data Foo (A : Set) : Set where<br> foo1 : Foo A<br> foo2 : A -&gt; A -&gt; Foo A<br> foo3 : A -&gt; A -&gt; Foo A</p>
-<p>ff : {A : Set} -&gt; Foo A -&gt; Foo A<br>ff foo1 = foo1<br>ff (foo2 x y) = foo3 y x<br>ff (foo3 x _) = foo2 x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Type Isomorphisms</span><br><span class="line">**A note on syntax**</span><br><span class="line">if we look the examples below, the only difference is in the proj2 we remove &#123;A&#125; and &#123;B&#125;. This is because we did not use them in the definition.</span><br></pre></td></tr></table></figure></p>
-<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 {A} {B} (pair a b) = a</p>
-<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj2 (pair a b) = a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Another example : modus ponens</span><br></pre></td></tr></table></figure></p>
-<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp {A} {B} f a = b where<br>  b : B                         …we used B here…<br>  b = f a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if we inline the definition and remove optional arguments we have :</span><br></pre></td></tr></table></figure></p>
-<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp f a = f b<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Type isomorphism**</span><br><span class="line">def : The existence of invertible functions `f : A -&gt; B`, and `g : B -&gt; A` means that the two types are isomorphic (&quot;same shape&quot;), written `A ~ B`. Isomorphism is a very important mathematical and programming concept, indicating that data can be converted between the f and g without loss of precision.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">Type isomorphisms are consistent in semi-ring :</span><br></pre></td></tr></table></figure></p>
-<pre><code>A + (B + C) ~ (A + B) + C
-      A + B ~ B + A
-      A + B ~ A
-A * (B * C) ~ (A * B) * C
-      A * B ~ B * A
-      A * 1 ~ A
-A * (B + C) ~ A * B + A * C
-(A + B) * C ~ A * C + B * C
-      A * 0 ~ 0 
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example: Show that `A + (B + C) ~ (A + B) + C`.</span><br></pre></td></tr></table></figure>
-<p>q1-to : {A B C : Set} -&gt; Sum A (Sum B C) -&gt; Sum (Sum A B) C<br>q1-to (left a) = left (left a)<br>q1-to (right (left b)) = left (right b)<br>q1-to (right (right c)) = right c</p>
-<p>q1-from : {A B C : Set} -&gt; Sum (Sum A B) C -&gt; Sum A (Sum B C)<br>q1-from (left (left a)) = left a<br>q1-from (left (right b)) = right (left b)<br>q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">To check that these are inverse, we want to show q1-to (q1-from x) = x and q1-from (q1-to x) = x :</span><br></pre></td></tr></table></figure></p>
-<p>q1-to (q1-from (left (left a))) = q1-to (left a) = left (left a)<br>q1-to (q1-from (left (right b))) = q1-to (right (left b)) = left (right b)<br>q1-to (q1-from (right c)) = q1-to (right (right c)) = right c</p>
-<p>q1-from (q1-to (left a)) = q1-from (left (left a)) = left a<br>q1-from (q1-to (right (left b))) = q1-from (left (right b)) = right (lef b)<br>q1-from (q1-to (right (right c))) = q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HOTE : When checking isomorphism, we need to check EACH pattern matched case.</span><br><span class="line"></span><br><span class="line">**Not isomorphic**</span><br><span class="line">There are conversion functions `f : A -&gt; B`, `g : B -&gt; A` that they are NOT isomorphic.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">example : `Boolean` and `Unit`</span><br></pre></td></tr></table></figure></p>
-<p>to : Boolean -&gt; Unit<br>to _ = empty</p>
-<p>from : Unit -&gt; Boolean<br>from empty = true<br><code>`</code></p>
-<p>This is often when two types have different number of elements. This case, Boolean has 2 elements and Unit has only 1.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/02/19/[Logic]03_computation/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/02/19/[Logic]01_propositionalLogic/">Classical Logic - Propositional logic</a>
 		</h3>
 		</div>
@@ -989,6 +360,143 @@ A * (B + C) ~ A * B + A * C
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/02/19/[Logic]03_computation/">Computation</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-02-19  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>&nbsp;<br>a formal system:</p>
+<ul>
+<li>sound(true then cannot be false)</li>
+<li>complete(true or false can be determined)</li>
+<li>computable(be computed by machine)</li>
+</ul>
+<h2 id="Computer-Proof-Checking"><a href="#Computer-Proof-Checking" class="headerlink" title="Computer Proof Checking"></a>Computer Proof Checking</h2><p><strong>Inference rules</strong><br>and-elimination:</p>
+<ul>
+<li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
+<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
+</ul>
+<p>and-introduction:</p>
+<ul>
+<li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
+</ul>
+<p>or-introduction</p>
+<ul>
+<li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
+<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q</li>
+</ul>
+<p>or-elimination</p>
+<ul>
+<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
+</ul>
+<p>falsity-elimination</p>
+<ul>
+<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
+</ul>
+<p>double-negation-elimination</p>
+<ul>
+<li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
+</ul>
+<p>Modus ponens</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line"> q: Q        </span><br><span class="line"> q = f p</span><br></pre></td></tr></table></figure>
+<p>Implication introduction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comp : &#123;A B C : Prop&#125; -&gt; (f : A -&gt; B) -&gt; (g : B -&gt; C) -&gt; (A -&gt; C) </span><br><span class="line">comp &#123;A&#125; &#123;B&#125; &#123;C&#125; f g = h where</span><br><span class="line">  h : A -&gt; C</span><br><span class="line">  h a = c where</span><br><span class="line">    b : B</span><br><span class="line">    b = f a</span><br><span class="line">    c : C</span><br><span class="line">    c = g b</span><br></pre></td></tr></table></figure>
+<p>NOTE : except the last proposition, f and g are all hypothesis(premises).<br>&nbsp;<br><strong>Proof checking examples</strong><br>Or-elimination :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ore : &#123;P Q R S&#125; -&gt; p or (Q and R) -&gt; S -&gt; (S and P) or Q</span><br><span class="line">ore &#123;P&#125; &#123;Q&#125; &#123;R&#125; &#123;S&#125; x s = y where</span><br><span class="line">  a : P -&gt; (S and P) or Q</span><br><span class="line">  a p = orIl andI p s</span><br><span class="line">  b : Q and R -&gt; (S and P) or Q</span><br><span class="line">  b m = n where</span><br><span class="line">    q : Q</span><br><span class="line">    q = andEl m</span><br><span class="line">    n : (S and P) or Q</span><br><span class="line">    n = orIr q</span><br><span class="line">  y : (S and P) or Q</span><br><span class="line">  y = orE x a b</span><br></pre></td></tr></table></figure>
+<p><strong>Negation</strong><br>we write (not A) as : A -&gt; Falsity</p>
+<p>Double negation introduction:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DNI : &#123;A : Prop&#125; : A -&gt; (A -&gt; Falsity) -&gt; Falsity</span><br><span class="line">DNI &#123;A&#125; a f = x where</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f a</span><br></pre></td></tr></table></figure>
+<p>Triple negation elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
+<p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
+<p><strong>Law of Excluded Middle</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE goal where</span><br><span class="line">  goal : (P or (P -&gt; Falsity) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  goal z = z u where</span><br><span class="line">    v : P -&gt; Falsity</span><br><span class="line">    v x = z w where</span><br><span class="line">      w : P or (P -&gt; Falsity)</span><br><span class="line">      w = orIl x </span><br><span class="line">    u : P or ( P -&gt; Falsity)</span><br><span class="line">    u = orIr v</span><br></pre></td></tr></table></figure>
+<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p><strong>Introduce functions</strong><br>Some functions written in Agda:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
+<p>NOTE: by using a programming language, we read <code>p : A</code> as a program <code>p</code> has type A, and <code>f : A -&gt; B</code> as <code>f</code> is a function converting A to B.</p>
+<p><strong>Basic types or enums</strong><br>Void type :<br>no constructor so this type cannot be instantiated</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
+<p><code>data</code>  : introduces the definition<br><code>Void</code>  : the name of the type<br><code>Set</code>   : it is a type<br><code>where</code> : introduces the constructors</p>
+<p>Empty type :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty : unit</span><br></pre></td></tr></table></figure>
+<p>Boolean type :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
+<p>Similarly, we can define our own types :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Weekdays : Set where</span><br><span class="line">  Monday Tuesday Wednesday Thursday Friday : Weekdays</span><br></pre></td></tr></table></figure>
+<p><strong>Composite(复合的) types</strong><br>def : we can put two existing data types together to form a new data type.<br>&nbsp;<br>Product (tuple) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
+<p><code>data</code>        : we are defining a data type<br><code>Prod</code>        : the name of the data type<br><code>(A B : Set)</code> : A and B are other data types<br><code>: Set</code>       : we are defining a type indeed<br><code>where</code>       : definitions to follow<br><code>pair</code>        : the name of the constructor<br><code>X -&gt; Y -&gt; Prod X Y</code> : the type of the constructor. given <code>X</code> and <code>Y</code> and return their product <code>Prod X Y</code>. </p>
+<p>Sum (union) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
+<p>NOTE: <code>Sum</code> and <code>Prod</code> are usually called algrebraic types.<br>&nbsp;<br>Similarly, we can define our own composite types :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data Triple (A B C : Set) : Set where</span><br><span class="line">  triple : A -&gt; B -&gt; C -&gt; Triple A B C</span><br><span class="line"></span><br><span class="line">data Sum (A B C : Set) : Set where</span><br><span class="line">  left : A -&gt; Sum A B C</span><br><span class="line">  middle : B -&gt; Sum A B C</span><br><span class="line">  right : C -&gt; Sum A B C</span><br></pre></td></tr></table></figure>
+<p><strong>The differences between Sum and Prod</strong><br>If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
+<p><code>Sum A B</code> have  m + n elements;<br><code>Prod A B</code> have  m x n elements;<br>&nbsp;<br>can we define any element of <code>Prod A Void</code> for some <code>A</code>?     null; because void cannot be instantiated<br>can we define any element of <code>Sum A Void</code> for some <code>A</code>?   A; because right can be instantiated</p>
+<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>def: As we have constructed some data types, we want to access the data inside a type in functional languages, so we introduce destructors. These destructors are built into function definitions via a mechanism known as pattern-matching.<br>&nbsp;<br>NOTE : we can define some operators by using this machanism.</p>
+<p><strong>Pattern matching enumerations</strong><br>The pattern matching machanism will check all cases are covered. If we lost some cases Agda will throw an error.<br>&nbsp;<br>pattern matching <code>and</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false</span><br></pre></td></tr></table></figure>
+<p>In order to avoid missing cases, we can simplify to :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and x y = false</span><br></pre></td></tr></table></figure>
+<p>as we can see the remaining cases are all concluded to false, the truth values can be assigned to x and y. And from top to bottom, each case is covered.<br>&nbsp;<br>If a case is not actually used, we can assign <code>_</code>. for example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and _ _ = false                  ... if the remaining cases are unused...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">pattern matched type can be used to define other functions relating to it :</span><br></pre></td></tr></table></figure>
+<p>nand : Boolean -&gt; Boolean -&gt; Boolean<br>nand true true = false<br>nand x y = true</p>
+<p>negate : Boolean -&gt; Boolean<br>negate x = nand x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">where the second Boolean is a result of nand (Boolean -&gt; Boolean).</span><br><span class="line"></span><br><span class="line">**Pattern matching prod**</span><br><span class="line">Sightly different, the function we pattern match here is composite, namely polymorphic(working for more than one types). So we need to specify that types we are using :</span><br></pre></td></tr></table></figure></p>
+<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 (pair a _) = a                    … b is unused …</p>
+<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; B<br>proj2 (pair _ b) = b                    … a is unused …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NOTE : here we have seperate pattern matching functions. As type of A and type of B are elements in `Prod`, whenever we are given an element of that type we match it against `pair a b`.</span><br><span class="line"></span><br><span class="line">**Pattern matching sum**</span><br><span class="line">Important to remember, we need to pattern match all cases appearing in each single type. Example below, as `sum Unit Unit` has as many proof terms as Boolean, so we have :</span><br></pre></td></tr></table></figure></p>
+<p>f : Sum Unit Unit -&gt; Boolean<br>f (left x)  = true<br>f (right y) = false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from the opposite we have :</span><br></pre></td></tr></table></figure></p>
+<p>g : Boolean -&gt; Sum Unit Unit<br>g true  = left empty<br>g false = right empty<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example : since `A + A = 2 * A`, we can convert between `Sum A A` and `Prod Boolean A`</span><br></pre></td></tr></table></figure></p>
+<p>h : {A : Set} -&gt; Sum A A -&gt; Prod Boolean A<br>h (left a)  = pair true a<br>h (right a) = pair false a</p>
+<p>i : {A : Set} -&gt; Prod Boolean A -&gt; Sum A A<br>i (pair true a) = left a<br>i (pair false a) = right a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**A special case**</span><br><span class="line">We can pattern match `Void` using () :</span><br></pre></td></tr></table></figure></p>
+<p>impossible : {A : Set} -&gt; void -&gt; A<br>impossible ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Sum A Void` and `A`.</span><br></pre></td></tr></table></figure></p>
+<p>to : {A : Set} -&gt; Sum A Void -&gt; A<br>to left a = a</p>
+<p>from : {A : Set} -&gt; A -&gt; Sum A Void<br>from a = left a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Prod A Void` and `Void`</span><br></pre></td></tr></table></figure></p>
+<p>to : {A : Set} -&gt; Prod A Void -&gt; Void<br>to pair a _ = a</p>
+<p>from : {A : Set} -&gt; Void -&gt; Prod A Void<br>from ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Generally**</span><br><span class="line">Note that arbitrary types can be created using the language of type definition, and they are always destructed via pattern matching :</span><br></pre></td></tr></table></figure></p>
+<p>data Foo (A : Set) : Set where<br> foo1 : Foo A<br> foo2 : A -&gt; A -&gt; Foo A<br> foo3 : A -&gt; A -&gt; Foo A</p>
+<p>ff : {A : Set} -&gt; Foo A -&gt; Foo A<br>ff foo1 = foo1<br>ff (foo2 x y) = foo3 y x<br>ff (foo3 x _) = foo2 x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Type Isomorphisms</span><br><span class="line">**A note on syntax**</span><br><span class="line">if we look the examples below, the only difference is in the proj2 we remove &#123;A&#125; and &#123;B&#125;. This is because we did not use them in the definition.</span><br></pre></td></tr></table></figure></p>
+<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 {A} {B} (pair a b) = a</p>
+<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj2 (pair a b) = a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Another example : modus ponens</span><br></pre></td></tr></table></figure></p>
+<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp {A} {B} f a = b where<br>  b : B                         …we used B here…<br>  b = f a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if we inline the definition and remove optional arguments we have :</span><br></pre></td></tr></table></figure></p>
+<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp f a = f b<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Type isomorphism**</span><br><span class="line">def : The existence of invertible functions `f : A -&gt; B`, and `g : B -&gt; A` means that the two types are isomorphic (&quot;same shape&quot;), written `A ~ B`. Isomorphism is a very important mathematical and programming concept, indicating that data can be converted between the f and g without loss of precision.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">Type isomorphisms are consistent in semi-ring :</span><br></pre></td></tr></table></figure></p>
+<pre><code>A + (B + C) ~ (A + B) + C
+      A + B ~ B + A
+      A + B ~ A
+A * (B * C) ~ (A * B) * C
+      A * B ~ B * A
+      A * 1 ~ A
+A * (B + C) ~ A * B + A * C
+(A + B) * C ~ A * C + B * C
+      A * 0 ~ 0 
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example: Show that `A + (B + C) ~ (A + B) + C`.</span><br></pre></td></tr></table></figure>
+<p>q1-to : {A B C : Set} -&gt; Sum A (Sum B C) -&gt; Sum (Sum A B) C<br>q1-to (left a) = left (left a)<br>q1-to (right (left b)) = left (right b)<br>q1-to (right (right c)) = right c</p>
+<p>q1-from : {A B C : Set} -&gt; Sum (Sum A B) C -&gt; Sum A (Sum B C)<br>q1-from (left (left a)) = left a<br>q1-from (left (right b)) = right (left b)<br>q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">To check that these are inverse, we want to show q1-to (q1-from x) = x and q1-from (q1-to x) = x :</span><br></pre></td></tr></table></figure></p>
+<p>q1-to (q1-from (left (left a))) = q1-to (left a) = left (left a)<br>q1-to (q1-from (left (right b))) = q1-to (right (left b)) = left (right b)<br>q1-to (q1-from (right c)) = q1-to (right (right c)) = right c</p>
+<p>q1-from (q1-to (left a)) = q1-from (left (left a)) = left a<br>q1-from (q1-to (right (left b))) = q1-from (left (right b)) = right (lef b)<br>q1-from (q1-to (right (right c))) = q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HOTE : When checking isomorphism, we need to check EACH pattern matched case.</span><br><span class="line"></span><br><span class="line">**Not isomorphic**</span><br><span class="line">There are conversion functions `f : A -&gt; B`, `g : B -&gt; A` that they are NOT isomorphic.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">example : `Boolean` and `Unit`</span><br></pre></td></tr></table></figure></p>
+<p>to : Boolean -&gt; Unit<br>to _ = empty</p>
+<p>from : Unit -&gt; Boolean<br>from empty = true<br><code>`</code></p>
+<p>This is often when two types have different number of elements. This case, Boolean has 2 elements and Unit has only 1.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/02/19/[Logic]03_computation/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/02/19/[Logic]02_predicateCalculus/">Classical Logic - Predicate calculus</a>
 		</h3>
 		</div>
@@ -1120,274 +628,6 @@ A * (B + C) ~ A * B + A * C
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/02/19/[Logic]04_functional/">Introduce to functional programming</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-02-19  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Curry-Howard-Correspondence"><a href="#Curry-Howard-Correspondence" class="headerlink" title="Curry-Howard Correspondence"></a>Curry-Howard Correspondence</h2><p>def : the correspondence between logic and types. This correspondence is, in a mathematical sense, an isomorphism.<br>&nbsp;<br>Propositions correspond to types:<br>Falsity ~ Void<br>Truth   ~ Unit<br>A and B ~ Prod A B<br>A or B  ~ Sum A B</p>
-<p>Postulates should be implementable as functions :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">andEl  : &#123;P Q : Prop&#125;   -&gt; P and Q -&gt; P</span><br><span class="line">andEr  : &#123;P Q : Prop&#125;   -&gt; P and Q -&gt; Q</span><br><span class="line">andI   : &#123;P Q : Prop&#125;   -&gt; P -&gt; Q -&gt; P and Q</span><br><span class="line">orE    : &#123;P Q R : Prop&#125; -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</span><br><span class="line">orIl   : &#123;P Q : Prop&#125;   -&gt; P -&gt; P or Q</span><br><span class="line">orIr   : &#123;P Q : Prop&#125;   -&gt; Q -&gt; Q or P</span><br><span class="line">EFQ    : &#123;P : Prop&#125;     -&gt; Falsity -&gt; P</span><br><span class="line">DNE    : &#123;P : Prop&#125;     -&gt; (not (not P)) -&gt; P</span><br></pre></td></tr></table></figure>
-<p>Due to the isomorphism between types and propositions, we can implement postulates as functions with these types :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">andEl&apos; : &#123;P Q : Set&#125; -&gt; Prod P Q -&gt; P</span><br><span class="line">andEl&apos; (pair p _) = p</span><br><span class="line"></span><br><span class="line">andEr&apos; : &#123;P Q : Set&#125; -&gt; Prod P Q -&gt; Q</span><br><span class="line">andEr&apos; (pair _ q) = q</span><br><span class="line"></span><br><span class="line">andI&apos; : &#123;P Q : Set&#125; -&gt; P -&gt; Q -&gt; Prod P Q</span><br><span class="line">andI&apos; p q = pair p q</span><br><span class="line"></span><br><span class="line">orE&apos; : &#123;P Q R : Set&#125; -&gt; Sum P Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</span><br><span class="line">orE&apos; (left p)  f g = f p</span><br><span class="line">orE&apos; (right q) f g = g q</span><br><span class="line"></span><br><span class="line">orIl&apos; : &#123;P Q : Set&#125; -&gt; P -&gt; Sum P Q</span><br><span class="line">orIl&apos; p = left p</span><br><span class="line"></span><br><span class="line">orIr&apos; : &#123;P Q : Set&#125; -&gt; Q -&gt; Sum P Q</span><br><span class="line">orIr&apos; q = right q</span><br><span class="line"></span><br><span class="line">EFQ&apos; : &#123;P : Set&#125; -&gt; Void -&gt; P</span><br><span class="line">EFQ&apos; ()</span><br></pre></td></tr></table></figure>
-<p>We left Double negation elimination out as this cannot be implemented by Curry-Howard Correspondence :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DNE&apos; : &#123;P : Prop&#125; -&gt; ((P -&gt; Void) -&gt; Void) -&gt; P</span><br><span class="line">DNE&apos; x = ?</span><br></pre></td></tr></table></figure>
-<p>If we could implement <code>DNE</code>, then we can derive an implementation of Law of Excluded Middle :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Set &#125; -&gt; Sum P (P -&gt; Void)</span><br><span class="line">LEM = DNE&apos; goal where</span><br><span class="line">  goal z = z (orIr v) where</span><br><span class="line">     v x = z (orIl x)</span><br></pre></td></tr></table></figure>
-<p>The reason is as we think P as “termination checker” and P -&gt; Void as “non-termination checker” in a turing machine, the function LEM can compute the solution to the Halting problem.<br>&nbsp;<br>NOTE :  CH correspondence provides an idea to construct logic without DNE, LEM which is named as constructive logic. Constructive logic means the logic of computation.</p>
-<p><strong>Proof relevance</strong><br>Constructive logic takes the concept of proof as essential. In contrast, classical logic (constructive logic + DNE) takes the concept of truth as essential. To guid your intuition it is best not to think of a constructive-logic proposition <code>A</code> as true but, if there is a <code>p</code> such that <code>p : A</code> you should think of it as <em>proved by <code>p</code></em>. </p>
-<p>In constructive logic, this helps us distinguish between propositions (as types) more carefully. </p>
-<p>We know that “true or true is equivalent to true”. This is the case clasically and constructively. We can prove that by constructing the function-proof-term of the corresponding types:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">suu-u : Sum Unit Unit -&gt; Unit</span><br><span class="line">suu-u (left empty) = empty</span><br><span class="line">suu-u (right empty) = empty </span><br><span class="line"></span><br><span class="line">u-suu : Unit -&gt; Sum Unit Unit</span><br><span class="line">u-suu empty = left empty</span><br></pre></td></tr></table></figure>
-<p>However, these functions do not set up an isomorphism; <code>u-suu</code> is obviously not a bijection, since <code>Sum Unit Unit</code> has 2 elements and <code>Unit</code> only 1. Indeed, it is not the case that (using the algebraic notation) <code>1 + 1 ~ 1</code>.</p>
-<p>This means that proofs matter. Proofs are relevant. <code>Unit</code> and <code>Sum Unit Unit</code> are both provable, but the former has essentially one proof(-term), and the latter two proof(-term)s. </p>
-<p><strong>Summary</strong><br>In conclusion, there is an important correspondence between algebra, logic, types and sets</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Algebra     Logic     Types           Sets</span><br><span class="line">----------------------------------------------------------</span><br><span class="line">  0           ⊥       Void             ∅</span><br><span class="line">  1           ⊤       Unit            &#123;∙&#125;</span><br><span class="line">a x b       A ∧ B     Prod       A×B=&#123;(a,b)∣a∈A,b∈B&#125;</span><br><span class="line">a + b       A ∨ B     Sum        A⊎B=&#123;(a,0),(b,1)∣a∈A,b∈B&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Lambda-calculus-λ演算"><a href="#Lambda-calculus-λ演算" class="headerlink" title="Lambda calculus(λ演算)"></a>Lambda calculus(λ演算)</h2><p><strong>def:</strong> due to CH correspondence, proofs (of implication) correspond to functions. we use Lambda calculus to formalise the concept of computability by using a simple notion of functions.<br>&nbsp;<br>lambda calculus consists of :</p>
-<ol>
-<li>variables x, y …</li>
-<li>function definition <code>\x -&gt; F</code></li>
-<li>function application <code>f x</code></li>
-</ol>
-<p><code>x</code>: variable binding<br><code>F</code>: another lambda term formed by variables, function application, and function definition<br>&nbsp;<br>NOTE : </p>
-<ul>
-<li>functions in lambda calculus are called terms. </li>
-<li>\x y z are variables in order. variables are substituted in order.</li>
-</ul>
-<p>examples:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\x -&gt; x + 1</span><br><span class="line">\x -&gt; \y -&gt; x + y</span><br></pre></td></tr></table></figure>
-<p>the second can be written more compactly(紧凑地) as:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\x y -&gt; x + y</span><br><span class="line"></span><br><span class="line">(\x y -&gt; x + y) 7 8</span><br><span class="line">  = (\y -&gt; 7 + y) 8     ...x = 7 and x is replaced and removed from variables list</span><br><span class="line">  = 7 + 8</span><br><span class="line">  = 15</span><br></pre></td></tr></table></figure>
-<p>examples : bringing the result of a function to another function</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(\x -&gt; x + 1) ((\y -&gt; y + 1) 2) </span><br><span class="line">  = (\x -&gt; x + 1) (2 + 1)</span><br><span class="line">  = (\x -&gt; x + 1) 3</span><br><span class="line">  = 3 + 1</span><br><span class="line">  = 4</span><br></pre></td></tr></table></figure>
-<p>“higher-order” functions:</p>
-<ul>
-<li>takes one or more functions as arguments (i.e. procedural parameters),</li>
-<li>returns a function as its result.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\f x -&gt; f (f x)) (\y -&gt; y + 1)</span><br><span class="line">  = \x -&gt; (\y -&gt; y + 1)((\y -&gt; y + 1) x)</span><br><span class="line">  = \x -&gt; (\y -&gt; y + 1)(x + 1)</span><br><span class="line">  = \x -&gt; (x + 1) + 1</span><br><span class="line">  = \x -&gt; x + 2</span><br></pre></td></tr></table></figure>
-<p><strong>Proof terms</strong><br>We can inline a function to get the proof term by using lambda calculus.<br>&nbsp;<br>example LEM :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE g where</span><br><span class="line">  g : ((P or (P -&gt; Falsity)) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  g z = z orIr x where</span><br><span class="line">    x : P -&gt; Falsity </span><br><span class="line">    x p = z orIl p</span><br></pre></td></tr></table></figure>
-<p>inline clause x : as we take a variable called p, we can define the function of x : \p -&gt; z (orIr p)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE g where</span><br><span class="line">  g : ((P or (P -&gt; Falsity)) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  g z = z (orIr (\p -&gt; (z orIl p)))</span><br></pre></td></tr></table></figure>
-<p>inline clause g : similar</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE (\z -&gt; (z orIr (\p -&gt; (z orIl p))))</span><br></pre></td></tr></table></figure>
-<p>We can write proof as lambda terms, for example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">q1 : &#123;Q R S : Prop&#125; -&gt; R -&gt; (not Q -&gt; S) -&gt; (Q and R -&gt; not R) -&gt; S</span><br><span class="line">q1 r f g = f (\q -&gt; g ((andI q r) r))</span><br></pre></td></tr></table></figure>
-<p><strong>Church encodings(编码)</strong><br>with the help of lambda calculus, we can encode a lot of mathematical expressions into lambda calculus.<br>&nbsp;<br>Encoding boolean :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">true = \a b -&gt; a           ...it takes two variables and choose the first...</span><br><span class="line">false = \a b -&gt; b          ...it takes two variables and choose the second...</span><br><span class="line">and = \p q -&gt; p q p   </span><br><span class="line">or = \p q -&gt; p p q</span><br></pre></td></tr></table></figure>
-<p>then, an example : true and false = false</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and true false </span><br><span class="line">  = (\p q -&gt; p q p) true false</span><br><span class="line">  = (\q -&gt; true q true) false</span><br><span class="line">  = true false true</span><br><span class="line">  = (\a b -&gt; a) false true     ...chooose the first variable...</span><br><span class="line">  = false</span><br></pre></td></tr></table></figure>
-<p>Encoding negation :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">not = \p a b -&gt; p b a</span><br></pre></td></tr></table></figure>
-<p>test this : true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">not true</span><br><span class="line">  = (\p a b -&gt; p b a) true</span><br><span class="line">  = \a b -&gt; true b a</span><br><span class="line">  = \a b -&gt; (\a b -&gt; a) b a      ...choose the first variable...</span><br><span class="line">  = \a b -&gt; b</span><br><span class="line">  = false</span><br></pre></td></tr></table></figure>
-<p>NOTE : compared to <code>and</code>, difference here is we check argument(true) first.<br>&nbsp;<br>Encoding integers : NOT COVERED.<br>&nbsp;<br>Encoding recursion :<br>1) Omega</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Omega = (\x -&gt; x x) (\x -&gt; x x)</span><br></pre></td></tr></table></figure>
-<p>2) Y combinator</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Y = \f -&gt; (\x -&gt; f(x x)) (\x -&gt; f(x x))</span><br></pre></td></tr></table></figure>
-<p>where we have two identical functions. the second function substitutes each x in the first function then it produces the two new identical functions again. if we process this recursively we get f(f(f …)).<br>&nbsp;<br>For any function <code>g</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Y g = (\x -&gt; g(x x)) (\x -&gt; g(x x))</span><br><span class="line">  = g(((\x -&gt; g(x x)))((\x -&gt; g(x x))))</span><br><span class="line">  = g(Y g)</span><br><span class="line">  ...</span><br><span class="line">  = g (g (Y g))</span><br><span class="line">  ...</span><br><span class="line">  = g (g (g (Y g)))</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
-<p>rsc : <a href="https://www.youtube.com/watch?v=eis11j_iGMs" target="_blank" rel="noopener">https://www.youtube.com/watch?v=eis11j_iGMs</a></p>
-<p><strong>Summary</strong><br>The Curry-Howard Correspondence between propositional logic and lambda calculus does not quite work because :</p>
-<ul>
-<li>DNE is left out as it can be introduced to compute LEM which solves the Halting Problem/ instead we introduce constructive logic)</li>
-<li>some lambda terms are inconsistent : we have <code>A -&gt; Void</code> which in propositional logic means <code>A -&gt; Falsity</code></li>
-</ul>
-<h2 id="Type-checking"><a href="#Type-checking" class="headerlink" title="Type checking"></a>Type checking</h2><p>We will ONLY give rules for types within {Void, Unit, A -&gt; B, type variables}.</p>
-<p>each type is determined by inference rules in the style of natural deduction sequents : <code>Γ ⊢ t : A</code><br>where :<br><code>Γ</code> is a list of elements of the form <code>x:A</code> where <code>x</code> is a variable and <code>A</code> is a type<br><code>t</code> is a lambda calculus term<br><code>A</code> is a type.</p>
-<p><strong>rules:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : A -&gt; B   Γ ⊢ u : A</span><br><span class="line">---------------------------[App]</span><br><span class="line">       Γ ⊢ t u : B</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Γ, x:A ⊢ t : B</span><br><span class="line">----------------------[Abs]</span><br><span class="line"> Γ ⊢ \x -&gt; t : A -&gt; B</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">----------------[Axi]</span><br><span class="line"> Γ, x:A ⊢ x : A</span><br></pre></td></tr></table></figure>
-<p>example: check <code>⊢ \x y z -&gt; y (x z) : (A -&gt; B) -&gt; (B -&gt; C) -&gt; (A -&gt; C)</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                                        ------------------------------[Axi] ----------------------------[Axi]</span><br><span class="line">                                                     Γ ⊢ x : A-&gt;B                Γ ⊢ Z : A</span><br><span class="line">----------------------------------[Axi] ----------------------------------------------------------------[App]</span><br><span class="line">    Γ ⊢ y : (B -&gt; C)                           Γ ⊢ x z : B</span><br><span class="line">----------------------------------------------------------------------[App]</span><br><span class="line">x:A-&gt;B, y:B-&gt;C, z:A ⊢ y (x z) : C</span><br><span class="line">-----------------------------------------------------[Abs x 3]</span><br><span class="line">⊢ \x y z -&gt; y (x z) : (A -&gt; B) -&gt; (B -&gt; C) -&gt; (A -&gt; C)</span><br></pre></td></tr></table></figure>
-<h2 id="Type-inference-推理"><a href="#Type-inference-推理" class="headerlink" title="Type inference(推理)"></a>Type inference(推理)</h2><p><strong>Basic type inference</strong><br>Procedure :<br>1) Construct the type derivation tree for the term using variables instead of types.<br>2) Add constraints as follows: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : A   Γ ⊢ u : B</span><br><span class="line">---------------------------[A = B -&gt; C]</span><br><span class="line">Γ ⊢ t u : C</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ, x:A ⊢ t : B</span><br><span class="line">----------------[C = A -&gt; B]</span><br><span class="line">Γ ⊢ \x -&gt; t : C</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--------------[B = A]</span><br><span class="line">Γ, x:A ⊢ x : B</span><br></pre></td></tr></table></figure>
-<p>3) Apply unification algorithm :</p>
-<ol>
-<li>Change all equations <code>t = x</code> where <code>t</code> is not a variable and <code>x</code> is a variable to <code>x = t</code>.</li>
-<li>Remove all equations <code>x = x</code> where <code>x</code> is a variable.</li>
-<li>Select an equation <code>u = v</code> where neither is a variable and apply <em>type reduction</em>.<br>If type reduction is impossible, <em>fail</em>.</li>
-<li>Select an equation <code>x = t</code> where <code>x</code>, where <code>t ≠ x</code>. If <code>x ∈ t</code> then <em>fail</em> else apply <em>variable elimination</em>. </li>
-<li>Repeat until <em>solved</em>.  </li>
-</ol>
-<p>type reduction : any equation of the form <code>t1 -&gt; t2 = t1&#39; -&gt; t2</code> is broken into <code>t1 = t1&#39;, t2 = t2&#39;</code><br>type elimination : If <code>x = u</code> is an equation where <code>x</code> is a variable and <code>t</code> any type (could be just a variable) the substitution <code>x / u</code> is applied to all other equations.<br>&nbsp;<br>4) a set of equations is solved if :</p>
-<ul>
-<li>all equations have form x = t with x a variable</li>
-<li>every variable on the left occurs only in that place</li>
-</ul>
-<p>Example : Infer the type (if possible) of <code>\f x -&gt; x (f x)</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">                               ———————————————————— [H = B]   ———————————————————— [I = D]</span><br><span class="line">                               f : B, x : D ⊢ f : H           f : B, x : D ⊢ x : I</span><br><span class="line">———————————————————— [F = D]   ——————————————————————————————————————————————————— [H = I → G]</span><br><span class="line">f : B, x : D ⊢ x : F           f : B, x : D ⊢ f x : G</span><br><span class="line">————————————————————————————————————————————————————— [F = G → E]</span><br><span class="line">f : B, x : D ⊢ x (f x) : E</span><br><span class="line">—————————————————————————— [C = D → E]</span><br><span class="line">f : B ⊢ \ x → x (f x) : C</span><br><span class="line">————————————————————————— [A = B → C]</span><br><span class="line">⊢ \ f x → x (f x) : A</span><br></pre></td></tr></table></figure>
-<p>We collect the equations:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → C</span><br><span class="line">C = D → E</span><br><span class="line">F = G → E</span><br><span class="line">F = D</span><br><span class="line">H = I → G</span><br><span class="line">H = B</span><br><span class="line">I = D</span><br></pre></td></tr></table></figure>
-<p>Now apply the type inference algorithm.  We select the second line <code>C = D → E</code> and substitute it in the others, obtaining:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → (D → E)</span><br><span class="line">C = D → E</span><br><span class="line">F = G → E</span><br><span class="line">F = D</span><br><span class="line">H = I → G</span><br><span class="line">H = B</span><br><span class="line">I = D</span><br></pre></td></tr></table></figure>
-<p>Now we select the third equation <code>F = G → E</code> and substitute it in the others, obtaining</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → (D → E)</span><br><span class="line">C = D → E</span><br><span class="line">F = G → E</span><br><span class="line">G → E = D</span><br><span class="line">H = I → G</span><br><span class="line">H = B</span><br><span class="line">I = D</span><br></pre></td></tr></table></figure>
-<p>We flip the fourth equation, giving us:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → (D → E)</span><br><span class="line">C = D → E</span><br><span class="line">F = G → E</span><br><span class="line">D = G → E</span><br><span class="line">H = I → G</span><br><span class="line">H = B</span><br><span class="line">I = D</span><br></pre></td></tr></table></figure>
-<p>We select the fourth equation:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → ((G → E) → E)</span><br><span class="line">C = (G → E) → E</span><br><span class="line">F = G → E</span><br><span class="line">D = G → E</span><br><span class="line">H = I → G</span><br><span class="line">H = B</span><br><span class="line">I = G → E</span><br></pre></td></tr></table></figure>
-<p>The fifth:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → ((G → E) → E)</span><br><span class="line">C = (G → E) → E</span><br><span class="line">F = G → E</span><br><span class="line">D = G → E</span><br><span class="line">H = I → G</span><br><span class="line">I → G = B</span><br><span class="line">I = G → E</span><br></pre></td></tr></table></figure>
-<p>Flip the sixth:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = B → ((G → E) → E)</span><br><span class="line">C = (G → E) → E</span><br><span class="line">F = G → E</span><br><span class="line">D = G → E</span><br><span class="line">H = I → G</span><br><span class="line">B = I → G</span><br><span class="line">I = G → E</span><br></pre></td></tr></table></figure>
-<p>Substitute the sixth in all the others:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = (I → G) → ((G → E) → E)</span><br><span class="line">C = (G → E) → E</span><br><span class="line">F = G → E</span><br><span class="line">D = G → E</span><br><span class="line">H = I → G</span><br><span class="line">B = I → G</span><br><span class="line">I = G → E</span><br></pre></td></tr></table></figure>
-<p>The seventh:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = ((G → E) → G) → ((G → E) → E)</span><br><span class="line">C = (G → E) → E</span><br><span class="line">F = G → E</span><br><span class="line">D = G → E</span><br><span class="line">H = (G → E) → G</span><br><span class="line">B = (G → E) → G</span><br><span class="line">I = G → E</span><br></pre></td></tr></table></figure>
-<p>from now all equations have been solved as :<br>checked: all equations have form <code>x = t</code> with <code>x</code> a variable<br>checked: every variable on the left occurs only in that place.</p>
-<p><strong>Typing non-termination</strong><br>Just like DNE violates the Curry-Howard correspondence from the logical side, so do terms like <code>omega</code> and <code>Y</code> violate it from the functional side. The programming language Agda, which is based on the CH correspondence, bans such terms, which lead to errors. </p>
-<p>Terms such as <code>Y</code> and <code>omega</code> are non-terminating because somewhere in them you will find sub-terms <code>\x -&gt; x x</code>. Such terms cannot type check:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-----------[D = B] ------------[E = B]</span><br><span class="line">x:B ⊢ x : D        x:B ⊢ x : E</span><br><span class="line">-------------------------------[D = C -&gt; E]</span><br><span class="line">x:B ⊢ x x : C</span><br><span class="line">-----------------[A = B -&gt; C]</span><br><span class="line">⊢ (\x -&gt; x x) : A</span><br></pre></td></tr></table></figure>
-<p>The constraints </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">D = B</span><br><span class="line">E = B</span><br><span class="line">D = C -&gt; E</span><br><span class="line">A = B -&gt; C</span><br></pre></td></tr></table></figure>
-<p>after the eliminination of <code>D</code> and <code>E</code> it becomes</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B = C -&gt; B</span><br><span class="line">A = B -&gt; C</span><br></pre></td></tr></table></figure>
-<p>Which <em>fails</em> as variable <code>B</code> occurs on both sides of an equation.<br>The same failure of type inference occurs in attempting to type the <code>Y</code> combinator. </p>
-<h2 id="CH-correspondence-cont’d"><a href="#CH-correspondence-cont’d" class="headerlink" title="CH correspondence - cont’d"></a>CH correspondence - cont’d</h2><p><strong>More complicate isomorphisms</strong><br>Currying iso: <code>a^(b^(c)) = a^(b x c)</code> corresponds to <code>C -&gt; B -&gt; A ~ (Prod C B) -&gt; A</code><br>&nbsp;<br>We have conversion function :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cur : &#123;A B C : Set&#125; -&gt; ((Prod C B) -&gt; A) -&gt; (C -&gt; B -&gt; A)</span><br><span class="line">cur f = \c b -&gt; f (pair c b)</span><br><span class="line"></span><br><span class="line">uncur : &#123;A B C : Set&#125; -&gt; (C -&gt; B -&gt; A) -&gt; ((Prod C B) -&gt; A)</span><br><span class="line">uncur f = \ &#123; (pair c b) -&gt; f c b &#125;</span><br></pre></td></tr></table></figure>
-<p>Similarly, we can define the function explicitly :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cur : &#123;A B C : Set&#125; -&gt; ((Prod C B) -&gt; A) -&gt; C -&gt; B -&gt; A</span><br><span class="line">cur f c b = f (pair c b)</span><br><span class="line"></span><br><span class="line">uncur : &#123;A B C : Set&#125; -&gt; (C -&gt; B -&gt; A) -&gt; (Prod C B) -&gt; A</span><br><span class="line">uncur f (pair c b) = f c b</span><br></pre></td></tr></table></figure>
-<p>Often we may use lambda calculus to help us check isomorphism :<br>example : <code>Prod (B -&gt; A) (C -&gt; A) ~ Sum B C -&gt; A</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">to : &#123;A B : Set&#125; -&gt; Prod (B -&gt; A) (C -&gt; A) -&gt; Sum B C -&gt; A</span><br><span class="line">to (pair f g) left b = f b</span><br><span class="line">to (pair f g) right c = f c</span><br><span class="line"></span><br><span class="line">from : &#123;A B : Set&#125; -&gt; (Sum B C -&gt; A) -&gt; Prod (B -&gt; A) (C -&gt; A)</span><br><span class="line">from fg = pair (\b -&gt; fg (left b) (\c -&gt; fg (right c))</span><br></pre></td></tr></table></figure>
-<p>they are isomorphic as they are inverse to each other:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">to (from fg) (left b) = to (pair (\b -&gt; fg (left b)) (\c -&gt; fg (right c))) (left b)</span><br><span class="line">                      = (\b -&gt; fg (left b)) b</span><br><span class="line">                      = fg (left b)</span><br><span class="line"></span><br><span class="line">to (from fg) (right c) = to (pair (\b -&gt; fg (left b)) (\c -&gt; fg (right c))) (rigth c)</span><br><span class="line">                       = (\c -&gt; fg (right c)) c</span><br><span class="line">                       = fg (right c)</span><br><span class="line"></span><br><span class="line">from (to (pair f g)) = pair (\b -&gt; (to pair f g) (left b)) (\c -&gt; (to pair f g) (right c))</span><br><span class="line">                     = pair (\b -&gt; f b) (\c -&gt; g c)</span><br><span class="line">                     = pair f g</span><br></pre></td></tr></table></figure>
-<p><strong>Propositions as types</strong><br>we can now extend the STLC with Product and Sum :<br>&nbsp;<br>Product Elimination Left:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : Prod A B</span><br><span class="line">----------------</span><br><span class="line">Γ ⊢ proj1 t : A</span><br></pre></td></tr></table></figure>
-<p>Product Elimination Right:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : Prod A B</span><br><span class="line">-----------------</span><br><span class="line">Γ ⊢ proj2 t : B</span><br></pre></td></tr></table></figure>
-<p>Product Introduction:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : A   Γ ⊢ u : B</span><br><span class="line">-----------------------</span><br><span class="line">Γ ⊢ andI t u : Prod A B</span><br></pre></td></tr></table></figure>
-<p>Sum Elimination:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : Sum A B   Γ ⊢ u : A -&gt; C   Γ ⊢ v : B -&gt; C</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">Γ ⊢  orE t u v : Sum A B -&gt; (A -&gt; C) -&gt; (B -&gt; C) -&gt; C</span><br><span class="line"></span><br><span class="line"> pattern match (left a) = f a</span><br><span class="line">               (right b) = g b</span><br></pre></td></tr></table></figure>
-<p>Sum Introduction Left:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : A</span><br><span class="line">---------------------</span><br><span class="line">Γ ⊢ orIl t : Sum A B</span><br></pre></td></tr></table></figure>
-<p>Sum Introduction Right:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Γ ⊢ t : B</span><br><span class="line">--------------------</span><br><span class="line">Γ ⊢ orIr t : Sum A B</span><br></pre></td></tr></table></figure>
-<p>Ex Falso Quodlibet</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-------------------</span><br><span class="line">Γ ⊢ EFQ : Void -&gt; A</span><br></pre></td></tr></table></figure>
-<h2 id="Inductive-types"><a href="#Inductive-types" class="headerlink" title="Inductive types"></a>Inductive types</h2><p>def : beyond finite types, we can define infinite types by using recursive definition.<br>&nbsp;<br><strong>Natural numbers</strong><br>According to peano’s theorem, we can define natural numbers :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Nat : Set where</span><br><span class="line">  zero : Nat</span><br><span class="line">  suc  : Nat -&gt; Nat</span><br></pre></td></tr></table></figure>
-<p>Syntax :<br><code>data</code> is a keyword indicating a type definition<br><code>Nat</code> is the identifier we choose for the type<br><code>Set</code> is the built-in identifier for types<br><code>where</code> is introducing the definitions, which need to be indented<br><code>zero</code> is the name of one of the <strong>constructors</strong><br><code>suc</code> is a <strong>constructor</strong> that takes a <code>Nat</code> as an argument and produces another <code>Nat</code>.<br>&nbsp;<br>Basic functions : pattern matching on Nat’s<br>1) zero test :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">is-zero : Nat -&gt; Boolean</span><br><span class="line">is-zero  zero = true</span><br><span class="line">is-zero  _    = false</span><br></pre></td></tr></table></figure>
-<p>2) Doubling :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dbl : Nat -&gt; Nat</span><br><span class="line">dbl zero = zero</span><br><span class="line">dbl (suc n) = suc (suc (dbl n))</span><br></pre></td></tr></table></figure>
-<p>3) Addition :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add : Nat -&gt; Nat -&gt; Nat</span><br><span class="line">add zero n = n</span><br><span class="line">add (suc m) n = suc (add m n)</span><br></pre></td></tr></table></figure>
-<p>4) Minus : if m &lt; n then return zero</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">minus : Nat -&gt; Nat -&gt; Nat</span><br><span class="line">minus (suc m) (suc n) = minus m n</span><br><span class="line">minus m _ = m</span><br></pre></td></tr></table></figure>
-<p>5) Multiplication as addition i.e. 3 x 4 = 3 + 3 + 3 + 3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">multi : Nat -&gt; Nat -&gt; Nat</span><br><span class="line">multi m zero = m</span><br><span class="line">multi m (suc n) = add m (multi m n)</span><br></pre></td></tr></table></figure>
-<p>6) Halving : (taking 1/2 as 0)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">half : Nat -&gt; Nat</span><br><span class="line">half zero = zero</span><br><span class="line">half (suc zero) =zero</span><br><span class="line">half (suc (suc n)) = suc (half n)</span><br></pre></td></tr></table></figure>
-<p>Structural recursion: if arg is getting smaller, it is allowed to find the answer</p>
-<p><strong>Lists</strong><br>List is a polymorphic type so we need to specify the elements in List is a type :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data : List (A : Set) : Set where</span><br><span class="line">  nil  : List A</span><br><span class="line">  cons : A -&gt; List A -&gt; List A</span><br></pre></td></tr></table></figure>
-<p><code>nil</code>: empty list constructor<br><code>cons</code>: constructor that takes an element of <code>A</code> (called head) and a list (called tail).<br>&nbsp;<br>Also we can have a list of lists:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = cons 0 nil          ... [0]</span><br><span class="line">y = cons 1 x            ... [1, 0]</span><br><span class="line">z = cons x (cons y nil) ... [[1, 0], [0]]</span><br></pre></td></tr></table></figure>
-<p>1) Empty-check:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">empty : &#123;A : Set&#125; -&gt; List A -&gt; Boolean</span><br><span class="line">empty nil = true</span><br><span class="line">empty _   = false</span><br></pre></td></tr></table></figure>
-<p>2) length of a list:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">len : &#123;A : Set&#125; -&gt; List A -&gt; Nat</span><br><span class="line">len nil         = zero</span><br><span class="line">len (cons _ xs) = suc (len xs)</span><br></pre></td></tr></table></figure>
-<p>3) Sum of elements in a List :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sum : list Nat -&gt; Nat</span><br><span class="line">sum nil = zero</span><br><span class="line">sum (cons x xs) = add x (sum xs)</span><br><span class="line"></span><br><span class="line">add : Nat -&gt; Nat -&gt; Nat</span><br><span class="line">add zero n = n</span><br><span class="line">add (suc m) n = suc (add m n)</span><br></pre></td></tr></table></figure>
-<p>4) Appending two lists :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">append : &#123;A : Set&#125; -&gt; List A -&gt; List A -&gt; List A</span><br><span class="line">append nil ys = ys</span><br><span class="line">append (cons x xs) ys = cons x (append xs ys)</span><br></pre></td></tr></table></figure>
-<p>5) Maximum element in a List :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">maxl : List Nat -&gt; Nat</span><br><span class="line">maxl nil = zero</span><br><span class="line">maxl (cons x xs) = max x (maxl xs)</span><br><span class="line"></span><br><span class="line">max : Nat -&gt; Nat -&gt; Nat</span><br><span class="line">max m zero = m</span><br><span class="line">max zero n = n</span><br><span class="line">max (suc m) (suc n) = suc (max m n)</span><br></pre></td></tr></table></figure>
-<p>6) Reversing a list :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rev : &#123;A : Set&#125; -&gt; List A -&gt; List A </span><br><span class="line">rev nil = nil</span><br><span class="line">rev (cons x xs) = append (rev xs) (cons x nil)</span><br></pre></td></tr></table></figure>
-<p>7) Filtering a list: return a list leaves out some elements<br>method 1 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">filter-zeros : List Nat -&gt; List Nat</span><br><span class="line">filter-zeros nil = nil</span><br><span class="line">filter-zeros (cons x xs) = if (is-zero x) xs&apos; (cons x xs&apos;) where</span><br><span class="line">  xs&apos; = filter-zeros xs</span><br><span class="line"></span><br><span class="line">if : &#123;A : Set&#125; -&gt; Boolean -&gt; A -&gt; A -&gt; A</span><br><span class="line">if true  x  _ = x</span><br><span class="line">if false _ y = y</span><br><span class="line"></span><br><span class="line">is-zero : Nat -&gt; Bool</span><br></pre></td></tr></table></figure>
-<p>method 2 : deep pattern-matching :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filter-zeros : List Nat -&gt; List Nat</span><br><span class="line">filter-zeros nil = nil</span><br><span class="line">filter-zeros (cons zero xs) = filter-zeros xs</span><br><span class="line">filter-zeros (cons (suc n) xs) = cons (suc n) (filter-zeros xs)</span><br></pre></td></tr></table></figure>
-<p>suppose that we have a function <code>is-even : Nat -&gt; Boolean</code> to test for even-ness or <code>is-prime : Nat -&gt; Boolean</code> to test for primality. Filtering for some given property has very similar shape:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">filter-zeros : List Nat -&gt; List Nat</span><br><span class="line">filter-zeros nil = nil</span><br><span class="line">filter-zeros (cons x xs) = if (is-zero x) xs&apos; (cons x xs&apos;) where</span><br><span class="line">  xs&apos; = filter-zeros xs</span><br><span class="line"></span><br><span class="line">filter-evens : List Nat -&gt; List Nat</span><br><span class="line">filter-evens nil = nil</span><br><span class="line">filter-evens (cons x xs) = if (is-even x) xs&apos; (cons x xs&apos;) where</span><br><span class="line">  xs&apos; = filter-evens xs</span><br><span class="line"></span><br><span class="line">filter-primes : List Nat -&gt; List Nat</span><br><span class="line">filter-primes nil = nil</span><br><span class="line">filter-primes (cons x xs) = if (is-prime x) xs&apos; (cons x xs&apos;) where</span><br><span class="line">  xs&apos; = filter-primes xs</span><br></pre></td></tr></table></figure>
-<p>This means that we can define a generic filter function for any property (predicate) expressed by a function <code>p : A -&gt; Boolean</code> where <code>A</code> is the type of list elements:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">filter : &#123;A : Set&#125; -&gt; List A -&gt; List A</span><br><span class="line">filter nil = nil</span><br><span class="line">filter (cons x xs) = if (p x) xs&apos; (cons x xs&apos;) where</span><br><span class="line">  xs&apos; = filter xs</span><br><span class="line"></span><br><span class="line">if : &#123;A : Set&#125; -&gt; Boolean -&gt; A -&gt; A -&gt; A</span><br><span class="line">if true x _ = x</span><br><span class="line">if false _ y = y</span><br><span class="line"></span><br><span class="line">p : &#123;A : Set&#125; -&gt; A -&gt; Boolean</span><br></pre></td></tr></table></figure>
-<p>8) Interleaving : merge two Lists</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intlv : &#123;A : Set&#125; -&gt; Prod (List A) (List A) -&gt; List A</span><br></pre></td></tr></table></figure>
-<p>According to Currying isomorphism, we have </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">intlv : &#123;A : Set&#125; -&gt; List A -&gt; List A -&gt; List A</span><br><span class="line">intlv xs nil = xs</span><br><span class="line">intlv nil ys = ys</span><br><span class="line">intlv (cons x xs) (cons y ys) = cons x (cons y (intlv xs ys))</span><br></pre></td></tr></table></figure>
-<p>9) Zip : merge two Lists using List (Prod A B); If one of the lists is longer than the other the extra elements are ignored.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zip : &#123;A B : Set&#125; -&gt; List A -&gt; List B -&gt; List (Prod A B)</span><br><span class="line">zip (cons a as) (cons b bs) = cons (pair a b) (zip as bs)</span><br><span class="line">zip _ _ = nil</span><br></pre></td></tr></table></figure>
-<h2 id="Fold-reduce"><a href="#Fold-reduce" class="headerlink" title="Fold(reduce)"></a>Fold(reduce)</h2><p>def: it is a recursive function that abstracts the structural recursion pattern itself. we take a function to compute elements in a list. for example add numbers from 0 to 10.</p>
-<p>Fold-right:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foldr : &#123;A B : Set&#125; -&gt; (A -&gt; B -&gt; B) -&gt; B -&gt; List A -&gt; B</span><br><span class="line">foldr f y0 nil = y0 </span><br><span class="line">foldr f y0 (cons x xs) = f x y where</span><br><span class="line">  y = foldr f y0 xs</span><br></pre></td></tr></table></figure>
-<p>Fold-left:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foldl : &#123;A B : Set&#125; -&gt; (B -&gt; A -&gt; B) -&gt; B -&gt; List A -&gt; B</span><br><span class="line">foldl f y0 nil         = y0</span><br><span class="line">foldl f y0 (cons x xs) = foldl f y0&apos; xs where</span><br><span class="line">  y0&apos; = f y0 x</span><br></pre></td></tr></table></figure>
-<p><code>y0</code> a special value for the empty list<br>&nbsp;<br>example : right recursion</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">foldr sum 0 xs </span><br><span class="line">   = sum 0 (foldr sum 0 [1, 2, 3])</span><br><span class="line">   = sum 0 (sum 1 (foldr sum 0 [2, 3]))</span><br><span class="line">   = sum 0 (sum 1 (sum 2 (foldr sum 0 [3])))</span><br><span class="line">   = sum 0 (sum 1 (sum 2 (sum 3 (foldr sum 0 nil))))</span><br><span class="line">   = sum 0 (sum 1 (sum 2 (sum 3 0)))</span><br><span class="line">   = sum 0 (sum 1 (sum 2 3))</span><br><span class="line">   = sum 0 (sum 1 5)</span><br><span class="line">   = sum 0 6</span><br><span class="line">   = 6</span><br></pre></td></tr></table></figure>
-<p>example : left recursion</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">foldl sum 0 xs</span><br><span class="line">  = foldl sum (sum 0 0) [1, 2, 3]</span><br><span class="line">  = foldl sum (sum (sum 0 0) 1) [2, 3]</span><br><span class="line">  = foldl sum (sum (sum (sum 0 0) 1) 2) [3]</span><br><span class="line">  = foldl sum (sum (sum (sum (sum 0 0) 1) 2) 3) nil </span><br><span class="line">  = sum (sum (sum (sum 0 0) 1) 2) 3</span><br><span class="line">  = sum (sum (sum 0 1) 2) 3</span><br><span class="line">  = sum (sum 1 2) 3</span><br><span class="line">  = sum 3 3</span><br><span class="line">  = 6</span><br></pre></td></tr></table></figure>
-<p><strong>Map</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map : &#123;A B : Set&#125; -&gt; (A -&gt; B) -&gt; List A -&gt; List B</span><br><span class="line">map f nil = nil</span><br><span class="line">map f (cons x xs) = cons (f x) (map f xs)</span><br></pre></td></tr></table></figure>
-<p>This function applies <code>f : A -&gt; B</code> to each element of <code>List A</code> to create a <code>List B</code>. </p>
-<p>map-reduce</p>
-<h2 id="More-on-types"><a href="#More-on-types" class="headerlink" title="More on types"></a>More on types</h2><p><strong>Dealing with errors</strong><br>Sometimes when we iterate to the tail of a List, we may not simply assign it to zero, but we want it be an error value. In general when we want to assign a value to a specific element in a data type, we can define :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Option (A : Set) : Set where</span><br><span class="line">  none : Option A</span><br><span class="line">  some : A -&gt; Option A</span><br></pre></td></tr></table></figure>
-<p><code>none</code> adds a special error value<br><code>some</code> injects <code>A</code> into the wrapper <code>Option</code></p>
-<p>return the head of a list</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head : &#123;A : Set&#125; -&gt; List A-&gt; Option A</span><br><span class="line">head (cons x _) = some x</span><br><span class="line">head nil        = none</span><br></pre></td></tr></table></figure>
-<p>return nth element</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nth : &#123;A : Set&#125; -&gt; Nat -&gt; List A -&gt; Option A</span><br><span class="line">nth _ nil = none</span><br><span class="line">nth zero (cons x _) = some x</span><br><span class="line">nth (suc n) (cons _ xs) = nth n xs</span><br></pre></td></tr></table></figure>
-<p>return the sum of 2nd and 3rd in a list</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sum23 : List Nat -&gt; Option Nat</span><br><span class="line">sum23 xs = add&apos; x2 x3 where</span><br><span class="line">  x2 = nth two xs</span><br><span class="line">  x3 = nth three xs</span><br><span class="line"></span><br><span class="line">add&apos; : Option Nat -&gt; Option Nat -&gt; Option Nat</span><br><span class="line">add&apos; (some m) (some n) = some (add m n)</span><br><span class="line">add&apos; _ _ = none</span><br></pre></td></tr></table></figure>
-<p><strong>Trees</strong><br>Binary tree with data stored at leaves</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data BTreeL (A : Set) : Set where</span><br><span class="line">  leaf : A -&gt; BTreeL A</span><br><span class="line">  node : BTreeL A -&gt; BTreeL A -&gt; BTreeL A</span><br></pre></td></tr></table></figure>
-<p>Representation :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   BTreeL</span><br><span class="line">   /    \</span><br><span class="line"> ls     rs</span><br><span class="line"> / \    / \</span><br><span class="line">l   r  l   r</span><br></pre></td></tr></table></figure>
-<p><strong>S-expreesions</strong><br>def : S-expression is used in serialisation of arbitrary data structure. It representes nested paranthetical expressions whose atomic values are (usually) strings.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sexp (A : Set) : Set where</span><br><span class="line">  atom : A -&gt; Sexp A</span><br><span class="line">  list : List (Sexp A) -&gt; Sexp A</span><br></pre></td></tr></table></figure>
-<p>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">open import Agda.Builtin.String</span><br><span class="line"></span><br><span class="line">a-this = atom &quot;this&quot;</span><br><span class="line">a-is   = atom &quot;is&quot;</span><br><span class="line">a-an   = atom &quot;an&quot;</span><br><span class="line">a-s    = atom &quot;s&quot;</span><br><span class="line">a-exp  = atom &quot;expression&quot;</span><br><span class="line"></span><br><span class="line">l-is-an = list (cons a-is (cons a-an nil))</span><br><span class="line">l-s-exp = list (cons a-s (cons a-exp nil))</span><br><span class="line">l-ex    = list (cons a-this (cons l-is-an (cons l-s-exp nil)))</span><br></pre></td></tr></table></figure>
-<h2 id="Induction"><a href="#Induction" class="headerlink" title="Induction"></a>Induction</h2><p>induction proof :</p>
-<ol>
-<li>Basis of induction : if P(0) holds</li>
-<li>Inductive step : hypothesize P(n), if P(n) -&gt; P(suc n) holds then</li>
-<li>Conclusion : P(n) holds</li>
-</ol>
-<p>NOTE : we will prove informally using induction above.</p>
-<p><strong>Induction on Nat</strong><br>procedure : prove ∀ n ∈ Nat. P(n) holds</p>
-<ol>
-<li>Base case : P(zero)</li>
-<li>Inductive case : Hypothesize P(n), prove P(suc n)</li>
-</ol>
-<p><strong>Induction on list</strong><br>Procedure : prove ∀ es ∈ List. P(es) holds</p>
-<ol>
-<li>Base case : P(nil)</li>
-<li>Inductive case : Hypothesize P(xs), prove P(cons x xs)</li>
-</ol>
-<p><strong>Isomorphism by induction</strong><br>Furthermore, when we are trying to show isomorphism between something and a List, we need to prove from each direction by induction.<br>&nbsp;<br>Example : prove <code>Nat ~ List Unit</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">f : Nat → List Unit</span><br><span class="line">f zero = nil</span><br><span class="line">f (suc n) = cons empty (f n)</span><br><span class="line"></span><br><span class="line">g : List Unit → Nat</span><br><span class="line">g nil = zero</span><br><span class="line">g (cons e es) = suc (g es)</span><br><span class="line"></span><br><span class="line">-- Induction required!</span><br><span class="line"></span><br><span class="line">-- Prove: ∀ n ∈ Nat. g (f n) ≡ n</span><br><span class="line">-- Base case: Prove (g (f zero) ≡ zero)</span><br><span class="line">--                    g (f zero) ≡ zero</span><br><span class="line">--                    g nil ≡ zero            (by def. of f)</span><br><span class="line">--                    zero ≡ zero            (by def. of g)</span><br><span class="line">-- Inductive case: Hypothesise (g (f n) ≡ n) and prove (g (f (suc n)) ≡ suc n)</span><br><span class="line">--                           g (f (suc n)) ≡ suc n</span><br><span class="line">--                           g (cons empty (f n)) ≡ suc n   (by def. of f)</span><br><span class="line">--                           suc (g (f n)) ≡ suc n                (by def. of g)</span><br><span class="line">--                           suc n ≡ suc n                           (by inductive hypothesis)</span><br><span class="line"></span><br><span class="line">-- Prove: ∀ es ∈ List Unit. f (g es) ≡ es</span><br><span class="line">-- Base case: Prove (f (g nil) ≡ nil)</span><br><span class="line">--                    f (g nil) ≡ nil</span><br><span class="line">--                    f zero ≡ nil         (by def. of g)</span><br><span class="line">--                    nil ≡ nil              (by def. of f)</span><br><span class="line">-- Inductive case: Hypothesise (f (g es) ≡ es) and prove (f (g (cons empty es)) ≡ cons empty es)</span><br><span class="line">--                           f (g (cons unit es)) ≡ es</span><br><span class="line">--                           f (suc (g es)) ≡ cons empty es                (by def. of g)</span><br><span class="line">--                           cons empty (f (g es)) ≡ cons empty es  (by def. of f)</span><br><span class="line">--                           cons empty es ≡ cons empty es             (by inductive hypothesis)</span><br></pre></td></tr></table></figure>
-<p>Example : prove <code>Nat ~ Option Nat</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">a : Nat → Option Nat</span><br><span class="line">a zero = None</span><br><span class="line">a (suc n) = Some n</span><br><span class="line"></span><br><span class="line">b : Option Nat → Nat</span><br><span class="line">b None = zero</span><br><span class="line">b (Some n) = suc n</span><br><span class="line"></span><br><span class="line">-- No induction required!</span><br><span class="line"></span><br><span class="line">-- Prove: ∀ n ∈ Nat. b (a n) ≡ n</span><br><span class="line">-- zero case: Prove (b (a zero) ≡ zero)</span><br><span class="line">--                 b (a zero) ≡ zero</span><br><span class="line">--                 b None ≡ zero       (by def. of a)</span><br><span class="line">--                 zero ≡ zero           (by def. of b)</span><br><span class="line">-- suc case: Prove (f (g (suc n)) ≡ suc n</span><br><span class="line">--                 b (a (suc n)) ≡ suc n</span><br><span class="line">--                 b (Some n) ≡ suc n   (by def. of a)</span><br><span class="line">--                 suc n ≡ suc n             (by def. of b)</span><br><span class="line"></span><br><span class="line">-- Prove: ∀ o ∈ Option Nat. a (b o) ≡ o</span><br><span class="line">-- None case: Prove (a (b None) ≡ None)</span><br><span class="line">--                    a (b None) ≡ None</span><br><span class="line">--                    a zero ≡ None            (by def. of b)</span><br><span class="line">--                    None ≡ None             (by def. of a)</span><br><span class="line">-- Some case: Prove ∀ n ∈ Nat. (a (b (Some n)) ≡ Some n)</span><br><span class="line">--                     a (b (Some n)) ≡ Some n</span><br><span class="line">--                     a (suc n) ≡ Some n           (by def. of b)</span><br><span class="line">--                     Some n ≡ Some n             (by def. of a)</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/02/19/[Logic]04_functional/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -1425,11 +665,7 @@ A * (B + C) ~ A * B + A * C
 		<h4>Categories</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/categories/Git-分布式版本控制器/">Git(分布式版本控制器)<span>2</span></a></li>
-		
-			<li><a href="/categories/Hardware-计算机硬件/">Hardware(计算机硬件)<span>2</span></a></li>
-		
-			<li><a href="/categories/Terminal-终端/">Terminal 终端<span>1</span></a></li>
+			<li><a href="/categories/Terminal/">Terminal<span>1</span></a></li>
 		
 			<li><a href="/categories/Year1-Artificial-Intelligence/">Year1/ Artificial Intelligence<span>12</span></a></li>
 		
@@ -1455,23 +691,23 @@ A * (B + C) ~ A * B + A * C
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/06/18/[Hardware]02_cpu/"><i class="fa fa-file-o"></i>CPU</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/18/[Hardware]01_pre/"><i class="fa fa-file-o"></i>如何理解计算机?</a>
-      </li>
-    
-      <li>
         <a href="/2019/06/18/Unix-commands/"><i class="fa fa-file-o"></i>MacOS/ basic commands</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_1/"><i class="fa fa-file-o"></i>Intro - 什么是git?</a>
+        <a href="/2019/06/02/[AI]03_uninformed/"><i class="fa fa-file-o"></i>Uninformed Search</a>
       </li>
     
       <li>
-        <a href="/2019/06/17/Git_2/"><i class="fa fa-file-o"></i>Intro - git原理</a>
+        <a href="/2019/06/02/[AI]02_swarm/"><i class="fa fa-file-o"></i>Swarm intelligence and fire...</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/02/[AI]07_knn/"><i class="fa fa-file-o"></i>Introduction to machine lea...</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/02/[AI]04_informed/"><i class="fa fa-file-o"></i>Informed Search</a>
       </li>
     
   </ul>
