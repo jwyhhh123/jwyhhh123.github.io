@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>System of Linear Equations - Guassian Elimination | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="Another example of a fieldComplex field C consists of pair(a, b) of real numbers.
+12(a,b)+(c,d) = (a+c,b+d) (a,b)×(c,d) = (ac−bd,ad+bc)
+NOTE: (a,b) ca">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="System of Linear Equations - Guassian Elimination">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> System of Linear Equations - Guassian Elimination</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Another-example-of-a-field"><a href="#Another-example-of-a-field" class="headerlink" title="Another example of a field"></a>Another example of a field</h2><p>Complex field C consists of pair(a, b) of real numbers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b)+(c,d) = (a+c,b+d) </span><br><span class="line">(a,b)×(c,d) = (ac−bd,ad+bc)</span><br></pre></td></tr></table></figure>
+<p>NOTE: (a,b) can be writtern in a + ib where i · i = -1.</p>
+<p>// (a, b)(x, y) = (1, 0)</p>
+<blockquote>
+<p>complex numbers are used in Robot rotations.</p>
+</blockquote>
+<h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Base Case    : ax = b. This can be solved directly: x = b/a.<br>General Case : There are n equations and each contains n unknowns.</p>
+<ol>
+<li>use the first equation to eliminate the first unknown in the remaing (n-1) equations.</li>
+<li>apply step 1 recursively.</li>
+<li>determine the last unknown and bring it back recursively.</li>
+<li>reduce each question to base case.</li>
+</ol>
+<p>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line"> 3 * x1 − 2 * x2 + 7 * x3 =   5 </span><br><span class="line">−2 * x1 −     x2 −     x3 =   0</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">          9 * x2 − 5 * x3 = -22</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                  32 * x3 = -32</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                       x3 = - 1</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1    </span><br><span class="line"></span><br><span class="line">                       x1 =   2</span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1</span><br></pre></td></tr></table></figure>
+<h2 id="A-more-compact-notation"><a href="#A-more-compact-notation" class="headerlink" title="A more compact notation"></a>A more compact notation</h2><p>The unknowns themselves have no effect on GE, all computation happens on the numeric coefficients.<br>&nbsp;<br>example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|  -3   1  -2  | -5  |    // (second equation) +- (first equation)</span><br><span class="line">\   3  -1   7  | 10  /</span><br><span class="line"> </span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the first unknown in the remaining 2.</span><br><span class="line">\   0  -2   2  |  7  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the second unknown in the remaining 1.</span><br><span class="line">\   0   0   5  |  5  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     </span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  | -2  \</span><br><span class="line">|   0   2   0  | -5  |     // bring it back to all equations</span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  |  -2 \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   6   0   0  |  1  \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   1   0   0  |  1/6\</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  /</span><br></pre></td></tr></table></figure>
+<p>NOTES: </p>
+<ul>
+<li>Do not miss minus signs.</li>
+<li>Avoid fractions until the very end.</li>
+<li>Only follow the rules of GE.</li>
+<li>After solving the answers, CHECK your answers.</li>
+<li>Echelon form(梯队形式) // as shown in the example</li>
+</ul>
+<h2 id="Special-cases"><a href="#Special-cases" class="headerlink" title="Special cases"></a>Special cases</h2><p>Case 1 : contradictory equation<br>result : no solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 7 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 1 /</span><br></pre></td></tr></table></figure>
+<p>Case 2 : irrelevant equation<br>result : can be chosen freely</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 6 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 0 /</span><br><span class="line"></span><br><span class="line">x1 = 3 + 2 * x2     // x1 can be chosen freely then x2 = (x1 - 3)/2</span><br><span class="line">x2 = chosen freely</span><br></pre></td></tr></table></figure>
+<p>Case 3   : cannot use the first equation to eliminate.<br>solution : swap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  0  -2   3 |  3 \</span><br><span class="line">|  2  -1  -2 |  6 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br><span class="line"></span><br><span class="line">/  2  -1  -2 |  6 \</span><br><span class="line">|  0  -2   3 |  3 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br></pre></td></tr></table></figure>
+<p>Case 4   : cannot use any of the equations to solve the first unknown.<br>solution : General Gaussian Elimination<br>answer   : the first unkown can be chosen freely</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  1  -2   1 |  3 \</span><br><span class="line">|  2  -4  -2 |  7 |</span><br><span class="line">\ -5  -10 -1 | -9 /</span><br><span class="line"></span><br><span class="line">/  1  -2  -1 |  3 \</span><br><span class="line">|  0   0  -4 |  1 |</span><br><span class="line">\  0   0   4 |  6 /</span><br></pre></td></tr></table></figure>
+<h2 id="General-Gaussian-Elimination"><a href="#General-Gaussian-Elimination" class="headerlink" title="General Gaussian Elimination"></a>General Gaussian Elimination</h2><p>Base Case 1 : Only one unknown is left over but there may be more than one equation. In this case we solve each equation independently and compare the answers; if they agree, then that is what we return. If they disagree, then the system has no solution (which we can communicate back by raising an exception).<br>Base Case 2 : Only one equation is left over but more than one unknown appears in it (let’s say m many). In this case m − 1 unknowns can be chosen freely and the other one is computed from the equation. (It does not matter which m − 1 unknowns are chosen and which is computed.)</p>
+<h2 id="Systems-of-linear-equations-over-other-fields"><a href="#Systems-of-linear-equations-over-other-fields" class="headerlink" title="Systems of linear equations over other fields"></a>Systems of linear equations over other fields</h2><p>example in GF(2) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ | 0   1        * | 0   1    </span><br><span class="line">----------       ----------</span><br><span class="line">0 | 0   1        0 | 0   0</span><br><span class="line">  |                |</span><br><span class="line">1 | 1   0        1 | 0   1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Gaussian elimination can be employed for systems of equations over an arbitrary field</p>
+</blockquote>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/03/11/Year1:[MATH]02_Floating Point/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/03/11/Year1:[MATH]04_Analytic Geometry/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-11 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

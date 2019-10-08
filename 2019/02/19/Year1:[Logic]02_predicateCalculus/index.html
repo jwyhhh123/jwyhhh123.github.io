@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Classical Logic - Predicate calculus | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="Key ingredientsDomain(universe) : non-empty set of individuals to reason about&amp;nbsp;Constant : specific instances of individual(elements in domain); d">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Classical Logic - Predicate calculus">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Classical Logic - Predicate calculus</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Key-ingredients"><a href="#Key-ingredients" class="headerlink" title="Key ingredients"></a>Key ingredients</h2><p>Domain(universe) : non-empty set of individuals to reason about<br>&nbsp;<br>Constant : specific instances of individual(elements in domain); denoted as a,b,c<br>&nbsp;<br>Variables : symbols to represent individuals, variables x,y,z<br>&nbsp;<br>Quantifiers : (x is variable)</p>
+<ul>
+<li>∀x[…] = “forallx…” (universal quantifier)</li>
+<li>∃x[…] = ”thereexistsxsuchthat…” (existential quantifier)</li>
+</ul>
+<p>Predicates : a proposition evaluates to true and false</p>
+<h2 id="Predicate-calculus-examples"><a href="#Predicate-calculus-examples" class="headerlink" title="Predicate calculus examples"></a>Predicate calculus examples</h2><p>Predicate symbols :<br>F(x) = x is fast<br>R(x) = x is red<br>P(x) = x is purple<br>&nbsp;<br>All cars are fast </p>
+<ul>
+<li>∀x[F(x)]</li>
+</ul>
+<p>All red cars are fast </p>
+<ul>
+<li>∀x[R(x)→F(x)]</li>
+</ul>
+<p>Some red cars are fast </p>
+<ul>
+<li>∃x[R(x)∧F(x)]</li>
+<li>not:∃x[R(x)→F(x)]</li>
+</ul>
+<p>There are no red cars </p>
+<ul>
+<li>¬∃x[R(x)]</li>
+<li>or:∀x[¬R(x)]</li>
+</ul>
+<p>No fast cars are purple</p>
+<ul>
+<li>¬∃x[F(x)∧P(x)]</li>
+<li>or:∀x[F(x)→¬P(x)]</li>
+</ul>
+<p>NOTE : ∃x[R(x)→F(x)] cannot be applied as we can find a counterexample where R(x) -&gt; F(x) is true but R(x) is false. it means there is some red cars which are fast but it is not red.</p>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><p>def : in predicate calculus, we focus on the scope of a variable which is the scope of the quantifier that it is bound to.<br>&nbsp;<br>example : ∀x[F(x) → ¬P(x)].<br>the scope of x is F(x) → ¬P(x)<br>&nbsp;<br>example : ∀y[F(y) → ¬P(y)].<br>the scope of y is F(y) → ¬P(y)</p>
+<h2 id="Natural-deduction"><a href="#Natural-deduction" class="headerlink" title="Natural deduction"></a>Natural deduction</h2><p>in predicate calculus, we prove validity by applying natural deduction<br>&nbsp;<br><strong>Inference rules :</strong><br>1) ∀-introduction </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   φ(a)</span><br><span class="line">----------- ∀-introduction</span><br><span class="line"> ∀x [φ(x)]</span><br></pre></td></tr></table></figure>
+<p>NOTE : a needs to be a typical example of x. it means we know nothing else about a. to be more precise, φ(a) cannot be a premise.<br>&nbsp;<br>2) ∀-elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ∀x [φ(x)]</span><br><span class="line">----------- ∀-elimination</span><br><span class="line">   φ(a)</span><br></pre></td></tr></table></figure>
+<p>3) ∃-introduction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   φ(a) </span><br><span class="line">----------- ∃-introduction</span><br><span class="line"> ∃x [φ(x)]</span><br></pre></td></tr></table></figure>
+<p>4) ∃-elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> ∃x [φ(x)]   φ(a)⊢C</span><br><span class="line">-------------------- ∃-elimination</span><br><span class="line">          C</span><br></pre></td></tr></table></figure>
+<p>NOTE : a needs to be typical example of x. it means a cannot appear in the conclusion C and cannot occur in any dependencies of C. a cannot be a premise.</p>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>term : either a variable x or a constant a<br>&nbsp;<br>well-formed Formula :<br>if P is a predicate symbol and t1, .., tn are terms then P(t1, .., tn) is a formula<br>if φ and ψ are formulas then ¬φ, φ∧ψ, φ∨ψ and φ→ψ are all formulas<br>if x is a variable and φ is a formula then ∀x[φ] and ∃x[φ] are formulas</p>
+<h2 id="Semantics"><a href="#Semantics" class="headerlink" title="Semantics"></a>Semantics</h2><p>We need to consider the domain which can be any non-empty set.<br>&nbsp;<br>an interpretation is a pair (D, I) where :</p>
+<ul>
+<li>D : domain</li>
+<li>I : the meaning of all predicates in terms of D</li>
+<li>it defines whether P(a1, .., an) is true or false</li>
+</ul>
+<h2 id="Validity-and-Satisfiability"><a href="#Validity-and-Satisfiability" class="headerlink" title="Validity and Satisfiability"></a>Validity and Satisfiability</h2><p>argument validity : an argument  A1,…,An : C is valid in predicate logic iff we can find a case where every interpreration of premise is true and so is the conclusion<br>&nbsp;<br>a formula φ is valid in PL iff φ is true for every possible domain/interpretation<br>a formula φ is satisfiable iff φ is true for some domain/interpretation<br>&nbsp;<br>NOTE : we will use natural deduction to check validity as domain can be infinite which make the truth table unable to be set up.<br>&nbsp;<br>Validity check :</p>
+<ul>
+<li>formula φ is valid iff ¬φ is unsatisfiable </li>
+<li>formula φ is invalid iff ¬φ is satisfiable</li>
+</ul>
+<p>example : ∀x[∀y[P(x)∧¬P(y)]] show the formula’s satisfiability</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1) negate : ¬ ∀x[∀y[P(x)∧¬P(y)]]</span><br><span class="line">2) we found when x = a and y = b</span><br><span class="line">    P(a) = true</span><br><span class="line">    P(b) = true</span><br><span class="line">    ¬ ∀x[∀y[P(x)∧¬P(y)]] = true</span><br><span class="line">   it is valid</span><br><span class="line">3) hence ∀x[∀y[P(x)∧¬P(y)]] is unsatisfiable</span><br><span class="line"></span><br><span class="line">--------------------------------------------</span><br><span class="line">1) construct truth table</span><br><span class="line">2) see if there is an interpretation makes it true</span><br></pre></td></tr></table></figure>
+<h2 id="Disproving"><a href="#Disproving" class="headerlink" title="Disproving"></a>Disproving</h2><p>to disprove an argument we need to find a counter-example :</p>
+<ol>
+<li>give the domain</li>
+<li>assign truth values for each constant</li>
+<li>if there is a case when premises are all true but conclusion is false</li>
+<li>then it is invalid</li>
+</ol>
+<p>example : ∃x[F(x)∨G(x)], ∃x[¬F(x)] : ∃x[G(x)]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">give the domain &#123;a, b&#125;    //as we have 2 xs</span><br><span class="line">F(a) = true   G(a) = false</span><br><span class="line">F(b) = false  G(b) = false</span><br><span class="line"></span><br><span class="line">assign the values we got F(a) ∨ G(a) = true</span><br><span class="line">assign the values we got ¬F(b) = true</span><br><span class="line"></span><br><span class="line">but the conclusion we got is false (a and b both false)</span><br></pre></td></tr></table></figure>
+<h2 id="Equivalence"><a href="#Equivalence" class="headerlink" title="Equivalence"></a>Equivalence</h2><p>some useful equivalence relations :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">¬∃x[B] ≡ ∀x[¬B] </span><br><span class="line">¬∀x[B] ≡ ∃x[¬B]</span><br><span class="line"> ∃x[B] ≡ ¬∀x[¬B]</span><br><span class="line"> ∀x[B] ≡ ¬∃x[¬B]</span><br></pre></td></tr></table></figure>
+<p>De Morgans law also holds :<br>example : no fast cars are purple</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">¬∃x[F(x) ∧ P(x)] ≡ ∀x[F(x) → ¬P(x)]</span><br><span class="line">                 ≡ ∀x[¬(F(x) ∧ P(x))]</span><br><span class="line">                 ≡ ∀x[¬F(x) ∨ ¬P(x))]</span><br><span class="line">                 ≡ ∀x[F(x) → ¬P(x))]</span><br></pre></td></tr></table></figure>
+<h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><p>an equivalence relation is :</p>
+<ul>
+<li>reflexive L(a,a)</li>
+<li>summetric L(a,b) -&gt; L(b,a)</li>
+<li>transitive L(a,b) L(b,c) -&gt; L(a,c)</li>
+</ul>
+<h2 id="Identity"><a href="#Identity" class="headerlink" title="Identity"></a>Identity</h2><p>identity equivalence : x = y<br>non-equivalence : ¬(x = y)<br>&nbsp;<br>example :<br>John is the tallest person<br>given predicate symbol : T(x,y) meaning x is taller than y<br>given constant j = John</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">∀x[¬(x = j) -&gt; T(j,x)]</span><br></pre></td></tr></table></figure>
+<p>NOTE : ∀x[T(j,x)] is wrong because the domain is people while John cannot be taller than himself when x = j.<br>&nbsp;<br>example : Everybody except John and Chris loves Mary<br>given predicate symbol L(x,y) meaning x loves y<br>given constant j = John, c = Chris and m = Mary</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">∀x[¬(x = j, x = c) -&gt; L(x,m)]</span><br></pre></td></tr></table></figure>
+<p><strong>Inference rules :</strong><br>1) identity -introduction :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">------- =-introduction</span><br><span class="line"> a = a</span><br></pre></td></tr></table></figure>
+<p>2)identity -elimination :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = b  φ(a)</span><br><span class="line">----------- =-elmination</span><br><span class="line">   φ(b)</span><br></pre></td></tr></table></figure>
+<h2 id="Qunantities"><a href="#Qunantities" class="headerlink" title="Qunantities"></a>Qunantities</h2><p>quantifiers are able to state quantities :</p>
+<ul>
+<li>0 : ¬∃x(Q(x))</li>
+<li>at least 1 : ∃x[Q(x)]</li>
+<li>at most 1 : ∀x[∀y[(Q(x) ∧ Q(y)) -&gt; (x = y)]]</li>
+<li>at least 2 : ∃x[∃y[(Q(x) ∧ Q(y)) ∧ ¬(x = y)]] …</li>
+<li>exactly 1 : ∃x[Q(X)] ∧ ∀x[∀y[Q(x) ∧ Q(y) -&gt; (x = y)]]</li>
+<li>all : ∀x</li>
+</ul>
+<p><strong>Definite descriptions</strong><br>def: refering to a specific individual without constant symbol<br>&nbsp;<br>example : the person who loves Mary also loves Chris</p>
+<h2 id="Proof-Strategies-II"><a href="#Proof-Strategies-II" class="headerlink" title="Proof Strategies II"></a>Proof Strategies II</h2><p><strong>Translating to Formal language</strong><br>When given sentences we may need to convert to formal languages in order to process a proof.<br>&nbsp;<br>Procedure :</p>
+<ol>
+<li>identify domain</li>
+<li>collect predicates(atomic propositions) from the sentences i.e. A(x); B(x); C(x)</li>
+<li>collect constant symbols a,b,c..</li>
+<li>convert each into (well-formed) formula with quantifiers</li>
+</ol>
+<p>NOTE :</p>
+<ol>
+<li>everyone : ∀</li>
+<li>someone : ∃</li>
+<li>at least x : ∃</li>
+<li>at most : ∀</li>
+<li>no less : ∀</li>
+<li>‘all’ with implication</li>
+<li>‘exist’ with and</li>
+</ol>
+<p><strong>Arguments without premises</strong><br>Collection of some tricky arguments :<br>: ∀x[∀y[L(x, y)] → L(x, x)]</p>
+<p><strong>Rules of Thumb</strong><br>if there is a premise with an existential quantifier and the conclusion is with implication, try use existential elimination</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/02/19/Year1:[AI]12_lejos/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/02/19/Year1:[Logic]03_computation/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-02-19 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Logic-and-Computation/">Year1/ Logic and Computation<span>4</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

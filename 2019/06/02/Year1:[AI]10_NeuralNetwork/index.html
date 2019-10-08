@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Neural Network | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="Reason we use neural networkWe found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Neural Network">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Neural Network</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Reason-we-use-neural-network"><a href="#Reason-we-use-neural-network" class="headerlink" title="Reason we use neural network"></a>Reason we use neural network</h2><p>We found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases as well as weights increasing. Instead, we use neural network to create multilayered variables in order to hold more than one logistic regressions.<br>&nbsp;<br>NOTE : 神经网络是逻辑回归的加强版</p>
+<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation:"></a>Representation:</h2><p>linear logits:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g(z) ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure>
+<p>Bias : 1 x w0 which separates the result of 1 and 0.</p>
+<p>we evaluate sigmoid function g(z): </p>
+<ul>
+<li>if z &lt; -4, then g(z) = 0</li>
+<li>if z &gt;  4, then g(z) = 1</li>
+</ul>
+<h2 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h2><p>def: the process of calculating the inputs of subsequent layers until we reach the final input</p>
+<h2 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h2><p>def: an algorithm to find the gradient for neural network.<br>&nbsp;<br>Backpropagation is used to calculate the gradient(difference in weights); the gradient is calculated for the purpose of updating the weights of all logits.</p>
+<h2 id="one-vs-all"><a href="#one-vs-all" class="headerlink" title="one-vs-all"></a>one-vs-all</h2><p>def: logistic regression can be used on multiple classes by using one-vs-all.<br>&nbsp;<br>NOTE : for example we have a logistic regression to classify cat, dog, rat; another example, we can apply this on human facial identification which tells you who is the person from a given picture.</p>
+<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>cost = Σ(for each j) (expected - predicted)^2</p>
+<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Neural networks, like all non-linear models can overfit training data, there are three approaches :</p>
+<ol>
+<li>include regularisation for each logistic unit</li>
+<li>Dropout : ignore certain nodes(typically half) when traing the model</li>
+<li>reduce network depth : reduce the complexity of hypothesis h(x)</li>
+</ol>
+<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>def: function that used on the weighted sum of input<br>&nbsp;<br>NOTE: we learnt sigmoid function as an activation function in neural network, but there are others.</p>
+<h2 id="Hyperparameters"><a href="#Hyperparameters" class="headerlink" title="Hyperparameters"></a>Hyperparameters</h2><p>Neural Networks (and to a lesser extent Logistic Regression) require several parameters that can be used to “tune” how the network trains.<br>&nbsp;<br>Hyperparameter tuning : the process of picking the correct combination of hyperparameters. This is extremely expensive in terms of time and computational resources.<br>&nbsp;<br>Grid Search : the process of systematically going through all possible combination of the hyperparameters to find the best<br>&nbsp;</p>
+<h2 id="“Overfiting”"><a href="#“Overfiting”" class="headerlink" title="“Overfiting”"></a>“Overfiting”</h2><p>def: a combination of hyperparameters which works well for training data and does not work for any other data.<br>&nbsp;<br>to deal with this, we split our data into three parts :</p>
+<ol>
+<li>training set</li>
+<li>development set : used for hyperparameter tuning</li>
+<li>test set</li>
+</ol>
+<p>proportions of dividing :<br>80% ; 10% ; 10%<br>60% ; 20% ; 20%</p>
+<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>Fraud Prevention<br>Facial identification(人脸识别)</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a><br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/06/02/Year1:[AI]09_linearLogistic/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/06/02/Year1:[AI]01_intro/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-06-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Artificial-Intelligence/">Year1/ Artificial Intelligence<span>12</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

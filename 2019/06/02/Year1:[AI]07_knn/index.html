@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Introduction to machine learning and k-NN | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="Introduction to machine learningdef : machine learning focuses on studying and developing computational models capable of improving their performance ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Introduction to machine learning and k-NN">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Introduction to machine learning and k-NN</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Introduction-to-machine-learning"><a href="#Introduction-to-machine-learning" class="headerlink" title="Introduction to machine learning"></a>Introduction to machine learning</h2><p>def : machine learning focuses on studying and developing computational models capable of improving their performance with experience and acquiring knowledge on their own.<br>&nbsp;<br>types of learning :</p>
+<ol>
+<li>supervised learning (监督学习)</li>
+<li>reinforcement learning (强化学习)</li>
+<li>unsupervised learning</li>
+<li>semi-supervised learning</li>
+</ol>
+<h2 id="Introduction-to-supervised-learning"><a href="#Introduction-to-supervised-learning" class="headerlink" title="Introduction to supervised learning"></a>Introduction to supervised learning</h2><p>Predicative tasks : based on existing training data, we are aiming to learn models which are able to make predictions for new data.<br>&nbsp;<br>Components :</p>
+<ol>
+<li>training data</li>
+<li>machine learning algorithm</li>
+<li>predictive model</li>
+</ol>
+<p>Data format : (x, y)</p>
+<ul>
+<li>x the input attributes : x = (x1, x2, x3 …, xn)</li>
+<li>y the output attributes : we focus on ONE output.</li>
+</ul>
+<p>Example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    x1    x2    x3      y</span><br><span class="line"></span><br><span class="line">/  x11   x12   x13  |   y1  \</span><br><span class="line">|  x21   x22   x23  |   y2  |    // matrix representation</span><br><span class="line">\  x31   x32   x33  |   y3  /</span><br></pre></td></tr></table></figure>
+<p>Types of input attributes :</p>
+<ul>
+<li>Numerical   : 123</li>
+<li>Ordinal     : {low, medium, high}</li>
+<li>Categorical : {UK, CHN, US}</li>
+</ul>
+<h2 id="Classification-amp-amp-Regression"><a href="#Classification-amp-amp-Regression" class="headerlink" title="Classification &amp;&amp; Regression"></a>Classification &amp;&amp; Regression</h2><p>Classification :</p>
+<ul>
+<li>the output attributes are categories/ classes</li>
+<li>the learning model is called : Classifier</li>
+</ul>
+<p>Regression :</p>
+<ul>
+<li>the output attributes are numerical values</li>
+</ul>
+<p>NOTE : k-nn is dealing with classification and regression.</p>
+<h2 id="Example-application"><a href="#Example-application" class="headerlink" title="Example application"></a>Example application</h2><p>1) Estimation of the effort required to develop a software project.</p>
+<ul>
+<li>input  : programming language; team expertise, estimated size, development type…</li>
+<li>output : person-hours / months<br>2) Credit card approval </li>
+<li>input  : age; salary; number of years holding a bank account…</li>
+<li>output : yes / no<br>3) Breast cancer prediction</li>
+<li>input  : clump thickness; uniformity of cell size, cell thickness…</li>
+<li>output : yes / no</li>
+</ul>
+<p>NOTE : 监督学习实际上是给当前模型输入已知的数据然后来分析新的数据。</p>
+<h2 id="K-NN-K-Nearest-Neighbours"><a href="#K-NN-K-Nearest-Neighbours" class="headerlink" title="K-NN (K-Nearest Neighbours)"></a>K-NN (K-Nearest Neighbours)</h2><p>k : how many neighbors to choose for classification.<br>&nbsp;<br>classification problems : the test data (x,?) is classified to the majority among the output attributes of neighbour training data.<br>&nbsp;<br>Numerical problems      : the test data is computed by the average among the output attributes of neighbour training data.<br>&nbsp;<br>Algorithm :</p>
+<ol>
+<li>give the input attributes of a new data (x,?) that we want to predict </li>
+<li>give k, the neighbors we are looking for.</li>
+<li>For each training example (x’, y’) :<ul>
+<li>compute distance(x,x’) = root{ Σ(for all i) sum[(xi - x’(i))^2] }</li>
+<li>sort all of the distances computed in ascending order by a data structure</li>
+<li>return first k data as the nearest neighbors</li>
+</ul>
+</li>
+<li>return either the majority vote or the average.</li>
+</ol>
+<h2 id="Normalisation-of-numeric-input-attributes"><a href="#Normalisation-of-numeric-input-attributes" class="headerlink" title="Normalisation of numeric input attributes"></a>Normalisation of numeric input attributes</h2><p>Problem : Different numeric input attributes may have different scales. It will affect the Euclidean distance. for example, if x1 is in [0, 10] and x2 is in [100, 10000], then x2 will influence the distance more.</p>
+<p>Solution : BEFORE starting training, we need to normalise all input attributes between 0 and 1 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                   xi - min(i)</span><br><span class="line">normalised(xi) = --------------- </span><br><span class="line">                 max(i) - min(i)</span><br><span class="line"></span><br><span class="line">min(i)  = the minimum among all x(i)</span><br><span class="line">maxi(i) = the maximum among all x(i)</span><br></pre></td></tr></table></figure>
+<p>NOTES : </p>
+<ul>
+<li>if new training data are loaded, then we need to take them into consider as well. We then require to de-normalise and re-normalise the data (including test data).</li>
+<li>this process is to minimize errors.</li>
+</ul>
+<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : </p>
+<ol>
+<li>training is simple and fast, just normalise and store the training data</li>
+</ol>
+<p>Disadv :</p>
+<ol>
+<li>require large memory space to store all data</li>
+<li>making prediction is slow, we have to sort the whole data set in order to find k neighbors. (the algorithm is slow)</li>
+</ol>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
+<li>program effort estimation</li>
+<li>movies classification</li>
+</ul>
+<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p>&nbsp; <a href="https://blog.csdn.net/saltriver/article/details/52502253" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/52502253</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/06/02/Year1:[AI]08_NaiveBayes/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/06/02/Year1:[AI]09_linearLogistic/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-06-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Artificial-Intelligence/">Year1/ Artificial Intelligence<span>12</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

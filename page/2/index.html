@@ -108,152 +108,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/[funcProg]01/">Functional Programming 01</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		
-	
-	</div>
-  <a type="button" href="/2019/06/02/[funcProg]01/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/[C]01_ComputerArch/">Computer Architecture</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Types-of-computer"><a href="#Types-of-computer" class="headerlink" title="Types of computer"></a>Types of computer</h2><p>Computers can be classified into:</p>
-<ol>
-<li>Application Specific Computer</li>
-<li>General Purpose Computer</li>
-</ol>
-<h2 id="The-von-Neumann-Architecture"><a href="#The-von-Neumann-Architecture" class="headerlink" title="The von Neumann Architecture"></a>The von Neumann Architecture</h2><p>def: this is known as stored-programming computer in which no re-programming is required.</p>
-<p>Von Neumann architecture consists of three main components:</p>
-<ol>
-<li>Central Processing Unit</li>
-<li>Memory</li>
-<li>Input/Output interfaces</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+----------+       +--------------+        +--------------+</span><br><span class="line">|          | ----&gt; |    Central   | &lt;----- | Input/Output |</span><br><span class="line">|  Memory  |       |  Processing  |        |              |</span><br><span class="line">|          | &lt;---- |     Unit     | -----&gt; |  Interface   |</span><br><span class="line">+----------+       +--------------+        +--------------+</span><br></pre></td></tr></table></figure>
-<p>NOTE: in this kind of architecture, CPU and Memory are seperated.</p>
-<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>CPU is the head of a computing system. It includes:</p>
-<ol>
-<li>Control Unit (CU)</li>
-<li>Arithmetic and Logic Unit (ALU)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+--------------+        </span><br><span class="line">|  Arithmetic  |</span><br><span class="line">|     Logic    |       </span><br><span class="line">|     Unit     |</span><br><span class="line">+--------------+        </span><br><span class="line">    ^     |</span><br><span class="line">    |     v</span><br><span class="line">+--------------+          </span><br><span class="line">|              |</span><br><span class="line">| Control Unit |</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure>
-<p><strong>Arithmetic and Logic Unit (ALU)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">      .................................................</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      .</span><br><span class="line">      .   +--------------+         +--------------+   .    </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   |   Addition   |         |      =?      |   .</span><br><span class="line">a --&gt; .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a + b                Is a = b        .</span><br><span class="line">      .                                               .</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      .</span><br><span class="line">      .   +--------------+         +--------------+   .  </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   | Subtraction  |         |       &gt;      |   .   </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a - b                Is a &gt; b        .</span><br><span class="line">      .                                               .</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      . --&gt; c</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   |Multiplication|         |       &lt;      |   .    </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a * b                Is a &lt; b        .</span><br><span class="line">      .                                               .</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      .</span><br><span class="line">b --&gt; .   +--------------+         +--------------+   .</span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   |   Division   |         |      &amp;&amp;      |   .   </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a / b               True (a &amp; b)     .</span><br><span class="line">      .................................................</span><br></pre></td></tr></table></figure>
-<p><strong>Control Unit (CU)</strong></p>
-<p><strong>Registers</strong></p>
-<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><h2 id="Input-Output-Interfaces"><a href="#Input-Output-Interfaces" class="headerlink" title="Input/ Output Interfaces"></a>Input/ Output Interfaces</h2>
-	
-	</div>
-  <a type="button" href="/2019/06/02/[C]01_ComputerArch/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/[C]02_StructureofCProgram/">General Structure of a C Program</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><p>A simplest program:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p>Built-ins:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> i = <span class="number">5</span>, j = <span class="number">6</span>;     <span class="comment">// 1 byte size</span></span><br><span class="line"><span class="keyword">short</span>                  <span class="comment">// 2 byte size</span></span><br><span class="line"><span class="keyword">int</span> </span><br><span class="line"><span class="keyword">long</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span></span><br><span class="line"><span class="keyword">float</span></span><br><span class="line"><span class="keyword">double</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> n = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
-<p>Constant data: A constant is read-only which cannot be changed!</p>
-<h2 id="if-statement"><a href="#if-statement" class="headerlink" title="if statement"></a>if statement</h2><h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><h2 id="loops"><a href="#loops" class="headerlink" title="loops"></a>loops</h2><h2 id="continue-and-break"><a href="#continue-and-break" class="headerlink" title="continue and break"></a>continue and break</h2><h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h2 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h2><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p>Factorial program in Java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factorial</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span>(n * factorial(n-<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i,fact=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> number=<span class="number">4</span>;</span><br><span class="line">fact = factorial(number); System.out.println(<span class="string">"Factorial is: "</span>+fact);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
-<p>Now we convert to a C program: </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> (n * factorial(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input your number: "</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result = factorial(i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Answer: %d\n"</span>, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/[C]02_StructureofCProgram/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/[C]03_Pointers/">Pointers</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>def: a pointer is a variable that contains the address of a variable. It is also stored in the memory.</p>
-<p>The unary operator <code>&amp;</code> gives the address of an object:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = &amp;c;</span><br><span class="line"><span class="comment">// assigns the address of c to p.</span></span><br><span class="line"><span class="comment">// p is said to "point to" c.</span></span><br></pre></td></tr></table></figure>
-<p>The unary operator <code>*</code> is called indirection or dereferencing operator. It is applied to a pointer to access the object the pointer points to.</p>
-<h2 id="Pointing-to-different-types"><a href="#Pointing-to-different-types" class="headerlink" title="Pointing to different types"></a>Pointing to different types</h2><h2 id="Pointers-and-Arrays"><a href="#Pointers-and-Arrays" class="headerlink" title="Pointers and Arrays"></a>Pointers and Arrays</h2>
-	
-	</div>
-  <a type="button" href="/2019/06/02/[C]03_Pointers/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/[AI]01_intro/">What is Artificial Intelligence</a>
+			<a href="/2019/06/02/Year1:[AI]01_intro/">What is Artificial Intelligence</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -314,7 +169,7 @@
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/[AI]01_intro/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/Year1:[AI]01_intro/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -324,7 +179,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/[AI]10_NeuralNetwork/">Neural Network</a>
+			<a href="/2019/06/02/Year1:[AI]06_SimulatedAnnealing/">Simulated annealing</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -338,40 +193,26 @@
   <div class="row">
 	
 	
-		<h2 id="Reason-we-use-neural-network"><a href="#Reason-we-use-neural-network" class="headerlink" title="Reason we use neural network"></a>Reason we use neural network</h2><p>We found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases as well as weights increasing. Instead, we use neural network to create multilayered variables in order to hold more than one logistic regressions.<br>&nbsp;<br>NOTE : 神经网络是逻辑回归的加强版</p>
-<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation:"></a>Representation:</h2><p>linear logits:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g(z) ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure>
-<p>Bias : 1 x w0 which separates the result of 1 and 0.</p>
-<p>we evaluate sigmoid function g(z): </p>
+		<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>Algorithem :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    current_solution = generate initial candidate solution randomly.</span><br><span class="line">    T = Tmax;</span><br><span class="line">    Tmin = <span class="number">0.1f</span>;</span><br><span class="line"></span><br><span class="line">    reapeat(T &lt;= Tmin || current_solution stops changing)&#123;</span><br><span class="line">        <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">        rand_neighbor </span>= get random neighbor of current_solution</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(quality(best_neighbor) &lt;= quality(current_solution))&#123;</span><br><span class="line">            <span class="keyword">if</span>(within Probability e^(dE)/T) &#123;</span><br><span class="line">            current_solution = best_neighbor;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> current_solution;</span><br><span class="line">      </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> best_neighbor;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        T -= some_factor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">method <span class="title">dE</span><span class="params">(rand_neighbor, current_solution)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> quality(rand_neighbor) - quality(current_solution);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>from above, dE is ALWAYS between 0 and 1 as neighbor solution is smaller than current solution inside the if condition. And there are some cases we need to clarify :</p>
+<ol>
+<li>if neighbor solution is really bad, then the probability decreases a lot.</li>
+<li>with the decreasing T, (dE/T) is getting smaller, as a result the probability is going down.</li>
+</ol>
+<p>from these facts, at the begining SA is more likely to jump out a local optimum. With the T decreasing, it behaves more like hill climbing as the probabilty is quite low.<br>&nbsp;<br>NOTES :</p>
 <ul>
-<li>if z &lt; -4, then g(z) = 0</li>
-<li>if z &gt;  4, then g(z) = 1</li>
+<li>SA is not guaranteed to find the optimum in a reasonable amount of time</li>
+<li>if we leave SA to run forever, it is guaranteed to find an optimal solution,depending on the schedule used.</li>
+<li>Frequently it is able to find (a) good solutions.</li>
 </ul>
-<h2 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h2><p>def: the process of calculating the inputs of subsequent layers until we reach the final input</p>
-<h2 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h2><p>def: an algorithm to find the gradient for neural network.<br>&nbsp;<br>Backpropagation is used to calculate the gradient(difference in weights); the gradient is calculated for the purpose of updating the weights of all logits.</p>
-<h2 id="one-vs-all"><a href="#one-vs-all" class="headerlink" title="one-vs-all"></a>one-vs-all</h2><p>def: logistic regression can be used on multiple classes by using one-vs-all.<br>&nbsp;<br>NOTE : for example we have a logistic regression to classify cat, dog, rat; another example, we can apply this on human facial identification which tells you who is the person from a given picture.</p>
-<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>cost = Σ(for each j) (expected - predicted)^2</p>
-<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Neural networks, like all non-linear models can overfit training data, there are three approaches :</p>
-<ol>
-<li>include regularisation for each logistic unit</li>
-<li>Dropout : ignore certain nodes(typically half) when traing the model</li>
-<li>reduce network depth : reduce the complexity of hypothesis h(x)</li>
-</ol>
-<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>def: function that used on the weighted sum of input<br>&nbsp;<br>NOTE: we learnt sigmoid function as an activation function in neural network, but there are others.</p>
-<h2 id="Hyperparameters"><a href="#Hyperparameters" class="headerlink" title="Hyperparameters"></a>Hyperparameters</h2><p>Neural Networks (and to a lesser extent Logistic Regression) require several parameters that can be used to “tune” how the network trains.<br>&nbsp;<br>Hyperparameter tuning : the process of picking the correct combination of hyperparameters. This is extremely expensive in terms of time and computational resources.<br>&nbsp;<br>Grid Search : the process of systematically going through all possible combination of the hyperparameters to find the best<br>&nbsp;</p>
-<h2 id="“Overfiting”"><a href="#“Overfiting”" class="headerlink" title="“Overfiting”"></a>“Overfiting”</h2><p>def: a combination of hyperparameters which works well for training data and does not work for any other data.<br>&nbsp;<br>to deal with this, we split our data into three parts :</p>
-<ol>
-<li>training set</li>
-<li>development set : used for hyperparameter tuning</li>
-<li>test set</li>
-</ol>
-<p>proportions of dividing :<br>80% ; 10% ; 10%<br>60% ; 20% ; 20%</p>
-<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>Fraud Prevention<br>Facial identification(人脸识别)</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a><br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Very-Large-Scale-Integration (VLSI)<br>&nbsp;<br>Design variables :<br>candidate solution z = {(x1, y1), (x2, y2) … (xN, YN)}<br>where N is the number of transistors in the set<br>&nbsp;<br>Search space : all coordinates on the chip<br>&nbsp;<br>Objective function :<br>f(z) = a <em> chip area + w </em> wiring length + c * congestion + penalty<br>where a + w + c = 1<br>penalty : related to x and y which should be in the coordinate system.<br>&nbsp;<br>Constraints :<br>for all x and y, x and y are in the coordinate system.<br>&nbsp;<br>To be minimised</p>
+<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : this algorithm is able to jump out from a local optimum to a global optimum</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/[AI]10_NeuralNetwork/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/Year1:[AI]06_SimulatedAnnealing/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -381,7 +222,333 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/04/05/[JAVA]01_dataTypes/">Data Types</a>
+			<a href="/2019/06/02/Year1:[AI]04_informed/">Informed Search</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Informed-Search"><a href="#Informed-Search" class="headerlink" title="Informed Search"></a>Informed Search</h2><p>def : unlike uninformed searching algorithm, informed search carefully choose which node should be visited first in order to minimise the cost.<br>&nbsp;<br><strong>Heuristic functions(启发函数)</strong> : h(x) estimate the cost of the cheapest path from the node reached to a goal node.</p>
+<h2 id="A-star-Search"><a href="#A-star-Search" class="headerlink" title="A star Search"></a>A star Search</h2><p>def : best-first informed search algorithm<br>&nbsp;<br>Evaluation function : f(node) = g(node) + h(node)<br><code>g(node)</code> : the cost from root node to current node.<br>&nbsp;<br>Algorithm :</p>
+<ol>
+<li>visit the node with the smallest f(node) first</li>
+<li>placing its children in the frontier</li>
+<li>do not place children in the frontier if they are already visited or are in the frontier.</li>
+<li>when found the goal node, stop.</li>
+</ol>
+<h2 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h2><p>Heuristic is said to be consistent if h(n) satisfies : h(n) ≤ cost(n, n’) + h(n’) for every edge (n, n’) of the graph. In such a case, A star is complete and admissible.<br>&nbsp;<br>Time.compx : usually exponential<br>Space.compx : usually exponential</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/38595351" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595351</a></p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]04_informed/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]02_swarm/">Swarm intelligence and firefly synchronization</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Swarm-intelligence-群体智能"><a href="#Swarm-intelligence-群体智能" class="headerlink" title="Swarm intelligence(群体智能)"></a>Swarm intelligence(群体智能)</h2><p>features :</p>
+<ol>
+<li>decentrialized control</li>
+<li>self-organization<ul>
+<li>no central authority</li>
+<li>local interaction pattern</li>
+</ul>
+</li>
+</ol>
+<h2 id="firefly-synchronization-萤火虫同步"><a href="#firefly-synchronization-萤火虫同步" class="headerlink" title="firefly synchronization(萤火虫同步)"></a>firefly synchronization(萤火虫同步)</h2><p>representation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--^----^----||----^----^----      actual flash     </span><br><span class="line">                  ^             expected flash</span><br><span class="line">^----^----^-||----^----^----</span><br><span class="line">                ^</span><br><span class="line">---^----^---||----^----^----</span><br><span class="line">              ^</span><br><span class="line">-^----^-----||^----^----^---</span><br><span class="line">             ^</span><br></pre></td></tr></table></figure>
+<p>algorithm:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(firefly f: fireflys[][])&#123;</span><br><span class="line">    <span class="keyword">if</span>(isflashing(f.neighbour)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(f.timer [<span class="number">0</span>:<span class="number">3</span>]) &#123;</span><br><span class="line">            tick++;</span><br><span class="line">            f.timer decrements by <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(f.timer [<span class="number">4</span>:<span class="number">7</span>]) &#123;</span><br><span class="line">            tick++;</span><br><span class="line">            f.timer increments by <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(f.timer == <span class="number">8</span> || f.timer == <span class="number">9</span>) &#123;</span><br><span class="line">             tick++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        tick++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h2><p>1) Scalability : when the program is running, we can still increase the size of our objects without affecting other “fireflies”.<br>2) Fault tolerance : the program can still work when some fireflies die or has error.<br>3) No need for a central system</p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications**"></a>Applications**</h2><p>wireless sensor networks: </p>
+<ul>
+<li>to enable object detection</li>
+<li>to save battery</li>
+</ul>
+<p>robot fault detection</p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]02_swarm/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]05_HillClimb/">Hill Climbing</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Examples-of-Optimisation-Problems"><a href="#Examples-of-Optimisation-Problems" class="headerlink" title="Examples of Optimisation Problems"></a>Examples of Optimisation Problems</h2><ul>
+<li>Minimum distance route problem</li>
+<li>Travelling Salesman Problem (TSP)</li>
+<li>Bin Packing problem</li>
+<li>Software Module Clustering</li>
+</ul>
+<h2 id="Formulating-Optimisation-Problems"><a href="#Formulating-Optimisation-Problems" class="headerlink" title="Formulating Optimisation Problems"></a>Formulating Optimisation Problems</h2><ol>
+<li>Design variables represent a candidate solution</li>
+<li>define the search space of candidate solutions</li>
+<li>constraints which define solution feasibility</li>
+<li>Objective function defines the quality of a solution</li>
+<li>maximise or minimise</li>
+</ol>
+<p>example : TSP</p>
+<ol>
+<li>Variables :sequence x containing N cities to be visited.</li>
+<li>Space : all possible sequences of cities.</li>
+<li>Constraints : <ul>
+<li>each city must appear once and only once in x;</li>
+<li>salesman must return to the city of origin.</li>
+</ul>
+</li>
+<li>Objective function : total_distance(x) = sum of distances between consecutive cities + distance from last city to origin to be minimised + number of missed cities <em> MAX + number of duplicated cities </em> MAX</li>
+<li>To be minimised</li>
+</ol>
+<p>NOTE : Optimisation algorithm can be more efficient than tree-based search algorithms.</p>
+<h2 id="Hill-Climbing"><a href="#Hill-Climbing" class="headerlink" title="Hill-Climbing"></a>Hill-Climbing</h2><p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">current_solution = generate initial candidate solution randomly.</span><br><span class="line"></span><br><span class="line">reapeat &#123;</span><br><span class="line">  <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">  best_neigbor </span>= <span class="function">get highest quality <span class="title">neigbor</span> <span class="params">(&gt;= <span class="number">0</span> 个候选解)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  <span class="title">if</span><span class="params">(quality(best_neighbor)</span> &lt;</span>= quality(current_solution))&#123;</span><br><span class="line">      <span class="keyword">return</span> current_solution;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> best_neighbor;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE : Real world problems will frequently have more than one neighbour for each candidate solution.</p>
+<h2 id="Designing-Representation-Initialisation-and-Neighbourhood-Operators"><a href="#Designing-Representation-Initialisation-and-Neighbourhood-Operators" class="headerlink" title="Designing Representation, Initialisation and Neighbourhood Operators"></a>Designing Representation, Initialisation and Neighbourhood Operators</h2><p>In order to deal with constraints in a problem, two approaches are provided :</p>
+<ol>
+<li>construct representation, initialisation and neighbourhood operation</li>
+<li>add panelties for each constraints in objective function</li>
+</ol>
+<p>Representation : what data structure we use, how to store a solution<br>Initialisation : how to generate a solution<br>Neighbourhood operator : how we generate a neighbor solution with single element difference</p>
+<p>Example : TSP<br>constraints : each city must appear once and only once in x;<br>                  salesman must return to the city of origin.<br>Strategies  :<br>1) Representation :</p>
+<ul>
+<li>City[4] array [A][B][C][D][E] A</li>
+</ul>
+<p>2) Initialisation :</p>
+<ul>
+<li>unvisited_Set = {A,B,C,D,E}</li>
+<li>pick k cities from unvisited_Set without duplication</li>
+</ul>
+<p>3) Neighbourhood operator :</p>
+<ul>
+<li>reverse the path between cities</li>
+<li>A B C D E between B and E –&gt; A B D C E between D and E –&gt; B A D C E</li>
+</ul>
+<h2 id="Software-module-clustering"><a href="#Software-module-clustering" class="headerlink" title="Software module clustering"></a>Software module clustering</h2><p>design variable : a list of N modules, each has a list of M units.<br>define search space : all possible grouping<br>constraints : N/A (maybe within a module there is a limit of units)<br>objective function : f(M) = Σ(for all n) connections in module n - penalty * connections to other modules + b<br>to be maximised<br>&nbsp;<br>1) Representation :</p>
+<ul>
+<li>represent each module as a java class</li>
+<li>an array to add units</li>
+<li>a number to store connections between units</li>
+<li>a number to store connections between modules</li>
+</ul>
+<p>2) Initialisation :</p>
+<ul>
+<li>generate N modules as an object array</li>
+<li>randomly feed m units in each module (m &gt;= 0)</li>
+<li>based on units, randomly generate connections between units and between modules.</li>
+</ul>
+<p>3) Neighbourhood operator :</p>
+<ul>
+<li>a module has a method to transfer one single random unit to another module</li>
+<li>this will remove the unit connections to all other units and unit of other module</li>
+</ul>
+<h2 id="Advantages-and-Disadvantages"><a href="#Advantages-and-Disadvantages" class="headerlink" title="Advantages and Disadvantages"></a>Advantages and Disadvantages</h2><p>Disadvantage :</p>
+<ol>
+<li>greedy local search</li>
+<li>may not be able to find global optimum.</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]05_HillClimb/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]11_ReinforcementLearning/">Reinforcement Learning</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Reinforcement learning, according to Wikipedia, is: </p>
+<blockquote>
+<p>an area of machine learning concerned with how software <strong>agents</strong> ought to take actions in an environment so as to maximize some notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.</p>
+</blockquote>
+<h2 id="Agents"><a href="#Agents" class="headerlink" title="Agents"></a>Agents</h2><p>In reinforcement learning, an agent is required to reach an end state in an environment<br>&nbsp;<br>Example :</p>
+<ol>
+<li>Agent : game</li>
+<li>End state : win</li>
+<li>Environment : board</li>
+</ol>
+<p>In order to reach the outcome we expected, we introduce reward :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for some [i] action</span></span><br><span class="line"><span class="keyword">switch</span>(i)&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>: goal -= <span class="number">100000</span>  <span class="comment">// large panalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>: goal -= <span class="number">10</span>      <span class="comment">// small penalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>: goal += <span class="number">100000</span>  <span class="comment">// large reward</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">4</span>: goal += <span class="number">10</span>      <span class="comment">// small reward</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Things to know :</p>
+<ul>
+<li>reward and penalty are based on how they act in an environment</li>
+<li>an agent aims to maximise positive reward</li>
+<li>agent uses this to train a model(e.g. neural network)</li>
+<li>Environment should be fully observable or partially Observable.</li>
+</ul>
+<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://www.youtube.com/watch?v=4MlZncsh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4MlZncsh</a> y1Q<br><a href="https://www.youtube.com/watch?v=cUTMhmVh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=cUTMhmVh</a> 1qs</p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]11_ReinforcementLearning/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/05/Year1:[JAVA]03_operators/">Operators</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-05  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="arithmetic-operators"><a href="#arithmetic-operators" class="headerlink" title="arithmetic operators"></a>arithmetic operators</h2><ul>
+<li><ul>
+<li><ul>
+<li>/ %</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="relational-and-equality-operators"><a href="#relational-and-equality-operators" class="headerlink" title="relational and equality operators"></a>relational and equality operators</h2><blockquote>
+<p>&lt; =</p>
+</blockquote>
+<h2 id="conditional-operators-AND-OR"><a href="#conditional-operators-AND-OR" class="headerlink" title="conditional operators AND OR"></a>conditional operators AND OR</h2><h2 id="operator-precedence"><a href="#operator-precedence" class="headerlink" title="operator precedence"></a>operator precedence</h2>
+	
+	</div>
+  <a type="button" href="/2019/04/05/Year1:[JAVA]03_operators/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/05/Year1:[Java]04_genetic/">Genetic Algorithm(遗传算法)</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-05  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<!-- what is GA -->
+<h2 id="Individual"><a href="#Individual" class="headerlink" title="Individual"></a>Individual</h2><h2 id="Population-Individuals"><a href="#Population-Individuals" class="headerlink" title="Population(Individuals)"></a>Population(Individuals)</h2><h2 id="Fitness-function"><a href="#Fitness-function" class="headerlink" title="Fitness function"></a>Fitness function</h2><h2 id="Mutation-function"><a href="#Mutation-function" class="headerlink" title="Mutation function"></a>Mutation function</h2><h2 id="Cross-over-function"><a href="#Cross-over-function" class="headerlink" title="Cross-over function"></a>Cross-over function</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">00001111     11110000</span><br><span class="line">    ----         ----</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">00000000     11111111</span><br><span class="line">    ----         ----</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+  <a type="button" href="/2019/04/05/Year1:[Java]04_genetic/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/05/Year1:[JAVA]02_variableTypes/">Variable types</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-05  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2>
+	
+	</div>
+  <a type="button" href="/2019/04/05/Year1:[JAVA]02_variableTypes/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/05/Year1:[JAVA]01_dataTypes/">Data Types</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -420,103 +587,7 @@
 
 	
 	</div>
-  <a type="button" href="/2019/04/05/[JAVA]01_dataTypes/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/04/05/[JAVA]02_variableTypes/">Variable types</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-04-05  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2>
-	
-	</div>
-  <a type="button" href="/2019/04/05/[JAVA]02_variableTypes/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/04/05/[JAVA]03_operators/">Operators</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-04-05  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="arithmetic-operators"><a href="#arithmetic-operators" class="headerlink" title="arithmetic operators"></a>arithmetic operators</h2><ul>
-<li><ul>
-<li><ul>
-<li>/ %</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="relational-and-equality-operators"><a href="#relational-and-equality-operators" class="headerlink" title="relational and equality operators"></a>relational and equality operators</h2><blockquote>
-<p>&lt; =</p>
-</blockquote>
-<h2 id="conditional-operators-AND-OR"><a href="#conditional-operators-AND-OR" class="headerlink" title="conditional operators AND OR"></a>conditional operators AND OR</h2><h2 id="operator-precedence"><a href="#operator-precedence" class="headerlink" title="operator precedence"></a>operator precedence</h2>
-	
-	</div>
-  <a type="button" href="/2019/04/05/[JAVA]03_operators/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/04/05/[Java]04_genetic/">Genetic Algorithm(遗传算法)</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-04-05  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<!-- what is GA -->
-<h2 id="Individual"><a href="#Individual" class="headerlink" title="Individual"></a>Individual</h2><h2 id="Population-Individuals"><a href="#Population-Individuals" class="headerlink" title="Population(Individuals)"></a>Population(Individuals)</h2><h2 id="Fitness-function"><a href="#Fitness-function" class="headerlink" title="Fitness function"></a>Fitness function</h2><h2 id="Mutation-function"><a href="#Mutation-function" class="headerlink" title="Mutation function"></a>Mutation function</h2><h2 id="Cross-over-function"><a href="#Cross-over-function" class="headerlink" title="Cross-over function"></a>Cross-over function</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">00001111     11110000</span><br><span class="line">    ----         ----</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">00000000     11111111</span><br><span class="line">    ----         ----</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/04/05/[Java]04_genetic/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/04/05/Year1:[JAVA]01_dataTypes/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -569,7 +640,7 @@
 		
 			<li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
 		
-			<li><a href="/categories/Year2-Advanced-functional-programming/">Year2/ Advanced functional programming<span>1</span></a></li>
+			<li><a href="/categories/Year2-Advanced-functional-programming-Haskell/">Year2/ Advanced functional programming (Haskell)<span>1</span></a></li>
 		
 			<li><a href="/categories/Year2-Systems-Programming-in-c-c/">Year2/ Systems Programming in c/c++<span>3</span></a></li>
 		
@@ -583,23 +654,23 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2019/10/06/Year2:[C]02_StructureofCProgram/"><i class="fa fa-file-o"></i>General Structure of a C Pr...</a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/06/Year2:[C]01_ComputerArch/"><i class="fa fa-file-o"></i>Computer Architecture</a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/06/Year2:[C]03_Pointers/"><i class="fa fa-file-o"></i>Pointers</a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/05/Year2:[funcProg]01/"><i class="fa fa-file-o"></i>Pre-announcement</a>
+      </li>
+    
+      <li>
         <a href="/2019/06/18/Unix-commands/"><i class="fa fa-file-o"></i>MacOS/ basic commands</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/02/[AI]02_swarm/"><i class="fa fa-file-o"></i>Swarm intelligence and fire...</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/02/[AI]04_informed/"><i class="fa fa-file-o"></i>Informed Search</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/02/[AI]05_HillClimb/"><i class="fa fa-file-o"></i>Hill Climbing</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/02/[AI]06_SimulatedAnnealing/"><i class="fa fa-file-o"></i>Simulated annealing</a>
       </li>
     
   </ul>

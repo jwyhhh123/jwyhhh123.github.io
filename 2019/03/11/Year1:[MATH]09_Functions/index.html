@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Functions | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="Set-theoretic definition of functionsFrom a binary relation R ⊆ A × B, we define a function by satisfying two conditions:
+
+Definedness : ∀a ∈ A ∃b ∈ B">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Functions">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Functions</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Set-theoretic-definition-of-functions"><a href="#Set-theoretic-definition-of-functions" class="headerlink" title="Set-theoretic definition of functions"></a>Set-theoretic definition of functions</h2><p>From a binary relation R ⊆ A × B, we define a function by satisfying two conditions:</p>
+<ol>
+<li>Definedness : ∀a ∈ A ∃b ∈ B. (a, b) ∈ R</li>
+<li>Single valueness : ∀a ∈ A ∀b,b’ ∈ B. (a,b) ∈ R ∧ (a,b’) ∈ R -&gt; b = b’</li>
+</ol>
+<p>Notations (given A x B) :</p>
+<ul>
+<li>domain    : A</li>
+<li>co-domain : B</li>
+<li>range : elements in B which are the results of F(A)</li>
+</ul>
+<p>Representation : f : A -&gt; B<br>&nbsp;<br>Partial function : a relation that is single valued but not defined for all inputs.</p>
+<h2 id="The-many-faces-of-functions"><a href="#The-many-faces-of-functions" class="headerlink" title="The many faces of functions"></a>The many faces of functions</h2><p>in computer science, we would represent a function like :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |        . |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; B</span><br><span class="line">          |_________|</span><br></pre></td></tr></table></figure>
+<h2 id="Injectivity"><a href="#Injectivity" class="headerlink" title="Injectivity"></a>Injectivity</h2><p>def : a function that will give different output for different input is called injective (one-to-one).<br>&nbsp;<br>formula : ∀a,a’ ∈ A. f(a) = f(a’) -&gt; a = a’<br>&nbsp;<br>Error correcting codes : coding theory where input “data vectors” are mapped to much longer “code words” (which are again tuples of bits). If this is done cleverly, then small errors that change the code word (for example, during transmission over long distances) can be discovered and repaired.<br>&nbsp;<br>NOTES : non-injective examples are mps and jpeg.<br>&nbsp;<br>Pigeon hole principle : if domain A has more elements than co-domain B, then no function from A to B can be injective.<br>&nbsp;<br>Theorem 11 : </p>
+<ol>
+<li>if card(A) &lt;= card(B) and card(B) &lt;= card(A) then card(A) = card(B)</li>
+<li>for any two sets A and B, we have card(A) &lt;= card(B) or card(B) &lt;= card(A)</li>
+</ol>
+<p>NOTE : see the picture above, it is injective.</p>
+<h2 id="Surjectivity"><a href="#Surjectivity" class="headerlink" title="Surjectivity"></a>Surjectivity</h2><p>def : a function for which the range is all of the co-domain is called surjective (onto).<br>&nbsp;<br>formula : ∀b ∈ B ∃a ∈ A. f(a) = b<br>&nbsp;<br>Theorem 12 : assuming A != 0/, card(A) &lt;= card(B) iff there is surjective function from B to A.<br>&nbsp;<br>examples : project a 3-D object to 2-D picture.</p>
+<p>NOTE : 两个不同的input可以映射到同一个output上。每一个input和每一个output都需要被覆盖。</p>
+<h2 id="Bijectivity"><a href="#Bijectivity" class="headerlink" title="Bijectivity"></a>Bijectivity</h2><p>def : a combination of injectivity and surjectivity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> _________                  ___________</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|         |                 |          |</span><br><span class="line">|    . ---|-----------------|---&gt; .    |</span><br><span class="line">|_________|                 |__________|</span><br></pre></td></tr></table></figure>
+<p>example : cryptographic encodings</p>
+<h2 id="Forward-image-and-pre-image-inverse-function"><a href="#Forward-image-and-pre-image-inverse-function" class="headerlink" title="Forward image and pre-image; inverse function"></a>Forward image and pre-image; inverse function</h2><p>Given X is a subset of domain A, and Y a subset of co-domain B.</p>
+<ul>
+<li>forward image(像) : <code>f[X] = {b ∈ B | ∃a ∈ X. f(a) = b}</code><br>-pre-image(原像) : <code>f^-1[Y] = {a ∈ A | f(a) ∈ Y}</code></li>
+</ul>
+<p>NOTE : y = x^2 是某种程度上的双射。f(-2)的像是4，然而f^-1[4]的原像是{2,-2}。</p>
+<h2 id="Composing-functions"><a href="#Composing-functions" class="headerlink" title="Composing functions"></a>Composing functions</h2><p>Representation of composing function f : A -&gt; B with g : B -&gt; C</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           _________           _________</span><br><span class="line">A ------&gt; |    f    | ------&gt; |    g    | ------&gt; C</span><br><span class="line">          |_________|         |_________|</span><br></pre></td></tr></table></figure>
+<p>in math and computer science we represent this from right to left : g◦f</p>
+<h2 id="Counting-functions"><a href="#Counting-functions" class="headerlink" title="Counting functions"></a>Counting functions</h2><p>if A is a finite set with n members, B is a finite set with m members.<br>number of injective functions from A to B : m &gt; n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                                               m!</span><br><span class="line">m x (m - 1) x (m - 2) x ... x (m - n + 1) = --------</span><br><span class="line">                                            (m - n)!</span><br></pre></td></tr></table></figure>
+<p>NOTE : if n &gt; m then result of this is 0 as there must have (m-k) = 0 (pigeon hole principle)<br>&nbsp;<br>number of bijective functions from A to B : m = n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m x (m - 1) x (m - 2) x ... x 1 = m!</span><br></pre></td></tr></table></figure>
+<p>NOTE : the number of functions N -&gt; N is uncountable.</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/03/11/Year1:[MATH]10_Regular Languages/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/03/11/Year1:[MATH]11_BeyondRegularLanguages/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-11 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

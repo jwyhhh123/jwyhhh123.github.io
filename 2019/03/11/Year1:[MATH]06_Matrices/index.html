@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Matrices and Matrix Algebra | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="The many uses of matricesm x n  : dimension of the matrixsquare : if the number of raws is equal to the number of columns
+applications :a) Matrices as">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Matrices and Matrix Algebra">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Matrices and Matrix Algebra</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="The-many-uses-of-matrices"><a href="#The-many-uses-of-matrices" class="headerlink" title="The many uses of matrices"></a>The many uses of matrices</h2><p>m x n  : dimension of the matrix<br>square : if the number of raws is equal to the number of columns</p>
+<p>applications :<br>a) Matrices as production tables (list the amounts of raw materials for manufacturing something)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    p1     p2     p3</span><br><span class="line"></span><br><span class="line">M1  10      1      9</span><br><span class="line"></span><br><span class="line">M2   5      7      9</span><br></pre></td></tr></table></figure>
+<p>b) Matrices as Markov chains (running process: ready for execution; sleeping process : ready for being interrupted)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">after / before    running       sleeping</span><br><span class="line"></span><br><span class="line">   running          .8             .01</span><br><span class="line"></span><br><span class="line">   sleeping         .2             .99</span><br></pre></td></tr></table></figure>
+<p>c) Matrices as linear transformations (rotations in graphics)</p>
+<h2 id="The-vector-algebra-operations-on-matrices"><a href="#The-vector-algebra-operations-on-matrices" class="headerlink" title="The vector algebra operations on matrices"></a>The vector algebra operations on matrices</h2><p>Addition : (ONLY in same dimension)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁+􏰀 / 7 −4  5 \ 􏰁  =􏰀   / 8 −2  8 \</span><br><span class="line">\ 0 -1 -2 /   \ 3  4 -1 /       \ 3  3 -3 /</span><br></pre></td></tr></table></figure>
+<p>Subtraction : (here we got: zero matrix)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁- / 1  2  3 \ 􏰁  =􏰀   / 0 0 0 \</span><br><span class="line">\ 0 -1 -2 /   \ 0 -1 -2 /       \ 0 0 0 /</span><br></pre></td></tr></table></figure>
+<p>scale : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 *  / 1  2  3 \ 􏰁 􏰁  =􏰀   / 5  10  15 \</span><br><span class="line">     \ 0 -1 -2 /        \ 3  -5  -2 /</span><br></pre></td></tr></table></figure>
+<h2 id="Matrix-multiplication-in-words"><a href="#Matrix-multiplication-in-words" class="headerlink" title="Matrix multiplication in words"></a>Matrix multiplication in words</h2><p>To compute the entry of AB in row i and column k, compute the inner product of the i-th row of A and with the k-th column of B.<br>&nbsp;<br>NOTE : The width of a row in the first matrix must be the same as the height of a column of the second.</p>
+<h2 id="The-properties-of-matrix-multiplication"><a href="#The-properties-of-matrix-multiplication" class="headerlink" title="The properties of matrix multiplication"></a>The properties of matrix multiplication</h2><p>Multiplication of matrices is usually not communicative : <code>A * B != B * A</code><br>&nbsp;<br>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  1 \ / 1 -1 \ = / 2 0 \ </span><br><span class="line">\ 0  1 / \ 1  1 /   \ 1 1 /     </span><br><span class="line"></span><br><span class="line">/ 1 -1 \ / 1  1 \ = / 1 0 \</span><br><span class="line">\ 1  1 / \ 0  1 / = \ 1 2 /</span><br></pre></td></tr></table></figure>
+<p>Identity matrix <code>E</code>: a matrix has no effect under multiplication<br>Example : 3 * 3 identity matrix</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 1 0 0 \</span><br><span class="line">| 0 1 0 |</span><br><span class="line">\ 0 0 1 /</span><br></pre></td></tr></table></figure>
+<p>Laws of matrix multiplication :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(A * B) * C    =  A * (B * C)</span><br><span class="line"> A * (B + C)   =  A * B + A * C </span><br><span class="line">(A + B) * C    =  A * C + B * C</span><br><span class="line"> A * E = E * A =  A </span><br><span class="line"> A * 0 = 0 * A =  0</span><br><span class="line"> s * (A * B)   =  (s * A) * B = A * (s * B)</span><br></pre></td></tr></table></figure>
+<h2 id="Inverting-matrix-multiplication"><a href="#Inverting-matrix-multiplication" class="headerlink" title="Inverting matrix multiplication"></a>Inverting matrix multiplication</h2><p>Given a matrix A :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 4 2 1 \</span><br><span class="line">| 3 4 2 | </span><br><span class="line">\ 1 2 4 /</span><br></pre></td></tr></table></figure>
+<p>and a 3 * 1 vector c = (2, 3, 2), and an unknown p = (p1, p2, p3)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 * p1 + 2 * p2 + 1 * p3 = 2 </span><br><span class="line">3 * p1 + 4 * p2 + 2 * p3 = 3 </span><br><span class="line">1 * p1 + 2 * p2 + 4 * p3 = 2</span><br></pre></td></tr></table></figure>
+<p>if given the inverse of A, we are able to calculate p:</p>
+<ol>
+<li>A x p = c </li>
+<li>A^(-1) x A x p = A^(-1) x c</li>
+<li>E x p = A^(-1) x c</li>
+<li>p = A^(-1) x c</li>
+</ol>
+<h2 id="Finding-the-inverse-matrix"><a href="#Finding-the-inverse-matrix" class="headerlink" title="Finding the inverse matrix"></a>Finding the inverse matrix</h2><p>Theorem 6 : if A and B are n x n matrices and A * B = E, then B x A = E also holds.<br>&nbsp;<br>as A x A^(-1) = E, we can compute the inverse :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           / 4 2 1 \</span><br><span class="line">A      =   | 3 4 2 | </span><br><span class="line">           \ 1 2 4 /</span><br><span class="line"></span><br><span class="line">           /a11 a12 a13\</span><br><span class="line">A^(-1) =   |a21 a22 a23|</span><br><span class="line">           \a31 a32 a33/</span><br></pre></td></tr></table></figure>
+<p>we solve the inverse :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   / 4 2 1 | 1 0 0 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 1 2 4 | 0 0 1 /</span><br><span class="line"></span><br><span class="line">   / 1 2 4 | 0 0 1 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 4 2 1 | 1 0 0 /</span><br><span class="line"></span><br><span class="line">   / 1 0 0 |   12/30 - 6/30      0 \</span><br><span class="line">=  | 0 1 0 | - 10/30  15/30 - 5/30 | </span><br><span class="line">   \ 0 0 1 |    2/30 - 6/30  10/30 /</span><br></pre></td></tr></table></figure>
+<p>NOTES : </p>
+<ul>
+<li>Matrices are not always invertible, for example zero matrix.</li>
+<li>We discover non-invertibility when we come to a special case in the Gaussian elimination procedure that we use to compute the inverse matrix.</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/03/11/Year1:[MATH]07_Bases/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/03/11/Year1:[MATH]10_Regular Languages/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-11 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

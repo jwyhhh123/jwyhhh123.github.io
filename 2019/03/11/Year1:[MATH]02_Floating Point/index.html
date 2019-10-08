@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Rational Numbers and Floating Point Numbers | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="A difference between Z and ZmZ is an ordered ring (0,1,2,3,4,5…)Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)
+The rational numbers (Q)To check two fr">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Rational Numbers and Floating Point Numbers">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Rational Numbers and Floating Point Numbers</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
+<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
+<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
+<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>validity check : lcf(x, y) = lcf(y, r)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
+<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>贝祖等式: 已知lcf，求u和v</p>
+</blockquote>
+<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
+<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
+<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
+<ul>
+<li>we use base 2 for both mantissa and exponent</li>
+<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>People are still dealing with multiplication on real numbers.</p>
+</blockquote>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/04/05/Year1:[JAVA]01_dataTypes/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/03/11/Year1:[MATH]03_Guassian Elimination/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-11 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Turing Machine | WY J</title>
+  <meta name="author" content="Wenye Jin">
+  
+  <meta name="description" content="Reasons to introduce turing machineWhen we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Turing Machine">
+  <meta property="og:site_name" content="WY J">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+</html>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">WY J</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Turing Machine</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Reasons-to-introduce-turing-machine"><a href="#Reasons-to-introduce-turing-machine" class="headerlink" title="Reasons to introduce turing machine"></a>Reasons to introduce turing machine</h2><p>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
+<h2 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h2><p>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
+<ol>
+<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
+<li>the set V of return values.</li>
+</ol>
+<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
+<ul>
+<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
+<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
+<li>left</li>
+<li>right</li>
+<li>No-op (which does nothing)</li>
+<li>Return True</li>
+<li>Return False</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
+<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
+<h2 id="Representation-of-a-turing-machine"><a href="#Representation-of-a-turing-machine" class="headerlink" title="Representation of a turing machine"></a>Representation of a turing machine</h2><p>A turing machine has :</p>
+<ol>
+<li>a finite state X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
+</ol>
+<p>example : convert a into b from a given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
+<p>example : return true if the number of as is even in the given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
+<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
+<p>example : reverse copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
+<h2 id="More-complex-TM"><a href="#More-complex-TM" class="headerlink" title="More complex TM"></a>More complex TM</h2><ul>
+<li>2-tape turing machine</li>
+<li>m x n turing machine</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2019/03/11/Year1:[MATH]13_Complexity/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/03/11/Year1:[MATH]14_N&NP/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jwy.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-11 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    </li><li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
+  
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'jwy';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2019 Wenye Jin
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
