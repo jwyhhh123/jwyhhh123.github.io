@@ -108,11 +108,11 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
+			<a href="/2019/04/05/Year1:[JAVA]02_variableTypes/">Variable types</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
+		<div class="date">post @ 2019-04-05  </div>
 		</div>
 	</div>
 	
@@ -122,36 +122,10 @@
   <div class="row">
 	
 	
-		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
-<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
-<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
-<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>validity check : lcf(x, y) = lcf(y, r)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
-<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>贝祖等式: 已知lcf，求u和v</p>
-</blockquote>
-<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
-<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
-<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
-<ul>
-<li>we use base 2 for both mantissa and exponent</li>
-<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>People are still dealing with multiplication on real numbers.</p>
-</blockquote>
-
+		<h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2>
 	
 	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/04/05/Year1:[JAVA]02_variableTypes/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -161,11 +135,11 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]03_Guassian Elimination/">System of Linear Equations - Guassian Elimination</a>
+			<a href="/2019/04/05/Year1:[JAVA]03_operators/">Operators</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
+		<div class="date">post @ 2019-04-05  </div>
 		</div>
 	</div>
 	
@@ -175,131 +149,101 @@
   <div class="row">
 	
 	
-		<h2 id="Another-example-of-a-field"><a href="#Another-example-of-a-field" class="headerlink" title="Another example of a field"></a>Another example of a field</h2><p>Complex field C consists of pair(a, b) of real numbers.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b)+(c,d) = (a+c,b+d) </span><br><span class="line">(a,b)×(c,d) = (ac−bd,ad+bc)</span><br></pre></td></tr></table></figure>
-<p>NOTE: (a,b) can be writtern in a + ib where i · i = -1.</p>
-<p>// (a, b)(x, y) = (1, 0)</p>
-<blockquote>
-<p>complex numbers are used in Robot rotations.</p>
-</blockquote>
-<h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Base Case    : ax = b. This can be solved directly: x = b/a.<br>General Case : There are n equations and each contains n unknowns.</p>
-<ol>
-<li>use the first equation to eliminate the first unknown in the remaing (n-1) equations.</li>
-<li>apply step 1 recursively.</li>
-<li>determine the last unknown and bring it back recursively.</li>
-<li>reduce each question to base case.</li>
-</ol>
-<p>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line"> 3 * x1 − 2 * x2 + 7 * x3 =   5 </span><br><span class="line">−2 * x1 −     x2 −     x3 =   0</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">          9 * x2 − 5 * x3 = -22</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                  32 * x3 = -32</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">        -17 * x2 +13 * x3 =  38 </span><br><span class="line">                       x3 = - 1</span><br><span class="line"></span><br><span class="line">     x1 + 5 * x2 − 2 * x3 = −11 </span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1    </span><br><span class="line"></span><br><span class="line">                       x1 =   2</span><br><span class="line">                       x2 = - 3</span><br><span class="line">                       x3 = - 1</span><br></pre></td></tr></table></figure>
-<h2 id="A-more-compact-notation"><a href="#A-more-compact-notation" class="headerlink" title="A more compact notation"></a>A more compact notation</h2><p>The unknowns themselves have no effect on GE, all computation happens on the numeric coefficients.<br>&nbsp;<br>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|  -3   1  -2  | -5  |    // (second equation) +- (first equation)</span><br><span class="line">\   3  -1   7  | 10  /</span><br><span class="line"> </span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the first unknown in the remaining 2.</span><br><span class="line">\   0  -2   2  |  7  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     // elimate the second unknown in the remaining 1.</span><br><span class="line">\   0   0   5  |  5  /</span><br><span class="line"></span><br><span class="line">/   3   1   5  |  3  \</span><br><span class="line">|   0   2   3  | -2  |     </span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  | -2  \</span><br><span class="line">|   0   2   0  | -5  |     // bring it back to all equations</span><br><span class="line">\   0   0   1  |  1  /</span><br><span class="line"></span><br><span class="line">/   3   1   0  |  -2 \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   6   0   0  |  1  \</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  / </span><br><span class="line"></span><br><span class="line">/   1   0   0  |  1/6\</span><br><span class="line">|   0   1   0  | -5/2|</span><br><span class="line">\   0   0   1  |  1  /</span><br></pre></td></tr></table></figure>
-<p>NOTES: </p>
-<ul>
-<li>Do not miss minus signs.</li>
-<li>Avoid fractions until the very end.</li>
-<li>Only follow the rules of GE.</li>
-<li>After solving the answers, CHECK your answers.</li>
-<li>Echelon form(梯队形式) // as shown in the example</li>
-</ul>
-<h2 id="Special-cases"><a href="#Special-cases" class="headerlink" title="Special cases"></a>Special cases</h2><p>Case 1 : contradictory equation<br>result : no solution</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 7 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 1 /</span><br></pre></td></tr></table></figure>
-<p>Case 2 : irrelevant equation<br>result : can be chosen freely</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 2  -4 | 6 /</span><br><span class="line"></span><br><span class="line">/ 1  -2 | 3 \</span><br><span class="line">\ 0   0 | 0 /</span><br><span class="line"></span><br><span class="line">x1 = 3 + 2 * x2     // x1 can be chosen freely then x2 = (x1 - 3)/2</span><br><span class="line">x2 = chosen freely</span><br></pre></td></tr></table></figure>
-<p>Case 3   : cannot use the first equation to eliminate.<br>solution : swap</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  0  -2   3 |  3 \</span><br><span class="line">|  2  -1  -2 |  6 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br><span class="line"></span><br><span class="line">/  2  -1  -2 |  6 \</span><br><span class="line">|  0  -2   3 |  3 |</span><br><span class="line">\ -5  -2  -1 | -3 /</span><br></pre></td></tr></table></figure>
-<p>Case 4   : cannot use any of the equations to solve the first unknown.<br>solution : General Gaussian Elimination<br>answer   : the first unkown can be chosen freely</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/  1  -2   1 |  3 \</span><br><span class="line">|  2  -4  -2 |  7 |</span><br><span class="line">\ -5  -10 -1 | -9 /</span><br><span class="line"></span><br><span class="line">/  1  -2  -1 |  3 \</span><br><span class="line">|  0   0  -4 |  1 |</span><br><span class="line">\  0   0   4 |  6 /</span><br></pre></td></tr></table></figure>
-<h2 id="General-Gaussian-Elimination"><a href="#General-Gaussian-Elimination" class="headerlink" title="General Gaussian Elimination"></a>General Gaussian Elimination</h2><p>Base Case 1 : Only one unknown is left over but there may be more than one equation. In this case we solve each equation independently and compare the answers; if they agree, then that is what we return. If they disagree, then the system has no solution (which we can communicate back by raising an exception).<br>Base Case 2 : Only one equation is left over but more than one unknown appears in it (let’s say m many). In this case m − 1 unknowns can be chosen freely and the other one is computed from the equation. (It does not matter which m − 1 unknowns are chosen and which is computed.)</p>
-<h2 id="Systems-of-linear-equations-over-other-fields"><a href="#Systems-of-linear-equations-over-other-fields" class="headerlink" title="Systems of linear equations over other fields"></a>Systems of linear equations over other fields</h2><p>example in GF(2) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ | 0   1        * | 0   1    </span><br><span class="line">----------       ----------</span><br><span class="line">0 | 0   1        0 | 0   0</span><br><span class="line">  |                |</span><br><span class="line">1 | 1   0        1 | 0   1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Gaussian elimination can be employed for systems of equations over an arbitrary field</p>
-</blockquote>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]03_Guassian Elimination/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]04_Analytic Geometry/">Analytic Geometry</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Distance-between-points"><a href="#Distance-between-points" class="headerlink" title="Distance between points"></a>Distance between points</h2><p>Given points (p1, p2) and (q1, q2), d = root( (q1 - p1)^2 + (q2 - p2)^2 )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^  </span><br><span class="line">|  . P = (p1, p2)</span><br><span class="line">|</span><br><span class="line">|</span><br><span class="line">|  </span><br><span class="line">|            . Q = (q1, q2)</span><br><span class="line">|                 </span><br><span class="line">.--------------------&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Vectors-and-straight-line-movement"><a href="#Vectors-and-straight-line-movement" class="headerlink" title="Vectors and straight line movement"></a>Vectors and straight line movement</h2><p>Given a movement : (v1, v2), P’ = (p1 + v1, p2 + v2)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^  </span><br><span class="line">|       .     .</span><br><span class="line">|      /     /</span><br><span class="line">|     /     /</span><br><span class="line">|    /     /</span><br><span class="line">|   /     /     </span><br><span class="line">|  /     /          </span><br><span class="line">.--------------------&gt;</span><br></pre></td></tr></table></figure>
-<p>length of a vector : <code>|v| = root( (v1)^2 + (v2)^2 )</code><br>null vector        : (0, 0)<br>unit vector        : length = 1<br>&nbsp;<br>For every vector other than null vector, there is a unit vector:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> v</span><br><span class="line">--- = (v1/|v| , v2/|v|)</span><br><span class="line">|v|</span><br></pre></td></tr></table></figure>
-<p>Given points P and Q, vector of PQ has coordinates (q1 - p1, q2 - p2)</p>
-<h2 id="The-algebra-of-vectors"><a href="#The-algebra-of-vectors" class="headerlink" title="The algebra of vectors"></a>The algebra of vectors</h2><p>Movements can be composed (向量组合) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v3 = v1 + v2</span><br></pre></td></tr></table></figure>
-<p>Movements can be extended or shrunk :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  2 * v = (  2 * v1,   2 * v2)  // extend</span><br><span class="line">1/2 * v = (1/2 * v1, 1/2 * v2)  // shrink</span><br></pre></td></tr></table></figure>
-<h2 id="Laws-of-vetor-algebra"><a href="#Laws-of-vetor-algebra" class="headerlink" title="Laws of vetor algebra"></a>Laws of vetor algebra</h2><ul>
-<li>Laws of vector addition</li>
-<li>Laws of the null vectors</li>
-<li>Laws of scalar multiplication</li>
-</ul>
-<p>NOTE: we ONLY have additive inverse of a vector. We do not need multiplicative inverse.</p>
-<h2 id="Representing-straight-lines"><a href="#Representing-straight-lines" class="headerlink" title="Representing straight lines"></a>Representing straight lines</h2><p>Given a point P and a vector v (!= 0), a line can be represented as:<br><code>X = P + s * v</code>.  (parametric representation)<br><code>s</code> : parameter / generating expression</p>
-<p>example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">X = (-2,-1) + s * (1, 1)</span><br><span class="line">  = (-2 + s, -1 + s)</span><br><span class="line"> </span><br><span class="line">              |</span><br><span class="line">              |</span><br><span class="line">              |/ </span><br><span class="line">              |</span><br><span class="line">             /|         </span><br><span class="line">            / |  </span><br><span class="line"> __________/__|________________</span><br><span class="line">        -2/   |       </span><br><span class="line">         .    |  -1</span><br><span class="line">         P    |</span><br><span class="line">              |</span><br><span class="line">              |</span><br></pre></td></tr></table></figure>
-<h2 id="Intersection"><a href="#Intersection" class="headerlink" title="Intersection"></a>Intersection</h2><ol>
-<li>test whether a given point lies on a given line or plane; </li>
-<li>find the intersection point between two lines;</li>
-<li>find the intersection point between a line and a plane; </li>
-<li>find the intersection line between two planes.</li>
-</ol>
-<p>Step 1 : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">          X = Y</span><br><span class="line">  P + s * v = Q + T * w</span><br><span class="line"></span><br><span class="line">p1 + s * v1 = q1 + t * w1   // x-axis</span><br><span class="line">p2 + s * v2 = q2 + t * w2   // y-axis</span><br></pre></td></tr></table></figure>
-<p>Step 2 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s * v1 - t * w1 = q1 - p1 </span><br><span class="line">s * v2 - t * w2 = q2 - p2</span><br></pre></td></tr></table></figure>
-<p>Step 3 : Use Gaussian elimination to solve <code>s</code> or <code>t</code><br>&nbsp;<br>Step 4 : Check answer, by bring the answer into the quations</p>
-<h2 id="Cartesian-coordinate-systems-and-points-in-space"><a href="#Cartesian-coordinate-systems-and-points-in-space" class="headerlink" title="Cartesian coordinate systems and points in space"></a>Cartesian coordinate systems and points in space</h2><p>Given points (p1, p2, p3) and (q1, q2, q3),<br>d = root( (q1 - p1)^2 + (q2 - p2)^2 + (q3 - p3)^2 )</p>
-<h2 id="Vectors-and-lines"><a href="#Vectors-and-lines" class="headerlink" title="Vectors and lines"></a>Vectors and lines</h2><p>in 3-D, Given a vector v = (v1, v2, v3) and a point P = (p1, p2, p3) :<br>&nbsp;<br>length of a vector : |v| = root( (v1)^2 + (v2)^2 + (v3)^2 )<br>A line is still    : X = P + s x v</p>
-<h2 id="Planes"><a href="#Planes" class="headerlink" title="Planes"></a>Planes</h2><p>Parametric representation of a plane : X = P + s x v + t x w</p>
-<p>NOTE: vectors <code>v</code> and <code>w</code> must not point to the same direction, otherwise only a line is generated.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> -------------------</span><br><span class="line">|     ^ v           |</span><br><span class="line">|     |             |</span><br><span class="line">|     |             |</span><br><span class="line">|   P . -------&gt; w  |</span><br><span class="line">|                   |</span><br><span class="line"> -------------------</span><br><span class="line"></span><br><span class="line">. -------&gt; -----&gt;</span><br><span class="line">      w       v</span><br></pre></td></tr></table></figure>
-<p>Task 4 in Intersection:<br>find the intersection line between two planes.<br>Given X = (1, -2, 1) + s <em> (0, 2, 1) + t </em> (-1, 1, -1)<br>and,  Y = (2,  1, 0) + r <em> (1, 1, 0) + q </em> ( 0, 0,  1)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Step 1 :</span><br><span class="line">         1 - t = 2 + r</span><br><span class="line">-2 + 2 * s + t = 1 + r </span><br><span class="line"> 1 + 1 * s - t = q</span><br><span class="line"></span><br><span class="line">Step 2 :</span><br><span class="line">       - r - t =  1</span><br><span class="line">-r + 2 * s + t =  3</span><br><span class="line">     s - q - t = -1</span><br><span class="line"></span><br><span class="line">Step 3 :</span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line">-1  2  1  0 |  3</span><br><span class="line"> 0  1 -1 -1 | -1</span><br><span class="line"></span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line"> 0  2  2  0 |  2</span><br><span class="line"> 0  1 -1 -1 | -1</span><br><span class="line"></span><br><span class="line">-1  0 -1  0 |  1</span><br><span class="line"> 0  2  2  0 |  2</span><br><span class="line"> 0  0 -2 -1 | -2</span><br><span class="line"></span><br><span class="line">r = (q - 4) / 2 = q/2 - 2</span><br><span class="line">s</span><br><span class="line">t</span><br><span class="line">q = chosen freely</span><br><span class="line"></span><br><span class="line">Step 4 :</span><br><span class="line">Y = (2,  1, 0) + (q/2 - 2) * (1, 1, 0) + q * ( 0, 0,  1)</span><br><span class="line">  = (2,  1, 0) + [(-2, -2, 0) + q * (1/2, 1/2, 0)] + q * ( 0, 0,  1)</span><br><span class="line">  = (0, -1, 0) + q * (1/2, 1/2, 1)</span><br><span class="line">  = (0, -1, 0) + q * (1, 1, 2)</span><br></pre></td></tr></table></figure>
-<h2 id="Two-point-description-of-a-line"><a href="#Two-point-description-of-a-line" class="headerlink" title="Two-point description of a line"></a>Two-point description of a line</h2><p>Given X = P + s * PQ<br><code>PQ</code> : a vector pointing from P to Q<br>&nbsp;<br>Two-point description :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X = P + s * PQ </span><br><span class="line">  = P + s * (Q - P)</span><br><span class="line">  = P + s * (-P) + s * Q</span><br><span class="line">  = P - s * P + s * Q</span><br><span class="line"></span><br><span class="line">X = (1 - s) * P + s * Q</span><br></pre></td></tr></table></figure>
-<p>NOTE: Given a condition s + t = 1, this can be written as X = t <em> P + s </em> Q.</p>
-<h2 id="Three-point-description-of-a-plane"><a href="#Three-point-description-of-a-plane" class="headerlink" title="Three-point description of a plane"></a>Three-point description of a plane</h2><p>Similarly,<br>Three-point description of a plane :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X = P + s * PQ + t * PR</span><br><span class="line">  = P + s * (Q - P) + t * (R - P)</span><br><span class="line">  = P - s * P - t * P + s * Q + t * R</span><br><span class="line"></span><br><span class="line">X = (1 - s - t) * P + s * Q + t * R</span><br></pre></td></tr></table></figure>
-<h2 id="Practical-advice"><a href="#Practical-advice" class="headerlink" title="Practical advice"></a>Practical advice</h2><p>NOTES:</p>
-<ul>
-<li>Always write the coordinates of points and vectors in the column form. This will help you to avoid mistakes such as confusing coordinates (particularly in 3D).</li>
-<li>A line has infinitely many generating expressions :<ul>
-<li>Your solution and my model solution could look different although they both describe the same line.</li>
-<li>Sometimes your computation will produce a direction vector with fractions as coordinates. You can avoid these by simply stretching the direction vector. </li>
+		<h2 id="arithmetic-operators"><a href="#arithmetic-operators" class="headerlink" title="arithmetic operators"></a>arithmetic operators</h2><ul>
+<li><ul>
+<li><ul>
+<li>/ %</li>
 </ul>
 </li>
-<li>The same is true for planes in 3D, only more so!</li>
-<li>When computing the intersection point between two lines (or a line and a plane, or two planes) with Gaussian elimination (as in Items 51 and 55) make sure you are not using the same parameter name twice! (Note how I used r and q in Item 55 for the second plane.)</li>
 </ul>
+</li>
+</ul>
+<h2 id="relational-and-equality-operators"><a href="#relational-and-equality-operators" class="headerlink" title="relational and equality operators"></a>relational and equality operators</h2><blockquote>
+<p>&lt; =</p>
+</blockquote>
+<h2 id="conditional-operators-AND-OR"><a href="#conditional-operators-AND-OR" class="headerlink" title="conditional operators AND OR"></a>conditional operators AND OR</h2><h2 id="operator-precedence"><a href="#operator-precedence" class="headerlink" title="operator precedence"></a>operator precedence</h2>
+	
+	</div>
+  <a type="button" href="/2019/04/05/Year1:[JAVA]03_operators/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/05/Year1:[Java]04_genetic/">Genetic Algorithm(遗传算法)</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-05  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<!-- what is GA -->
+<h2 id="Individual"><a href="#Individual" class="headerlink" title="Individual"></a>Individual</h2><h2 id="Population-Individuals"><a href="#Population-Individuals" class="headerlink" title="Population(Individuals)"></a>Population(Individuals)</h2><h2 id="Fitness-function"><a href="#Fitness-function" class="headerlink" title="Fitness function"></a>Fitness function</h2><h2 id="Mutation-function"><a href="#Mutation-function" class="headerlink" title="Mutation function"></a>Mutation function</h2><h2 id="Cross-over-function"><a href="#Cross-over-function" class="headerlink" title="Cross-over function"></a>Cross-over function</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">00001111     11110000</span><br><span class="line">    ----         ----</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">00000000     11111111</span><br><span class="line">    ----         ----</span><br></pre></td></tr></table></figure>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]04_Analytic Geometry/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/04/05/Year1:[Java]04_genetic/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/05/Year1:[JAVA]01_dataTypes/">Data Types</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-05  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter.<br><!-- I have posted source code on github --></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String hello = <span class="string">"hello"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a1 = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">char</span> a2 = (<span class="keyword">char</span>) <span class="number">97</span>; <span class="comment">//ascii: a</span></span><br></pre></td></tr></table></figure>
+<h2 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> d = <span class="number">0.1f</span>;</span><br></pre></td></tr></table></figure>
+<p>some numbers are not precise in a computer, for example pi, and the reason fot it is that we only have limit number of bits to represent a number. It is inevitable to lose some precision when we store floating point numbers.</p>
+<p><strong>IEEE754 Single-Precision Format(32 bits)</strong><br>def : we introduce IEEE754 strategy to represent numbers in a computer.<br>&nbsp;<br>sign bit: positive(0) or negative(1)<br>exponent: power<br>mantissa: fractional part of a number</p>
+<p>Encoding strategy:</p>
+<ol>
+<li>record the sign bit</li>
+<li>convert the number part to binary</li>
+<li>convert the fractional part to binary</li>
+<li>concatenate 1. and 2.</li>
+<li>convert to scientific notation</li>
+<li>record the exponent</li>
+<li>record the mantissa</li>
+</ol>
+<p><strong>Density of floating point numbers</strong><br>As numbers are encoded into IEEE754 format where there is a limited number of exponent part, it is inevitable that some numbers stored as float cannot be represented.<br>&nbsp;<br>Density Representation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> |-.-.-.-|-.-.-.-|---.----.----.---|------.--------.--------.------|</span><br><span class="line">-n       0       n                2n                              4n</span><br></pre></td></tr></table></figure>
+<h2 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> e = <span class="number">0.1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> t = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">boolean</span> <span class="keyword">false</span> = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+<p><code>&gt;</code> <code>&lt;</code> <code>==</code> <code>.equals</code> return boolean values</p>
+
+	
+	</div>
+  <a type="button" href="/2019/04/05/Year1:[JAVA]01_dataTypes/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -460,72 +404,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]06_Matrices/">Matrices and Matrix Algebra</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="The-many-uses-of-matrices"><a href="#The-many-uses-of-matrices" class="headerlink" title="The many uses of matrices"></a>The many uses of matrices</h2><p>m x n  : dimension of the matrix<br>square : if the number of raws is equal to the number of columns</p>
-<p>applications :<br>a) Matrices as production tables (list the amounts of raw materials for manufacturing something)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    p1     p2     p3</span><br><span class="line"></span><br><span class="line">M1  10      1      9</span><br><span class="line"></span><br><span class="line">M2   5      7      9</span><br></pre></td></tr></table></figure>
-<p>b) Matrices as Markov chains (running process: ready for execution; sleeping process : ready for being interrupted)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">after / before    running       sleeping</span><br><span class="line"></span><br><span class="line">   running          .8             .01</span><br><span class="line"></span><br><span class="line">   sleeping         .2             .99</span><br></pre></td></tr></table></figure>
-<p>c) Matrices as linear transformations (rotations in graphics)</p>
-<h2 id="The-vector-algebra-operations-on-matrices"><a href="#The-vector-algebra-operations-on-matrices" class="headerlink" title="The vector algebra operations on matrices"></a>The vector algebra operations on matrices</h2><p>Addition : (ONLY in same dimension)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁+􏰀 / 7 −4  5 \ 􏰁  =􏰀   / 8 −2  8 \</span><br><span class="line">\ 0 -1 -2 /   \ 3  4 -1 /       \ 3  3 -3 /</span><br></pre></td></tr></table></figure>
-<p>Subtraction : (here we got: zero matrix)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁- / 1  2  3 \ 􏰁  =􏰀   / 0 0 0 \</span><br><span class="line">\ 0 -1 -2 /   \ 0 -1 -2 /       \ 0 0 0 /</span><br></pre></td></tr></table></figure>
-<p>scale : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 *  / 1  2  3 \ 􏰁 􏰁  =􏰀   / 5  10  15 \</span><br><span class="line">     \ 0 -1 -2 /        \ 3  -5  -2 /</span><br></pre></td></tr></table></figure>
-<h2 id="Matrix-multiplication-in-words"><a href="#Matrix-multiplication-in-words" class="headerlink" title="Matrix multiplication in words"></a>Matrix multiplication in words</h2><p>To compute the entry of AB in row i and column k, compute the inner product of the i-th row of A and with the k-th column of B.<br>&nbsp;<br>NOTE : The width of a row in the first matrix must be the same as the height of a column of the second.</p>
-<h2 id="The-properties-of-matrix-multiplication"><a href="#The-properties-of-matrix-multiplication" class="headerlink" title="The properties of matrix multiplication"></a>The properties of matrix multiplication</h2><p>Multiplication of matrices is usually not communicative : <code>A * B != B * A</code><br>&nbsp;<br>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  1 \ / 1 -1 \ = / 2 0 \ </span><br><span class="line">\ 0  1 / \ 1  1 /   \ 1 1 /     </span><br><span class="line"></span><br><span class="line">/ 1 -1 \ / 1  1 \ = / 1 0 \</span><br><span class="line">\ 1  1 / \ 0  1 / = \ 1 2 /</span><br></pre></td></tr></table></figure>
-<p>Identity matrix <code>E</code>: a matrix has no effect under multiplication<br>Example : 3 * 3 identity matrix</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 1 0 0 \</span><br><span class="line">| 0 1 0 |</span><br><span class="line">\ 0 0 1 /</span><br></pre></td></tr></table></figure>
-<p>Laws of matrix multiplication :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(A * B) * C    =  A * (B * C)</span><br><span class="line"> A * (B + C)   =  A * B + A * C </span><br><span class="line">(A + B) * C    =  A * C + B * C</span><br><span class="line"> A * E = E * A =  A </span><br><span class="line"> A * 0 = 0 * A =  0</span><br><span class="line"> s * (A * B)   =  (s * A) * B = A * (s * B)</span><br></pre></td></tr></table></figure>
-<h2 id="Inverting-matrix-multiplication"><a href="#Inverting-matrix-multiplication" class="headerlink" title="Inverting matrix multiplication"></a>Inverting matrix multiplication</h2><p>Given a matrix A :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 4 2 1 \</span><br><span class="line">| 3 4 2 | </span><br><span class="line">\ 1 2 4 /</span><br></pre></td></tr></table></figure>
-<p>and a 3 * 1 vector c = (2, 3, 2), and an unknown p = (p1, p2, p3)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 * p1 + 2 * p2 + 1 * p3 = 2 </span><br><span class="line">3 * p1 + 4 * p2 + 2 * p3 = 3 </span><br><span class="line">1 * p1 + 2 * p2 + 4 * p3 = 2</span><br></pre></td></tr></table></figure>
-<p>if given the inverse of A, we are able to calculate p:</p>
-<ol>
-<li>A x p = c </li>
-<li>A^(-1) x A x p = A^(-1) x c</li>
-<li>E x p = A^(-1) x c</li>
-<li>p = A^(-1) x c</li>
-</ol>
-<h2 id="Finding-the-inverse-matrix"><a href="#Finding-the-inverse-matrix" class="headerlink" title="Finding the inverse matrix"></a>Finding the inverse matrix</h2><p>Theorem 6 : if A and B are n x n matrices and A * B = E, then B x A = E also holds.<br>&nbsp;<br>as A x A^(-1) = E, we can compute the inverse :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           / 4 2 1 \</span><br><span class="line">A      =   | 3 4 2 | </span><br><span class="line">           \ 1 2 4 /</span><br><span class="line"></span><br><span class="line">           /a11 a12 a13\</span><br><span class="line">A^(-1) =   |a21 a22 a23|</span><br><span class="line">           \a31 a32 a33/</span><br></pre></td></tr></table></figure>
-<p>we solve the inverse :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   / 4 2 1 | 1 0 0 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 1 2 4 | 0 0 1 /</span><br><span class="line"></span><br><span class="line">   / 1 2 4 | 0 0 1 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 4 2 1 | 1 0 0 /</span><br><span class="line"></span><br><span class="line">   / 1 0 0 |   12/30 - 6/30      0 \</span><br><span class="line">=  | 0 1 0 | - 10/30  15/30 - 5/30 | </span><br><span class="line">   \ 0 0 1 |    2/30 - 6/30  10/30 /</span><br></pre></td></tr></table></figure>
-<p>NOTES : </p>
-<ul>
-<li>Matrices are not always invertible, for example zero matrix.</li>
-<li>We discover non-invertibility when we come to a special case in the Gaussian elimination procedure that we use to compute the inverse matrix.</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]06_Matrices/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/03/11/Year1:[MATH]10_Regular Languages/">Regular Languages and Automaton</a>
 		</h3>
 		</div>
@@ -657,6 +535,59 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2019/03/11/Year1:[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
+<ol>
+<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
+<li>suppose a, b ∈ L and m &lt; n.</li>
+<li>let Xm be the state reached when we start from p and read a^m.</li>
+<li>let Xn be the state reached when we start from p and read a^n. </li>
+<li>if starting from Xm and reading b^m then we reach a Acc.</li>
+<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
+<li>So Xn != Xm</li>
+<li>So there are infinitely many states.</li>
+<li>we raise a contradiction. Hence the language is not regular.</li>
+</ol>
+<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
+<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
+<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
+<p>we can construct a derivation tree :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
+<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
+<p>this grammar is ambiguous :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
+<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/Year1:[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2019/03/11/Year1:[MATH]09_Functions/">Functions</a>
 		</h3>
 		</div>
@@ -714,59 +645,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/Year1:[MATH]09_Functions/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]11_BeyondRegularLanguages/">Beyond Regular Languages</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Non-regular-languages"><a href="#Non-regular-languages" class="headerlink" title="Non-regular languages"></a>Non-regular languages</h2><p>def : we know there are some languages which are not regular because there are uncountably many languages and countably many regexps.<br>&nbsp;<br>prove that a language is not regular: example of well-bracketed words</p>
-<ol>
-<li>if L is regular, then there is a  DFA(X, p, δ, Acc) recognizes it.(K’s T)</li>
-<li>suppose a, b ∈ L and m &lt; n.</li>
-<li>let Xm be the state reached when we start from p and read a^m.</li>
-<li>let Xn be the state reached when we start from p and read a^n. </li>
-<li>if starting from Xm and reading b^m then we reach a Acc.</li>
-<li>if starting from Xn and reading b^m then we reach a nonAcc.</li>
-<li>So Xn != Xm</li>
-<li>So there are infinitely many states.</li>
-<li>we raise a contradiction. Hence the language is not regular.</li>
-</ol>
-<p>NOTE : 我们通过这种方式建立了一个DFA返回yes或no，然而论证中出现infinite，和我们的finite矛盾。</p>
-<h2 id="Context-free-languages"><a href="#Context-free-languages" class="headerlink" title="Context-free languages"></a>Context-free languages</h2><p>def : non-regular language is beyond regular language, we now look at a more general way to specify a language.<br>&nbsp;<br>Syntax of a language    : tells what a word is acceptable<br>Semantics of a language : tells what a word means<br>&nbsp;<br>given nonterminals A and B(标签), and terminals(单词) Σ = <code>{+,×,(,),3,5,if,then,else,and,&gt;}</code>,<br>we can form a BNF(Backus-Naur Form) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">=&gt; A ::= 3 | 5 | A + A | A * A | (A) | if B then A else A</span><br><span class="line">   B ::= A &gt; A | B and B| (B)</span><br></pre></td></tr></table></figure>
-<p>we derive <code>if 3 &gt; (3 + 5) then 5 else 3</code> by : (leftmost)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    A 􏰀^-&gt; if B then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; A then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (A) then A else A</span><br><span class="line">􏰀      ^-&gt; if A &gt; (A + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + A) then A else A</span><br><span class="line">􏰀      ^-&gt; if 3 &gt; (3 + 5) then A else A</span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else A 􏰀 </span><br><span class="line">      ^-&gt; if 3 &gt; (3 + 5) then 3 else 5</span><br></pre></td></tr></table></figure>
-<p>we can construct a derivation tree :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">               A</span><br><span class="line">----------------------------------</span><br><span class="line">if    B       then   A   else   A</span><br><span class="line">  ---------         ---        ---</span><br><span class="line">   A  &gt;  A           3          5</span><br><span class="line">  ---   -----           </span><br><span class="line">  3      (A)</span><br><span class="line">        -----</span><br><span class="line">        A + A</span><br><span class="line">       --- ---</span><br><span class="line">        3   5</span><br></pre></td></tr></table></figure>
-<h2 id="The-matching-problem-for-a-context-free-language"><a href="#The-matching-problem-for-a-context-free-language" class="headerlink" title="The matching problem for a context-free language"></a>The matching problem for a context-free language</h2><p>Given a context free grammar, the matching problem for it is decidable.<br>Namely, there is a program that can return True or False.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String w)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Ambiguity"><a href="#Ambiguity" class="headerlink" title="Ambiguity"></a>Ambiguity</h2><p>def : we can generate more than one derivation tree for a given word.<br>&nbsp;<br>NOTE : ambiguity of context free languages is undecidable.<br>&nbsp;<br>example : given alphabet {a, b}, and BNF :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; P ::= ε|Qa|aQ </span><br><span class="line">   Q ::= aaP|bR</span><br><span class="line">   R ::= Qa</span><br></pre></td></tr></table></figure>
-<p>this grammar is ambiguous :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> a          Q</span><br><span class="line">        --------</span><br><span class="line">        a a   P</span><br><span class="line">             ---</span><br><span class="line">              ε</span><br><span class="line"></span><br><span class="line">      P</span><br><span class="line">---------------</span><br><span class="line"> Q          a</span><br><span class="line">--------</span><br><span class="line">a a   P</span><br><span class="line">     ---</span><br><span class="line">      ε</span><br></pre></td></tr></table></figure>
-<h2 id="Language-equivalence"><a href="#Language-equivalence" class="headerlink" title="Language equivalence"></a>Language equivalence</h2><p>Recall how to decide the equivalence of two regexps. We first translate them into DFAs, then use the algorithm we learnt for equivalence of DFAs. Is the equivalence of two context free grammars decidable? The answer is No. (We shall not prove this.)</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]11_BeyondRegularLanguages/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -871,7 +749,9 @@
 		
 			<li><a href="/categories/Year1-Mathematics-Fundation-of-Computer-Science/">Year1/ Mathematics Fundation of Computer Science<span>16</span></a></li>
 		
-			<li><a href="/categories/Year2-Advanced-functional-programming-Haskell/">Year2/ Advanced functional programming (Haskell)<span>1</span></a></li>
+			<li><a href="/categories/Year2-Advanced-functional-programming-Haskell/">Year2/ Advanced functional programming (Haskell)<span>3</span></a></li>
+		
+			<li><a href="/categories/Year2-Software-Engineering/">Year2/ Software Engineering<span>2</span></a></li>
 		
 			<li><a href="/categories/Year2-Systems-Programming-in-c-c/">Year2/ Systems Programming in c/c++<span>3</span></a></li>
 		
@@ -885,23 +765,23 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2019/10/06/Year2:[C]02_StructureofCProgram/"><i class="fa fa-file-o"></i>General Structure of a C Pr...</a>
+        <a href="/2019/10/14/Year2:[SoftwareEng]02_Agile/"><i class="fa fa-file-o"></i>Agile Methodologies</a>
       </li>
     
       <li>
-        <a href="/2019/10/06/Year2:[C]01_ComputerArch/"><i class="fa fa-file-o"></i>Computer Architecture</a>
+        <a href="/2019/10/14/Year2:[SoftwareEng]03_Requirements/"><i class="fa fa-file-o"></i>Light Introduction to Requi...</a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/14/Year2:[funProg]0xx/"><i class="fa fa-file-o"></i>Binary Search Trees</a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/14/Year2:[funcProg]0x/"><i class="fa fa-file-o"></i>Binary Trees</a>
       </li>
     
       <li>
         <a href="/2019/10/06/Year2:[C]03_Pointers/"><i class="fa fa-file-o"></i>Pointers</a>
-      </li>
-    
-      <li>
-        <a href="/2019/10/05/Year2:[funcProg]01/"><i class="fa fa-file-o"></i>Pre-announcement</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/18/Unix-commands/"><i class="fa fa-file-o"></i>MacOS/ basic commands</a>
       </li>
     
   </ul>

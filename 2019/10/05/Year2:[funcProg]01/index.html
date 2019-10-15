@@ -9,8 +9,14 @@
   <title>Pre-announcement | WY J</title>
   <meta name="author" content="Wenye Jin">
   
-  <meta name="description" content="Part I: Basic ConceptsIntroduction1.1 Functions1.2 Functional programming1.3 Features of Haskell1.4 Historical background1.5 A taste of Haskell
-First ">
+  <meta name="description" content="Part I: Basic ConceptsFirst steps
+Glasgow Haskell Compiler
+Installing and starting
+Standard prelude
+Function application
+Haskell scripts
+
+Types and cl">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -105,15 +111,77 @@ First ">
 	<div class="mypage">		
 	  		
 
-	  <h1 id="Part-I-Basic-Concepts"><a href="#Part-I-Basic-Concepts" class="headerlink" title="Part I: Basic Concepts"></a>Part I: Basic Concepts</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>1.1 Functions<br>1.2 Functional programming<br>1.3 Features of Haskell<br>1.4 Historical background<br>1.5 A taste of Haskell</p>
-<h2 id="First-steps"><a href="#First-steps" class="headerlink" title="First steps"></a>First steps</h2><p>2.1 Glasgow Haskell Compiler<br>2.2 Installing and starting<br>2.3 Standard prelude<br>2.4 Function application<br>2.5 Haskell scripts</p>
-<h2 id="Types-and-classes"><a href="#Types-and-classes" class="headerlink" title="Types and classes"></a>Types and classes</h2><p>3.1 Basic concepts<br>3.2 Basic types<br>3.3 List types<br>3.4 Tuple types<br>3.5 Function types<br>3.6 Curried functions<br>3.7 Polymorphic types<br>3.8 Overloaded types<br>3.9 Basic classes</p>
-<h2 id="Defining-functions"><a href="#Defining-functions" class="headerlink" title="Defining functions"></a>Defining functions</h2><p>4.1 New from old<br>4.2 Conditional expressions<br>4.3 Guarded equations<br>4.4 Pattern matching<br>4.5 Lambda expressions<br>4.6 Operator sections</p>
-<h2 id="List-comprehensions"><a href="#List-comprehensions" class="headerlink" title="List comprehensions"></a>List comprehensions</h2><p>5.1 Basic concepts<br>5.2 Guards<br>5.3 The zip function<br>5.4 String comprehensions<br>5.5 The Caesar cipher</p>
-<h2 id="Recursive-functions"><a href="#Recursive-functions" class="headerlink" title="Recursive functions"></a>Recursive functions</h2><p>6.1 Basic concepts<br>6.2 Recursion on lists<br>6.3 Multiple arguments<br>6.4 Multiple recursion<br>6.5 Mutual recursion<br>6.6 Advice on recursion</p>
-<h2 id="Higher-order-functions"><a href="#Higher-order-functions" class="headerlink" title="Higher-order functions"></a>Higher-order functions</h2><p>7.1 Basic concepts<br>7.2 Processing lists<br>7.3 The foldr function<br>7.4 The foldl function<br>7.5 The composition operator<br>7.6 Binary string transmitter<br>7.7 Voting algorithms</p>
-<h2 id="Declaring-types-and-classes"><a href="#Declaring-types-and-classes" class="headerlink" title="Declaring types and classes"></a>Declaring types and classes</h2><p>8.1 Type declarations<br>8.2 Data declarations<br>8.3 Newtype declarations<br>8.4 Recursive types<br>8.5 Class and instance declarations<br>8.6Tautology checker<br>8.7 Abstract machine</p>
-<h2 id="9The-countdown-problem"><a href="#9The-countdown-problem" class="headerlink" title="9The countdown problem"></a>9The countdown problem</h2><p>9.1 Introduction<br>9.2 Arithmetic operators<br>9.3 Numeric expressions<br>9.4 Combinatorial functions<br>9.5 Formalising the problem<br>9.6 Brute force solution<br>9.7 Performance testing<br>9.8 Combining generation and evaluation<br>9.9 Exploiting algebraic properties<br>9.10 Chapter remarks</p>
+	  <h1 id="Part-I-Basic-Concepts"><a href="#Part-I-Basic-Concepts" class="headerlink" title="Part I: Basic Concepts"></a>Part I: Basic Concepts</h1><h2 id="First-steps"><a href="#First-steps" class="headerlink" title="First steps"></a>First steps</h2><ol>
+<li>Glasgow Haskell Compiler</li>
+<li>Installing and starting</li>
+<li>Standard prelude</li>
+<li>Function application</li>
+<li>Haskell scripts</li>
+</ol>
+<h2 id="Types-and-classes"><a href="#Types-and-classes" class="headerlink" title="Types and classes"></a>Types and classes</h2><ol>
+<li>Basic concepts</li>
+<li>Basic types</li>
+<li>List types</li>
+<li>Tuple types</li>
+<li>Function types</li>
+<li>Curried functions</li>
+<li>Polymorphic types</li>
+<li>Overloaded types</li>
+<li>Basic classes</li>
+</ol>
+<h2 id="Defining-functions"><a href="#Defining-functions" class="headerlink" title="Defining functions"></a>Defining functions</h2><ol>
+<li>New from old</li>
+<li>Conditional expressions</li>
+<li>Guarded equations </li>
+<li>Pattern matching</li>
+<li>Lambda expressions</li>
+<li>Operator sections</li>
+</ol>
+<h2 id="List-comprehensions"><a href="#List-comprehensions" class="headerlink" title="List comprehensions"></a>List comprehensions</h2><ol>
+<li>Basic concepts</li>
+<li>Guards</li>
+<li>The zip function</li>
+<li>String comprehensions</li>
+<li>The Caesar cipher</li>
+</ol>
+<h2 id="Recursive-functions"><a href="#Recursive-functions" class="headerlink" title="Recursive functions"></a>Recursive functions</h2><ol>
+<li>Basic concepts</li>
+<li>Recursion on lists</li>
+<li>Multiple arguments</li>
+<li>Multiple recursion</li>
+<li>Mutual recursion</li>
+<li>Advice on recursion</li>
+</ol>
+<h2 id="Higher-order-functions"><a href="#Higher-order-functions" class="headerlink" title="Higher-order functions"></a>Higher-order functions</h2><ol>
+<li>Basic concepts</li>
+<li>Processing lists</li>
+<li>The foldr function</li>
+<li>The foldl function</li>
+<li>The composition operator</li>
+<li>Binary string transmitter</li>
+<li>Voting algorithms</li>
+</ol>
+<h2 id="Declaring-types-and-classes"><a href="#Declaring-types-and-classes" class="headerlink" title="Declaring types and classes"></a>Declaring types and classes</h2><ol>
+<li>Type declarations</li>
+<li>Data declarations</li>
+<li>Newtype declarations</li>
+<li>Recursive types</li>
+<li>Class and instance declarations</li>
+<li>Tautology checker</li>
+<li>Abstract machine</li>
+</ol>
+<h2 id="9The-countdown-problem"><a href="#9The-countdown-problem" class="headerlink" title="9The countdown problem"></a>9The countdown problem</h2><ol>
+<li>Introduction</li>
+<li>Arithmetic operators</li>
+<li>Numeric expressions</li>
+<li>Combinatorial functions</li>
+<li>Formalising the problem</li>
+<li>Brute force solution</li>
+<li>Performance testing</li>
+<li>Combining generation and evaluation</li>
+<li>Exploiting algebraic properties</li>
+<li>Chapter remarks</li>
+</ol>
 <!--
 
 # Part II Going Further
@@ -157,7 +225,7 @@ Bibliography Index
 
     
     
-    <a href="/2019/10/06/Year2:[C]03_Pointers/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/2019/10/06/Year2:[C]01_ComputerArch/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
@@ -226,7 +294,7 @@ Bibliography Index
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    </li><li><a href="/categories/Year2-Advanced-functional-programming-Haskell/">Year2/ Advanced functional programming (Haskell)<span>1</span></a></li>
+    </li><li><a href="/categories/Year2-Advanced-functional-programming-Haskell/">Year2/ Advanced functional programming (Haskell)<span>3</span></a></li>
   
 
     </ul>

@@ -6,15 +6,19 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>Variable types | WY J</title>
+  <title>Light Introduction to Requirements Engineering | WY J</title>
   <meta name="author" content="Wenye Jin">
   
-  <meta name="description" content="constantstaticfinalprivatepublicprotected">
+  <meta name="description" content="Objectives:
+
+To introduce the concepts of user and system requirements
+To describe functional and non-functional requirements
+To explain how soft requ">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Variable types">
+  <meta property="og:title" content="Light Introduction to Requirements Engineering">
   <meta property="og:site_name" content="WY J">
 
   
@@ -87,7 +91,7 @@
 
 	
 		<div class="page-header">
-			<h1> Variable types</h1>
+			<h1> Light Introduction to Requirements Engineering</h1>
 		</div>
 	
 
@@ -104,7 +108,47 @@
 	<div class="mypage">		
 	  		
 
-	  <h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2>	  
+	  <p>Objectives:</p>
+<ul>
+<li>To introduce the concepts of user and system requirements</li>
+<li>To describe functional and non-functional requirements</li>
+<li>To explain how soft requirements may organised in a requirements ducument</li>
+</ul>
+<h2 id="Requirements-analysis-and-its-definition"><a href="#Requirements-analysis-and-its-definition" class="headerlink" title="Requirements analysis and its definition"></a>Requirements analysis and its definition</h2><p>def: the process of establishing what <em>services</em> are required and the <em>constraints</em> on the system’s operation and development. It states what the system is about.</p>
+<p><strong>Requirements engineering process:</strong></p>
+<ol>
+<li>Feasibility study</li>
+<li>Requirements elicitation and analysis</li>
+<li>Requirements specification</li>
+<li>Requirements validation</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  . activities ------&gt;</span><br><span class="line"> </span><br><span class="line">  |   Feasibility  --&gt;  Requirements elicitation  --&gt;  Requirements   --&gt;  Requirements</span><br><span class="line">  |      Study               and analysis         --&gt;  specification  &lt;--   validation</span><br><span class="line">  |        |                     |                          |                    |</span><br><span class="line">  |        v                     v                          v                    |</span><br><span class="line">  |   Feasibility              System                 User and system            |</span><br><span class="line">  |     report                 Models                  requirements              |</span><br><span class="line">  v                              |                          |                    v</span><br><span class="line">                                 |                          +------------&gt;  Requirements</span><br><span class="line">Output                           +---------------------------------------&gt;    document</span><br></pre></td></tr></table></figure>
+<p>NOTE:</p>
+<ul>
+<li>Requirements(services and constraints) are generated during the process of engineering.</li>
+<li>Requirements can be high-level abstract statement or can be a detailed functional specification.</li>
+</ul>
+<h2 id="General-or-detailed-Requirements"><a href="#General-or-detailed-Requirements" class="headerlink" title="General or detailed Requirements"></a>General or detailed Requirements</h2><p><strong>“General” Statement:</strong><br>this kind of statement shows how the system would achieve, interact with the user, other system, and environment…</p>
+<p>examples:</p>
+<ul>
+<li>The system contains all library items including books, newspaper, video… (service)</li>
+<li>No item shall be removed from the library if it has not been recorded. (constraints)</li>
+<li>All item shall have a bar code containing a uniqur reference number. (service)</li>
+</ul>
+<p><strong>“Detailed” Statement:</strong><br>this kind of statement could be:</p>
+<ol>
+<li>Functional Requirements -&gt; statements of the system’s functionality</li>
+<li>Non-Functional Requirements -&gt; statements of the practical constraints or limitations within which the system must operate</li>
+<li>Implementation Requirements -&gt; statements on how the system to be implemented</li>
+</ol>
+<p>examples:</p>
+<ul>
+<li>The system shall permit all users to search for an item by title, by author, by ISBN. (functional)</li>
+<li>Borrowed items that are one day overdue shall cause a reminder e- mail to the borrower. (functional)</li>
+<li>The system shall respond to a transaction requests from a user within 1.5 seconds. (non-functional)</li>
+<li>When an item is borrowed or returned, it should be scanned through a card reader. (Implementation)</li>
+</ul>
+<h2 id="Eliciting-Requirements"><a href="#Eliciting-Requirements" class="headerlink" title="Eliciting Requirements"></a>Eliciting Requirements</h2>	  
 	</div>
 
 	<div>
@@ -113,12 +157,12 @@
 
     
     
-    <a href="/2019/06/02/Year1:[AI]07_knn/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a href="/2019/10/14/Year2:[SoftwareEng]02_Agile/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2019/04/05/Year1:[JAVA]03_operators/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+    <a href="/2019/10/14/Year2:[funProg]0xx/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
@@ -171,7 +215,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2019-04-05 
+	2019-10-14 
 	</div>
 	
 
@@ -182,7 +226,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    </li><li><a href="/categories/Year1-Java/">Year1/ Java<span>4</span></a></li>
+    </li><li><a href="/categories/Year2-Software-Engineering/">Year2/ Software Engineering<span>2</span></a></li>
   
 
     </ul>
