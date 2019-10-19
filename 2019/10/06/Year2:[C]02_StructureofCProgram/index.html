@@ -1,110 +1,154 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="cache-control" content="no-cache">
-  <meta http-equiv="expires" content="0">
-  
-  <title>General Structure of a C Program | WY J</title>
-  <meta name="author" content="Wenye Jin">
-  
-  <meta name="description" content="General Structure of a C program1234567891011#include &amp;lt;header file&amp;gt;foo1()&amp;#123; // User-defined function    // Declaration of variables    // Ar">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="General Structure of a C Program">
-  <meta property="og:site_name" content="WY J">
-
-  
-    <meta property="og:image" content>
-  
-
-  
-  
-    <link href="/favicon.png" rel="icon">
-  
-  
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
-  
-
-
-
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="General Structure of a C program1234567891011#include &amp;lt;header file&amp;gt;foo1()&amp;#123; // User-defined function    // Declaration of variables    // Arithmetic and Logical expressions&amp;#125; main()&amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="General Structure of a C Program">
+<meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/index.html">
+<meta property="og:site_name" content="WY J">
+<meta property="og:description" content="General Structure of a C program1234567891011#include &amp;lt;header file&amp;gt;foo1()&amp;#123; // User-defined function    // Declaration of variables    // Arithmetic and Logical expressions&amp;#125; main()&amp;#123">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-19T14:40:45.190Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="General Structure of a C Program">
+<meta name="twitter:description" content="General Structure of a C program1234567891011#include &amp;lt;header file&amp;gt;foo1()&amp;#123; // User-defined function    // Declaration of variables    // Arithmetic and Logical expressions&amp;#125; main()&amp;#123">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>General Structure of a C Program</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
 </head>
-</html>
- <body>  
-  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-	  <a class="navbar-brand" href="/">WY J</a>
-      <div class="collapse navbar-collapse nav-menu">
-		<ul class="nav navbar-nav">
-		  
-		  <li>
-			<a href="/archives" title="All the articles.">
-			  <i class="fa fa-archive"></i>Archives
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/categories" title="All the categories.">
-			  <i class="fa fa-folder"></i>Categories
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/about" title="About me.">
-			  <i class="fa fa-user"></i>About
-			</a>
-		  </li>
-		  
-		</ul>
-      </div>
-    </div> <!-- container -->
-</nav>
-<div class="clearfix"></div>
 
-  <div class="container">
-  	<div class="content">
-    	 
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/14/Year2:[funcProg]0x/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/06/Year2:[C]03_Pointers/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&text=General Structure of a C Program"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&is_video=false&description=General Structure of a C Program"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=General Structure of a C Program&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&name=General Structure of a C Program&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#General-Structure-of-a-C-program"><span class="toc-number">1.</span> <span class="toc-text">General Structure of a C program</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Data-types"><span class="toc-number">2.</span> <span class="toc-text">Data types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-statement"><span class="toc-number">3.</span> <span class="toc-text">if statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch"><span class="toc-number">4.</span> <span class="toc-text">switch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loops"><span class="toc-number">5.</span> <span class="toc-text">loops</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#continue-and-break"><span class="toc-number">6.</span> <span class="toc-text">continue and break</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-number">7.</span> <span class="toc-text">Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Funtions"><span class="toc-number">8.</span> <span class="toc-text">Funtions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-number">9.</span> <span class="toc-text">Recursion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        General Structure of a C Program
+    </h1>
 
 
-	
-		<div class="page-header">
-			<h1> General Structure of a C Program</h1>
-		</div>
-	
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">WY J</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-06T18:58:17.000Z" itemprop="datePublished">2019-10-06</time>
+        
+        (Updated: <time datetime="2019-10-19T14:40:45.190Z" itemprop="dateModified">2019-10-19</time>)
+        
+      
+    </div>
 
 
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Year2-Systems-Programming-in-c-c/">Year2/ Systems Programming in c/c++</a>
+    </div>
 
-<div class="row post">
-	<!-- cols -->
-	
-	<div id="top_meta"></div>
-	<div class="col-md-9">
-	
 
-	<!-- content -->
-	<div class="mypage">		
-	  		
+      
 
-	  <h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>NOTES:</p>
 <ul>
 <li>Program must contain a main() function</li>
@@ -133,163 +177,117 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factorial</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span>(n * factorial(n-<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i,fact=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> number=<span class="number">4</span>;</span><br><span class="line">fact = factorial(number); System.out.println(<span class="string">"Factorial is: "</span>+fact);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
 <p>Now we convert to a C program: </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> (n * factorial(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input your number: "</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result = factorial(i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Answer: %d\n"</span>, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-	  
-	</div>
 
-	<div>
-  	<center>
-	<div class="pagination">
+  </div>
+</article>
 
-    
-    
-    <a href="/2019/10/06/Year2:[C]01_ComputerArch/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
-    
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
 
-    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
-    
-    <a href="/2019/10/05/Year2:[funcProg]01/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>
-    
 
-    
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#General-Structure-of-a-C-program"><span class="toc-number">1.</span> <span class="toc-text">General Structure of a C program</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Data-types"><span class="toc-number">2.</span> <span class="toc-text">Data types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-statement"><span class="toc-number">3.</span> <span class="toc-text">if statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch"><span class="toc-number">4.</span> <span class="toc-text">switch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loops"><span class="toc-number">5.</span> <span class="toc-text">loops</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#continue-and-break"><span class="toc-number">6.</span> <span class="toc-text">continue and break</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-number">7.</span> <span class="toc-text">Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Funtions"><span class="toc-number">8.</span> <span class="toc-text">Funtions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion"><span class="toc-number">9.</span> <span class="toc-text">Recursion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&text=General Structure of a C Program"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&is_video=false&description=General Structure of a C Program"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=General Structure of a C Program&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&title=General Structure of a C Program"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/10/06/Year2:[C]02_StructureofCProgram/&name=General Structure of a C Program&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-    </center>
-	</div>
-	
-	<!-- comment -->
-	
-<section id="comment">
-    <h2 class="title">Comments</h2>
-
-    
-    <div id="disqus_thread" class="ds-thread">
-        <script type="text/javascript">
-            /**
-             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-             */
-                /*
-                 var disqus_config = function () {
-                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                 };
-                 */
-            (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-
-                s.src = '//jwy.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
-                Disqus.</a></noscript>
-    </div>
-    
-</section>
-
-
-	</div> <!-- col-md-9/col-md-12 -->
-		
-	
-	<div id="side_meta">
-		<div class="col-md-3" id="post_meta"> 
-
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	2019-10-06 
-	</div>
-	
-
-	<!-- categories -->
-    
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
-          
-  <li>
-    </li><li><a href="/categories/Year2-Systems-Programming-in-c-c/">Year2/ Systems Programming in c/c++<span>3</span></a></li>
-  
-
-    </ul>
-	</div>
-	
-
-	<!-- tags -->
-		
-
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
-
-	</div>
-		
-
-</div><!-- row -->
-
-<script type="text/javascript">
-var disqus_shortname = 'jwy';
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
-
-
-
-	</div>
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Wenye Jin
   </div>
-  <div class="container-narrow">
-  <footer> <p>
-  &copy; 2019 Wenye Jin
-  
-</p>
- </footer>
-</div> <!-- container-narrow -->
-  
-  <script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
 
-  _st('install', 'ZP2ZSuHgipSZfRyU8uTR','2.0.0');
-  </script>
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
-
-
-  
-<a id="gotop" href="#">   
-  <span>⬆︎TOP</span>
-</a>
-
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
+<!-- search -->
 
+<!-- Google Analytics -->
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+<!-- Baidu Analytics -->
 
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'jwy';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
 
 </body>
-   </html>
+</html>
