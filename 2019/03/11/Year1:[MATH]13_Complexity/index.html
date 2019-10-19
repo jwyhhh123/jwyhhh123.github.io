@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Preliminary: laws of probabilitybasic laws of probability :  an impossible event has P = 0 some certain events have P = 1 For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B) For">
+    <meta name="description" content="Preliminary: laws of probabilitybasic laws of probability:   an impossible event has P = 0 some certain events have P = 1 For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B) For">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Complexity">
 <meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/Year1:[MATH]13_Complexity/index.html">
 <meta property="og:site_name" content="WY J">
-<meta property="og:description" content="Preliminary: laws of probabilitybasic laws of probability :  an impossible event has P = 0 some certain events have P = 1 For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B) For">
+<meta property="og:description" content="Preliminary: laws of probabilitybasic laws of probability:   an impossible event has P = 0 some certain events have P = 1 For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B) For">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-17T19:00:56.000Z">
+<meta property="og:updated_time" content="2019-10-19T16:17:47.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Complexity">
-<meta name="twitter:description" content="Preliminary: laws of probabilitybasic laws of probability :  an impossible event has P = 0 some certain events have P = 1 For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B) For">
+<meta name="twitter:description" content="Preliminary: laws of probabilitybasic laws of probability:   an impossible event has P = 0 some certain events have P = 1 For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B) For">
     
     
         
@@ -72,10 +72,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/03/11/Year1:[MATH]11_BeyondRegularLanguages/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/11/Year1:[MATH]14_N&NP/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/03/11/Year1:[MATH]12_Decidability&HaltingProblem/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/11/Year1:[MATH]16_PropertiesofCode/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -128,7 +128,7 @@
       
         <time datetime="2019-03-11T00:55:52.000Z" itemprop="datePublished">2019-03-11</time>
         
-        (Updated: <time datetime="2019-06-17T19:00:56.000Z" itemprop="dateModified">2019-06-17</time>)
+        (Updated: <time datetime="2019-10-19T16:17:47.555Z" itemprop="dateModified">2019-10-19</time>)
         
       
     </div>
@@ -148,7 +148,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
+    <h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability: </p>
 <ul>
 <li>an impossible event has P = 0</li>
 <li>some certain events have P = 1</li>
@@ -161,14 +161,14 @@
 <li>small arguments</li>
 <li>constant factors</li>
 </ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def: let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE: C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
 <ul>
 <li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
 <li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
 <li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
 <li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
 </ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
+<p>NOTE: exponential growth is faster than polunomial growth.</p>
 <h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
 <h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
 

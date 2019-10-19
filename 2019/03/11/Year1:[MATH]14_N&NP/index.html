@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Polynomial time algorithmsP : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasib">
+    <meta name="description" content="Polynomial time algorithmsP: a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasibl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Polynomial and non-Polynomial">
 <meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/03/11/Year1:[MATH]14_N&NP/index.html">
 <meta property="og:site_name" content="WY J">
-<meta property="og:description" content="Polynomial time algorithmsP : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasib">
+<meta property="og:description" content="Polynomial time algorithmsP: a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasibl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-17T19:02:29.000Z">
+<meta property="og:updated_time" content="2019-10-19T16:18:06.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Polynomial and non-Polynomial">
-<meta name="twitter:description" content="Polynomial time algorithmsP : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasib">
+<meta name="twitter:description" content="Polynomial time algorithmsP: a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasibl">
     
     
         
@@ -75,7 +75,7 @@
         <li><a class="icon" href="/2019/03/11/Year1:[MATH]12_Decidability&HaltingProblem/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/03/11/Year1:[MATH]15_TuringMachine/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/11/Year1:[MATH]13_Complexity/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -128,7 +128,7 @@
       
         <time datetime="2019-03-11T00:55:52.000Z" itemprop="datePublished">2019-03-11</time>
         
-        (Updated: <time datetime="2019-06-17T19:02:29.000Z" itemprop="dateModified">2019-06-17</time>)
+        (Updated: <time datetime="2019-10-19T16:18:06.698Z" itemprop="dateModified">2019-10-19</time>)
         
       
     </div>
@@ -148,32 +148,32 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Polynomial-time-algorithms"><a href="#Polynomial-time-algorithms" class="headerlink" title="Polynomial time algorithms"></a>Polynomial time algorithms</h2><p>P : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
+    <h2 id="Polynomial-time-algorithms"><a href="#Polynomial-time-algorithms" class="headerlink" title="Polynomial time algorithms"></a>Polynomial time algorithms</h2><p>P: a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
 <ul>
 <li>A constant time algorithm has running time in O(1).</li>
 <li>A linear time algorithm has running time in O(n).</li>
 <li>A quadratic time algorithm has running time in O(n2). </li>
 <li>A cubic time algorithm has running time in O(n3).</li>
 </ul>
-<h2 id="NP-Search-problems"><a href="#NP-Search-problems" class="headerlink" title="NP Search problems"></a>NP Search problems</h2><p>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP : an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
+<h2 id="NP-Search-problems"><a href="#NP-Search-problems" class="headerlink" title="NP Search problems"></a>NP Search problems</h2><p>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP: an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
 <ul>
 <li>solutions have size polynomial in n : for a problem instance of size n, all words that are solutions have size &lt;= p(n). (where p(n) is some O())</li>
 <li>solutions can be checked in a time polynomial in n : given a problem instance A and a solution B, there is an alogorithm that checks whether it is &lt;= q(n). (where q(n) is some O())</li>
 </ul>
-<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question : can every NP seach problem be solved in polynomial time?</p>
-<p>example : sudoku (NP)</p>
+<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question: can every NP seach problem be solved in polynomial time?</p>
+<p>example: sudoku (NP)</p>
 <ol>
 <li>solutions have size polynomial in n…</li>
 <li>solutions can be checked in a time polynomial in n…</li>
 <li>we can find a solution in exponential time…</li>
 </ol>
-<p>example : factorization (NP)</p>
+<p>example: factorization (NP)</p>
 <ol>
 <li>solutions have size polynomial in n…</li>
 <li>solutions can be checked in a time polynomial in n…</li>
 <li>we can find a solution in exponential time…</li>
 </ol>
-<h2 id="examples-of-NP"><a href="#examples-of-NP" class="headerlink" title="examples of NP"></a>examples of NP</h2><p>problems in NP but are not known to be in P :</p>
+<h2 id="examples-of-NP"><a href="#examples-of-NP" class="headerlink" title="examples of NP"></a>examples of NP</h2><p>problems in NP but are not known to be in P: </p>
 <ul>
 <li>The travelling salesman. A salesman has to plan a journey between n cities (and return to the<br>start) in a way that minimizes his total distance.</li>
 <li>Optimal scheduling.</li>
