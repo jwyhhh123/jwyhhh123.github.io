@@ -108,7 +108,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]11_ReinforcementLearning/">Reinforcement Learning</a>
+			<a href="/2019/06/02/Year1:[AI]10_NeuralNetwork/">Neural Network</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -122,176 +122,40 @@
   <div class="row">
 	
 	
-		<p>Reinforcement learning, according to Wikipedia, is: </p>
-<blockquote>
-<p>an area of machine learning concerned with how software <strong>agents</strong> ought to take actions in an environment so as to maximize some notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.</p>
-</blockquote>
-<h2 id="Agents"><a href="#Agents" class="headerlink" title="Agents"></a>Agents</h2><p>In reinforcement learning, an agent is required to reach an end state in an environment<br>&nbsp;<br>Example :</p>
-<ol>
-<li>Agent : game</li>
-<li>End state : win</li>
-<li>Environment : board</li>
-</ol>
-<p>In order to reach the outcome we expected, we introduce reward :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for some [i] action</span></span><br><span class="line"><span class="keyword">switch</span>(i)&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>: goal -= <span class="number">100000</span>  <span class="comment">// large panalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>: goal -= <span class="number">10</span>      <span class="comment">// small penalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>: goal += <span class="number">100000</span>  <span class="comment">// large reward</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">4</span>: goal += <span class="number">10</span>      <span class="comment">// small reward</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Things to know :</p>
+		<h2 id="Reason-we-use-neural-network"><a href="#Reason-we-use-neural-network" class="headerlink" title="Reason we use neural network"></a>Reason we use neural network</h2><p>We found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases as well as weights increasing. Instead, we use neural network to create multilayered variables in order to hold more than one logistic regressions.<br>&nbsp;<br>NOTE : 神经网络是逻辑回归的加强版</p>
+<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation:"></a>Representation:</h2><p>linear logits:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g(z) ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure>
+<p>Bias : 1 x w0 which separates the result of 1 and 0.</p>
+<p>we evaluate sigmoid function g(z): </p>
 <ul>
-<li>reward and penalty are based on how they act in an environment</li>
-<li>an agent aims to maximise positive reward</li>
-<li>agent uses this to train a model(e.g. neural network)</li>
-<li>Environment should be fully observable or partially Observable.</li>
+<li>if z &lt; -4, then g(z) = 0</li>
+<li>if z &gt;  4, then g(z) = 1</li>
 </ul>
-<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://www.youtube.com/watch?v=4MlZncsh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4MlZncsh</a> y1Q<br><a href="https://www.youtube.com/watch?v=cUTMhmVh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=cUTMhmVh</a> 1qs</p>
+<h2 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h2><p>def: the process of calculating the inputs of subsequent layers until we reach the final input</p>
+<h2 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h2><p>def: an algorithm to find the gradient for neural network.<br>&nbsp;<br>Backpropagation is used to calculate the gradient(difference in weights); the gradient is calculated for the purpose of updating the weights of all logits.</p>
+<h2 id="one-vs-all"><a href="#one-vs-all" class="headerlink" title="one-vs-all"></a>one-vs-all</h2><p>def: logistic regression can be used on multiple classes by using one-vs-all.<br>&nbsp;<br>NOTE : for example we have a logistic regression to classify cat, dog, rat; another example, we can apply this on human facial identification which tells you who is the person from a given picture.</p>
+<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>cost = Σ(for each j) (expected - predicted)^2</p>
+<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Neural networks, like all non-linear models can overfit training data, there are three approaches :</p>
+<ol>
+<li>include regularisation for each logistic unit</li>
+<li>Dropout : ignore certain nodes(typically half) when traing the model</li>
+<li>reduce network depth : reduce the complexity of hypothesis h(x)</li>
+</ol>
+<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>def: function that used on the weighted sum of input<br>&nbsp;<br>NOTE: we learnt sigmoid function as an activation function in neural network, but there are others.</p>
+<h2 id="Hyperparameters"><a href="#Hyperparameters" class="headerlink" title="Hyperparameters"></a>Hyperparameters</h2><p>Neural Networks (and to a lesser extent Logistic Regression) require several parameters that can be used to “tune” how the network trains.<br>&nbsp;<br>Hyperparameter tuning : the process of picking the correct combination of hyperparameters. This is extremely expensive in terms of time and computational resources.<br>&nbsp;<br>Grid Search : the process of systematically going through all possible combination of the hyperparameters to find the best<br>&nbsp;</p>
+<h2 id="“Overfiting”"><a href="#“Overfiting”" class="headerlink" title="“Overfiting”"></a>“Overfiting”</h2><p>def: a combination of hyperparameters which works well for training data and does not work for any other data.<br>&nbsp;<br>to deal with this, we split our data into three parts :</p>
+<ol>
+<li>training set</li>
+<li>development set : used for hyperparameter tuning</li>
+<li>test set</li>
+</ol>
+<p>proportions of dividing :<br>80% ; 10% ; 10%<br>60% ; 20% ; 20%</p>
+<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>Fraud Prevention<br>Facial identification(人脸识别)</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a><br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]11_ReinforcementLearning/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]08_NaiveBayes/">Naive Bayes</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Bayes-theorem"><a href="#Bayes-theorem" class="headerlink" title="Bayes theorem"></a>Bayes theorem</h2><p>P(f, c) = P(f) <em> P(c|f) = P(c) </em> P(f|c)<br>where <code>f</code> is input attributes and <code>c</code> is the output we want ot predict.<br>&nbsp;<br>accordingly, prediction of c with f is :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">         P(c) * P(f|c)</span><br><span class="line">P(c|f) = --------------</span><br><span class="line">              P(f)</span><br></pre></td></tr></table></figure>
-<p>NOTES: </p>
-<ul>
-<li>input attributes 和 output attributes 可以相互转换, 基于问题。</li>
-<li>P(c|f) : c out of f</li>
-<li>P(f|c) : f out of c</li>
-</ul>
-<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h2><p>to normalise,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">P(c|f) = α * P(c) * P(f|c)</span><br><span class="line">       = α * P(c) * P(f1, ..., fn|c)</span><br><span class="line">       = α * P(c) * P(f1|c) * P(f2|c) *... P(fn|c)</span><br><span class="line">       = α * P(c) * Π(for all n) P(fi|c)</span><br><span class="line"></span><br><span class="line">     1</span><br><span class="line">α = --- </span><br><span class="line">     β</span><br><span class="line"></span><br><span class="line">β = Σ(for all c) P(c) * P(f|c)</span><br><span class="line">  = Σ(for all c) P(c) * Π(for all n) P(fi|c)</span><br></pre></td></tr></table></figure>
-<p>NOTE : <code>f</code> represents f1, … fn, for all n input attributes</p>
-<p>in Naive Bayes, each input attribute is conditionally independent</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(x1 | x2, y) = P(x1 | y)   // x1, x2 are input attributes and y is output attribute</span><br></pre></td></tr></table></figure>
-<p>Procedure :</p>
-<ol>
-<li>create table of attributes : for each input attribute and its possible values</li>
-<li>apply Laplace Smoothing</li>
-<li>build the model of frequency tables(with and without Laplace Smoothing)</li>
-<li>computation based on formulas given.</li>
-</ol>
-<p>NOTE : I think there is a similarity between algorithm and model.</p>
-<h2 id="Laplace-Smoothing"><a href="#Laplace-Smoothing" class="headerlink" title="Laplace Smoothing"></a>Laplace Smoothing</h2><p>Procedure :</p>
-<ol>
-<li>add 1 to each of the frequency cells and use that when calculating <code>P(fi|c)</code></li>
-<li>when calculate P(c), we MUST use the original frequency to calculate it.</li>
-</ol>
-<h2 id="Markov-chains"><a href="#Markov-chains" class="headerlink" title="Markov chains"></a>Markov chains</h2><p>Frequency tables can also be used to compute the probability of switching between states in random processes.<br>&nbsp;<br>Markov Chain is a probabilistic automata :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">      __                      __</span><br><span class="line">75%  |  |         25%        |  |  50%</span><br><span class="line">     -[sunny] &lt;--------&gt; [rainy]-</span><br><span class="line">                  50%</span><br></pre></td></tr></table></figure>
-<h2 id="Categorical-attributes"><a href="#Categorical-attributes" class="headerlink" title="Categorical attributes"></a>Categorical attributes</h2><p>the frequency tables are created by counting occurrences of each possible input and output attribute value among the examples in the training set.</p>
-<h2 id="Numeric-attributes"><a href="#Numeric-attributes" class="headerlink" title="Numeric attributes"></a>Numeric attributes</h2><p>Probability density functions by using Gaussian distribution N(μ, σ^2) :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">distribution of c being given μ, σ^2</span><br><span class="line">                  1                 -(f - μ)^2</span><br><span class="line">P(fi|c) = ------------------ * e^(--------------)    // π  ≈ 3.14159, e ≈ 2.71828</span><br><span class="line">           root(2 * σ^2 * π)          2 * σ2</span><br><span class="line"></span><br><span class="line">μ   : mean of input attributes being such c = X</span><br><span class="line"></span><br><span class="line">         1</span><br><span class="line">σ^2 : ------- * Σ(for each value being such c) [valuei - μ]^2</span><br><span class="line">      n(value)</span><br></pre></td></tr></table></figure>
-<p>NOTES :</p>
-<ul>
-<li>we need to create density function for each c that we want to predict. for example yes/no has 2 f’s; low/medium/high has 3 f’s.</li>
-<li>we compute P(fi|c) by feeding variable f into the density function.</li>
-</ul>
-<h2 id="Advantages-amp-amp-disadvantages"><a href="#Advantages-amp-amp-disadvantages" class="headerlink" title="Advantages &amp;&amp; disadvantages"></a>Advantages &amp;&amp; disadvantages</h2><p>Advantages :</p>
-<ul>
-<li>training is fast, only one pass through the data</li>
-<li>relative probabilities are suitable for many predictions for the given data</li>
-</ul>
-<p>Disadvantages :</p>
-<ul>
-<li>we assume that inputs are conditional independent, this may influence the probability precision</li>
-<li>we assume a certain probability distribution for numerical inputs. This means Naive Bayes does not work very well for regression</li>
-</ul>
-<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>text categorisation : spam mails filtering<br>medical diagnosis<br>software defect prediction(软件缺陷预测)</p>
-<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://zh.wikipedia.org/wiki/朴素贝叶斯分类器" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/朴素贝叶斯分类器</a></p>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]08_NaiveBayes/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]01_intro/">What is Artificial Intelligence</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>人工智能已经不是新鲜课题，它是计算机算计学科的一个分支。传统意义上人们对这门学科有四种理解:</p>
-<ul>
-<li>像人一样思考 think humanly</li>
-<li>像人一样行动 act humanly</li>
-<li>合理地思考 think rationally</li>
-<li>合理地行动 act rationally</li>
-</ul>
-<p>这四种理解意味着人们将从四种方向去研究和发展智能。而研究的结果，将会是一种具有创造性，自我学习和语言能力的机器。但是，当前大学教材主要采用“合理地行动”这种理解，旨在设计能够获取周围环境信息,作出合理的行为以获得最优解的计算机程序。</p>
-<p>以下是我在大学期间整理的内容，希望读者能对以下概念有基本了解:</p>
-<ol>
-<li>四种理解</li>
-<li>群体智能</li>
-<li>非启发式搜索</li>
-<li>启发式搜索</li>
-<li>爬山算法</li>
-<li>模拟退火</li>
-<li>机器学习介绍</li>
-<li>k-nn分类</li>
-<li>朴素贝叶斯分类</li>
-<li>线性回归</li>
-<li>逻辑回归</li>
-<li>神经网络</li>
-<li>强化学习介绍</li>
-</ol>
-<hr>
-<p>Artificial Intelligence is on its way. As a branch of Computer Science, it is defined:</p>
-<p><em>part 1</em> Think humanly<br><em>part 2</em> Act humanly<br><em>part 3</em> Think rationally<br><em>part 4</em> Act rationally</p>
-<p>The diversity of its definitions reveal that people will study in it from different perspectives. And the result of research is a machine with creativity, self-learning and language ability. In university, however, researchers are more willing to adopt “act rationally” for a robot which optimises its behavior in a certain environment.</p>
-<p>To have a taste of what AI is, the followings are important:</p>
-<ol>
-<li>definitions of AI</li>
-<li>Swarm Intelligence</li>
-<li>Uninformed Search</li>
-<li>Informed Search</li>
-<li>Hill Climbing</li>
-<li>Simulated Annealing</li>
-<li>Machine learning Introduction</li>
-<li>K-nn classification</li>
-<li>Naive Bayes</li>
-<li>Linear Regression</li>
-<li>Logistic Regression</li>
-<li>Neural Network</li>
-<li>Reinforcement Learning</li>
-</ol>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]01_intro/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/Year1:[AI]10_NeuralNetwork/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -391,149 +255,6 @@
 	
 	</div>
   <a type="button" href="/2019/06/02/Year1:[AI]05_HillClimb/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]03_uninformed/">Uninformed Search</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h2><ol>
-<li>initial state</li>
-<li>goal state</li>
-<li>possible actions and their effects on states</li>
-<li>cost function</li>
-</ol>
-<h2 id="Breadth-First-Search-Queue"><a href="#Breadth-First-Search-Queue" class="headerlink" title="Breadth First Search: Queue"></a>Breadth First Search: Queue</h2><p>Complete: guaranted to find a goal state if one exits and terminate if failed.<br>Admissible(可采纳的): able to find the shortest path.<br>Space.Compx = O(b^d - 1) = O(b^d)<br>Time.Compx = O(b^d -1) = O(b^d)<br><code>b</code>: branching factor (二叉 : 2 ; 三叉 : 3)<br><code>d</code>: depth of the goal</p>
-<h2 id="Depth-First-Search-Stack"><a href="#Depth-First-Search-Stack" class="headerlink" title="Depth First Search: Stack"></a>Depth First Search: Stack</h2><p>Complete: if the state space is finite,…(incomplete if infinite)<br>Not admissible: not guaranteed to find the shortest path to a goal<br>Space.compx = O(b^m)<br>Time.Compx = O(b^m)<br><code>b</code>: branching factor<br><code>m</code>: maximum depth of the search tree</p>
-<p>NOTES: </p>
-<ul>
-<li>If a state can be reached by two nodes, we only remember the node associated to the lowest cost.</li>
-<li>in real practice, it is not the case we can simply find the shortest path, we need to explore the entire maze before.</li>
-<li>we mark explored nodes in a visited list, and nodes in the frontier is stored in an unvisited list.</li>
-</ul>
-<h2 id="Analysing-Searching-Algorithms"><a href="#Analysing-Searching-Algorithms" class="headerlink" title="Analysing Searching Algorithms"></a>Analysing Searching Algorithms</h2><p>Completeness     : if it is guaranteed to find a solution when at least one solution exists.<br>Admissibility    : if it is guaranteed to find the best solution when there are more than one solution.<br>Time Complexity  : the order of computation during the search process in the worst case<br>Space Complexity : storage space required in the worst case</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/29425290" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29425290</a><br><a href="https://blog.csdn.net/dyy_gusi/article/details/46414677" target="_blank" rel="noopener">https://blog.csdn.net/dyy_gusi/article/details/46414677</a></p>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]03_uninformed/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]06_SimulatedAnnealing/">Simulated annealing</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>Algorithem :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    current_solution = generate initial candidate solution randomly.</span><br><span class="line">    T = Tmax;</span><br><span class="line">    Tmin = <span class="number">0.1f</span>;</span><br><span class="line"></span><br><span class="line">    reapeat(T &lt;= Tmin || current_solution stops changing)&#123;</span><br><span class="line">        <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">        rand_neighbor </span>= get random neighbor of current_solution</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(quality(best_neighbor) &lt;= quality(current_solution))&#123;</span><br><span class="line">            <span class="keyword">if</span>(within Probability e^(dE)/T) &#123;</span><br><span class="line">            current_solution = best_neighbor;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> current_solution;</span><br><span class="line">      </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> best_neighbor;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        T -= some_factor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">method <span class="title">dE</span><span class="params">(rand_neighbor, current_solution)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> quality(rand_neighbor) - quality(current_solution);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>from above, dE is ALWAYS between 0 and 1 as neighbor solution is smaller than current solution inside the if condition. And there are some cases we need to clarify :</p>
-<ol>
-<li>if neighbor solution is really bad, then the probability decreases a lot.</li>
-<li>with the decreasing T, (dE/T) is getting smaller, as a result the probability is going down.</li>
-</ol>
-<p>from these facts, at the begining SA is more likely to jump out a local optimum. With the T decreasing, it behaves more like hill climbing as the probabilty is quite low.<br>&nbsp;<br>NOTES :</p>
-<ul>
-<li>SA is not guaranteed to find the optimum in a reasonable amount of time</li>
-<li>if we leave SA to run forever, it is guaranteed to find an optimal solution,depending on the schedule used.</li>
-<li>Frequently it is able to find (a) good solutions.</li>
-</ul>
-<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Very-Large-Scale-Integration (VLSI)<br>&nbsp;<br>Design variables :<br>candidate solution z = {(x1, y1), (x2, y2) … (xN, YN)}<br>where N is the number of transistors in the set<br>&nbsp;<br>Search space : all coordinates on the chip<br>&nbsp;<br>Objective function :<br>f(z) = a <em> chip area + w </em> wiring length + c * congestion + penalty<br>where a + w + c = 1<br>penalty : related to x and y which should be in the coordinate system.<br>&nbsp;<br>Constraints :<br>for all x and y, x and y are in the coordinate system.<br>&nbsp;<br>To be minimised</p>
-<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : this algorithm is able to jump out from a local optimum to a global optimum</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]06_SimulatedAnnealing/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]10_NeuralNetwork/">Neural Network</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-06-02  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Reason-we-use-neural-network"><a href="#Reason-we-use-neural-network" class="headerlink" title="Reason we use neural network"></a>Reason we use neural network</h2><p>We found a logistic regression has a lack of classifying non-linear separable data when the number of variables increases as well as weights increasing. Instead, we use neural network to create multilayered variables in order to hold more than one logistic regressions.<br>&nbsp;<br>NOTE : 神经网络是逻辑回归的加强版</p>
-<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation:"></a>Representation:</h2><p>linear logits:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      w0</span><br><span class="line">[1]  -----.</span><br><span class="line">      w1   \</span><br><span class="line">[x1] --------&gt; [ g(z) ] -----&gt; hw(x)</span><br><span class="line">      w2   /      :</span><br><span class="line">[x2] -----.       :</span><br><span class="line">                  sigmoid function</span><br></pre></td></tr></table></figure>
-<p>Bias : 1 x w0 which separates the result of 1 and 0.</p>
-<p>we evaluate sigmoid function g(z): </p>
-<ul>
-<li>if z &lt; -4, then g(z) = 0</li>
-<li>if z &gt;  4, then g(z) = 1</li>
-</ul>
-<h2 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h2><p>def: the process of calculating the inputs of subsequent layers until we reach the final input</p>
-<h2 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h2><p>def: an algorithm to find the gradient for neural network.<br>&nbsp;<br>Backpropagation is used to calculate the gradient(difference in weights); the gradient is calculated for the purpose of updating the weights of all logits.</p>
-<h2 id="one-vs-all"><a href="#one-vs-all" class="headerlink" title="one-vs-all"></a>one-vs-all</h2><p>def: logistic regression can be used on multiple classes by using one-vs-all.<br>&nbsp;<br>NOTE : for example we have a logistic regression to classify cat, dog, rat; another example, we can apply this on human facial identification which tells you who is the person from a given picture.</p>
-<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>cost = Σ(for each j) (expected - predicted)^2</p>
-<h2 id="Regularisation"><a href="#Regularisation" class="headerlink" title="Regularisation"></a>Regularisation</h2><p>Neural networks, like all non-linear models can overfit training data, there are three approaches :</p>
-<ol>
-<li>include regularisation for each logistic unit</li>
-<li>Dropout : ignore certain nodes(typically half) when traing the model</li>
-<li>reduce network depth : reduce the complexity of hypothesis h(x)</li>
-</ol>
-<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>def: function that used on the weighted sum of input<br>&nbsp;<br>NOTE: we learnt sigmoid function as an activation function in neural network, but there are others.</p>
-<h2 id="Hyperparameters"><a href="#Hyperparameters" class="headerlink" title="Hyperparameters"></a>Hyperparameters</h2><p>Neural Networks (and to a lesser extent Logistic Regression) require several parameters that can be used to “tune” how the network trains.<br>&nbsp;<br>Hyperparameter tuning : the process of picking the correct combination of hyperparameters. This is extremely expensive in terms of time and computational resources.<br>&nbsp;<br>Grid Search : the process of systematically going through all possible combination of the hyperparameters to find the best<br>&nbsp;</p>
-<h2 id="“Overfiting”"><a href="#“Overfiting”" class="headerlink" title="“Overfiting”"></a>“Overfiting”</h2><p>def: a combination of hyperparameters which works well for training data and does not work for any other data.<br>&nbsp;<br>to deal with this, we split our data into three parts :</p>
-<ol>
-<li>training set</li>
-<li>development set : used for hyperparameter tuning</li>
-<li>test set</li>
-</ol>
-<p>proportions of dividing :<br>80% ; 10% ; 10%<br>60% ; 20% ; 20%</p>
-<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>Fraud Prevention<br>Facial identification(人脸识别)</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p>&nbsp; <a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/07/neural-network.html</a><br>&nbsp; <a href="https://www.youtube.com/watch?v=oI1eJa-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oI1eJa-U</a> WNU<br>&nbsp; <a href="https://www.jianshu.com/p/4cf34bf158a1" target="_blank" rel="noopener">https://www.jianshu.com/p/4cf34bf158a1</a></p>
-
-	
-	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]10_NeuralNetwork/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -684,7 +405,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]07_knn/">Introduction to machine learning and k-NN</a>
+			<a href="/2019/06/02/Year1:[AI]03_uninformed/">Uninformed Search</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -698,90 +419,299 @@
   <div class="row">
 	
 	
-		<h2 id="Introduction-to-machine-learning"><a href="#Introduction-to-machine-learning" class="headerlink" title="Introduction to machine learning"></a>Introduction to machine learning</h2><p>def : machine learning focuses on studying and developing computational models capable of improving their performance with experience and acquiring knowledge on their own.<br>&nbsp;<br>types of learning :</p>
-<ol>
-<li>supervised learning (监督学习)</li>
-<li>reinforcement learning (强化学习)</li>
-<li>unsupervised learning</li>
-<li>semi-supervised learning</li>
+		<h2 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h2><ol>
+<li>initial state</li>
+<li>goal state</li>
+<li>possible actions and their effects on states</li>
+<li>cost function</li>
 </ol>
-<h2 id="Introduction-to-supervised-learning"><a href="#Introduction-to-supervised-learning" class="headerlink" title="Introduction to supervised learning"></a>Introduction to supervised learning</h2><p>Predicative tasks : based on existing training data, we are aiming to learn models which are able to make predictions for new data.<br>&nbsp;<br>Components :</p>
-<ol>
-<li>training data</li>
-<li>machine learning algorithm</li>
-<li>predictive model</li>
-</ol>
-<p>Data format : (x, y)</p>
+<h2 id="Breadth-First-Search-Queue"><a href="#Breadth-First-Search-Queue" class="headerlink" title="Breadth First Search: Queue"></a>Breadth First Search: Queue</h2><p>Complete: guaranted to find a goal state if one exits and terminate if failed.<br>Admissible(可采纳的): able to find the shortest path.<br>Space.Compx = O(b^d - 1) = O(b^d)<br>Time.Compx = O(b^d -1) = O(b^d)<br><code>b</code>: branching factor (二叉 : 2 ; 三叉 : 3)<br><code>d</code>: depth of the goal</p>
+<h2 id="Depth-First-Search-Stack"><a href="#Depth-First-Search-Stack" class="headerlink" title="Depth First Search: Stack"></a>Depth First Search: Stack</h2><p>Complete: if the state space is finite,…(incomplete if infinite)<br>Not admissible: not guaranteed to find the shortest path to a goal<br>Space.compx = O(b^m)<br>Time.Compx = O(b^m)<br><code>b</code>: branching factor<br><code>m</code>: maximum depth of the search tree</p>
+<p>NOTES: </p>
 <ul>
-<li>x the input attributes : x = (x1, x2, x3 …, xn)</li>
-<li>y the output attributes : we focus on ONE output.</li>
+<li>If a state can be reached by two nodes, we only remember the node associated to the lowest cost.</li>
+<li>in real practice, it is not the case we can simply find the shortest path, we need to explore the entire maze before.</li>
+<li>we mark explored nodes in a visited list, and nodes in the frontier is stored in an unvisited list.</li>
 </ul>
-<p>Example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    x1    x2    x3      y</span><br><span class="line"></span><br><span class="line">/  x11   x12   x13  |   y1  \</span><br><span class="line">|  x21   x22   x23  |   y2  |    // matrix representation</span><br><span class="line">\  x31   x32   x33  |   y3  /</span><br></pre></td></tr></table></figure>
-<p>Types of input attributes :</p>
-<ul>
-<li>Numerical   : 123</li>
-<li>Ordinal     : {low, medium, high}</li>
-<li>Categorical : {UK, CHN, US}</li>
-</ul>
-<h2 id="Classification-amp-amp-Regression"><a href="#Classification-amp-amp-Regression" class="headerlink" title="Classification &amp;&amp; Regression"></a>Classification &amp;&amp; Regression</h2><p>Classification :</p>
-<ul>
-<li>the output attributes are categories/ classes</li>
-<li>the learning model is called : Classifier</li>
-</ul>
-<p>Regression :</p>
-<ul>
-<li>the output attributes are numerical values</li>
-</ul>
-<p>NOTE : k-nn is dealing with classification and regression.</p>
-<h2 id="Example-application"><a href="#Example-application" class="headerlink" title="Example application"></a>Example application</h2><p>1) Estimation of the effort required to develop a software project.</p>
-<ul>
-<li>input  : programming language; team expertise, estimated size, development type…</li>
-<li>output : person-hours / months<br>2) Credit card approval </li>
-<li>input  : age; salary; number of years holding a bank account…</li>
-<li>output : yes / no<br>3) Breast cancer prediction</li>
-<li>input  : clump thickness; uniformity of cell size, cell thickness…</li>
-<li>output : yes / no</li>
-</ul>
-<p>NOTE : 监督学习实际上是给当前模型输入已知的数据然后来分析新的数据。</p>
-<h2 id="K-NN-K-Nearest-Neighbours"><a href="#K-NN-K-Nearest-Neighbours" class="headerlink" title="K-NN (K-Nearest Neighbours)"></a>K-NN (K-Nearest Neighbours)</h2><p>k : how many neighbors to choose for classification.<br>&nbsp;<br>classification problems : the test data (x,?) is classified to the majority among the output attributes of neighbour training data.<br>&nbsp;<br>Numerical problems      : the test data is computed by the average among the output attributes of neighbour training data.<br>&nbsp;<br>Algorithm :</p>
-<ol>
-<li>give the input attributes of a new data (x,?) that we want to predict </li>
-<li>give k, the neighbors we are looking for.</li>
-<li>For each training example (x’, y’) :<ul>
-<li>compute distance(x,x’) = root{ Σ(for all i) sum[(xi - x’(i))^2] }</li>
-<li>sort all of the distances computed in ascending order by a data structure</li>
-<li>return first k data as the nearest neighbors</li>
-</ul>
-</li>
-<li>return either the majority vote or the average.</li>
-</ol>
-<h2 id="Normalisation-of-numeric-input-attributes"><a href="#Normalisation-of-numeric-input-attributes" class="headerlink" title="Normalisation of numeric input attributes"></a>Normalisation of numeric input attributes</h2><p>Problem : Different numeric input attributes may have different scales. It will affect the Euclidean distance. for example, if x1 is in [0, 10] and x2 is in [100, 10000], then x2 will influence the distance more.</p>
-<p>Solution : BEFORE starting training, we need to normalise all input attributes between 0 and 1 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                   xi - min(i)</span><br><span class="line">normalised(xi) = --------------- </span><br><span class="line">                 max(i) - min(i)</span><br><span class="line"></span><br><span class="line">min(i)  = the minimum among all x(i)</span><br><span class="line">maxi(i) = the maximum among all x(i)</span><br></pre></td></tr></table></figure>
-<p>NOTES : </p>
-<ul>
-<li>if new training data are loaded, then we need to take them into consider as well. We then require to de-normalise and re-normalise the data (including test data).</li>
-<li>this process is to minimize errors.</li>
-</ul>
-<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : </p>
-<ol>
-<li>training is simple and fast, just normalise and store the training data</li>
-</ol>
-<p>Disadv :</p>
-<ol>
-<li>require large memory space to store all data</li>
-<li>making prediction is slow, we have to sort the whole data set in order to find k neighbors. (the algorithm is slow)</li>
-</ol>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
-<li>program effort estimation</li>
-<li>movies classification</li>
-</ul>
-<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p>&nbsp; <a href="https://blog.csdn.net/saltriver/article/details/52502253" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/52502253</a></p>
+<h2 id="Analysing-Searching-Algorithms"><a href="#Analysing-Searching-Algorithms" class="headerlink" title="Analysing Searching Algorithms"></a>Analysing Searching Algorithms</h2><p>Completeness     : if it is guaranteed to find a solution when at least one solution exists.<br>Admissibility    : if it is guaranteed to find the best solution when there are more than one solution.<br>Time Complexity  : the order of computation during the search process in the worst case<br>Space Complexity : storage space required in the worst case</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/29425290" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29425290</a><br><a href="https://blog.csdn.net/dyy_gusi/article/details/46414677" target="_blank" rel="noopener">https://blog.csdn.net/dyy_gusi/article/details/46414677</a></p>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]07_knn/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/Year1:[AI]03_uninformed/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]06_SimulatedAnnealing/">Simulated annealing</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>Algorithem :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    current_solution = generate initial candidate solution randomly.</span><br><span class="line">    T = Tmax;</span><br><span class="line">    Tmin = <span class="number">0.1f</span>;</span><br><span class="line"></span><br><span class="line">    reapeat(T &lt;= Tmin || current_solution stops changing)&#123;</span><br><span class="line">        <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">        rand_neighbor </span>= get random neighbor of current_solution</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(quality(best_neighbor) &lt;= quality(current_solution))&#123;</span><br><span class="line">            <span class="keyword">if</span>(within Probability e^(dE)/T) &#123;</span><br><span class="line">            current_solution = best_neighbor;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> current_solution;</span><br><span class="line">      </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> best_neighbor;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        T -= some_factor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">method <span class="title">dE</span><span class="params">(rand_neighbor, current_solution)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> quality(rand_neighbor) - quality(current_solution);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>from above, dE is ALWAYS between 0 and 1 as neighbor solution is smaller than current solution inside the if condition. And there are some cases we need to clarify :</p>
+<ol>
+<li>if neighbor solution is really bad, then the probability decreases a lot.</li>
+<li>with the decreasing T, (dE/T) is getting smaller, as a result the probability is going down.</li>
+</ol>
+<p>from these facts, at the begining SA is more likely to jump out a local optimum. With the T decreasing, it behaves more like hill climbing as the probabilty is quite low.<br>&nbsp;<br>NOTES :</p>
+<ul>
+<li>SA is not guaranteed to find the optimum in a reasonable amount of time</li>
+<li>if we leave SA to run forever, it is guaranteed to find an optimal solution,depending on the schedule used.</li>
+<li>Frequently it is able to find (a) good solutions.</li>
+</ul>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Very-Large-Scale-Integration (VLSI)<br>&nbsp;<br>Design variables :<br>candidate solution z = {(x1, y1), (x2, y2) … (xN, YN)}<br>where N is the number of transistors in the set<br>&nbsp;<br>Search space : all coordinates on the chip<br>&nbsp;<br>Objective function :<br>f(z) = a <em> chip area + w </em> wiring length + c * congestion + penalty<br>where a + w + c = 1<br>penalty : related to x and y which should be in the coordinate system.<br>&nbsp;<br>Constraints :<br>for all x and y, x and y are in the coordinate system.<br>&nbsp;<br>To be minimised</p>
+<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : this algorithm is able to jump out from a local optimum to a global optimum</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://github.com/jwyhhh123/simulated-annealing">https://github.com/jwyhhh123/simulated-annealing</a></p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]06_SimulatedAnnealing/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]11_ReinforcementLearning/">Reinforcement Learning</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Reinforcement learning, according to Wikipedia, is: </p>
+<blockquote>
+<p>an area of machine learning concerned with how software <strong>agents</strong> ought to take actions in an environment so as to maximize some notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.</p>
+</blockquote>
+<h2 id="Agents"><a href="#Agents" class="headerlink" title="Agents"></a>Agents</h2><p>In reinforcement learning, an agent is required to reach an end state in an environment<br>&nbsp;<br>Example :</p>
+<ol>
+<li>Agent : game</li>
+<li>End state : win</li>
+<li>Environment : board</li>
+</ol>
+<p>In order to reach the outcome we expected, we introduce reward :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for some [i] action</span></span><br><span class="line"><span class="keyword">switch</span>(i)&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>: goal -= <span class="number">100000</span>  <span class="comment">// large panalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>: goal -= <span class="number">10</span>      <span class="comment">// small penalty</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>: goal += <span class="number">100000</span>  <span class="comment">// large reward</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">4</span>: goal += <span class="number">10</span>      <span class="comment">// small reward</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Things to know :</p>
+<ul>
+<li>reward and penalty are based on how they act in an environment</li>
+<li>an agent aims to maximise positive reward</li>
+<li>agent uses this to train a model(e.g. neural network)</li>
+<li>Environment should be fully observable or partially Observable.</li>
+</ul>
+<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://www.youtube.com/watch?v=4MlZncsh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4MlZncsh</a> y1Q<br><a href="https://www.youtube.com/watch?v=cUTMhmVh" target="_blank" rel="noopener">https://www.youtube.com/watch?v=cUTMhmVh</a> 1qs</p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]11_ReinforcementLearning/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]01_intro/">What is Artificial Intelligence</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>人工智能已经不是新鲜课题，它是计算机算计学科的一个分支。传统意义上人们对这门学科有四种理解:</p>
+<ul>
+<li>像人一样思考 think humanly</li>
+<li>像人一样行动 act humanly</li>
+<li>合理地思考 think rationally</li>
+<li>合理地行动 act rationally</li>
+</ul>
+<p>这四种理解意味着人们将从四种方向去研究和发展智能。而研究的结果，将会是一种具有创造性，自我学习和语言能力的机器。但是，当前大学教材主要采用“合理地行动”这种理解，旨在设计能够获取周围环境信息,作出合理的行为以获得最优解的计算机程序。</p>
+<p>以下是我在大学期间整理的内容，希望读者能对以下概念有基本了解:</p>
+<ol>
+<li>四种理解</li>
+<li>群体智能</li>
+<li>非启发式搜索</li>
+<li>启发式搜索</li>
+<li>爬山算法</li>
+<li>模拟退火</li>
+<li>机器学习介绍</li>
+<li>k-nn分类</li>
+<li>朴素贝叶斯分类</li>
+<li>线性回归</li>
+<li>逻辑回归</li>
+<li>神经网络</li>
+<li>强化学习介绍</li>
+</ol>
+<hr>
+<p>Artificial Intelligence is on its way. As a branch of Computer Science, it is defined:</p>
+<p><em>part 1</em> Think humanly<br><em>part 2</em> Act humanly<br><em>part 3</em> Think rationally<br><em>part 4</em> Act rationally</p>
+<p>The diversity of its definitions reveal that people will study in it from different perspectives. And the result of research is a machine with creativity, self-learning and language ability. In university, however, researchers are more willing to adopt “act rationally” for a robot which optimises its behavior in a certain environment.</p>
+<p>To have a taste of what AI is, the followings are important:</p>
+<ol>
+<li>definitions of AI</li>
+<li>Swarm Intelligence</li>
+<li>Uninformed Search</li>
+<li>Informed Search</li>
+<li>Hill Climbing</li>
+<li>Simulated Annealing</li>
+<li>Machine learning Introduction</li>
+<li>K-nn classification</li>
+<li>Naive Bayes</li>
+<li>Linear Regression</li>
+<li>Logistic Regression</li>
+<li>Neural Network</li>
+<li>Reinforcement Learning</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]01_intro/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]08_NaiveBayes/">Naive Bayes</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Bayes-theorem"><a href="#Bayes-theorem" class="headerlink" title="Bayes theorem"></a>Bayes theorem</h2><p>P(f, c) = P(f) <em> P(c|f) = P(c) </em> P(f|c)<br>where <code>f</code> is input attributes and <code>c</code> is the output we want ot predict.<br>&nbsp;<br>accordingly, prediction of c with f is :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">         P(c) * P(f|c)</span><br><span class="line">P(c|f) = --------------</span><br><span class="line">              P(f)</span><br></pre></td></tr></table></figure>
+<p>NOTES: </p>
+<ul>
+<li>input attributes 和 output attributes 可以相互转换, 基于问题。</li>
+<li>P(c|f) : c out of f</li>
+<li>P(f|c) : f out of c</li>
+</ul>
+<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h2><p>to normalise,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">P(c|f) = α * P(c) * P(f|c)</span><br><span class="line">       = α * P(c) * P(f1, ..., fn|c)</span><br><span class="line">       = α * P(c) * P(f1|c) * P(f2|c) *... P(fn|c)</span><br><span class="line">       = α * P(c) * Π(for all n) P(fi|c)</span><br><span class="line"></span><br><span class="line">     1</span><br><span class="line">α = --- </span><br><span class="line">     β</span><br><span class="line"></span><br><span class="line">β = Σ(for all c) P(c) * P(f|c)</span><br><span class="line">  = Σ(for all c) P(c) * Π(for all n) P(fi|c)</span><br></pre></td></tr></table></figure>
+<p>NOTE : <code>f</code> represents f1, … fn, for all n input attributes</p>
+<p>in Naive Bayes, each input attribute is conditionally independent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(x1 | x2, y) = P(x1 | y)   // x1, x2 are input attributes and y is output attribute</span><br></pre></td></tr></table></figure>
+<p>Procedure :</p>
+<ol>
+<li>create table of attributes : for each input attribute and its possible values</li>
+<li>apply Laplace Smoothing</li>
+<li>build the model of frequency tables(with and without Laplace Smoothing)</li>
+<li>computation based on formulas given.</li>
+</ol>
+<p>NOTE : I think there is a similarity between algorithm and model.</p>
+<h2 id="Laplace-Smoothing"><a href="#Laplace-Smoothing" class="headerlink" title="Laplace Smoothing"></a>Laplace Smoothing</h2><p>Procedure :</p>
+<ol>
+<li>add 1 to each of the frequency cells and use that when calculating <code>P(fi|c)</code></li>
+<li>when calculate P(c), we MUST use the original frequency to calculate it.</li>
+</ol>
+<h2 id="Markov-chains"><a href="#Markov-chains" class="headerlink" title="Markov chains"></a>Markov chains</h2><p>Frequency tables can also be used to compute the probability of switching between states in random processes.<br>&nbsp;<br>Markov Chain is a probabilistic automata :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">      __                      __</span><br><span class="line">75%  |  |         25%        |  |  50%</span><br><span class="line">     -[sunny] &lt;--------&gt; [rainy]-</span><br><span class="line">                  50%</span><br></pre></td></tr></table></figure>
+<h2 id="Categorical-attributes"><a href="#Categorical-attributes" class="headerlink" title="Categorical attributes"></a>Categorical attributes</h2><p>the frequency tables are created by counting occurrences of each possible input and output attribute value among the examples in the training set.</p>
+<h2 id="Numeric-attributes"><a href="#Numeric-attributes" class="headerlink" title="Numeric attributes"></a>Numeric attributes</h2><p>Probability density functions by using Gaussian distribution N(μ, σ^2) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">distribution of c being given μ, σ^2</span><br><span class="line">                  1                 -(f - μ)^2</span><br><span class="line">P(fi|c) = ------------------ * e^(--------------)    // π  ≈ 3.14159, e ≈ 2.71828</span><br><span class="line">           root(2 * σ^2 * π)          2 * σ2</span><br><span class="line"></span><br><span class="line">μ   : mean of input attributes being such c = X</span><br><span class="line"></span><br><span class="line">         1</span><br><span class="line">σ^2 : ------- * Σ(for each value being such c) [valuei - μ]^2</span><br><span class="line">      n(value)</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
+<ul>
+<li>we need to create density function for each c that we want to predict. for example yes/no has 2 f’s; low/medium/high has 3 f’s.</li>
+<li>we compute P(fi|c) by feeding variable f into the density function.</li>
+</ul>
+<h2 id="Advantages-amp-amp-disadvantages"><a href="#Advantages-amp-amp-disadvantages" class="headerlink" title="Advantages &amp;&amp; disadvantages"></a>Advantages &amp;&amp; disadvantages</h2><p>Advantages :</p>
+<ul>
+<li>training is fast, only one pass through the data</li>
+<li>relative probabilities are suitable for many predictions for the given data</li>
+</ul>
+<p>Disadvantages :</p>
+<ul>
+<li>we assume that inputs are conditional independent, this may influence the probability precision</li>
+<li>we assume a certain probability distribution for numerical inputs. This means Naive Bayes does not work very well for regression</li>
+</ul>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>text categorisation : spam mails filtering<br>medical diagnosis<br>software defect prediction(软件缺陷预测)</p>
+<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p><a href="https://zh.wikipedia.org/wiki/朴素贝叶斯分类器" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/朴素贝叶斯分类器</a></p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]08_NaiveBayes/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/06/02/Year1:[AI]04_informed/">Informed Search</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-06-02  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Informed-Search"><a href="#Informed-Search" class="headerlink" title="Informed Search"></a>Informed Search</h2><p>def : unlike uninformed searching algorithm, informed search carefully choose which node should be visited first in order to minimise the cost.<br>&nbsp;<br><strong>Heuristic functions(启发函数)</strong> : h(x) estimate the cost of the cheapest path from the node reached to a goal node.</p>
+<h2 id="A-star-Search"><a href="#A-star-Search" class="headerlink" title="A star Search"></a>A star Search</h2><p>def : best-first informed search algorithm<br>&nbsp;<br>Evaluation function : f(node) = g(node) + h(node)<br><code>g(node)</code> : the cost from root node to current node.<br>&nbsp;<br>Algorithm :</p>
+<ol>
+<li>visit the node with the smallest f(node) first</li>
+<li>placing its children in the frontier</li>
+<li>do not place children in the frontier if they are already visited or are in the frontier.</li>
+<li>when found the goal node, stop.</li>
+</ol>
+<h2 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h2><p>Heuristic is said to be consistent if h(n) satisfies : h(n) ≤ cost(n, n’) + h(n’) for every edge (n, n’) of the graph. In such a case, A star is complete and admissible.<br>&nbsp;<br>Time.compx : usually exponential<br>Space.compx : usually exponential</p>
+<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/38595351" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595351</a></p>
+
+	
+	</div>
+  <a type="button" href="/2019/06/02/Year1:[AI]04_informed/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		

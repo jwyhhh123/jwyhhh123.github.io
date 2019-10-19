@@ -305,12 +305,32 @@
   <div class="row">
 	
 	
-		<h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><p>A simplest program:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p>Built-ins:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> i = <span class="number">5</span>, j = <span class="number">6</span>;     <span class="comment">// 1 byte size</span></span><br><span class="line"><span class="keyword">short</span>                  <span class="comment">// 2 byte size</span></span><br><span class="line"><span class="keyword">int</span> </span><br><span class="line"><span class="keyword">long</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span></span><br><span class="line"><span class="keyword">float</span></span><br><span class="line"><span class="keyword">double</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> n = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
-<p>Constant data: A constant is read-only which cannot be changed!</p>
-<h2 id="if-statement"><a href="#if-statement" class="headerlink" title="if statement"></a>if statement</h2><h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><h2 id="loops"><a href="#loops" class="headerlink" title="loops"></a>loops</h2><h2 id="continue-and-break"><a href="#continue-and-break" class="headerlink" title="continue and break"></a>continue and break</h2><h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h2 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h2><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p>Factorial program in Java:</p>
+		<h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTES:</p>
+<ul>
+<li>Program must contain a main() function</li>
+<li>Program execution starts from main()</li>
+<li><header files> contains pre-defined library functions (written in .h)</header></li>
+</ul>
+<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p><strong>Built-ins data types:</strong></p>
+<ul>
+<li>char     (size: 1 byte)</li>
+<li>short    (size: 2 bytes)               </li>
+<li>int      (size: 4 bytes)</li>
+<li>long</li>
+<li>long long</li>
+<li>float    (size: 4 bytes)</li>
+<li>double   (size: 8 bytes)</li>
+<li>unsigned</li>
+</ul>
+<p><strong>Constant data:</strong> A constant is read-only which cannot be changed!</p>
+<h2 id="if-statement"><a href="#if-statement" class="headerlink" title="if statement"></a>if statement</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123; </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(expression)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> constant-expression1:</span><br><span class="line">        Code Block1;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> constant-expression1:</span><br><span class="line">        Code Block2;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// ... More case blocks case constant-expressionN:</span></span><br><span class="line">        Code BlockN;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        Code BlockDefault;</span><br><span class="line">        <span class="keyword">break</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="loops"><a href="#loops" class="headerlink" title="loops"></a>loops</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(condition)&#123;</span><br><span class="line">    <span class="comment">//do..</span></span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//..do it once</span></span><br><span class="line">&#125; <span class="keyword">while</span>(condition)</span><br></pre></td></tr></table></figure>
+<h2 id="continue-and-break"><a href="#continue-and-break" class="headerlink" title="continue and break"></a>continue and break</h2><p><code>continue</code>:</p>
+<p><code>break</code>:</p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h2 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h2><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p>Factorial program in Java:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factorial</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span>(n * factorial(n-<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i,fact=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> number=<span class="number">4</span>;</span><br><span class="line">fact = factorial(number); System.out.println(<span class="string">"Factorial is: "</span>+fact);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
 <p>Now we convert to a C program: </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> (n * factorial(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input your number: "</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result = factorial(i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Answer: %d\n"</span>, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -349,23 +369,60 @@
 <h2 id="The-von-Neumann-Architecture"><a href="#The-von-Neumann-Architecture" class="headerlink" title="The von Neumann Architecture"></a>The von Neumann Architecture</h2><p>def: this is known as stored-programming computer in which no re-programming is required.</p>
 <p>Von Neumann architecture consists of three main components:</p>
 <ol>
-<li>Central Processing Unit</li>
+<li>Central Processing Unit (CPU)</li>
 <li>Memory</li>
 <li>Input/Output interfaces</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+----------+       +--------------+        +--------------+</span><br><span class="line">|          | ----&gt; |    Central   | &lt;----- | Input/Output |</span><br><span class="line">|  Memory  |       |  Processing  |        |              |</span><br><span class="line">|          | &lt;---- |     Unit     | -----&gt; |  Interface   |</span><br><span class="line">+----------+       +--------------+        +--------------+</span><br></pre></td></tr></table></figure>
+<p>Process:</p>
+<ol>
+<li>read memory</li>
+<li>send to CPU and compute</li>
+<li>communicate with I/O interface</li>
+<li>(re)write data</li>
+</ol>
 <p>NOTE: in this kind of architecture, CPU and Memory are seperated.</p>
 <h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>CPU is the head of a computing system. It includes:</p>
 <ol>
 <li>Control Unit (CU)</li>
 <li>Arithmetic and Logic Unit (ALU)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+--------------+        </span><br><span class="line">|  Arithmetic  |</span><br><span class="line">|     Logic    |       </span><br><span class="line">|     Unit     |</span><br><span class="line">+--------------+        </span><br><span class="line">    ^     |</span><br><span class="line">    |     v</span><br><span class="line">+--------------+          </span><br><span class="line">|              |</span><br><span class="line">| Control Unit |</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure>
-<p><strong>Arithmetic and Logic Unit (ALU)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+--------------+        </span><br><span class="line">|  Arithmetic  |</span><br><span class="line">|     Logic    |       </span><br><span class="line">|     Unit     |</span><br><span class="line">+--------------+        </span><br><span class="line">       ^    </span><br><span class="line">       |    </span><br><span class="line">+--------------+          </span><br><span class="line">| Control Unit |</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure>
+<p><strong>Arithmetic and Logic Unit (ALU)</strong><br>def: ALU is the union of the circuits which perform mathematical or logical operations.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">      .................................................</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      .</span><br><span class="line">      .   +--------------+         +--------------+   .    </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   |   Addition   |         |      =?      |   .</span><br><span class="line">a --&gt; .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a + b                Is a = b        .</span><br><span class="line">      .                                               .</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      .</span><br><span class="line">      .   +--------------+         +--------------+   .  </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   | Subtraction  |         |       &gt;      |   .   </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a - b                Is a &gt; b        .</span><br><span class="line">      .                                               .</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      . --&gt; c</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   |Multiplication|         |       &lt;      |   .    </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a * b                Is a &lt; b        .</span><br><span class="line">      .                                               .</span><br><span class="line">      .      a       b                a        b      .</span><br><span class="line">      .      v       v                v        v      .</span><br><span class="line">b --&gt; .   +--------------+         +--------------+   .</span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   |   Division   |         |      &amp;&amp;      |   .   </span><br><span class="line">      .   |              |         |              |   .</span><br><span class="line">      .   +--------------+         +--------------+   .</span><br><span class="line">      .          v                        v           .</span><br><span class="line">      .      c = a / b               True (a &amp; b)     .</span><br><span class="line">      .................................................</span><br></pre></td></tr></table></figure>
-<p><strong>Control Unit (CU)</strong></p>
-<p><strong>Registers</strong></p>
-<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><h2 id="Input-Output-Interfaces"><a href="#Input-Output-Interfaces" class="headerlink" title="Input/ Output Interfaces"></a>Input/ Output Interfaces</h2>
+<p><strong>Control Unit (CU)</strong><br>Control Unit performs the following tasks:</p>
+<ol>
+<li>Determines the order in which instructions should be executed</li>
+<li>Instructs ALU to perform the required operation</li>
+<li>Controls which Register to read and write</li>
+<li>Controls read and write of Memory</li>
+<li>Controls access of Input/ Output devices</li>
+</ol>
+<p>for example the following code:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">       <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">6</span>, c;</span><br><span class="line">       c = a * b; <span class="comment">// ord1: retrieves the operand * and asks ALU to compute *</span></span><br><span class="line">                  <span class="comment">// ord2: stores c and jumps to next line</span></span><br><span class="line">       c = c + b; <span class="comment">// ord3: then retrieves + and asks ALU to compute +</span></span><br><span class="line">                  <span class="comment">// ord4: stores c</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Representation:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">             </span><br><span class="line">         --------------Wires of connection (BUS)------------</span><br><span class="line">         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">             ^            ^      |      ^               ^</span><br><span class="line">             |            |      |      |               |</span><br><span class="line">             |   .. . . . v . . .|. . . v . . ..        v</span><br><span class="line">             |   .   +-------+   v      [    ] .    +----------------+</span><br><span class="line">+------+     |   .   |  ALU  | Decode   [    ] .    | I/O controller |</span><br><span class="line">|      |     |   .   +-------+   |      [    ] &lt;-+  +----------------+</span><br><span class="line">|      |&lt;----+   .       ^       |      [    ] . |      ^</span><br><span class="line">| Memo |         .       |       v             . |      |</span><br><span class="line">|      |         .  +--------------+ ----------.-+      |       </span><br><span class="line">|      |&lt;--------.--| Control Unit |           .        |</span><br><span class="line">+------+         .  +--------------+ ----------.--------+</span><br><span class="line">                 .. . . . . . . . . . . . . . ..</span><br><span class="line">                               CPU</span><br></pre></td></tr></table></figure>
+<p>NOTE_1: in order to know the type of an instruction(i.e. Read, Store, Operate…), Instruction decoder performs:</p>
+<ul>
+<li>decodes instructions</li>
+<li>understand the type of instruction</li>
+<li>indicate the type to CU</li>
+</ul>
+<p>NOTE_2: within the Control Unit, there is timing circuit. The timing of operations ensures step-by-step computation.</p>
+<p><strong>Registers</strong><br>def: Registers are small storage which are located next to ALU. They are used to store temporary storage during computation. ALU can read and write to registers very fast.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">+--------------+        [   ]</span><br><span class="line">|  Arithmetic  |        [   ]</span><br><span class="line">|     Logic    |  &lt;---  [   ]   </span><br><span class="line">|     Unit     |        [   ] Registers</span><br><span class="line">+--------------+          ^</span><br><span class="line">       |                  |</span><br><span class="line"> ------+------------------+------ BUS</span><br></pre></td></tr></table></figure>
+<p>Advantage: they improve the processing speed when compution needs to reuse some temporary data.<br>for example, to compute c = (a * b) + (a + b) + (b - a) we need to compute:</p>
+<ol>
+<li>c = a * b</li>
+<li>c = c + (a + b)</li>
+<li>c = c + (b - a)</li>
+</ol>
+<p>In contrast, we save time from reading and writing c again and again.</p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>def: The computer’s memory stores data and instructions. They are stored in binary.</p>
+<p>Memory representation:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[       ]</span><br><span class="line">[ a = 5 ]</span><br><span class="line">[ b = 6 ] --&gt; Read</span><br><span class="line">[   c   ]</span><br><span class="line">[  ...  ]</span><br><span class="line">[get a,b]</span><br><span class="line">[  do * ] &lt;-- Write</span><br><span class="line">[  ...  ]</span><br></pre></td></tr></table></figure>
+<h2 id="Input-Output-Interfaces"><a href="#Input-Output-Interfaces" class="headerlink" title="Input/ Output Interfaces"></a>Input/ Output Interfaces</h2><p>def: The I/O interfaces are used to receive or send information from and to connected devices. Connected devices are called peripheral devices.</p>
+
 	
 	</div>
   <a type="button" href="/2019/10/06/Year2:[C]01_ComputerArch/#more" class="btn btn-default more">Read More</a>
@@ -564,7 +621,7 @@ Bibliography Index
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]04_informed/">Informed Search</a>
+			<a href="/2019/06/02/Year1:[AI]07_knn/">Introduction to machine learning and k-NN</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -578,20 +635,90 @@ Bibliography Index
   <div class="row">
 	
 	
-		<h2 id="Informed-Search"><a href="#Informed-Search" class="headerlink" title="Informed Search"></a>Informed Search</h2><p>def : unlike uninformed searching algorithm, informed search carefully choose which node should be visited first in order to minimise the cost.<br>&nbsp;<br><strong>Heuristic functions(启发函数)</strong> : h(x) estimate the cost of the cheapest path from the node reached to a goal node.</p>
-<h2 id="A-star-Search"><a href="#A-star-Search" class="headerlink" title="A star Search"></a>A star Search</h2><p>def : best-first informed search algorithm<br>&nbsp;<br>Evaluation function : f(node) = g(node) + h(node)<br><code>g(node)</code> : the cost from root node to current node.<br>&nbsp;<br>Algorithm :</p>
+		<h2 id="Introduction-to-machine-learning"><a href="#Introduction-to-machine-learning" class="headerlink" title="Introduction to machine learning"></a>Introduction to machine learning</h2><p>def : machine learning focuses on studying and developing computational models capable of improving their performance with experience and acquiring knowledge on their own.<br>&nbsp;<br>types of learning :</p>
 <ol>
-<li>visit the node with the smallest f(node) first</li>
-<li>placing its children in the frontier</li>
-<li>do not place children in the frontier if they are already visited or are in the frontier.</li>
-<li>when found the goal node, stop.</li>
+<li>supervised learning (监督学习)</li>
+<li>reinforcement learning (强化学习)</li>
+<li>unsupervised learning</li>
+<li>semi-supervised learning</li>
 </ol>
-<h2 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h2><p>Heuristic is said to be consistent if h(n) satisfies : h(n) ≤ cost(n, n’) + h(n’) for every edge (n, n’) of the graph. In such a case, A star is complete and admissible.<br>&nbsp;<br>Time.compx : usually exponential<br>Space.compx : usually exponential</p>
-<h2 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h2><p><a href="https://zhuanlan.zhihu.com/p/38595351" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595351</a></p>
+<h2 id="Introduction-to-supervised-learning"><a href="#Introduction-to-supervised-learning" class="headerlink" title="Introduction to supervised learning"></a>Introduction to supervised learning</h2><p>Predicative tasks : based on existing training data, we are aiming to learn models which are able to make predictions for new data.<br>&nbsp;<br>Components :</p>
+<ol>
+<li>training data</li>
+<li>machine learning algorithm</li>
+<li>predictive model</li>
+</ol>
+<p>Data format : (x, y)</p>
+<ul>
+<li>x the input attributes : x = (x1, x2, x3 …, xn)</li>
+<li>y the output attributes : we focus on ONE output.</li>
+</ul>
+<p>Example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    x1    x2    x3      y</span><br><span class="line"></span><br><span class="line">/  x11   x12   x13  |   y1  \</span><br><span class="line">|  x21   x22   x23  |   y2  |    // matrix representation</span><br><span class="line">\  x31   x32   x33  |   y3  /</span><br></pre></td></tr></table></figure>
+<p>Types of input attributes :</p>
+<ul>
+<li>Numerical   : 123</li>
+<li>Ordinal     : {low, medium, high}</li>
+<li>Categorical : {UK, CHN, US}</li>
+</ul>
+<h2 id="Classification-amp-amp-Regression"><a href="#Classification-amp-amp-Regression" class="headerlink" title="Classification &amp;&amp; Regression"></a>Classification &amp;&amp; Regression</h2><p>Classification :</p>
+<ul>
+<li>the output attributes are categories/ classes</li>
+<li>the learning model is called : Classifier</li>
+</ul>
+<p>Regression :</p>
+<ul>
+<li>the output attributes are numerical values</li>
+</ul>
+<p>NOTE : k-nn is dealing with classification and regression.</p>
+<h2 id="Example-application"><a href="#Example-application" class="headerlink" title="Example application"></a>Example application</h2><p>1) Estimation of the effort required to develop a software project.</p>
+<ul>
+<li>input  : programming language; team expertise, estimated size, development type…</li>
+<li>output : person-hours / months<br>2) Credit card approval </li>
+<li>input  : age; salary; number of years holding a bank account…</li>
+<li>output : yes / no<br>3) Breast cancer prediction</li>
+<li>input  : clump thickness; uniformity of cell size, cell thickness…</li>
+<li>output : yes / no</li>
+</ul>
+<p>NOTE : 监督学习实际上是给当前模型输入已知的数据然后来分析新的数据。</p>
+<h2 id="K-NN-K-Nearest-Neighbours"><a href="#K-NN-K-Nearest-Neighbours" class="headerlink" title="K-NN (K-Nearest Neighbours)"></a>K-NN (K-Nearest Neighbours)</h2><p>k : how many neighbors to choose for classification.<br>&nbsp;<br>classification problems : the test data (x,?) is classified to the majority among the output attributes of neighbour training data.<br>&nbsp;<br>Numerical problems      : the test data is computed by the average among the output attributes of neighbour training data.<br>&nbsp;<br>Algorithm :</p>
+<ol>
+<li>give the input attributes of a new data (x,?) that we want to predict </li>
+<li>give k, the neighbors we are looking for.</li>
+<li>For each training example (x’, y’) :<ul>
+<li>compute distance(x,x’) = root{ Σ(for all i) sum[(xi - x’(i))^2] }</li>
+<li>sort all of the distances computed in ascending order by a data structure</li>
+<li>return first k data as the nearest neighbors</li>
+</ul>
+</li>
+<li>return either the majority vote or the average.</li>
+</ol>
+<h2 id="Normalisation-of-numeric-input-attributes"><a href="#Normalisation-of-numeric-input-attributes" class="headerlink" title="Normalisation of numeric input attributes"></a>Normalisation of numeric input attributes</h2><p>Problem : Different numeric input attributes may have different scales. It will affect the Euclidean distance. for example, if x1 is in [0, 10] and x2 is in [100, 10000], then x2 will influence the distance more.</p>
+<p>Solution : BEFORE starting training, we need to normalise all input attributes between 0 and 1 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                   xi - min(i)</span><br><span class="line">normalised(xi) = --------------- </span><br><span class="line">                 max(i) - min(i)</span><br><span class="line"></span><br><span class="line">min(i)  = the minimum among all x(i)</span><br><span class="line">maxi(i) = the maximum among all x(i)</span><br></pre></td></tr></table></figure>
+<p>NOTES : </p>
+<ul>
+<li>if new training data are loaded, then we need to take them into consider as well. We then require to de-normalise and re-normalise the data (including test data).</li>
+<li>this process is to minimize errors.</li>
+</ul>
+<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : </p>
+<ol>
+<li>training is simple and fast, just normalise and store the training data</li>
+</ol>
+<p>Disadv :</p>
+<ol>
+<li>require large memory space to store all data</li>
+<li>making prediction is slow, we have to sort the whole data set in order to find k neighbors. (the algorithm is slow)</li>
+</ol>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
+<li>program effort estimation</li>
+<li>movies classification</li>
+</ul>
+<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p>&nbsp; <a href="https://blog.csdn.net/saltriver/article/details/52502253" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/52502253</a></p>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]04_informed/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/Year1:[AI]07_knn/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
