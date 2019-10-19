@@ -291,62 +291,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/10/06/Year2:[C]02_StructureofCProgram/">General Structure of a C Program</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-10-06  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>NOTES:</p>
-<ul>
-<li>Program must contain a main() function</li>
-<li>Program execution starts from main()</li>
-<li><header files> contains pre-defined library functions (written in .h)</header></li>
-</ul>
-<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p><strong>Built-ins data types:</strong></p>
-<ul>
-<li>char     (size: 1 byte)</li>
-<li>short    (size: 2 bytes)               </li>
-<li>int      (size: 4 bytes)</li>
-<li>long</li>
-<li>long long</li>
-<li>float    (size: 4 bytes)</li>
-<li>double   (size: 8 bytes)</li>
-<li>unsigned</li>
-</ul>
-<p><strong>Constant data:</strong> A constant is read-only which cannot be changed!</p>
-<h2 id="if-statement"><a href="#if-statement" class="headerlink" title="if statement"></a>if statement</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123; </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(expression)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> constant-expression1:</span><br><span class="line">        Code Block1;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> constant-expression1:</span><br><span class="line">        Code Block2;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// ... More case blocks case constant-expressionN:</span></span><br><span class="line">        Code BlockN;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        Code BlockDefault;</span><br><span class="line">        <span class="keyword">break</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="loops"><a href="#loops" class="headerlink" title="loops"></a>loops</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(condition)&#123;</span><br><span class="line">    <span class="comment">//do..</span></span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//..do it once</span></span><br><span class="line">&#125; <span class="keyword">while</span>(condition)</span><br></pre></td></tr></table></figure>
-<h2 id="continue-and-break"><a href="#continue-and-break" class="headerlink" title="continue and break"></a>continue and break</h2><p><code>continue</code>:</p>
-<p><code>break</code>:</p>
-<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h2 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h2><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p>Factorial program in Java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factorial</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span>(n * factorial(n-<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i,fact=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> number=<span class="number">4</span>;</span><br><span class="line">fact = factorial(number); System.out.println(<span class="string">"Factorial is: "</span>+fact);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
-<p>Now we convert to a C program: </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> (n * factorial(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input your number: "</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result = factorial(i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Answer: %d\n"</span>, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-	</div>
-  <a type="button" href="/2019/10/06/Year2:[C]02_StructureofCProgram/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/10/06/Year2:[C]01_ComputerArch/">Computer Architecture</a>
 		</h3>
 		</div>
@@ -426,6 +370,62 @@
 	
 	</div>
   <a type="button" href="/2019/10/06/Year2:[C]01_ComputerArch/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/10/06/Year2:[C]02_StructureofCProgram/">General Structure of a C Program</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-10-06  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="General-Structure-of-a-C-program"><a href="#General-Structure-of-a-C-program" class="headerlink" title="General Structure of a C program"></a>General Structure of a C program</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;header file&gt;</span></span></span><br><span class="line"></span><br><span class="line">foo1()&#123; <span class="comment">// User-defined function</span></span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions</span></span><br><span class="line"></span><br><span class="line">&#125; main()&#123;</span><br><span class="line">    <span class="comment">// Declaration of variables</span></span><br><span class="line">    <span class="comment">// Arithmetic and Logical expressions foo1(); // function call</span></span><br><span class="line">    <span class="comment">// More arithmetic and Logical expressions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTES:</p>
+<ul>
+<li>Program must contain a main() function</li>
+<li>Program execution starts from main()</li>
+<li><header files> contains pre-defined library functions (written in .h)</header></li>
+</ul>
+<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p><strong>Built-ins data types:</strong></p>
+<ul>
+<li>char     (size: 1 byte)</li>
+<li>short    (size: 2 bytes)               </li>
+<li>int      (size: 4 bytes)</li>
+<li>long</li>
+<li>long long</li>
+<li>float    (size: 4 bytes)</li>
+<li>double   (size: 8 bytes)</li>
+<li>unsigned</li>
+</ul>
+<p><strong>Constant data:</strong> A constant is read-only which cannot be changed!</p>
+<h2 id="if-statement"><a href="#if-statement" class="headerlink" title="if statement"></a>if statement</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123; </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(expression)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> constant-expression1:</span><br><span class="line">        Code Block1;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> constant-expression1:</span><br><span class="line">        Code Block2;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">// ... More case blocks case constant-expressionN:</span></span><br><span class="line">        Code BlockN;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        Code BlockDefault;</span><br><span class="line">        <span class="keyword">break</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="loops"><a href="#loops" class="headerlink" title="loops"></a>loops</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(condition)&#123;</span><br><span class="line">    <span class="comment">//do..</span></span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//..do it once</span></span><br><span class="line">&#125; <span class="keyword">while</span>(condition)</span><br></pre></td></tr></table></figure>
+<h2 id="continue-and-break"><a href="#continue-and-break" class="headerlink" title="continue and break"></a>continue and break</h2><p><code>continue</code>:</p>
+<p><code>break</code>:</p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h2 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h2><h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p>Factorial program in Java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factorial</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span>(n * factorial(n-<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i,fact=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> number=<span class="number">4</span>;</span><br><span class="line">fact = factorial(number); System.out.println(<span class="string">"Factorial is: "</span>+fact);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>Now we convert to a C program: </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> (n * factorial(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input your number: "</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> result = factorial(i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Answer: %d\n"</span>, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+  <a type="button" href="/2019/10/06/Year2:[C]02_StructureofCProgram/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -621,7 +621,7 @@ Bibliography Index
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/06/02/Year1:[AI]07_knn/">Introduction to machine learning and k-NN</a>
+			<a href="/2019/06/02/Year1:[AI]05_HillClimb/">Hill Climbing</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -635,90 +635,82 @@ Bibliography Index
   <div class="row">
 	
 	
-		<h2 id="Introduction-to-machine-learning"><a href="#Introduction-to-machine-learning" class="headerlink" title="Introduction to machine learning"></a>Introduction to machine learning</h2><p>def : machine learning focuses on studying and developing computational models capable of improving their performance with experience and acquiring knowledge on their own.<br>&nbsp;<br>types of learning :</p>
-<ol>
-<li>supervised learning (监督学习)</li>
-<li>reinforcement learning (强化学习)</li>
-<li>unsupervised learning</li>
-<li>semi-supervised learning</li>
+		<h2 id="Examples-of-Optimisation-Problems"><a href="#Examples-of-Optimisation-Problems" class="headerlink" title="Examples of Optimisation Problems"></a>Examples of Optimisation Problems</h2><ul>
+<li>Minimum distance route problem</li>
+<li>Travelling Salesman Problem (TSP)</li>
+<li>Bin Packing problem</li>
+<li>Software Module Clustering</li>
+</ul>
+<h2 id="Formulating-Optimisation-Problems"><a href="#Formulating-Optimisation-Problems" class="headerlink" title="Formulating Optimisation Problems"></a>Formulating Optimisation Problems</h2><ol>
+<li>Design variables represent a candidate solution</li>
+<li>define the search space of candidate solutions</li>
+<li>constraints which define solution feasibility</li>
+<li>Objective function defines the quality of a solution</li>
+<li>maximise or minimise</li>
 </ol>
-<h2 id="Introduction-to-supervised-learning"><a href="#Introduction-to-supervised-learning" class="headerlink" title="Introduction to supervised learning"></a>Introduction to supervised learning</h2><p>Predicative tasks : based on existing training data, we are aiming to learn models which are able to make predictions for new data.<br>&nbsp;<br>Components :</p>
+<p>example : TSP</p>
 <ol>
-<li>training data</li>
-<li>machine learning algorithm</li>
-<li>predictive model</li>
-</ol>
-<p>Data format : (x, y)</p>
-<ul>
-<li>x the input attributes : x = (x1, x2, x3 …, xn)</li>
-<li>y the output attributes : we focus on ONE output.</li>
-</ul>
-<p>Example :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    x1    x2    x3      y</span><br><span class="line"></span><br><span class="line">/  x11   x12   x13  |   y1  \</span><br><span class="line">|  x21   x22   x23  |   y2  |    // matrix representation</span><br><span class="line">\  x31   x32   x33  |   y3  /</span><br></pre></td></tr></table></figure>
-<p>Types of input attributes :</p>
-<ul>
-<li>Numerical   : 123</li>
-<li>Ordinal     : {low, medium, high}</li>
-<li>Categorical : {UK, CHN, US}</li>
-</ul>
-<h2 id="Classification-amp-amp-Regression"><a href="#Classification-amp-amp-Regression" class="headerlink" title="Classification &amp;&amp; Regression"></a>Classification &amp;&amp; Regression</h2><p>Classification :</p>
-<ul>
-<li>the output attributes are categories/ classes</li>
-<li>the learning model is called : Classifier</li>
-</ul>
-<p>Regression :</p>
-<ul>
-<li>the output attributes are numerical values</li>
-</ul>
-<p>NOTE : k-nn is dealing with classification and regression.</p>
-<h2 id="Example-application"><a href="#Example-application" class="headerlink" title="Example application"></a>Example application</h2><p>1) Estimation of the effort required to develop a software project.</p>
-<ul>
-<li>input  : programming language; team expertise, estimated size, development type…</li>
-<li>output : person-hours / months<br>2) Credit card approval </li>
-<li>input  : age; salary; number of years holding a bank account…</li>
-<li>output : yes / no<br>3) Breast cancer prediction</li>
-<li>input  : clump thickness; uniformity of cell size, cell thickness…</li>
-<li>output : yes / no</li>
-</ul>
-<p>NOTE : 监督学习实际上是给当前模型输入已知的数据然后来分析新的数据。</p>
-<h2 id="K-NN-K-Nearest-Neighbours"><a href="#K-NN-K-Nearest-Neighbours" class="headerlink" title="K-NN (K-Nearest Neighbours)"></a>K-NN (K-Nearest Neighbours)</h2><p>k : how many neighbors to choose for classification.<br>&nbsp;<br>classification problems : the test data (x,?) is classified to the majority among the output attributes of neighbour training data.<br>&nbsp;<br>Numerical problems      : the test data is computed by the average among the output attributes of neighbour training data.<br>&nbsp;<br>Algorithm :</p>
-<ol>
-<li>give the input attributes of a new data (x,?) that we want to predict </li>
-<li>give k, the neighbors we are looking for.</li>
-<li>For each training example (x’, y’) :<ul>
-<li>compute distance(x,x’) = root{ Σ(for all i) sum[(xi - x’(i))^2] }</li>
-<li>sort all of the distances computed in ascending order by a data structure</li>
-<li>return first k data as the nearest neighbors</li>
+<li>Variables :sequence x containing N cities to be visited.</li>
+<li>Space : all possible sequences of cities.</li>
+<li>Constraints : <ul>
+<li>each city must appear once and only once in x;</li>
+<li>salesman must return to the city of origin.</li>
 </ul>
 </li>
-<li>return either the majority vote or the average.</li>
+<li>Objective function : total_distance(x) = sum of distances between consecutive cities + distance from last city to origin to be minimised + number of missed cities <em> MAX + number of duplicated cities </em> MAX</li>
+<li>To be minimised</li>
 </ol>
-<h2 id="Normalisation-of-numeric-input-attributes"><a href="#Normalisation-of-numeric-input-attributes" class="headerlink" title="Normalisation of numeric input attributes"></a>Normalisation of numeric input attributes</h2><p>Problem : Different numeric input attributes may have different scales. It will affect the Euclidean distance. for example, if x1 is in [0, 10] and x2 is in [100, 10000], then x2 will influence the distance more.</p>
-<p>Solution : BEFORE starting training, we need to normalise all input attributes between 0 and 1 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                   xi - min(i)</span><br><span class="line">normalised(xi) = --------------- </span><br><span class="line">                 max(i) - min(i)</span><br><span class="line"></span><br><span class="line">min(i)  = the minimum among all x(i)</span><br><span class="line">maxi(i) = the maximum among all x(i)</span><br></pre></td></tr></table></figure>
-<p>NOTES : </p>
+<p>NOTE : Optimisation algorithm can be more efficient than tree-based search algorithms.</p>
+<h2 id="Hill-Climbing"><a href="#Hill-Climbing" class="headerlink" title="Hill-Climbing"></a>Hill-Climbing</h2><p>Algorithm :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">current_solution = generate initial candidate solution randomly.</span><br><span class="line"></span><br><span class="line">reapeat &#123;</span><br><span class="line">  <span class="function">generate neighbor <span class="title">solutions</span><span class="params">(differ from current solution by a single element)</span></span></span><br><span class="line"><span class="function">  best_neigbor </span>= <span class="function">get highest quality <span class="title">neigbor</span> <span class="params">(&gt;= <span class="number">0</span> 个候选解)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  <span class="title">if</span><span class="params">(quality(best_neighbor)</span> &lt;</span>= quality(current_solution))&#123;</span><br><span class="line">      <span class="keyword">return</span> current_solution;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> best_neighbor;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE : Real world problems will frequently have more than one neighbour for each candidate solution.</p>
+<h2 id="Designing-Representation-Initialisation-and-Neighbourhood-Operators"><a href="#Designing-Representation-Initialisation-and-Neighbourhood-Operators" class="headerlink" title="Designing Representation, Initialisation and Neighbourhood Operators"></a>Designing Representation, Initialisation and Neighbourhood Operators</h2><p>In order to deal with constraints in a problem, two approaches are provided :</p>
+<ol>
+<li>construct representation, initialisation and neighbourhood operation</li>
+<li>add panelties for each constraints in objective function</li>
+</ol>
+<p>Representation : what data structure we use, how to store a solution<br>Initialisation : how to generate a solution<br>Neighbourhood operator : how we generate a neighbor solution with single element difference</p>
+<p>Example : TSP<br>constraints : each city must appear once and only once in x;<br>                  salesman must return to the city of origin.<br>Strategies  :<br>1) Representation :</p>
 <ul>
-<li>if new training data are loaded, then we need to take them into consider as well. We then require to de-normalise and re-normalise the data (including test data).</li>
-<li>this process is to minimize errors.</li>
+<li>City[4] array [A][B][C][D][E] A</li>
 </ul>
-<h2 id="Advantages-amp-amp-Disadvantages"><a href="#Advantages-amp-amp-Disadvantages" class="headerlink" title="Advantages &amp;&amp; Disadvantages"></a>Advantages &amp;&amp; Disadvantages</h2><p>Adv : </p>
-<ol>
-<li>training is simple and fast, just normalise and store the training data</li>
-</ol>
-<p>Disadv :</p>
-<ol>
-<li>require large memory space to store all data</li>
-<li>making prediction is slow, we have to sort the whole data set in order to find k neighbors. (the algorithm is slow)</li>
-</ol>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
-<li>program effort estimation</li>
-<li>movies classification</li>
+<p>2) Initialisation :</p>
+<ul>
+<li>unvisited_Set = {A,B,C,D,E}</li>
+<li>pick k cities from unvisited_Set without duplication</li>
 </ul>
-<h2 id="Web-Rsc"><a href="#Web-Rsc" class="headerlink" title="Web Rsc"></a>Web Rsc</h2><p>&nbsp; <a href="https://blog.csdn.net/saltriver/article/details/52502253" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/52502253</a></p>
+<p>3) Neighbourhood operator :</p>
+<ul>
+<li>reverse the path between cities</li>
+<li>A B C D E between B and E –&gt; A B D C E between D and E –&gt; B A D C E</li>
+</ul>
+<h2 id="Software-module-clustering"><a href="#Software-module-clustering" class="headerlink" title="Software module clustering"></a>Software module clustering</h2><p>design variable : a list of N modules, each has a list of M units.<br>define search space : all possible grouping<br>constraints : N/A (maybe within a module there is a limit of units)<br>objective function : f(M) = Σ(for all n) connections in module n - penalty * connections to other modules + b<br>to be maximised<br>&nbsp;<br>1) Representation :</p>
+<ul>
+<li>represent each module as a java class</li>
+<li>an array to add units</li>
+<li>a number to store connections between units</li>
+<li>a number to store connections between modules</li>
+</ul>
+<p>2) Initialisation :</p>
+<ul>
+<li>generate N modules as an object array</li>
+<li>randomly feed m units in each module (m &gt;= 0)</li>
+<li>based on units, randomly generate connections between units and between modules.</li>
+</ul>
+<p>3) Neighbourhood operator :</p>
+<ul>
+<li>a module has a method to transfer one single random unit to another module</li>
+<li>this will remove the unit connections to all other units and unit of other module</li>
+</ul>
+<h2 id="Advantages-and-Disadvantages"><a href="#Advantages-and-Disadvantages" class="headerlink" title="Advantages and Disadvantages"></a>Advantages and Disadvantages</h2><p>Disadvantage :</p>
+<ol>
+<li>greedy local search</li>
+<li>may not be able to find global optimum.</li>
+</ol>
 
 	
 	</div>
-  <a type="button" href="/2019/06/02/Year1:[AI]07_knn/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/06/02/Year1:[AI]05_HillClimb/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		

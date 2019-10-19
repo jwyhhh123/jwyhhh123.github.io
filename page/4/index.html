@@ -108,7 +108,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]13_Complexity/">Complexity</a>
+			<a href="/2019/03/11/Year1:[MATH]12_Decidability&HaltingProblem/">Decidability and The Halting Problem</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -122,33 +122,211 @@
   <div class="row">
 	
 	
-		<h2 id="Preliminary-laws-of-probability"><a href="#Preliminary-laws-of-probability" class="headerlink" title="Preliminary: laws of probability"></a>Preliminary: laws of probability</h2><p>basic laws of probability :</p>
+		<h2 id="Church’s-Thesis"><a href="#Church’s-Thesis" class="headerlink" title="Church’s Thesis"></a>Church’s Thesis</h2><p>def : any decision problem on words that can be solved by an algorithm can be solved by a turing machine.<br>&nbsp;<br>other version for functions f : Σ^<em> → Σ^</em> : any functions on words that can be computed by an algorithm can be solved by a turing machine..<br>&nbsp;<br>computable : if there is a turing machine can return f(word) to a given word<br>decidable  : if there is a turing machine can return yes or no to a given argument<br>&nbsp;<br>examples : </p>
 <ul>
-<li>an impossible event has P = 0</li>
-<li>some certain events have P = 1</li>
-<li>For events that are mutually exclusive(相互排斥在同一P), P(A or B) = P(A) + P(B)</li>
-<li>For events that are independent(相互独立在不同P), P(A and B) = P(A) * P(B)</li>
+<li>A function f : N -&gt; N is computable when there is a turing mahchine that starting from a natural number, written in binary, halts with the number f(n) in binary. By Church’s thesis, it is computable when there is some program that when given a number n, it returns f(n).</li>
+<li>Ambiguity of a context free grammar is undecidable. This means there is no turing machine can return yes if the grammar over <code>{a, b, |, ::=, nowhere, _}</code> is ambiguous an no if is unambiguous. By Church’s thesis, there is no program that when given a grammar over the set of <code>{a, b, |, ::=, nowhere, _}</code> returns true if the grammar is ambiguous and false if not.<br>&nbsp;<br>NOTES :</li>
+<li>natural numbers, Turing machines, Java programs and context free grammars can be encoded as words</li>
+<li>words, Turing machines, Java prorgrams and context free grammars can be encoded as natural numbers.</li>
 </ul>
-<h2 id="Preliminary-important-summation"><a href="#Preliminary-important-summation" class="headerlink" title="Preliminary: important summation"></a>Preliminary: important summation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 + 1 + 2 + ... + (n - 1) = 1/2 * n * (n - 1)</span><br><span class="line">1 + 2 + 3 + ... + n       = 1/2 * n * (n + 1)</span><br><span class="line"></span><br><span class="line">1 + b + b^2 + b^3 + ... + b^(n-1) = 1/(b - 1) * (b^n - 1)</span><br><span class="line">1 + b + b^2 + b^3 + ... + b^n     = 1/(b - 1) * (b^(n+1) - 1)</span><br></pre></td></tr></table></figure>
-<h2 id="Runing-time-of-a-program"><a href="#Runing-time-of-a-program" class="headerlink" title="Runing time of a program"></a>Runing time of a program</h2><h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We don’t usually work out the precise running time of a program; indeed we don’t usually have the information needed to do so. Instead we work out the complexity, which is a kind of rough estimate of the running time that ignores two things:</p>
-<ol>
-<li>small arguments</li>
-<li>constant factors</li>
-</ol>
-<h2 id="Big-Oh"><a href="#Big-Oh" class="headerlink" title="Big-Oh"></a>Big-Oh</h2><p>def : let f(n) be the running time for an argument of size n. let g(n) be another such function. there is the case when f ∈ O(g) given natural number M and constant factor C, such that for all n &gt;= M we have f(n) &lt;= C * g(n)<br>&nbsp;<br>logical symbol : ∃M. ∃C. ∀n &gt;= M. f(n) &lt;= C × g(n)<br>rearrange the inequality : f(n)/g(n) &lt;= C<br>&nbsp;<br>NOTE : C is the upper bound when it is the maximum of f(n)/g(n).<br>&nbsp;<br>we use big-Oh to solve complexity problems :</p>
+<h2 id="Reduction-of-a-problem-to-another-problem"><a href="#Reduction-of-a-problem-to-another-problem" class="headerlink" title="Reduction of a problem to another problem"></a>Reduction of a problem to another problem</h2><p>def : when given problem P and Q, suppose that we show how to solve Q using a black box that solves P. Then is called reducing problem Q to problem P .<br>&nbsp;<br>if we have reduced Q to P, then the following satisfied :</p>
 <ul>
-<li>The running time of my program is 3n2 + 9n + 8. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my program is 5n for n &lt; 1000, and 3n2 +9n+8 for n 􏰂&lt; 1000. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>The running time of my programn is 5n. Is this in O(n2)? In O(n)? In O(n3)?</li>
-<li>On an argument of size n, I first run a program whose running time is in O(n2), and then run a program whose running time is in O(n3). Show that the total running time is in O(n3).</li>
+<li>if P is decidable, Q is then decidable</li>
+<li>if Q is undecidable, P is then undecidable</li>
 </ul>
-<p>NOTE : exponential growth is faster than polunomial growth.</p>
-<h2 id="Polynomial-Time"><a href="#Polynomial-Time" class="headerlink" title="Polynomial Time"></a>Polynomial Time</h2><p>def : The program is polynomial time when there is k such that f ∈ O(nk). In detail, it is polynomial time when there is k and M and C such that if n 􏰂 M then f(n) 􏰁 C × nk.</p>
-<h2 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h2><p>We can study the space usage of a program in a similar way. For example, suppose my program, on an argument of size n, uses 8 * n^2 + 5 bytes of memory. We then say that the space usage is in O(n^2).</p>
+<h2 id="Undecidable-problems"><a href="#Undecidable-problems" class="headerlink" title="Undecidable problems"></a>Undecidable problems</h2><p>examples of undecidable problems :</p>
+<ul>
+<li>ambiguity of context free languages</li>
+<li>equivalence of context free languages</li>
+<li>the halting problem</li>
+</ul>
+<h2 id="The-Halting-Problem"><a href="#The-Halting-Problem" class="headerlink" title="The Halting Problem"></a>The Halting Problem</h2><p>Prove that the halting problem is undecidable :<br>assume the halting problem is decidable, so there is a program returns true if it halts and false if it does not.<br>We have a boolean method :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">haltcheck</span><span class="params">(String a, String b)</span></span></span><br></pre></td></tr></table></figure>
+<p>Now we create a new method which loops forever if the <code>haltcheck()</code> method halts and halts if it loops forever.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hangcheck</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(haltcheck(a,b)) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;&#125;; it loops forever</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>; <span class="comment">//it halts</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we have a program when we apply argument b to input b itself in the halt tester, it halts(return true) if it loops forever(never halts) and loops forever(return false) if it halts.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doublehang</span><span class="params">(String b)</span> </span>&#123;</span><br><span class="line">  hangcheck(b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This raises a contradiction to our assumption. Hence the halting problem is undecidable.</p>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]13_Complexity/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/Year1:[MATH]12_Decidability&HaltingProblem/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/Year1:[MATH]14_N&NP/">Polynomial and non-Polynomial</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Polynomial-time-algorithms"><a href="#Polynomial-time-algorithms" class="headerlink" title="Polynomial time algorithms"></a>Polynomial time algorithms</h2><p>P : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
+<ul>
+<li>A constant time algorithm has running time in O(1).</li>
+<li>A linear time algorithm has running time in O(n).</li>
+<li>A quadratic time algorithm has running time in O(n2). </li>
+<li>A cubic time algorithm has running time in O(n3).</li>
+</ul>
+<h2 id="NP-Search-problems"><a href="#NP-Search-problems" class="headerlink" title="NP Search problems"></a>NP Search problems</h2><p>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP : an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
+<ul>
+<li>solutions have size polynomial in n : for a problem instance of size n, all words that are solutions have size &lt;= p(n). (where p(n) is some O())</li>
+<li>solutions can be checked in a time polynomial in n : given a problem instance A and a solution B, there is an alogorithm that checks whether it is &lt;= q(n). (where q(n) is some O())</li>
+</ul>
+<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question : can every NP seach problem be solved in polynomial time?</p>
+<p>example : sudoku (NP)</p>
+<ol>
+<li>solutions have size polynomial in n…</li>
+<li>solutions can be checked in a time polynomial in n…</li>
+<li>we can find a solution in exponential time…</li>
+</ol>
+<p>example : factorization (NP)</p>
+<ol>
+<li>solutions have size polynomial in n…</li>
+<li>solutions can be checked in a time polynomial in n…</li>
+<li>we can find a solution in exponential time…</li>
+</ol>
+<h2 id="examples-of-NP"><a href="#examples-of-NP" class="headerlink" title="examples of NP"></a>examples of NP</h2><p>problems in NP but are not known to be in P :</p>
+<ul>
+<li>The travelling salesman. A salesman has to plan a journey between n cities (and return to the<br>start) in a way that minimizes his total distance.</li>
+<li>Optimal scheduling.</li>
+<li>Path planning (used by robots).</li>
+<li>Many problems on graphs.</li>
+<li>Boolean satisfiability (SAT).</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/Year1:[MATH]14_N&NP/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/Year1:[MATH]15_TuringMachine/">Turing Machine</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Reasons-to-introduce-turing-machine"><a href="#Reasons-to-introduce-turing-machine" class="headerlink" title="Reasons to introduce turing machine"></a>Reasons to introduce turing machine</h2><p>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
+<h2 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h2><p>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
+<ol>
+<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
+<li>the set V of return values.</li>
+</ol>
+<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
+<ul>
+<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
+<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
+<li>left</li>
+<li>right</li>
+<li>No-op (which does nothing)</li>
+<li>Return True</li>
+<li>Return False</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
+<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
+<h2 id="Representation-of-a-turing-machine"><a href="#Representation-of-a-turing-machine" class="headerlink" title="Representation of a turing machine"></a>Representation of a turing machine</h2><p>A turing machine has :</p>
+<ol>
+<li>a finite state X of states</li>
+<li>an initial state p ∈ X</li>
+<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
+</ol>
+<p>example : convert a into b from a given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
+<p>example : return true if the number of as is even in the given tape</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
+<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
+<p>example : reverse copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
+<h2 id="More-complex-TM"><a href="#More-complex-TM" class="headerlink" title="More complex TM"></a>More complex TM</h2><ul>
+<li>2-tape turing machine</li>
+<li>m x n turing machine</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/Year1:[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/Year1:[MATH]16_PropertiesofCode/">Properties of Code</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Undecidability-by-reduction"><a href="#Undecidability-by-reduction" class="headerlink" title="Undecidability by reduction"></a>Undecidability by reduction</h2><p>def: to prove other undecidable problem we can reduce the halting problem to it.<br>Because if reducing Q to P we have</p>
+<ul>
+<li>if P is decidable then Q is decidable</li>
+<li>if Q is undecidable then P is undecidable</li>
+</ul>
+<p>example: X is a undecidable property when X halts and contains more occurances of a than b<br>proof: </p>
+<ol>
+<li>reduce the halting problem to X.</li>
+<li>for any program C of type void. let F(C) be the same code as C with an extra comment line which gives more occurances of a than b.</li>
+<li>if C halts, then F(C) is X</li>
+<li>if C does not halts, then F(C) is not X</li>
+<li>we cannot test whether C halts, so we cannot decide whether it is X.</li>
+<li>as C is undecidable, F(C) is undecidable</li>
+<li>so X is undecidable</li>
+</ol>
+<h2 id="Semantic-and-non-semantic-properties"><a href="#Semantic-and-non-semantic-properties" class="headerlink" title="Semantic and non-semantic properties"></a>Semantic and non-semantic properties</h2><p>semantic properties: </p>
+<ul>
+<li>Does this software print only polite words?</li>
+<li>Does this software provide good advice to all users, and excellent advice to premium users?</li>
+<li>Does this software, when supplied with two positive integers, always return the highest common factor?</li>
+</ul>
+<p>to test whether a given property is a semantic property or not: </p>
+<ul>
+<li>to show not semantic, give two programs one has the property and one has not.</li>
+<li>to show semantic, there is no program has different properties.</li>
+</ul>
+<h2 id="Rice’s-Theorem"><a href="#Rice’s-Theorem" class="headerlink" title="Rice’s Theorem"></a>Rice’s Theorem</h2><p>def: any semantic property of code that holds in some case and does not hold in some case is undecidable.</p>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/Year1:[MATH]16_PropertiesofCode/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -316,182 +494,6 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]14_N&NP/">Polynomial and non-Polynomial</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Polynomial-time-algorithms"><a href="#Polynomial-time-algorithms" class="headerlink" title="Polynomial time algorithms"></a>Polynomial time algorithms</h2><p>P : a polynomial time algorithm has running time in O(n^k). A polynomial time algorithm is said to be feasible; an algorithm that’s not polynomial time is said to be infeasible.<br>&nbsp;<br>some example algorithms are :</p>
-<ul>
-<li>A constant time algorithm has running time in O(1).</li>
-<li>A linear time algorithm has running time in O(n).</li>
-<li>A quadratic time algorithm has running time in O(n2). </li>
-<li>A cubic time algorithm has running time in O(n3).</li>
-</ul>
-<h2 id="NP-Search-problems"><a href="#NP-Search-problems" class="headerlink" title="NP Search problems"></a>NP Search problems</h2><p>A search problem is a relation from the set of words(problem instances) to the set of words(solutions).<br>&nbsp;<br>NP : an NP search problem is a search problem wehere solutions have polynomial size in n, and can be checked in a time polynomial in n. Here n is the size of the problem instance.</p>
-<ul>
-<li>solutions have size polynomial in n : for a problem instance of size n, all words that are solutions have size &lt;= p(n). (where p(n) is some O())</li>
-<li>solutions can be checked in a time polynomial in n : given a problem instance A and a solution B, there is an alogorithm that checks whether it is &lt;= q(n). (where q(n) is some O())</li>
-</ul>
-<p>from these two steps, we can find a solution in exponential time. As the number of words(for example 0-9; a-z) is r, there are at most (r + 1)^p(n). And, each word can be checked in q(n) so overall we have (r + 1)^p(n) * q(n) steps to find a solution, which is exponential time.<br>&nbsp;<br>“NP = P” question : can every NP seach problem be solved in polynomial time?</p>
-<p>example : sudoku (NP)</p>
-<ol>
-<li>solutions have size polynomial in n…</li>
-<li>solutions can be checked in a time polynomial in n…</li>
-<li>we can find a solution in exponential time…</li>
-</ol>
-<p>example : factorization (NP)</p>
-<ol>
-<li>solutions have size polynomial in n…</li>
-<li>solutions can be checked in a time polynomial in n…</li>
-<li>we can find a solution in exponential time…</li>
-</ol>
-<h2 id="examples-of-NP"><a href="#examples-of-NP" class="headerlink" title="examples of NP"></a>examples of NP</h2><p>problems in NP but are not known to be in P :</p>
-<ul>
-<li>The travelling salesman. A salesman has to plan a journey between n cities (and return to the<br>start) in a way that minimizes his total distance.</li>
-<li>Optimal scheduling.</li>
-<li>Path planning (used by robots).</li>
-<li>Many problems on graphs.</li>
-<li>Boolean satisfiability (SAT).</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]14_N&NP/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]16_PropertiesofCode/">Properties of Code</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Undecidability-by-reduction"><a href="#Undecidability-by-reduction" class="headerlink" title="Undecidability by reduction"></a>Undecidability by reduction</h2><p>def: to prove other undecidable problem we can reduce the halting problem to it.<br>Because if reducing Q to P we have</p>
-<ul>
-<li>if P is decidable then Q is decidable</li>
-<li>if Q is undecidable then P is undecidable</li>
-</ul>
-<p>example: X is a undecidable property when X halts and contains more occurances of a than b<br>proof: </p>
-<ol>
-<li>reduce the halting problem to X.</li>
-<li>for any program C of type void. let F(C) be the same code as C with an extra comment line which gives more occurances of a than b.</li>
-<li>if C halts, then F(C) is X</li>
-<li>if C does not halts, then F(C) is not X</li>
-<li>we cannot test whether C halts, so we cannot decide whether it is X.</li>
-<li>as C is undecidable, F(C) is undecidable</li>
-<li>so X is undecidable</li>
-</ol>
-<h2 id="Semantic-and-non-semantic-properties"><a href="#Semantic-and-non-semantic-properties" class="headerlink" title="Semantic and non-semantic properties"></a>Semantic and non-semantic properties</h2><p>semantic properties: </p>
-<ul>
-<li>Does this software print only polite words?</li>
-<li>Does this software provide good advice to all users, and excellent advice to premium users?</li>
-<li>Does this software, when supplied with two positive integers, always return the highest common factor?</li>
-</ul>
-<p>to test whether a given property is a semantic property or not: </p>
-<ul>
-<li>to show not semantic, give two programs one has the property and one has not.</li>
-<li>to show semantic, there is no program has different properties.</li>
-</ul>
-<h2 id="Rice’s-Theorem"><a href="#Rice’s-Theorem" class="headerlink" title="Rice’s Theorem"></a>Rice’s Theorem</h2><p>def: any semantic property of code that holds in some case and does not hold in some case is undecidable.</p>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]16_PropertiesofCode/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]15_TuringMachine/">Turing Machine</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Reasons-to-introduce-turing-machine"><a href="#Reasons-to-introduce-turing-machine" class="headerlink" title="Reasons to introduce turing machine"></a>Reasons to introduce turing machine</h2><p>When we compute complexity of a program, we sometimes made assumption which is not precise enough. we need a model of computation that fully specifies the steps of programs.</p>
-<h2 id="Turing-machine"><a href="#Turing-machine" class="headerlink" title="Turing machine"></a>Turing machine</h2><p>def : a turing machine has finitely many states(like a DFA), but it also has an exernal memory : an infinite tapes divided into cells. there is a head sitting over one cell of the tape.<br>&nbsp;<br>we specift two finite sets of a turing machine :</p>
-<ol>
-<li>the tape alphabet T = <code>{a, b, _}</code> where <code>_</code> is a blank character.</li>
-<li>the set V of return values.</li>
-</ol>
-<p>for T = <code>{a,b,_}</code> and V = <code>{True, False}</code>, the instructions available are :</p>
-<ul>
-<li>read <code>a</code> or <code>b</code> or <code>_</code></li>
-<li>write <code>a</code> or <code>b</code> or <code>-</code></li>
-<li>left</li>
-<li>right</li>
-<li>No-op (which does nothing)</li>
-<li>Return True</li>
-<li>Return False</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">              head</span><br><span class="line">...   [a] [_] [a] [b] [b] [ ]  ...</span><br><span class="line">           &lt;-- . --&gt;</span><br></pre></td></tr></table></figure>
-<p>NOTE : if V is a singleton set then return instruction is usually just written Stop.</p>
-<h2 id="Representation-of-a-turing-machine"><a href="#Representation-of-a-turing-machine" class="headerlink" title="Representation of a turing machine"></a>Representation of a turing machine</h2><p>A turing machine has :</p>
-<ol>
-<li>a finite state X of states</li>
-<li>an initial state p ∈ X</li>
-<li>a transition function δ from X to some instructions (example : read, write, left …)</li>
-</ol>
-<p>example : convert a into b from a given tape</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ... aaabbbbabaaa_ ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  right ---------- [12] &lt;--------- b</span><br><span class="line">    |                              .</span><br><span class="line">    ∨                              |  </span><br><span class="line">=&gt; [5] ----------- read -----------.--- _ -&gt; [8] --&gt; Stop</span><br><span class="line">    ∧                              |</span><br><span class="line">    |                              .</span><br><span class="line">  right - [4] &lt;- write b - [3] &lt;-- a</span><br></pre></td></tr></table></figure>
-<p>example : return true if the number of as is even in the given tape</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ... aaababaaabbba_ ...</span><br><span class="line"></span><br><span class="line">=&gt; [3] -- read - . ----- . --- .</span><br><span class="line">    ∧            |       |     |</span><br><span class="line">    |            b       a     _</span><br><span class="line">    |            |       |     |</span><br><span class="line">    -- right -- [2]      |    [6] - return : Even</span><br><span class="line">                 ∧  --&gt; [8]  </span><br><span class="line">                 |  |    | </span><br><span class="line">                 |  |  right</span><br><span class="line">                 |  |    |</span><br><span class="line">                 |  |    |</span><br><span class="line">              ----  |    ∨</span><br><span class="line">              |     |   [5]</span><br><span class="line">              |     |    |</span><br><span class="line">              a     b  read</span><br><span class="line">              |     |    |</span><br><span class="line">              . --- . -- . -- _ --- return : Odd</span><br></pre></td></tr></table></figure>
-<p>NOTE : macros enable us to combine two programs together. for example we have even/ odd checker and program of replacing a into b. we can combine them.</p>
-<p>example : reverse copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                       aabba_abbaa</span><br><span class="line">  </span><br><span class="line">     ------------------- &gt; [0] &lt; ------------------</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |                      ∨                     |</span><br><span class="line">   write a              =&gt; [1]                 write b</span><br><span class="line">     |                      |                     |</span><br><span class="line">     |   ----&gt;[2]&lt;- a -.- read -.- b -&gt;[4]&lt;-----  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">     |   |   right          .           right  |  |</span><br><span class="line">     |   |     |            |            |     |  |</span><br><span class="line">    [6]  |     ∨            _            ∨     | [27]</span><br><span class="line">     ∧   |    [5]           |           [8]    |  ∧ </span><br><span class="line">     |  a,b    |            ∨            |    a,b |</span><br><span class="line">     _   |    read         [3]          read   |  _</span><br><span class="line">     |   |__.__|            |            |__.__|  |</span><br><span class="line">     .         |           Stop          |        .</span><br><span class="line">     |         .                         .        |</span><br><span class="line"> .- read       |                         |       read -.</span><br><span class="line"> |   |         _                         _         |   |</span><br><span class="line"> |  [23]       |                         |       [24]  |</span><br><span class="line">a,b  ∧         ∨                         ∨         ∧  a,b</span><br><span class="line"> |   |    ----&gt;[9]                      [7]&lt;----   |   |</span><br><span class="line"> | left  |     |                         |     |  left |</span><br><span class="line"> |   |   |   right                      right  |   |   |</span><br><span class="line"> -&gt;[21]  |     |                         |     |  [22]&lt;-</span><br><span class="line">     ∧   |     ∨                         ∨     |   ∧</span><br><span class="line">     |   |    [10]                     [11]    |   |</span><br><span class="line">     _  a,b    |                         |    a,b  _</span><br><span class="line">     |   |    read                      read   |   |</span><br><span class="line">     .   |__.__|                         |__.__|   .</span><br><span class="line">     |         |                         |         |</span><br><span class="line">  -- read      .                         .        read --</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [16]      _                         _        [17]  |</span><br><span class="line">  |   ∧        |                         |         ∧    |</span><br><span class="line">  |   |        ∨                         ∨         |    |</span><br><span class="line">  .  left     [12]                     [13]       left  .</span><br><span class="line">  |   |        |                         |         |    |</span><br><span class="line">  |  [15] &lt;-- write a                 write b --&gt; [14]  |</span><br><span class="line">  |   ∧                                            ∧    |</span><br><span class="line"> a,b  |                                            |   a,b</span><br><span class="line">  |___|                                            |____|         // complexity : O(n^2)</span><br></pre></td></tr></table></figure>
-<h2 id="More-complex-TM"><a href="#More-complex-TM" class="headerlink" title="More complex TM"></a>More complex TM</h2><ul>
-<li>2-tape turing machine</li>
-<li>m x n turing machine</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]15_TuringMachine/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2019/03/11/Year1:[MATH]01_NaturalNumbers/">Natural Numbers and Integers</a>
 		</h3>
 		</div>
@@ -543,6 +545,59 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/Year1:[MATH]01_NaturalNumbers/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/03/11/Year1:[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-03-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
+<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
+<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
+<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>validity check : lcf(x, y) = lcf(y, r)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
+<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>贝祖等式: 已知lcf，求u和v</p>
+</blockquote>
+<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
+<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
+<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
+<ul>
+<li>we use base 2 for both mantissa and exponent</li>
+<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>People are still dealing with multiplication on real numbers.</p>
+</blockquote>
+
+	
+	</div>
+  <a type="button" href="/2019/03/11/Year1:[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -619,7 +674,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]02_Floating Point/">Rational Numbers and Floating Point Numbers</a>
+			<a href="/2019/03/11/Year1:[MATH]05_InnerProduct/">An alternate Way to Describe Lines and Planes - The inner Product</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
@@ -633,36 +688,71 @@
   <div class="row">
 	
 	
-		<h2 id="A-difference-between-Z-and-Zm"><a href="#A-difference-between-Z-and-Zm" class="headerlink" title="A difference between Z and Zm"></a>A difference between Z and Zm</h2><p>Z is an ordered ring (0,1,2,3,4,5…)<br>Zm is NOT an ordered ring (Z3 : 0,1,2,0,1,2..)</p>
-<h2 id="The-rational-numbers-Q"><a href="#The-rational-numbers-Q" class="headerlink" title="The rational numbers (Q)"></a>The rational numbers (Q)</h2><p>To check two fractions are equal : a/b = c/d iff a x d = b x c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1/2 + 3/4) * (5/6)           = 50/48</span><br><span class="line">(1/2) * (5/6) + (3/4) * (5/6) = 300/288  // using distributivity law</span><br><span class="line"></span><br><span class="line">Assume : 50/48 = 300/288</span><br><span class="line">50 * 288 = 14400</span><br><span class="line">48 * 300 = 14400</span><br></pre></td></tr></table></figure>
-<p>multiplicative inverse : <code>a * b = 1 mod m</code><br>Field : ring law + multiplicative inverse (for each element)<br>&nbsp;<br>The field laws</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a+0 = a                a×1 = a              // neutral elements</span><br><span class="line">a+b = b+a              a×b = b×a            // commutativity</span><br><span class="line">(a+b)+c = a+(b+c)  (a×b)×c = a×(b×c)        //associativity</span><br><span class="line">a×(b+c) = a×b+a×c                           // distributivity</span><br><span class="line">for every a , a + (-a) = 0                   // additive inverse</span><br><span class="line">for every a != 0, a × a^(-1) = 1            // multiplicative inverse</span><br></pre></td></tr></table></figure>
-<h2 id="The-Euclidean-Algorithm-欧几里得算法"><a href="#The-Euclidean-Algorithm-欧几里得算法" class="headerlink" title="The Euclidean Algorithm (欧几里得算法)"></a>The Euclidean Algorithm (欧几里得算法)</h2><p>To save space and time in a computer which is operating on fractions, we need to reduce the number by deviding it with a common factor.<br>&nbsp;<br>largest common factor : lcf </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find lcf of a and b</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = x mod y</span><br><span class="line">        <span class="keyword">int</span> x = y;</span><br><span class="line">        <span class="keyword">int</span> y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>validity check : lcf(x, y) = lcf(y, r)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Assume p is a common factor for x and y</span><br><span class="line">we got : x = mp and y = np</span><br><span class="line"></span><br><span class="line">x = ky + r</span><br><span class="line">r = x - ky</span><br><span class="line">  = mp - k(np)</span><br><span class="line">  = mp - knp</span><br><span class="line">  = p(m - kn)</span><br><span class="line"></span><br><span class="line">hence, p is also a factor in lcf(y, r).</span><br></pre></td></tr></table></figure>
-<h2 id="The-extended-Euclidean-Algorithm-and-finite-field"><a href="#The-extended-Euclidean-Algorithm-and-finite-field" class="headerlink" title="The extended Euclidean Algorithm and finite field"></a>The extended Euclidean Algorithm and finite field</h2><p>Theorem 2 (Bezout’s identity) : lcf(a, b) = u x a + v x b  <em>(a and b are not all equal to zero)</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcf2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//to find u and v</span></span><br><span class="line">    <span class="keyword">int</span> x = a;</span><br><span class="line">    <span class="keyword">int</span> y = b;</span><br><span class="line">    <span class="keyword">float</span> u_x = <span class="number">1</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_x = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> u_y = <span class="number">0</span>.f;</span><br><span class="line">    <span class="keyword">float</span> v_y = <span class="number">1</span>.f;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(y != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = x mod y;</span><br><span class="line">      <span class="keyword">int</span> k = x / y; <span class="comment">// quotient</span></span><br><span class="line">      u_x = u_y;</span><br><span class="line">      v_x = v_y;</span><br><span class="line">      u_y = u_x - k * u_y;</span><br><span class="line">      v_y = v_x - k * v_y;</span><br><span class="line">      x = y;</span><br><span class="line">      y = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>贝祖等式: 已知lcf，求u和v</p>
-</blockquote>
-<p>Zm is a field whenever m is a prime number.<br>&nbsp;<br>proof:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a != 0 and a &gt; b</span><br><span class="line">lcf(a,m) = 1 </span><br><span class="line">u * a + v * m = 1</span><br><span class="line">u * a = 1</span><br></pre></td></tr></table></figure>
-<h2 id="The-reals-and-scientific-notation"><a href="#The-reals-and-scientific-notation" class="headerlink" title="The reals and scientific notation"></a>The reals and scientific notation</h2><p>d0.d(-1)d(-2)…d(-m) * b^n<br>d0.d(-1)d(-2)…d(-m)<strong>En</strong><br>&nbsp;<br>mantissa : d0.d(-1)d(-2)…d(-m)<br>exponent : n</p>
-<h2 id="Floating-point-numbers"><a href="#Floating-point-numbers" class="headerlink" title="Floating point numbers"></a>Floating point numbers</h2><p>IEEE-754</p>
+		<h2 id="Translating-to-parametric-representations"><a href="#Translating-to-parametric-representations" class="headerlink" title="Translating to parametric representations"></a>Translating to parametric representations</h2><p>Lines :<br>Given x1 - 2 * x2 = 3, we collect:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x1 = 3 + 2 * x2</span><br><span class="line">x2 : chosen freely</span><br></pre></td></tr></table></figure>
+<p>Write this in vector form:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X = (x1, x2)</span><br><span class="line">  = (3 + 2 * x2, x2)</span><br><span class="line">  = (3, 0) + x2 * (2, 1)</span><br></pre></td></tr></table></figure>
+<p>Therom : the solution sapce of a linear equation in two unknowns is a line in 2D.</p>
+<p>Planes :<br>Similarly, Given x1 - 2 <em> x2 + 3 </em> x3 = 5 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x1 = 5 + 2 * x2 - 3 * x3</span><br><span class="line">x2 : chosen freely</span><br><span class="line">x3 : chosen freely</span><br></pre></td></tr></table></figure>
+<p>Write this in vector form:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 5 + 2 * x2 - 3 * x3 \      /5\   /2\        /-3 \</span><br><span class="line">|         x2          |  =   |0| + |1| * x2 + | 0 | * x3</span><br><span class="line">\                  x3 /      \0/   \0/        \ 1 /</span><br></pre></td></tr></table></figure>
+<p>Therom : the solution space of a line equation in three unknowns is a plane in 3D.</p>
+<h2 id="Intersection-tasks-revisited"><a href="#Intersection-tasks-revisited" class="headerlink" title="Intersection tasks revisited"></a>Intersection tasks revisited</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">           /2\       / 1 \</span><br><span class="line">line : X = |1| + s * | 0 |        // parametric representation</span><br><span class="line">           \1/       \-3 /</span><br><span class="line"></span><br><span class="line">plane : x1 - 2 * x2 + 3 * x3 = 5  // equational representation</span><br><span class="line"></span><br><span class="line">           /x1\       / 2 +     s \</span><br><span class="line">       X = |x2| =     |     1     | </span><br><span class="line">           \x3/       \ 1 - 3 * s /</span><br><span class="line"></span><br><span class="line">We collect : </span><br><span class="line">        x1 = 2 + s</span><br><span class="line">        x2 = 1</span><br><span class="line">        x3 = 1 - 3 * s</span><br><span class="line"></span><br><span class="line">       2 + s - 2 * (1) + 3 * (1 - 3 * s) = 5</span><br><span class="line">                                  -8 * s = 2</span><br><span class="line">                                       s = - 1/4</span><br><span class="line">The intersection point :</span><br><span class="line">       A = (7/4, 1, 7/4)</span><br></pre></td></tr></table></figure>
+<p>NOTE: This calculation is much simpler than using 2 parametric representations and solving by GE.</p>
+<h2 id="Translating-to-equational-representations"><a href="#Translating-to-equational-representations" class="headerlink" title="Translating to equational representations"></a>Translating to equational representations</h2><p>Lines :<br>Given PR of a line    : X = P + s <em> v = (p1, p2) + s </em> (v1, v2)<br>and we look for an ER : a <em> x1 + b </em> x2 = d</p>
+<ol>
+<li><code>a</code> = -v2</li>
+<li><code>b</code> =  v1</li>
+<li><code>d</code> = a <em> p1 + b </em> p2</li>
+</ol>
+<p>proof :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                         a * x1 + b * x2 = d</span><br><span class="line">-v2 * (p1 + s * v1) + v1 * (p2 + s * v2) = (-v2) * p1 + (v1) * p2</span><br><span class="line">                                       0 = 0</span><br></pre></td></tr></table></figure></p>
+<p>Planes :<br>Given PR of a plane   : X = P + s · v + t · w = (p1, p2, p3) + s · (v1, v2, v3) + t · (w1, w2, w3)<br>and we look for an ER : a · x1 + b · x2 + c · x3 = d</p>
+<ol>
+<li>a = v2 · w3 − v3 · w2</li>
+<li>b = v3 · w1 − v1 · w3</li>
+<li>c = v1 · w2 − v2 · w1</li>
+<li>d = a · p1 + b · p2 + c · p3</li>
+</ol>
+<h2 id="The-geometric-interpretation-of-equational-presentations"><a href="#The-geometric-interpretation-of-equational-presentations" class="headerlink" title="The geometric interpretation of equational presentations"></a>The geometric interpretation of equational presentations</h2><p>Given a · x1 + b · x2 + c · x3 = d,<br>normal vector n = (a, b, c)        (orthogonal to the plane)<br>d: negative -&gt; the origin is on the same side of the plane as the normal.<br>d: positive -&gt; the origin is on the other side of the plane as the normal.</p>
+<p>distance of the plane or line from the origin:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">distance = d / |n|</span><br><span class="line">|n| = root ( a^2 + b^2 + c^2 )</span><br></pre></td></tr></table></figure>
+<p>NOTES :</p>
 <ul>
-<li>we use base 2 for both mantissa and exponent</li>
-<li>Since in binary, d0 != 0 and d0 = 1, so we can ignore the part before <code>.xxx</code></li>
+<li>if |n| = 1, then d is the distance.</li>
+<li>distance will also indicate which side of the plane the origin is located.</li>
+<li>equational form is also called the normal form.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ ][       ][                   ]</span><br><span class="line"> .     .              .</span><br><span class="line"> |     |              |_______________. 23 mantissa bits</span><br><span class="line"> |     |______________________________.  8 exponent bits</span><br><span class="line"> |____________________________________.  1 sign bit</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>People are still dealing with multiplication on real numbers.</p>
-</blockquote>
+<h2 id="Inner-product"><a href="#Inner-product" class="headerlink" title="Inner product"></a>Inner product</h2><p>The inner product of two tuples :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       /v1\         /w1\</span><br><span class="line">if v = |v2| and w = |w2|</span><br><span class="line">       \v3/         \w3/</span><br><span class="line">then,</span><br><span class="line">&lt;v, w&gt; = v1 * w1 + v2 * w2 + v3 * w3</span><br></pre></td></tr></table></figure>
+<p>if given the normal, the normal form :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;n, X&gt; = &lt;n, P&gt;</span><br></pre></td></tr></table></figure>
+<p>The laws of the inner product</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;0, v&gt; = 0</span><br><span class="line">    &lt;v, w&gt; = &lt;w, v&gt;</span><br><span class="line">&lt;v + w, x&gt; = &lt;v, x&gt; + &lt;w, x&gt;</span><br><span class="line">&lt;s * v, w&gt; = s * &lt;v, w&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Geometric-properties-of-the-inner-product"><a href="#Geometric-properties-of-the-inner-product" class="headerlink" title="Geometric properties of the inner product"></a>Geometric properties of the inner product</h2><p>Equation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v, w&gt; = |v| * |w| * cos(a)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Orthogonality test : two vectors are orthogonal if &lt; v, w &gt; = 0</li>
+<li>length of v        : |v| = root( &lt; v, v &gt; )</li>
+</ul>
+<p>Projection property:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;n, v&gt;</span><br><span class="line">------ * n</span><br><span class="line">&lt;n, n&gt;</span><br><span class="line"></span><br><span class="line">     v</span><br><span class="line">    /.</span><br><span class="line">   / .</span><br><span class="line">  /  .</span><br><span class="line"> /   .</span><br><span class="line"> ----&gt;--------&gt; n</span><br></pre></td></tr></table></figure>
+<h2 id="Graphics-related-tasks"><a href="#Graphics-related-tasks" class="headerlink" title="Graphics-related tasks"></a>Graphics-related tasks</h2><p>Given a plane E in normal form &lt; n, X &gt; = &lt; n, P &gt; = d; and a point Q :<br>&nbsp;<br>task1 : distance of Q to E</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">           d - &lt;n, Q&gt;    &lt;n, P&gt; - &lt;n, Q&gt;    &lt;n, QP&gt;</span><br><span class="line">distance = ----------- = ---------------- = -------</span><br><span class="line">               |n|             |n|            |n|</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if returns 0, then Q is on the plane E.</li>
+<li>if result is negative, then the normal n is pointing towards the side on which Q is located. This porperty is used in graphics to determine if a point is befor a plane or behind it.</li>
+</ul>
+<p>task2 : nearest neighbour</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">         d - &lt;n, Q&gt;    n        d - &lt;n, Q&gt;</span><br><span class="line">Q&apos; = Q + ---------- * --- = Q + ---------- * n</span><br><span class="line">            |n|       |n|         &lt;n, n&gt;</span><br></pre></td></tr></table></figure>
+<p>task3 : reflecting a point at a plane</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">             d - &lt;n, Q&gt;    n            d - &lt;n, Q&gt;</span><br><span class="line">Q&quot; = Q + 2 * ---------- * --- = Q + 2 * ---------- * n</span><br><span class="line">                |n|       |n|             &lt;n, n&gt;</span><br></pre></td></tr></table></figure>
+<p>task4 : reflecting a line at a plane<br>Example :<br>instead of a plane, we use a line : x1 -2 <em> x2 = 1<br>and the line L we want to reflect : X = (0, 1) + s </em> (1, -1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For the two points we can choose :</span><br><span class="line">    A = (0, 1) and B = (1, 0)</span><br><span class="line">We collect reflected points :</span><br><span class="line">    A&quot; = (1.2, -1,4) and B&quot; = (1, 0)</span><br><span class="line">Using two-point representation :</span><br><span class="line">    X = B&quot; + s * BA = (1, 0) + s * (1,2 - 1, -1.4 - 0)</span><br><span class="line">      = (1, 0) + s * (0,2, -1.4)</span><br></pre></td></tr></table></figure>
 
 	
 	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]02_Floating Point/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2019/03/11/Year1:[MATH]05_InnerProduct/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -744,72 +834,6 @@
 	
 	</div>
   <a type="button" href="/2019/03/11/Year1:[MATH]04_Analytic Geometry/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/03/11/Year1:[MATH]06_Matrices/">Matrices and Matrix Algebra</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-03-11  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="The-many-uses-of-matrices"><a href="#The-many-uses-of-matrices" class="headerlink" title="The many uses of matrices"></a>The many uses of matrices</h2><p>m x n  : dimension of the matrix<br>square : if the number of raws is equal to the number of columns</p>
-<p>applications :<br>a) Matrices as production tables (list the amounts of raw materials for manufacturing something)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    p1     p2     p3</span><br><span class="line"></span><br><span class="line">M1  10      1      9</span><br><span class="line"></span><br><span class="line">M2   5      7      9</span><br></pre></td></tr></table></figure>
-<p>b) Matrices as Markov chains (running process: ready for execution; sleeping process : ready for being interrupted)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">after / before    running       sleeping</span><br><span class="line"></span><br><span class="line">   running          .8             .01</span><br><span class="line"></span><br><span class="line">   sleeping         .2             .99</span><br></pre></td></tr></table></figure>
-<p>c) Matrices as linear transformations (rotations in graphics)</p>
-<h2 id="The-vector-algebra-operations-on-matrices"><a href="#The-vector-algebra-operations-on-matrices" class="headerlink" title="The vector algebra operations on matrices"></a>The vector algebra operations on matrices</h2><p>Addition : (ONLY in same dimension)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁+􏰀 / 7 −4  5 \ 􏰁  =􏰀   / 8 −2  8 \</span><br><span class="line">\ 0 -1 -2 /   \ 3  4 -1 /       \ 3  3 -3 /</span><br></pre></td></tr></table></figure>
-<p>Subtraction : (here we got: zero matrix)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 1  2  3 \ 􏰁- / 1  2  3 \ 􏰁  =􏰀   / 0 0 0 \</span><br><span class="line">\ 0 -1 -2 /   \ 0 -1 -2 /       \ 0 0 0 /</span><br></pre></td></tr></table></figure>
-<p>scale : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 *  / 1  2  3 \ 􏰁 􏰁  =􏰀   / 5  10  15 \</span><br><span class="line">     \ 0 -1 -2 /        \ 3  -5  -2 /</span><br></pre></td></tr></table></figure>
-<h2 id="Matrix-multiplication-in-words"><a href="#Matrix-multiplication-in-words" class="headerlink" title="Matrix multiplication in words"></a>Matrix multiplication in words</h2><p>To compute the entry of AB in row i and column k, compute the inner product of the i-th row of A and with the k-th column of B.<br>&nbsp;<br>NOTE : The width of a row in the first matrix must be the same as the height of a column of the second.</p>
-<h2 id="The-properties-of-matrix-multiplication"><a href="#The-properties-of-matrix-multiplication" class="headerlink" title="The properties of matrix multiplication"></a>The properties of matrix multiplication</h2><p>Multiplication of matrices is usually not communicative : <code>A * B != B * A</code><br>&nbsp;<br>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ 1  1 \ / 1 -1 \ = / 2 0 \ </span><br><span class="line">\ 0  1 / \ 1  1 /   \ 1 1 /     </span><br><span class="line"></span><br><span class="line">/ 1 -1 \ / 1  1 \ = / 1 0 \</span><br><span class="line">\ 1  1 / \ 0  1 / = \ 1 2 /</span><br></pre></td></tr></table></figure>
-<p>Identity matrix <code>E</code>: a matrix has no effect under multiplication<br>Example : 3 * 3 identity matrix</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 1 0 0 \</span><br><span class="line">| 0 1 0 |</span><br><span class="line">\ 0 0 1 /</span><br></pre></td></tr></table></figure>
-<p>Laws of matrix multiplication :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(A * B) * C    =  A * (B * C)</span><br><span class="line"> A * (B + C)   =  A * B + A * C </span><br><span class="line">(A + B) * C    =  A * C + B * C</span><br><span class="line"> A * E = E * A =  A </span><br><span class="line"> A * 0 = 0 * A =  0</span><br><span class="line"> s * (A * B)   =  (s * A) * B = A * (s * B)</span><br></pre></td></tr></table></figure>
-<h2 id="Inverting-matrix-multiplication"><a href="#Inverting-matrix-multiplication" class="headerlink" title="Inverting matrix multiplication"></a>Inverting matrix multiplication</h2><p>Given a matrix A :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/ 4 2 1 \</span><br><span class="line">| 3 4 2 | </span><br><span class="line">\ 1 2 4 /</span><br></pre></td></tr></table></figure>
-<p>and a 3 * 1 vector c = (2, 3, 2), and an unknown p = (p1, p2, p3)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 * p1 + 2 * p2 + 1 * p3 = 2 </span><br><span class="line">3 * p1 + 4 * p2 + 2 * p3 = 3 </span><br><span class="line">1 * p1 + 2 * p2 + 4 * p3 = 2</span><br></pre></td></tr></table></figure>
-<p>if given the inverse of A, we are able to calculate p:</p>
-<ol>
-<li>A x p = c </li>
-<li>A^(-1) x A x p = A^(-1) x c</li>
-<li>E x p = A^(-1) x c</li>
-<li>p = A^(-1) x c</li>
-</ol>
-<h2 id="Finding-the-inverse-matrix"><a href="#Finding-the-inverse-matrix" class="headerlink" title="Finding the inverse matrix"></a>Finding the inverse matrix</h2><p>Theorem 6 : if A and B are n x n matrices and A * B = E, then B x A = E also holds.<br>&nbsp;<br>as A x A^(-1) = E, we can compute the inverse :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           / 4 2 1 \</span><br><span class="line">A      =   | 3 4 2 | </span><br><span class="line">           \ 1 2 4 /</span><br><span class="line"></span><br><span class="line">           /a11 a12 a13\</span><br><span class="line">A^(-1) =   |a21 a22 a23|</span><br><span class="line">           \a31 a32 a33/</span><br></pre></td></tr></table></figure>
-<p>we solve the inverse :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   / 4 2 1 | 1 0 0 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 1 2 4 | 0 0 1 /</span><br><span class="line"></span><br><span class="line">   / 1 2 4 | 0 0 1 \</span><br><span class="line">=  | 3 4 2 | 0 1 0 | </span><br><span class="line">   \ 4 2 1 | 1 0 0 /</span><br><span class="line"></span><br><span class="line">   / 1 0 0 |   12/30 - 6/30      0 \</span><br><span class="line">=  | 0 1 0 | - 10/30  15/30 - 5/30 | </span><br><span class="line">   \ 0 0 1 |    2/30 - 6/30  10/30 /</span><br></pre></td></tr></table></figure>
-<p>NOTES : </p>
-<ul>
-<li>Matrices are not always invertible, for example zero matrix.</li>
-<li>We discover non-invertibility when we come to a special case in the Gaussian elimination procedure that we use to compute the inverse matrix.</li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2019/03/11/Year1:[MATH]06_Matrices/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
