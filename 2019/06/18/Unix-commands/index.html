@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="终端(Terminal)是可以进行人机交互的Input/Output程序。当下主流操作系统 i.e. MacOS, Linux使用虚拟终端(Virtual Terminal), 并通过指令(commands)来实现一些方便用户的操作。&amp;nbsp;这里介绍MacOS环境下的终端指令。需要注意的是MacOS和Linux由Unix操作系统派生，所以终端指令较为相似。 TerminologyDirecto">
+    <meta name="description" content="Some frequently used commands:  pwd 打印当前路径 cd 更改路径 ls 列出目录下文件 mkdir 新建文件夹 rmdir 删除文件夹 cp 复制文件 find 查找文件 cat 打印文件内容 more cat2.0 diff 比较两个文件 wc 字数统计 mail 邮件 talk 聊天 say 让电脑说话 cal 日历 date 日期 ssh 安全外壳协议 t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MacOS&#x2F; basic commands">
 <meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/06/18/Unix-commands/index.html">
 <meta property="og:site_name" content="WY J">
-<meta property="og:description" content="终端(Terminal)是可以进行人机交互的Input/Output程序。当下主流操作系统 i.e. MacOS, Linux使用虚拟终端(Virtual Terminal), 并通过指令(commands)来实现一些方便用户的操作。&amp;nbsp;这里介绍MacOS环境下的终端指令。需要注意的是MacOS和Linux由Unix操作系统派生，所以终端指令较为相似。 TerminologyDirecto">
+<meta property="og:description" content="Some frequently used commands:  pwd 打印当前路径 cd 更改路径 ls 列出目录下文件 mkdir 新建文件夹 rmdir 删除文件夹 cp 复制文件 find 查找文件 cat 打印文件内容 more cat2.0 diff 比较两个文件 wc 字数统计 mail 邮件 talk 聊天 say 让电脑说话 cal 日历 date 日期 ssh 安全外壳协议 t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-06T23:06:11.204Z">
+<meta property="og:updated_time" content="2020-08-06T05:59:24.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MacOS&#x2F; basic commands">
-<meta name="twitter:description" content="终端(Terminal)是可以进行人机交互的Input/Output程序。当下主流操作系统 i.e. MacOS, Linux使用虚拟终端(Virtual Terminal), 并通过指令(commands)来实现一些方便用户的操作。&amp;nbsp;这里介绍MacOS环境下的终端指令。需要注意的是MacOS和Linux由Unix操作系统派生，所以终端指令较为相似。 TerminologyDirecto">
+<meta name="twitter:description" content="Some frequently used commands:  pwd 打印当前路径 cd 更改路径 ls 列出目录下文件 mkdir 新建文件夹 rmdir 删除文件夹 cp 复制文件 find 查找文件 cat 打印文件内容 more cat2.0 diff 比较两个文件 wc 字数统计 mail 邮件 talk 聊天 say 让电脑说话 cal 日历 date 日期 ssh 安全外壳协议 t">
     
     
         
@@ -70,10 +70,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/10/21/post/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/10/06/Y2:[C]02_StructureofCProgram/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/06/02/Year1:[AI]05_HillClimb/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/02/Y1:[AI]NaiveBayes/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -100,7 +100,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Terminology"><span class="toc-number">1.</span> <span class="toc-text">Terminology</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#man-使用手册"><span class="toc-number">2.</span> <span class="toc-text">man 使用手册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List-of-some-commands"><span class="toc-number">3.</span> <span class="toc-text">List of some commands</span></a></li></ol>
+      
     </div>
   </span>
 </div>
@@ -126,7 +126,7 @@
       
         <time datetime="2019-06-18T07:15:41.000Z" itemprop="datePublished">2019-06-18</time>
         
-        (Updated: <time datetime="2019-10-06T23:06:11.204Z" itemprop="dateModified">2019-10-07</time>)
+        (Updated: <time datetime="2020-08-06T05:59:24.082Z" itemprop="dateModified">2020-08-06</time>)
         
       
     </div>
@@ -146,33 +146,29 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>终端(Terminal)是可以进行人机交互的Input/Output程序。当下主流操作系统 i.e. MacOS, Linux使用虚拟终端(Virtual Terminal), 并通过指令(commands)来实现一些方便用户的操作。<br>&nbsp;<br>这里介绍MacOS环境下的终端指令。需要注意的是MacOS和Linux由Unix操作系统派生，所以终端指令较为相似。</p>
-<h2 id="Terminology"><a href="#Terminology" class="headerlink" title="Terminology"></a>Terminology</h2><p>Directories: 目录; 对于计算机，将目录的路径理解为指针(pointers)更为合适。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./Desktop/com/Me.md</span><br><span class="line">./Desktop/com/You.md</span><br><span class="line">./Desktop/source/README.txt</span><br></pre></td></tr></table></figure>
-<p>更直观地，我们可以使用树(Tree)表示: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     Desktop</span><br><span class="line">    /       \</span><br><span class="line">  com      source</span><br><span class="line"> /   \       |</span><br><span class="line">Me   You   README</span><br></pre></td></tr></table></figure>
-<p><strong>指令格式</strong>: command [options…] [arguments…]<br>command: 指令名称<br>options: 修饰(modifiers); 通常为 “-“<br>arguments: 参数(parameters); 通常为文件名称</p>
-<p>NOTE : 中括号可以省略。</p>
-<h2 id="man-使用手册"><a href="#man-使用手册" class="headerlink" title="man 使用手册"></a>man 使用手册</h2><p>def: 对于任意一条命令，我们也许不知道它的具体功能和使用方法。man命令就像一本字典，我们可以查询一项命令的用户手册。<br>format: man [-k] name<br>&nbsp;<br>example: man pwd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dayueyue $ man pwd</span><br></pre></td></tr></table></figure>
-<h2 id="List-of-some-commands"><a href="#List-of-some-commands" class="headerlink" title="List of some commands"></a>List of some commands</h2><p><strong>pwd</strong> 打印当前路径</p>
-<p><strong>cd</strong> 更改路径</p>
-<p><strong>ls</strong> 列出目录下文件</p>
-<p><strong>mkdir</strong> 新建文件夹</p>
-<p><strong>rmdir</strong> 删除文件夹</p>
-<p><strong>cp</strong> 复制文件</p>
-<p><strong>find</strong> 查找文件</p>
-<p><strong>cat</strong> 打印文件内容</p>
-<p><strong>more</strong> cat2.0</p>
-<p><strong>diff</strong> 比较两个文件</p>
-<p><strong>wc</strong> 字数统计</p>
-<p><strong>mail</strong> 邮件</p>
-<p><strong>talk</strong> 聊天</p>
-<p><strong>say</strong> 让电脑说话</p>
-<p><strong>cal</strong> 日历</p>
-<p><strong>date</strong> 日期</p>
-<p><strong>time</strong> 时间</p>
-<p><strong>ssh</strong> 安全外壳协议</p>
+    <p>Some frequently used commands:</p>
+<ol>
+<li>pwd 打印当前路径</li>
+<li>cd 更改路径</li>
+<li>ls 列出目录下文件</li>
+<li>mkdir 新建文件夹</li>
+<li>rmdir 删除文件夹</li>
+<li>cp 复制文件</li>
+<li>find 查找文件</li>
+<li>cat 打印文件内容</li>
+<li>more cat2.0</li>
+<li>diff 比较两个文件</li>
+<li>wc 字数统计</li>
+<li>mail 邮件</li>
+<li>talk 聊天</li>
+<li>say 让电脑说话</li>
+<li>cal 日历</li>
+<li>date 日期</li>
+<li>ssh 安全外壳协议</li>
+<li>traceroute</li>
+<li>zip</li>
+<li>tar</li>
+</ol>
 
   </div>
 </article>
@@ -202,7 +198,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Terminology"><span class="toc-number">1.</span> <span class="toc-text">Terminology</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#man-使用手册"><span class="toc-number">2.</span> <span class="toc-text">man 使用手册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List-of-some-commands"><span class="toc-number">3.</span> <span class="toc-text">List of some commands</span></a></li></ol>
+      
     </div>
 
     <div id="share-footer" style="display: none">

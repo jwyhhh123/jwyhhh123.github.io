@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="“Hello World in C”&amp;lt;unistd.h&amp;gt; 1$ gcc -H helloWorld.c Computer System StructureHardwareOperating SystemApplication programsUsers Computer Start-up (Bootstrapping of the OS)BIOS: Basic Input/Output">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System Introduction">
+<meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/index.html">
+<meta property="og:site_name" content="WY J">
+<meta property="og:description" content="“Hello World in C”&amp;lt;unistd.h&amp;gt; 1$ gcc -H helloWorld.c Computer System StructureHardwareOperating SystemApplication programsUsers Computer Start-up (Bootstrapping of the OS)BIOS: Basic Input/Output">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-05T14:08:18.217Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operating System Introduction">
+<meta name="twitter:description" content="“Hello World in C”&amp;lt;unistd.h&amp;gt; 1$ gcc -H helloWorld.c Computer System StructureHardwareOperating SystemApplication programsUsers Computer Start-up (Bootstrapping of the OS)BIOS: Basic Input/Output">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Operating System Introduction</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/11/05/Y2:[C]12_Architecture/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/28/Y2:[FP]0xxz/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&text=Operating System Introduction"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&is_video=false&description=Operating System Introduction"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Operating System Introduction&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&name=Operating System Introduction&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#“Hello-World-in-C”"><span class="toc-number">1.</span> <span class="toc-text">“Hello World in C”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computer-System-Structure"><span class="toc-number">2.</span> <span class="toc-text">Computer System Structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computer-Start-up-Bootstrapping-of-the-OS"><span class="toc-number">3.</span> <span class="toc-text">Computer Start-up (Bootstrapping of the OS)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interrupts"><span class="toc-number">4.</span> <span class="toc-text">Interrupts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storage"><span class="toc-number">5.</span> <span class="toc-text">Storage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiprocessing"><span class="toc-number">6.</span> <span class="toc-text">Multiprocessing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fault-Handling-and-Protection"><span class="toc-number">7.</span> <span class="toc-text">Fault Handling and Protection</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Operating System Introduction
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">WY J</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-05T05:00:17.000Z" itemprop="datePublished">2019-11-05</time>
+        
+        (Updated: <time datetime="2019-11-05T14:08:18.217Z" itemprop="dateModified">2019-11-05</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Year2-Systems-Programming-in-c-c/">Year2/ Systems Programming in c/c++</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="“Hello-World-in-C”"><a href="#“Hello-World-in-C”" class="headerlink" title="“Hello World in C”"></a>“Hello World in C”</h2><p><code>&lt;unistd.h&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -H helloWorld.c</span><br></pre></td></tr></table></figure>
+<h2 id="Computer-System-Structure"><a href="#Computer-System-Structure" class="headerlink" title="Computer System Structure"></a>Computer System Structure</h2><p><strong>Hardware</strong><br><strong>Operating System</strong><br><strong>Application programs</strong><br><strong>Users</strong></p>
+<h2 id="Computer-Start-up-Bootstrapping-of-the-OS"><a href="#Computer-Start-up-Bootstrapping-of-the-OS" class="headerlink" title="Computer Start-up (Bootstrapping of the OS)"></a>Computer Start-up (Bootstrapping of the OS)</h2><p>BIOS: Basic Input/Output system. Stored in ROM or ERROM</p>
+<p>## </p>
+<h2 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h2><p><strong>Trap and Ecxeption</strong> is special interrupts that are generated by sofware to catch errors like:</p>
+<ul>
+<li>division by 0</li>
+<li>infinite loop</li>
+</ul>
+<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2><h2 id="Multiprocessing"><a href="#Multiprocessing" class="headerlink" title="Multiprocessing"></a>Multiprocessing</h2><h2 id="Fault-Handling-and-Protection"><a href="#Fault-Handling-and-Protection" class="headerlink" title="Fault Handling and Protection"></a>Fault Handling and Protection</h2>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#“Hello-World-in-C”"><span class="toc-number">1.</span> <span class="toc-text">“Hello World in C”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computer-System-Structure"><span class="toc-number">2.</span> <span class="toc-text">Computer System Structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computer-Start-up-Bootstrapping-of-the-OS"><span class="toc-number">3.</span> <span class="toc-text">Computer Start-up (Bootstrapping of the OS)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interrupts"><span class="toc-number">4.</span> <span class="toc-text">Interrupts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storage"><span class="toc-number">5.</span> <span class="toc-text">Storage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiprocessing"><span class="toc-number">6.</span> <span class="toc-text">Multiprocessing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fault-Handling-and-Protection"><span class="toc-number">7.</span> <span class="toc-text">Fault Handling and Protection</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&text=Operating System Introduction"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&is_video=false&description=Operating System Introduction"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Operating System Introduction&body=Check out this article: https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&title=Operating System Introduction"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/jwyhhh123/jwyhhh123.github.io.git/2019/11/05/Y2:[C]11_introofOS/&name=Operating System Introduction&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Wenye Jin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/categories/">categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'jwy';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
