@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter. String1String hello = &quot;hello&quot;; Character12char a1 = &apos;a&apos;;char a2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Data Types">
+<meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/old_posts/Y1:[JAVA]dataTypes.html">
+<meta property="og:site_name" content="WY J">
+<meta property="og:description" content="Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter. String1String hello = &quot;hello&quot;; Character12char a1 = &apos;a&apos;;char a2">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-21T02:00:03.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Types">
+<meta name="twitter:description" content="Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter. String1String hello = &quot;hello&quot;; Character12char a1 = &apos;a&apos;;char a2">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Data Types</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>WY J</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/categories/">categories</a></li>
+       
+        <li><a href="/about/">About</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <p>Basically, these data types are defined as java classes. This enables programmers to call a bunch of methods once decleared a parameter.<br><!-- I have posted source code on github --></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String hello = <span class="string">"hello"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a1 = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">char</span> a2 = (<span class="keyword">char</span>) <span class="number">97</span>; <span class="comment">//ascii: a</span></span><br></pre></td></tr></table></figure>
+<h2 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> d = <span class="number">0.1f</span>;</span><br></pre></td></tr></table></figure>
+<p>some numbers are not precise in a computer, for example pi, and the reason fot it is that we only have limit number of bits to represent a number. It is inevitable to lose some precision when we store floating point numbers.</p>
+<p><strong>IEEE754 Single-Precision Format(32 bits)</strong><br>def : we introduce IEEE754 strategy to represent numbers in a computer.<br>&nbsp;<br>sign bit: positive(0) or negative(1)<br>exponent: power<br>mantissa: fractional part of a number</p>
+<p>Encoding strategy:</p>
+<ol>
+<li>record the sign bit</li>
+<li>convert the number part to binary</li>
+<li>convert the fractional part to binary</li>
+<li>concatenate 1. and 2.</li>
+<li>convert to scientific notation</li>
+<li>record the exponent</li>
+<li>record the mantissa</li>
+</ol>
+<p><strong>Density of floating point numbers</strong><br>As numbers are encoded into IEEE754 format where there is a limited number of exponent part, it is inevitable that some numbers stored as float cannot be represented.<br>&nbsp;<br>Density Representation :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> |-.-.-.-|-.-.-.-|---.----.----.---|------.--------.--------.------|</span><br><span class="line">-n       0       n                2n                              4n</span><br></pre></td></tr></table></figure>
+<h2 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> e = <span class="number">0.1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> t = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">boolean</span> <span class="keyword">false</span> = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+<p><code>&gt;</code> <code>&lt;</code> <code>==</code> <code>.equals</code> return boolean values</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Wenye Jin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/categories/">categories</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'jwy';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

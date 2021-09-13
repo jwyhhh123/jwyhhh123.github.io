@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content=":Programming part Introductionparadox(悖论): “what i am saying is wrong”&amp;nbsp;a formal system:  sound(true then cannot be false) complete(true or false can be determined) computable(be computed by machi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Computation">
+<meta property="og:url" content="https://github.com/jwyhhh123/jwyhhh123.github.io.git/old_posts/Y1:[Logic]computation.html">
+<meta property="og:site_name" content="WY J">
+<meta property="og:description" content=":Programming part Introductionparadox(悖论): “what i am saying is wrong”&amp;nbsp;a formal system:  sound(true then cannot be false) complete(true or false can be determined) computable(be computed by machi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-24T07:26:13.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Computation">
+<meta name="twitter:description" content=":Programming part Introductionparadox(悖论): “what i am saying is wrong”&amp;nbsp;a formal system:  sound(true then cannot be false) complete(true or false can be determined) computable(be computed by machi">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Computation</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>WY J</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/categories/">categories</a></li>
+       
+        <li><a href="/about/">About</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <h2 id="Programming-part-Introduction"><a href="#Programming-part-Introduction" class="headerlink" title=":Programming part Introduction"></a>:Programming part Introduction</h2><p>paradox(悖论): “what i am saying is wrong”<br>&nbsp;<br>a formal system:</p>
+<ul>
+<li>sound(true then cannot be false)</li>
+<li>complete(true or false can be determined)</li>
+<li>computable(be computed by machine)</li>
+</ul>
+<h2 id="Computer-Proof-Checking"><a href="#Computer-Proof-Checking" class="headerlink" title="Computer Proof Checking"></a>Computer Proof Checking</h2><p><strong>Inference rules</strong><br>and-elimination:</p>
+<ul>
+<li>andEl : {P Q : Prop}   -&gt; P and Q -&gt; P</li>
+<li>andEr : {P Q : Prop}   -&gt; P and Q -&gt; Q</li>
+</ul>
+<p>and-introduction:</p>
+<ul>
+<li>andI : {P Q : Prop}   -&gt; P -&gt; Q -&gt; P and Q</li>
+</ul>
+<p>or-introduction</p>
+<ul>
+<li>orIl : {P Q : Prop}   -&gt; p -&gt; P or Q</li>
+<li>orIr : {P Q : Prop}   -&gt; Q -&gt; P or Q</li>
+</ul>
+<p>or-elimination</p>
+<ul>
+<li>orE : {P Q R : Prop}   -&gt; P or Q -&gt; (P -&gt; R) -&gt; (Q -&gt; R) -&gt; R</li>
+</ul>
+<p>falsity-elimination</p>
+<ul>
+<li>ENQ : {P : Prop}   -&gt; Falsity -&gt; P</li>
+</ul>
+<p>double-negation-elimination</p>
+<ul>
+<li>DNE : {P : Prop}  -&gt; (not (not P)) -&gt; P</li>
+</ul>
+<p>Modus ponens</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mp: &#123;P Q : Prop&#125;  -&gt; (P -&gt; Q) -&gt; P -&gt; Q</span><br><span class="line">mp  &#123;P&#125; &#123;Q&#125;          f           p  = q where</span><br><span class="line"> q: Q        </span><br><span class="line"> q = f p</span><br></pre></td></tr></table></figure>
+<p>Implication introduction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comp : &#123;A B C : Prop&#125; -&gt; (f : A -&gt; B) -&gt; (g : B -&gt; C) -&gt; (A -&gt; C) </span><br><span class="line">comp &#123;A&#125; &#123;B&#125; &#123;C&#125; f g = h where</span><br><span class="line">  h : A -&gt; C</span><br><span class="line">  h a = c where</span><br><span class="line">    b : B</span><br><span class="line">    b = f a</span><br><span class="line">    c : C</span><br><span class="line">    c = g b</span><br></pre></td></tr></table></figure>
+<p>NOTE : except the last proposition, f and g are all hypothesis(premises).<br>&nbsp;<br><strong>Proof checking examples</strong><br>Or-elimination :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ore : &#123;P Q R S&#125; -&gt; p or (Q and R) -&gt; S -&gt; (S and P) or Q</span><br><span class="line">ore &#123;P&#125; &#123;Q&#125; &#123;R&#125; &#123;S&#125; x s = y where</span><br><span class="line">  a : P -&gt; (S and P) or Q</span><br><span class="line">  a p = orIl andI p s</span><br><span class="line">  b : Q and R -&gt; (S and P) or Q</span><br><span class="line">  b m = n where</span><br><span class="line">    q : Q</span><br><span class="line">    q = andEl m</span><br><span class="line">    n : (S and P) or Q</span><br><span class="line">    n = orIr q</span><br><span class="line">  y : (S and P) or Q</span><br><span class="line">  y = orE x a b</span><br></pre></td></tr></table></figure>
+<p><strong>Negation</strong><br>we write (not A) as : A -&gt; Falsity</p>
+<p>Double negation introduction:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DNI : &#123;A : Prop&#125; : A -&gt; (A -&gt; Falsity) -&gt; Falsity</span><br><span class="line">DNI &#123;A&#125; a f = x where</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f a</span><br></pre></td></tr></table></figure>
+<p>Triple negation elimination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TNE : &#123;A : Prop&#125; -&gt; (f : (not (not A)) -&gt; Falsity) -&gt; (a : A) -&gt; Falsity</span><br><span class="line">TNE &#123;A&#125; f a = x where</span><br><span class="line">  y : not (not A)</span><br><span class="line">  y = DNI a</span><br><span class="line">  x : Falsity</span><br><span class="line">  x = f y</span><br></pre></td></tr></table></figure>
+<p><strong>Proof terms</strong><br>def : fully-inlined(完全内联的) proofs with no auxiliary(辅助的) definitions<br>&nbsp;<br>NOTE: all the definitions above can be inlined by removing auxiliary clauses.</p>
+<p><strong>Law of Excluded Middle</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LEM : &#123;P : Prop&#125; -&gt; P or (P -&gt; Falsity)</span><br><span class="line">LEM &#123;P&#125; = DNE goal where</span><br><span class="line">  goal : (P or (P -&gt; Falsity) -&gt; Falsity) -&gt; Falsity</span><br><span class="line">  goal z = z u where</span><br><span class="line">    v : P -&gt; Falsity</span><br><span class="line">    v x = z w where</span><br><span class="line">      w : P or (P -&gt; Falsity)</span><br><span class="line">      w = orIl x </span><br><span class="line">    u : P or ( P -&gt; Falsity)</span><br><span class="line">    u = orIr v</span><br></pre></td></tr></table></figure>
+<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><p><strong>Introduce functions</strong><br>Some functions written in Agda:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f : Nat -&gt; Nat</span><br><span class="line">f x = 3 * x +7</span><br><span class="line"></span><br><span class="line">g : Nat -&gt; Nat</span><br><span class="line">g x = 4 * x * x + 9 * x + 10</span><br><span class="line"></span><br><span class="line">m : Nat</span><br><span class="line">m = max (f 9) (g 6)</span><br></pre></td></tr></table></figure>
+<p>NOTE: by using a programming language, we read <code>p : A</code> as a program <code>p</code> has type A, and <code>f : A -&gt; B</code> as <code>f</code> is a function converting A to B.</p>
+<p><strong>Basic types or enums</strong><br>Void type :<br>no constructor so this type cannot be instantiated</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data Void : Set where</span><br></pre></td></tr></table></figure>
+<p><code>data</code>  : introduces the definition<br><code>Void</code>  : the name of the type<br><code>Set</code>   : it is a type<br><code>where</code> : introduces the constructors</p>
+<p>Empty type :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data unit : Set where</span><br><span class="line">  empty : unit</span><br></pre></td></tr></table></figure>
+<p>Boolean type :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Boolean : Set where</span><br><span class="line">  true false : Boolean</span><br></pre></td></tr></table></figure>
+<p>Similarly, we can define our own types :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Weekdays : Set where</span><br><span class="line">  Monday Tuesday Wednesday Thursday Friday : Weekdays</span><br></pre></td></tr></table></figure>
+<p><strong>Composite(复合的) types</strong><br>def : we can put two existing data types together to form a new data type.<br>&nbsp;<br>Product (tuple) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data Prod (X Y : Set) : Set where</span><br><span class="line">  pair : X -&gt; Y -&gt; Prod X Y</span><br></pre></td></tr></table></figure>
+<p><code>data</code>        : we are defining a data type<br><code>Prod</code>        : the name of the data type<br><code>(A B : Set)</code> : A and B are other data types<br><code>: Set</code>       : we are defining a type indeed<br><code>where</code>       : definitions to follow<br><code>pair</code>        : the name of the constructor<br><code>X -&gt; Y -&gt; Prod X Y</code> : the type of the constructor. given <code>X</code> and <code>Y</code> and return their product <code>Prod X Y</code>. </p>
+<p>Sum (union) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data Sum (A B : Set) : Set where</span><br><span class="line">  left  : A -&gt; Sum A B</span><br><span class="line">  right : B -&gt; Sum A B</span><br></pre></td></tr></table></figure>
+<p>NOTE: <code>Sum</code> and <code>Prod</code> are usually called algrebraic types.<br>&nbsp;<br>Similarly, we can define our own composite types :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data Triple (A B C : Set) : Set where</span><br><span class="line">  triple : A -&gt; B -&gt; C -&gt; Triple A B C</span><br><span class="line"></span><br><span class="line">data Sum (A B C : Set) : Set where</span><br><span class="line">  left : A -&gt; Sum A B C</span><br><span class="line">  middle : B -&gt; Sum A B C</span><br><span class="line">  right : C -&gt; Sum A B C</span><br></pre></td></tr></table></figure>
+<p><strong>The differences between Sum and Prod</strong><br>If type <code>A</code> has <code>m</code> elements and type <code>B</code> has <code>n</code> elements, then:</p>
+<p><code>Sum A B</code> have  m + n elements;<br><code>Prod A B</code> have  m x n elements;<br>&nbsp;<br>can we define any element of <code>Prod A Void</code> for some <code>A</code>?     null; because void cannot be instantiated<br>can we define any element of <code>Sum A Void</code> for some <code>A</code>?   A; because right can be instantiated</p>
+<h2 id="Functions-amp-pattern-matching（模式匹配）"><a href="#Functions-amp-pattern-matching（模式匹配）" class="headerlink" title="Functions &amp; pattern matching（模式匹配）"></a>Functions &amp; pattern matching（模式匹配）</h2><p>def: As we have constructed some data types, we want to access the data inside a type in functional languages, so we introduce destructors. These destructors are built into function definitions via a mechanism known as pattern-matching.<br>&nbsp;<br>NOTE : we can define some operators by using this machanism.</p>
+<p><strong>Pattern matching enumerations</strong><br>The pattern matching machanism will check all cases are covered. If we lost some cases Agda will throw an error.<br>&nbsp;<br>pattern matching <code>and</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true  true  = true</span><br><span class="line">and true  false = false</span><br><span class="line">and false true  = false</span><br><span class="line">and false false = false</span><br></pre></td></tr></table></figure>
+<p>In order to avoid missing cases, we can simplify to :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and x y = false</span><br></pre></td></tr></table></figure>
+<p>as we can see the remaining cases are all concluded to false, the truth values can be assigned to x and y. And from top to bottom, each case is covered.<br>&nbsp;<br>If a case is not actually used, we can assign <code>_</code>. for example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and : Boolean -&gt; Boolean -&gt; Boolean</span><br><span class="line">and true true = true</span><br><span class="line">and _ _ = false                  ... if the remaining cases are unused...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">pattern matched type can be used to define other functions relating to it :</span><br></pre></td></tr></table></figure>
+<p>nand : Boolean -&gt; Boolean -&gt; Boolean<br>nand true true = false<br>nand x y = true</p>
+<p>negate : Boolean -&gt; Boolean<br>negate x = nand x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">where the second Boolean is a result of nand (Boolean -&gt; Boolean).</span><br><span class="line"></span><br><span class="line">**Pattern matching prod**</span><br><span class="line">Sightly different, the function we pattern match here is composite, namely polymorphic(working for more than one types). So we need to specify that types we are using :</span><br></pre></td></tr></table></figure></p>
+<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 (pair a _) = a                    … b is unused …</p>
+<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; B<br>proj2 (pair _ b) = b                    … a is unused …<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NOTE : here we have seperate pattern matching functions. As type of A and type of B are elements in `Prod`, whenever we are given an element of that type we match it against `pair a b`.</span><br><span class="line"></span><br><span class="line">**Pattern matching sum**</span><br><span class="line">Important to remember, we need to pattern match all cases appearing in each single type. Example below, as `sum Unit Unit` has as many proof terms as Boolean, so we have :</span><br></pre></td></tr></table></figure></p>
+<p>f : Sum Unit Unit -&gt; Boolean<br>f (left x)  = true<br>f (right y) = false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from the opposite we have :</span><br></pre></td></tr></table></figure></p>
+<p>g : Boolean -&gt; Sum Unit Unit<br>g true  = left empty<br>g false = right empty<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example : since `A + A = 2 * A`, we can convert between `Sum A A` and `Prod Boolean A`</span><br></pre></td></tr></table></figure></p>
+<p>h : {A : Set} -&gt; Sum A A -&gt; Prod Boolean A<br>h (left a)  = pair true a<br>h (right a) = pair false a</p>
+<p>i : {A : Set} -&gt; Prod Boolean A -&gt; Sum A A<br>i (pair true a) = left a<br>i (pair false a) = right a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**A special case**</span><br><span class="line">We can pattern match `Void` using () :</span><br></pre></td></tr></table></figure></p>
+<p>impossible : {A : Set} -&gt; void -&gt; A<br>impossible ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Sum A Void` and `A`.</span><br></pre></td></tr></table></figure></p>
+<p>to : {A : Set} -&gt; Sum A Void -&gt; A<br>to left a = a</p>
+<p>from : {A : Set} -&gt; A -&gt; Sum A Void<br>from a = left a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Convert between `Prod A Void` and `Void`</span><br></pre></td></tr></table></figure></p>
+<p>to : {A : Set} -&gt; Prod A Void -&gt; Void<br>to pair a _ = a</p>
+<p>from : {A : Set} -&gt; Void -&gt; Prod A Void<br>from ()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Generally**</span><br><span class="line">Note that arbitrary types can be created using the language of type definition, and they are always destructed via pattern matching :</span><br></pre></td></tr></table></figure></p>
+<p>data Foo (A : Set) : Set where<br> foo1 : Foo A<br> foo2 : A -&gt; A -&gt; Foo A<br> foo3 : A -&gt; A -&gt; Foo A</p>
+<p>ff : {A : Set} -&gt; Foo A -&gt; Foo A<br>ff foo1 = foo1<br>ff (foo2 x y) = foo3 y x<br>ff (foo3 x _) = foo2 x x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Type Isomorphisms</span><br><span class="line">**A note on syntax**</span><br><span class="line">if we look the examples below, the only difference is in the proj2 we remove &#123;A&#125; and &#123;B&#125;. This is because we did not use them in the definition.</span><br></pre></td></tr></table></figure></p>
+<p>proj1 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj1 {A} {B} (pair a b) = a</p>
+<p>proj2 : {A B : Set} -&gt; Prod A B -&gt; A<br>proj2 (pair a b) = a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Another example : modus ponens</span><br></pre></td></tr></table></figure></p>
+<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp {A} {B} f a = b where<br>  b : B                         …we used B here…<br>  b = f a<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if we inline the definition and remove optional arguments we have :</span><br></pre></td></tr></table></figure></p>
+<p>mp : {A B : Set} -&gt; (A -&gt; B) -&gt; A -&gt; B<br>mp f a = f b<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Type isomorphism**</span><br><span class="line">def : The existence of invertible functions `f : A -&gt; B`, and `g : B -&gt; A` means that the two types are isomorphic (&quot;same shape&quot;), written `A ~ B`. Isomorphism is a very important mathematical and programming concept, indicating that data can be converted between the f and g without loss of precision.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">Type isomorphisms are consistent in semi-ring :</span><br></pre></td></tr></table></figure></p>
+<pre><code>A + (B + C) ~ (A + B) + C
+      A + B ~ B + A
+      A + B ~ A
+A * (B * C) ~ (A * B) * C
+      A * B ~ B * A
+      A * 1 ~ A
+A * (B + C) ~ A * B + A * C
+(A + B) * C ~ A * C + B * C
+      A * 0 ~ 0 
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Example: Show that `A + (B + C) ~ (A + B) + C`.</span><br></pre></td></tr></table></figure>
+<p>q1-to : {A B C : Set} -&gt; Sum A (Sum B C) -&gt; Sum (Sum A B) C<br>q1-to (left a) = left (left a)<br>q1-to (right (left b)) = left (right b)<br>q1-to (right (right c)) = right c</p>
+<p>q1-from : {A B C : Set} -&gt; Sum (Sum A B) C -&gt; Sum A (Sum B C)<br>q1-from (left (left a)) = left a<br>q1-from (left (right b)) = right (left b)<br>q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">To check that these are inverse, we want to show q1-to (q1-from x) = x and q1-from (q1-to x) = x :</span><br></pre></td></tr></table></figure></p>
+<p>q1-to (q1-from (left (left a))) = q1-to (left a) = left (left a)<br>q1-to (q1-from (left (right b))) = q1-to (right (left b)) = left (right b)<br>q1-to (q1-from (right c)) = q1-to (right (right c)) = right c</p>
+<p>q1-from (q1-to (left a)) = q1-from (left (left a)) = left a<br>q1-from (q1-to (right (left b))) = q1-from (left (right b)) = right (lef b)<br>q1-from (q1-to (right (right c))) = q1-from (right c) = right (right c)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HOTE : When checking isomorphism, we need to check EACH pattern matched case.</span><br><span class="line"></span><br><span class="line">**Not isomorphic**</span><br><span class="line">There are conversion functions `f : A -&gt; B`, `g : B -&gt; A` that they are NOT isomorphic.</span><br><span class="line">&amp;nbsp;</span><br><span class="line">example : `Boolean` and `Unit`</span><br></pre></td></tr></table></figure></p>
+<p>to : Boolean -&gt; Unit<br>to _ = empty</p>
+<p>from : Unit -&gt; Boolean<br>from empty = true<br><code>`</code></p>
+<p>This is often when two types have different number of elements. This case, Boolean has 2 elements and Unit has only 1.</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Wenye Jin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/categories/">categories</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'jwy';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
